@@ -54,6 +54,19 @@ footer{padding:30px 7%;border-top:1px solid #353b37;display:flex;justify-content
 footer strong{color:var(--gold);letter-spacing:2px}
 @media(max-width:900px){.departments{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:650px){header{padding:16px 5%}nav{gap:12px}.departments,.info-grid{grid-template-columns:1fr}.hero{min-height:440px;padding:55px 7%}section{padding:48px 5%}.section-title h2{font-size:32px}}
+
+.seller-layout{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:35px;align-items:start;text-align:left}
+.seller-copy,.seller-form{background:#0e1511;border:1px solid #405345;padding:30px}
+.seller-copy h3,.seller-form h3{font-family:Georgia,serif;font-weight:normal;font-size:25px;color:var(--gold);margin-bottom:18px}
+.seller-copy p{color:var(--silver);font-size:14px;line-height:1.8;margin:0 0 18px}
+.seller-copy ul{padding-left:20px;color:var(--silver);font-size:13px;line-height:2}
+.seller-copy .seller-note{font-size:11px;color:#a9b1ab;border-top:1px solid #34453a;padding-top:16px;margin-top:20px}
+.seller-form label{display:block;color:var(--silver);font-size:12px;margin:0 0 15px}
+.seller-form input,.seller-form select,.seller-form textarea{display:block;width:100%;margin-top:7px;padding:12px;background:#080d0a;border:1px solid #435348;color:#f5f4ef;font:14px Arial,sans-serif;border-radius:0}
+.seller-form input:focus,.seller-form select:focus,.seller-form textarea:focus{outline:1px solid var(--gold);border-color:var(--gold)}
+.seller-form .button{border:0;cursor:pointer;width:100%;margin-top:5px}
+.form-status{font-size:11px;color:#aeb7b0;line-height:1.6;margin-top:14px}
+@media(max-width:800px){.seller-layout{grid-template-columns:1fr}.seller-copy,.seller-form{padding:22px}}
 </style>
 </head>
 <body>
@@ -239,10 +252,48 @@ footer strong{color:var(--gold);letter-spacing:2px}
   </section>
 
   <section class="seller" id="seller">
-    <small style="color:#c6a45a;letter-spacing:4px">BECOME PART OF HI FASHION</small>
-    <h2>Sell With Us</h2>
-    <p>Are you a fashion brand, manufacturer, boutique, independent designer or authorised retailer? We are preparing a global seller community for new fashion and accessories.</p>
-    <p><strong style="color:#c6a45a">Seller registration is coming soon.</strong></p>
+    <div class="section-title">
+      <small>GROW WITH A GLOBAL AUDIENCE</small>
+      <h2>Become a Founding Seller</h2>
+      <p>Bring your brand, boutique or independent label to a new international marketplace.</p>
+    </div>
+    <div class="seller-layout">
+      <div class="seller-copy">
+        <h3>Your products. Your business. A wider audience.</h3>
+        <p>HI FASHION is developing a multi-category marketplace for genuine new fashion, footwear and accessories. We are inviting established brands, independent designers, boutiques and authorised retailers to express interest in joining our founding seller programme.</p>
+        <ul>
+          <li>Sell your own genuine products</li>
+          <li>Keep control of your inventory and fulfilment</li>
+          <li>Discuss a transparent commission agreement</li>
+          <li>Reach customers across international markets as the platform develops</li>
+        </ul>
+        <p class="seller-note">This is an expression-of-interest form, not an active seller account. Submission does not create a partnership or guarantee acceptance.</p>
+      </div>
+      <form class="seller-form" id="sellerInterestForm">
+        <h3>Seller application</h3>
+        <label>Business / brand name<input name="business" required maxlength="120" placeholder="Your brand or company"></label>
+        <label>Contact person<input name="contact" required maxlength="100" placeholder="Full name"></label>
+        <label>Business email<input name="email" type="email" required maxlength="160" placeholder="name@company.com"></label>
+        <label>Country<input name="country" required maxlength="80" placeholder="Country of business"></label>
+        <label>Website or social profile<input name="website" type="url" maxlength="240" placeholder="https://..."></label>
+        <label>Main product categories
+          <select name="category" required>
+            <option value="">Choose a category</option>
+            <option>Women's and men's clothing</option>
+            <option>Kids and baby</option>
+            <option>Shoes and sneakers</option>
+            <option>Bags and luggage</option>
+            <option>Jewellery and watches</option>
+            <option>Eyewear and accessories</option>
+            <option>Sportswear and fitness</option>
+            <option>Other / multiple categories</option>
+          </select>
+        </label>
+        <label>Tell us about your products<textarea name="message" rows="4" maxlength="1200" placeholder="Brand story, product range, shipping countries..."></textarea></label>
+        <button type="submit" class="button">PREPARE APPLICATION EMAIL</button>
+        <p class="form-status" id="formStatus" role="status">Your details stay in this browser until you choose to open your email app. Nothing is sent automatically.</p>
+      </form>
+    </div>
   </section>
 </main>
 
@@ -275,7 +326,28 @@ function filterDepartments() {
   noResults.style.display = visible === 0 ? "block" : "none";
 }
 
+
 searchInput.addEventListener("input", filterDepartments);
+
+const sellerForm = document.getElementById("sellerInterestForm");
+sellerForm.addEventListener("submit", function(event) {
+  event.preventDefault();
+  const data = new FormData(sellerForm);
+  const subject = "HI FASHION Founding Seller Application - " + data.get("business");
+  const body = [
+    "Business / brand: " + data.get("business"),
+    "Contact person: " + data.get("contact"),
+    "Business email: " + data.get("email"),
+    "Country: " + data.get("country"),
+    "Website / social profile: " + (data.get("website") || "Not provided"),
+    "Main categories: " + data.get("category"),
+    "Product information: " + (data.get("message") || "Not provided")
+  ].join("\n");
+  document.getElementById("formStatus").textContent =
+    "Your email app will open with the application prepared. Please review it and send it to the HI FASHION team once an official contact email is published.";
+  window.location.href = "mailto:?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+});
+
 
 document.querySelectorAll(".tag").forEach(tag => {
   tag.addEventListener("click", () => {
