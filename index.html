@@ -396,6 +396,56 @@ html[dir="rtl"] .brand-search-result{direction:rtl}
 @media(max-width:900px){.commerce-products{grid-template-columns:repeat(2,minmax(0,1fr))}.commerce-feature-row{grid-template-columns:1fr}}
 @media(max-width:650px){.commerce-preview{padding:48px 5%}.commerce-products,.gift-shop{grid-template-columns:1fr}.commerce-product>img{height:260px}.gift-shop{padding:19px}.commerce-cart-head,.commerce-cart-body{padding-left:17px;padding-right:17px}.cart-toggle{padding:8px 9px;font-size:9px}.checkout-two-col{grid-template-columns:1fr}}
 
+
+/* Gold-and-diamond visual finish + persistent right-side shopping cart */
+:root{--gold:#f0d27b;--silver:#e0d5ad;--white:#f6edcf;--diamond-glow:rgba(244,222,166,.42)}
+body{color:#e6d49b}
+body :is(h1,h2,h3,h4,p,a,span,strong,small,li,label,button,nav,.tag,.brand-wordmark,.retail-region,.photo-credit,.future-photo-credit,.trend-kicker,.trend-growth,.trend-action,.future-label,.future-items,.season-control,.season-chip,.results-note,.form-status,.shipping-status,.brand-strip-note,.section-title,.section-title small,.section-title p,.info-card p,.seller-copy p,.seller-copy ul,.seller-note,.retail-terms,.destination-panel p,.destination-status,.network-card,.regional-delivery-note,.commerce-product p,.commerce-status,.commerce-legal,.commerce-fineprint,.payment-panel p,.gift-card-perks,.commerce-feature-row p){color:#e6d49b!important;text-shadow:0 0 5px rgba(228,199,126,.18)}
+body :is(h1,h2,h3,h4,.logo,.section-title small,.commerce-kicker,.brand-wordmark,.top-brand-mark span,.gift-shop h3,.commerce-cart-head h2){animation:hiDiamondShimmer 3.8s ease-in-out infinite}
+@keyframes hiDiamondShimmer{
+  0%,100%{text-shadow:0 0 4px rgba(248,227,170,.2),0 0 10px rgba(220,190,116,.08)}
+  50%{text-shadow:0 0 7px rgba(255,246,214,.65),0 0 17px rgba(241,211,132,.36),0 0 27px rgba(211,232,235,.17)}
+}
+body :is(input,textarea,select){color:#f0dfab!important;border-color:#8f7945!important}
+body :is(input,textarea,select)::placeholder{color:#b7a77b!important;opacity:1}
+body :is(.button,.commerce-add,.commerce-checkout,.cart-toggle,.season-control.active,.season-chip:hover,.tag:hover){color:#111!important;text-shadow:none!important}
+body :is(.department .tag,.trend-pill,.network-card strong,.payment-method-chips span){color:#f0d27b!important}
+body .payment-method-chips span{color:#111!important}
+body .brand-logo,body .top-brand-mark img{filter:brightness(0) saturate(100%) invert(86%) sepia(35%) saturate(520%) hue-rotate(4deg) brightness(104%) contrast(92%)}
+.cart-toggle{
+  position:fixed!important;right:0!important;top:48%!important;z-index:100000!important;
+  transform:translateY(-50%)!important;display:flex!important;flex-direction:column!important;
+  align-items:center!important;justify-content:center!important;gap:8px!important;
+  min-width:66px;min-height:112px;padding:14px 12px!important;
+  border:1px solid #f8e5aa!important;border-right:0!important;
+  border-radius:17px 0 0 17px!important;background:linear-gradient(155deg,#f6df9e 0%,#c6a45a 46%,#f4e5bd 100%)!important;
+  color:#12100b!important;box-shadow:0 0 12px rgba(233,199,116,.48),0 0 26px rgba(234,216,169,.2),-4px 7px 22px rgba(0,0,0,.36)!important;
+  font-size:10px!important;font-weight:900!important;letter-spacing:1.5px!important;
+  animation:hiCartDiamond 3.2s ease-in-out infinite;
+}
+.cart-toggle span{color:#17140c!important;font-size:10px!important;writing-mode:vertical-rl;letter-spacing:2px}
+.cart-toggle b{min-width:24px!important;height:24px!important;border:1px solid rgba(255,255,255,.7);background:#17140c!important;color:#f5df9d!important}
+@keyframes hiCartDiamond{
+  0%,100%{box-shadow:0 0 10px rgba(233,199,116,.35),0 0 21px rgba(234,216,169,.14),-4px 7px 22px rgba(0,0,0,.32)}
+  50%{box-shadow:0 0 18px rgba(255,242,197,.72),0 0 36px rgba(225,209,157,.34),-4px 7px 26px rgba(0,0,0,.38)}
+}
+.cart-toggle:hover{filter:brightness(1.1);transform:translateY(-50%) scale(1.035)!important}
+.commerce-cart{right:0!important;left:auto!important;border-left:1px solid #e3c77f!important;box-shadow:-18px 0 60px rgba(0,0,0,.6),-1px 0 22px rgba(223,195,121,.16)!important}
+.commerce-cart-head{background:linear-gradient(120deg,#1b2117,#101811)!important;border-bottom-color:#947944!important}
+.commerce-cart-head h2,.commerce-cart .commerce-total-row strong,.commerce-cart .checkout-fields h3{color:#f0d27b!important}
+.commerce-cart .commerce-total-row,.commerce-cart .commerce-total-row span{color:#e6d49b!important}
+.commerce-close{color:#f0d27b!important;border-color:#a4894c!important}
+.commerce-cart .cart-line,.commerce-cart .gift-redeem,.commerce-cart .checkout-fields,.commerce-cart .payment-panel{border-color:#665633!important}
+.commerce-checkout{box-shadow:0 0 13px rgba(234,204,132,.32)}
+html[dir="rtl"] .cart-toggle{right:auto!important;left:0!important;border-right:1px solid #f8e5aa!important;border-left:0!important;border-radius:0 17px 17px 0!important}
+@media(max-width:650px){
+  .cart-toggle{min-width:56px;min-height:98px;padding:11px 8px!important;top:46%!important}
+  .commerce-cart{width:min(100%,520px)!important}
+}
+@media(prefers-reduced-motion:reduce){
+  body :is(h1,h2,h3,h4,.logo,.section-title small,.commerce-kicker,.brand-wordmark,.top-brand-mark span,.gift-shop h3,.commerce-cart-head h2),.cart-toggle{animation:none!important}
+}
+
 </style>
 </head>
 <body>
