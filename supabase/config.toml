@@ -1,19 +1,26 @@
-project_id = "hi-fashion"
+project_id = "nbluqcydijvjwcjzvank"
+
 
 [functions.create-checkout-session]
 verify_jwt = true
 
+
 [functions.create-connect-onboarding-link]
 verify_jwt = true
+
 
 [functions.review-seller-application]
 verify_jwt = true
 
+
 [functions.stripe-webhook]
 verify_jwt = false
+
 [functions.import-retailer-feed]
 verify_jwt = true
+
 [functions.search-cj-catalogue]
 verify_jwt = false
+
 [functions.search-ebay-catalogue]
 verify_jwt = false
