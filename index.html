@@ -198,6 +198,18 @@ footer strong{color:var(--gold);letter-spacing:2px}
 @keyframes hiBrandTicker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 @media(prefers-reduced-motion:reduce){.brand-strip-track{animation:none;flex-wrap:wrap;justify-content:center;width:auto}.ticker-duplicate{display:none}}
 @media(max-width:650px){.brand-strip-track,.ticker-duplicate{gap:17px}.brand-strip-track{animation-duration:110s}.top-brand-mark span{font-size:10px}.brand-strip-heading{gap:8px;flex-wrap:wrap}}
+
+/* Unified search for products, departments and retailer trademarks */
+.brand-search-results{max-width:900px;margin:-12px auto 24px;padding:16px;background:#0a120d;border:1px solid #52634f}
+.brand-search-results[hidden]{display:none}
+.brand-search-heading{color:#c6a45a;font-size:9px;font-weight:bold;letter-spacing:2px;margin-bottom:12px}
+.brand-search-result{display:flex;align-items:center;gap:12px;justify-content:space-between;padding:10px 12px;margin-top:6px;background:#111b15;border:1px solid #34483a;text-decoration:none}
+.brand-search-result strong{color:#f5f4ef;font-size:13px;letter-spacing:1px;min-width:110px}
+.brand-search-result span{color:#aeb9b0;font-size:10px;flex:1}
+.brand-search-result small{color:#d7bd80;font-size:9px;letter-spacing:1px}
+.brand-search-result:hover{border-color:#c6a45a}
+.retail-card[hidden],.region-section[hidden],.top-brand-mark[hidden]{display:none!important}
+@media(max-width:600px){.brand-search-result{align-items:flex-start;flex-direction:column;gap:5px}.brand-search-result strong{min-width:0}}
 </style>
 </head>
 <body>
@@ -821,10 +833,11 @@ footer strong{color:var(--gold);letter-spacing:2px}
     </div>
 
     <div class="search-wrap" id="search">
-      <input id="departmentSearch" type="search" placeholder="Search products, accessories or departments..." aria-label="Search departments">
+      <input id="departmentSearch" type="search" placeholder="Search products, categories or brands — Nike, adidas, Zara..." aria-label="Search products, categories and trademarks">
     </div>
     <p class="photo-note" style="text-align:center;color:#c5c8c6;font-size:11px;margin:-15px 0 24px">Editorial model photography from Pexels · Images illustrate department style and are not product listings.</p>
     <div class="results-note" id="resultsNote">25 departments · Select any subcategory to explore</div>
+    <div class="brand-search-results" id="brandSearchResults" aria-live="polite" hidden></div>
 
     <div class="departments" id="departmentGrid">
 
@@ -1134,21 +1147,87 @@ const departments = [...document.querySelectorAll(".department")];
 const resultsNote = document.getElementById("resultsNote");
 const noResults = document.getElementById("noResults");
 
+const departmentGrid = document.getElementById("departmentGrid");
+const brandSearchResults = document.getElementById("brandSearchResults");
+const retailerCards = [...document.querySelectorAll(".retail-card")];
+const retailerRegions = [...document.querySelectorAll(".region-section")];
+const topBrandMarks = [...document.querySelectorAll(".top-brand-mark")];
+
 function filterDepartments() {
   const query = searchInput.value.trim().toLowerCase();
-  let visible = 0;
+  let visibleDepartments = 0;
+  let visibleRetailers = 0;
 
   departments.forEach(department => {
-    const matches = department.textContent.toLowerCase().includes(query);
+    const matches = !query || department.textContent.toLowerCase().includes(query);
     department.hidden = !matches;
-    if (matches) visible++;
+    if (matches) visibleDepartments++;
   });
 
-  resultsNote.textContent = query
-    ? `${visible} matching department${visible === 1 ? "" : "s"} found`
-    : "25 departments · Select any subcategory to explore";
+  retailerCards.forEach(card => {
+    const matches = !query || card.textContent.toLowerCase().includes(query);
+    card.hidden = !matches;
+    if (matches) visibleRetailers++;
+  });
 
-  noResults.style.display = visible === 0 ? "block" : "none";
+  retailerRegions.forEach(region => {
+    const hasVisibleCard = [...region.querySelectorAll(".retail-card")].some(card => !card.hidden);
+    region.hidden = !hasVisibleCard;
+  });
+
+  topBrandMarks.forEach(mark => {
+    const matches = !query || mark.textContent.toLowerCase().includes(query);
+    mark.hidden = !matches;
+  });
+
+  departmentGrid.hidden = Boolean(query) && visibleDepartments === 0;
+  brandSearchResults.replaceChildren();
+
+  if (query && visibleRetailers > 0) {
+    const heading = document.createElement("p");
+    heading.className = "brand-search-heading";
+    heading.textContent = "MATCHING TRADEMARKS & STORES";
+    brandSearchResults.appendChild(heading);
+
+    retailerCards.filter(card => !card.hidden).slice(0, 10).forEach(card => {
+      const storeLink = card.querySelector("a[href]");
+      const nameNode = card.querySelector(".brand-wordmark");
+      if (!storeLink || !nameNode) return;
+
+      const resultLink = document.createElement("a");
+      resultLink.className = "brand-search-result";
+      resultLink.href = storeLink.href;
+      resultLink.target = "_blank";
+      resultLink.rel = "noopener noreferrer";
+
+      const brandName = document.createElement("strong");
+      brandName.textContent = nameNode.textContent.trim();
+
+      const regionName = card.querySelector(".retail-region");
+      const detail = document.createElement("span");
+      detail.textContent = regionName ? regionName.textContent.trim() : "Official retailer website";
+
+      const action = document.createElement("small");
+      action.textContent = "VISIT STORE ↗";
+
+      resultLink.append(brandName, detail, action);
+      brandSearchResults.appendChild(resultLink);
+    });
+    brandSearchResults.hidden = false;
+  } else {
+    brandSearchResults.hidden = true;
+  }
+
+  if (query) {
+    resultsNote.textContent = visibleDepartments + " matching department" +
+      (visibleDepartments === 1 ? "" : "s") + " · " +
+      visibleRetailers + " matching store" + (visibleRetailers === 1 ? "" : "s");
+  } else {
+    resultsNote.textContent = "25 departments · Search products, categories or trademarks";
+  }
+
+  noResults.style.display = query && visibleDepartments === 0 && visibleRetailers === 0 ? "block" : "none";
+  noResults.textContent = "No matching product category or retailer trademark found.";
 }
 
 
