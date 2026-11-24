@@ -4794,7 +4794,7 @@ applySeason(localStorage.getItem("hiFashionSeason") || "auto", false);
     const retailer=safeText(product.retailer|| (kind==="ebay"?"eBay":"HI FASHION seller"));
     const image=safeText(product.image_url||product.imageUrl||"");
     const country=safeText(product.retailer_country||product.retailerCountry||"");
-    const price=kind==="ebay"?(product.price===null?null:Math.round(Number(product.price)*100)):(product.sale_price_minor??product.price_minor);
+    const price=(kind==="ebay"||kind==="cj")?(product.price===null||product.price===undefined?null:Math.round(Number(product.price)*100)):(product.sale_price_minor??product.price_minor);
     const currency=kind==="ebay"?product.currency:product.currency;
     const sizes=Array.isArray(product.sizes)?product.sizes:[];
     const availability=safeText(product.availability||"");
@@ -4852,6 +4852,21 @@ applySeason(localStorage.getItem("hiFashionSeason") || "auto", false);
     if(!response.ok)return {items:[],total:0,configured:false,error:result.error||"eBay search unavailable."};
     return {items:result.items||[],total:Number(result.total||0),configured:true};
   }
+  async function getCjProducts(query,offset){
+    if(!supabaseUrl||!cfg.anonKey||!query)return {items:[],total:0,configured:false};
+    const country=destinationIso()||"";
+    const params=new URLSearchParams({q:query,limit:String(Math.min(active.limit,100)),offset:String(offset)});
+    if(country)params.set("country",country);
+    const url=supabaseUrl+"/functions/v1/search-cj-catalogue?"+params.toString();
+    const headers={"apikey":cfg.anonKey,"Authorization":"Bearer "+cfg.anonKey,"Accept":"application/json"};
+    if(client?.auth?.getSession){
+      try{const session=await client.auth.getSession();const token=session.data?.session?.access_token;if(token)headers.Authorization="Bearer "+token;}catch{}
+    }
+    const response=await fetch(url,{headers,credentials:"omit"});
+    const result=await response.json().catch(()=>({error:"Invalid response from CJ product search."}));
+    if(!response.ok)return {items:[],total:0,configured:false,error:result.error||"CJ search unavailable."};
+    return {items:result.items||[],total:Number(result.total||0),configured:true};
+  }
   function filters(){
     const min=byId("catalogueMinPrice").value.trim(),max=byId("catalogueMaxPrice").value.trim();
     return {brand:byId("catalogueBrand").value.trim(),size:byId("catalogueSize").value.trim(),color:byId("catalogueColor").value.trim(),
@@ -4890,35 +4905,36 @@ applySeason(localStorage.getItem("hiFashionSeason") || "auto", false);
     renderMarketLinks(query||category);
     try{
       const searchText=query||category;
-      const [localResult,ebayResult]=await Promise.all([
+      const [localResult,ebayResult,cjResult]=await Promise.all([
         getLocalProducts(query,active.offset,filters()),
-        getEbayProducts(searchText,active.offset).catch(error=>({items:[],total:0,configured:false,error:error.message}))
+        getEbayProducts(searchText,active.offset).catch(error=>({items:[],total:0,configured:false,error:error.message})),
+        getCjProducts(searchText,active.offset).catch(error=>({items:[],total:0,configured:false,error:error.message}))
       ]);
       const localRows=localResult.data||[];
       const localTotal=Number(localRows[0]?.total_count||0);
       lastLocalTotal=localTotal;
-      lastEbayTotal=Number(ebayResult.total||0);
+      lastEbayTotal=Number(ebayResult.total||0);\n      const cjTotal=Number(cjResult.total||0);
       const cards=localRows.map(item=>productCard(item,"local"));
       const ebayRows=ebayResult.items||[];
-      const ebayCards=ebayRows.map(item=>productCard(item,"ebay"));
+      const ebayCards=ebayRows.map(item=>productCard(item,"ebay"));\n      const cjRows=cjResult.items||[];\n      const cjCards=cjRows.map(item=>productCard(item,"cj"));
       if(active.offset===0)grid.replaceChildren();
-      const productHtml=cards.concat(ebayCards).join("");
+      const productHtml=cards.concat(ebayCards,cjCards).join("");
       if(productHtml){
         const wrap=document.createElement("div");wrap.style.display="contents";wrap.innerHTML=productHtml;grid.append(...wrap.childNodes);
       }
-      const sum=localTotal+lastEbayTotal;
+      const sum=localTotal+lastEbayTotal+cjTotal;
       const feedConfigured=localRows.length>0;
       const ebayConfigured=ebayResult.configured;
       if(sum>0){
-        setStatus("Showing "+(active.offset+1)+"–"+Math.min(active.offset+localRows.length+ebayRows.length,sum)+" of about "+sum.toLocaleString()+" results across the HI FASHION catalogue and live eBay search.",sum);
+        setStatus("Showing "+(active.offset+1)+"–"+Math.min(active.offset+localRows.length+ebayRows.length+cjRows.length,sum)+" of about "+sum.toLocaleString()+" results across the HI FASHION catalogue, eBay and CJ Affiliate.",sum);
       }else{
         const detail=[];
         if(!client)detail.push("Supabase is not configured");
         else if(localResult.error)detail.push("Catalogue database: "+localResult.error.message);
-        if(!ebayConfigured)detail.push(ebayResult.error||"eBay API credentials are not configured");
+        if(!ebayConfigured)detail.push(ebayResult.error||"eBay API credentials are not configured");\n        if(!cjResult.configured)detail.push(cjResult.error||"CJ API credentials are not configured");
         setStatus("No connected product feeds returned listings yet. "+detail.join(" · ")+" — approved partner feeds must be connected before live retailer products appear.",0);
       }
-      const pageHasMore=localRows.length>=active.limit||active.offset+active.limit<lastEbayTotal;
+      const pageHasMore=localRows.length>=active.limit||active.offset+active.limit<lastEbayTotal||active.offset+active.limit<cjTotal;
       more.hidden=!pageHasMore;
       more.textContent="LOAD MORE PRODUCTS";
     }catch(error){
