@@ -155,6 +155,23 @@ Use `source_code` `awin` or `cj`; `feed_id` identifies a feed inside that networ
 
 The storefront already queries the local catalogue and can request live CJ/eBay results once provider secrets are configured. Awin listings appear after an approved Awin feed is imported. Import and display only product data permitted under each partner agreement. API access or a feed download does not by itself grant permission to advertise every retailer or brand.
 
+## 3B. Nearby dispatch and buyer location
+
+The storefront includes an optional **Use my current location** control in the delivery-destination panel. The browser asks for permission only after the visitor presses the button. Coordinates stay in page memory for the current visit; they are not written to localStorage, customer profiles or orders. The visitor can clear the location at any time and can continue using the country/city/postal-code fields without GPS.
+
+To enable nearest verified dispatch matching, apply:
+`supabase/migrations/202611240012_nearest_verified_fulfilment.sql`
+
+This migration creates `catalogue_fulfilment_locations` and the `search_catalogue_products_nearby` RPC. Only service-role processes can write fulfilment locations. Public search returns a product only when:
+- the product is active, in stock and has an explicit HTTPS affiliate deep link;
+- the dispatch location is verified and active, with positive stock;
+- stock was checked within the last 72 hours and location data within the last 365 days;
+- the location explicitly lists the buyer's selected destination country in `ships_to`.
+
+The storefront ranks those products by straight-line distance from the browser-provided coordinates and can show the dispatch city, distance and supplied delivery estimate. This is a dispatch-location estimate, not a route calculation or a guaranteed delivery promise.
+
+**Important:** the migration creates the structure and search function only. It does not invent warehouse addresses, stock counts, delivery coverage or delivery promises. An authorised retailer/fulfilment integration must populate real `catalogue_fulfilment_locations` rows and refresh their stock/location checks. Until then the storefront falls back to general destination-country catalogue matches and says that nearby stock is not verified. Precise location is optional; visitors who decline permission can use the manual delivery destination fields.
+
 ## 3. Deploy Supabase Edge Functions
 
 From the repository root:
