@@ -132,7 +132,7 @@ function mapRow(headers: string[], values: string[], source: string, feedId: str
   const productUrl=getValue(record,"product_url");
   if(!externalId||!title||!productUrl)return null;
   const currencyRaw=getValue(record,"currency").trim().toUpperCase();
-  const currencyFallback=(Deno.env.get(source.toUpperCase()+"_DEFAULT_CURRENCY")||"").trim().toUpperCase();
+  const currencyFallback=(currencyDefault||Deno.env.get(source.toUpperCase()+"_DEFAULT_CURRENCY")||"EUR").trim().toUpperCase();
   const currency=/^[A-Z]{3}$/.test(currencyRaw)?currencyRaw:(/^[A-Z]{3}$/.test(currencyFallback)?currencyFallback:"EUR");
   const mainPrice=getValue(record,"price");
   const salePrice=getValue(record,"sale_price");
@@ -274,7 +274,6 @@ Deno.serve(async(req:Request)=>{
       if(!headerParsed.rows.length)return json({error:"Feed does not contain a valid CSV header row."},422);
       headers=headerParsed.rows[0].map(x=>x.trim());
       const dataBytes=bytes.slice(headerEnd);
-      const parsedData=parseCsv(dataBytes,delimiter,finalChunk, maxRows);
       const parsedData=parseCsv(dataBytes,delimiter,finalChunk,maxRows);
       if(parsedData.consumed===0 && dataBytes.length>0)return json({error:"A CSV record exceeds the configured import chunk size or contains an unterminated quoted field. Increase CATALOGUE_IMPORT_BYTES_PER_RUN or request a feed with shorter product descriptions."},413);
       if(finalChunk && parsedData.consumed<dataBytes.length)return json({error:"The final CSV chunk ends inside a quoted or incomplete record. The feed cannot be safely completed."},422);
