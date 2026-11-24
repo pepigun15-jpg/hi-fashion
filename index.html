@@ -2306,6 +2306,83 @@ footer strong,footer a{color:#111111!important}
 }
 </style>
 
+
+<style id="hi-fashion-button-specificity-fix">
+/* Higher-specificity pass so no older section-specific rule can restore dark buttons or light labels. */
+body button:not([hidden]),
+body button[class]:not([hidden]),
+body input[type="button"],
+body input[type="submit"],
+body input[type="reset"],
+body a.button:not([hidden]),
+body .hf-hero a.button,
+body .hf-reference-product-footer a,
+body #productCatalogue .catalogue-product-cta,
+body .catalogue-filterbar button,
+body .catalogue-pagination button,
+body .catalogue-load-more,
+body .destination-location-actions button,
+body .department .tag,
+body .season-controls .season-control,
+body .season-card button,
+body .season-chip,
+body .trend-pill,
+body .hf-category-card,
+body .hf-region-pills a,
+body .language-toggle,
+body .language-options button,
+body .network-card,
+body .retail-card a,
+body .shipping-policy-link,
+body .hf-premium-header .hf-icon-button,
+body .hf-premium-header .hf-icon-link{
+  color:#111111!important;
+  background:#ffffff!important;
+  background-image:none!important;
+  border-top:1px solid #d0d0d0!important;
+  border-bottom:1px solid #d0d0d0!important;
+  border-left:2px solid #b9934e!important;
+  border-right:2px solid #b9934e!important;
+  text-shadow:none!important;
+  box-shadow:none!important;
+}
+body button:not([hidden]):hover,
+body button[class]:not([hidden]):hover,
+body input[type="button"]:hover,
+body input[type="submit"]:hover,
+body a.button:not([hidden]):hover,
+body .hf-hero a.button:hover,
+body .hf-reference-product-footer a:hover,
+body #productCatalogue .catalogue-product-cta:hover,
+body .destination-location-actions button:hover,
+body .department .tag:hover,
+body .season-controls .season-control:hover,
+body .season-card button:hover,
+body .season-chip:hover,
+body .trend-pill:hover,
+body .hf-category-card:hover,
+body .hf-region-pills a:hover,
+body .language-toggle:hover,
+body .language-options button:hover,
+body .retail-card a:hover{
+  color:#111111!important;
+  background:#f1f1f1!important;
+  border-left-color:#b9934e!important;
+  border-right-color:#b9934e!important;
+}
+body .hf-premium-header .hf-icon-button,
+body .hf-premium-header .hf-icon-link{
+  color:#ffffff!important;
+  background:transparent!important;
+  border:0!important;
+}
+body .hf-premium-header .language-toggle{
+  color:#111111!important;background:#ffffff!important;
+  border-top:1px solid #d0d0d0!important;border-bottom:1px solid #d0d0d0!important;
+  border-left:2px solid #b9934e!important;border-right:2px solid #b9934e!important;
+}
+</style>
+
 </head>
 <body>
 <div class="language-modal" id="languageModal" hidden>
