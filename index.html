@@ -592,6 +592,55 @@ html[dir="rtl"] .account-drawer{right:0!important;left:auto!important;border-lef
   .brand-strip-track{animation:none!important}
 }
 
+/* HI FASHION global product catalogue */
+.catalogue-section{max-width:1320px;margin:8px auto 38px;padding:26px;background:linear-gradient(145deg,#0a130e,#111b14);border:1px solid #8d7545;box-shadow:0 18px 45px rgba(0,0,0,.26)}
+.catalogue-section[hidden]{display:none}
+.catalogue-heading{display:flex;align-items:end;justify-content:space-between;gap:14px;flex-wrap:wrap;border-bottom:1px solid #394a3c;padding-bottom:15px}
+.catalogue-heading small{display:block;color:#d8bd7c;font-size:9px;letter-spacing:2.5px;margin-bottom:8px}
+.catalogue-heading h2{font-family:Georgia,serif;font-size:clamp(24px,3vw,34px);font-weight:normal;color:#f4e5bf}
+.catalogue-count{color:#f4d58a;border:1px solid #8b7343;padding:7px 10px;font-size:9px;letter-spacing:1.4px}
+.catalogue-status{min-height:20px;margin:13px 0 16px;color:#b7c3ba;font-size:11px;line-height:1.6}
+.catalogue-filterbar{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;align-items:end;padding:15px;margin-bottom:18px;background:#080f0b;border:1px solid #304336}
+.catalogue-filterbar label{display:flex;flex-direction:column;gap:6px;color:#c8c9c0;font-size:9px;letter-spacing:1px;text-transform:uppercase}
+.catalogue-filterbar input:not([type=checkbox]),.catalogue-filterbar select{width:100%;min-width:0;height:37px;padding:8px 9px;background:#111a14;border:1px solid #465849;color:#f4f1e8;font:12px Arial,sans-serif;border-radius:0}
+.catalogue-filterbar input:focus,.catalogue-filterbar select:focus{outline:1px solid #c6a45a;border-color:#c6a45a}
+.catalogue-stock-filter{display:flex!important;align-items:center;flex-direction:row!important;gap:8px!important;height:37px;text-transform:none!important;letter-spacing:0!important}
+.catalogue-stock-filter input{accent-color:#c6a45a;width:15px;height:15px}
+.catalogue-filter-button,.catalogue-load-more{height:37px;padding:0 17px;background:linear-gradient(130deg,#e5ca88,#ad8542);border:1px solid #e4c783;color:#111;font-size:9px;font-weight:bold;letter-spacing:1.4px;cursor:pointer}
+.catalogue-product-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px}
+.catalogue-product-card{display:flex;min-width:0;flex-direction:column;background:#101913;border:1px solid #35483a;overflow:hidden;transition:transform .2s ease,border-color .2s ease}
+.catalogue-product-card:hover{transform:translateY(-3px);border-color:#c6a45a}
+.catalogue-product-image{display:block;width:100%;aspect-ratio:4/4.6;object-fit:cover;background:#17231b}
+.catalogue-product-placeholder{display:flex;align-items:center;justify-content:center;width:100%;aspect-ratio:4/4.6;background:linear-gradient(145deg,#1c2b21,#090e0b);color:#d2b879;font-family:Georgia,serif;font-size:36px}
+.catalogue-product-copy{display:flex;flex:1;flex-direction:column;padding:13px;gap:7px}
+.catalogue-product-brand{color:#d2b879;font-size:9px;letter-spacing:1.5px;text-transform:uppercase}
+.catalogue-product-title{color:#f0efe8;font-family:Georgia,serif;font-weight:normal;font-size:17px;line-height:1.3}
+.catalogue-product-meta{color:#9eaaa1;font-size:10px;line-height:1.6}
+.catalogue-product-price{margin-top:auto;padding-top:8px;color:#f1d894;font-size:15px;font-weight:bold}
+.catalogue-product-price del{margin-left:6px;color:#929d94;font-size:10px;font-weight:normal}
+.catalogue-product-cta{display:flex;align-items:center;justify-content:center;min-height:37px;margin-top:7px;background:#c6a45a;color:#111;text-decoration:none;font-size:9px;font-weight:bold;letter-spacing:1.2px}
+.catalogue-product-cta:hover{background:#f0d995}
+.catalogue-product-source{color:#839086;font-size:8px;letter-spacing:.9px;text-transform:uppercase}
+.catalogue-load-row{display:flex;justify-content:center;margin:23px 0 4px}
+.catalogue-load-more[hidden]{display:none}
+.catalogue-market-links{margin-top:16px;color:#95a197;font-size:9px;line-height:1.6;text-align:center}
+.multi-market-search{max-width:1100px;margin:0 auto 30px;padding:23px;background:linear-gradient(145deg,#0b1710,#111c14);border:1px solid #b69755;box-shadow:0 12px 34px rgba(0,0,0,.22)}
+.multi-market-search[hidden]{display:none}
+.multi-market-heading{font-family:Georgia,serif;font-size:clamp(22px,3vw,30px);font-weight:normal;color:#f1d48d;text-align:center;letter-spacing:.5px;text-transform:uppercase}
+.multi-market-intro{max-width:760px;margin:10px auto 20px;color:#c7cec8;font-size:12px;line-height:1.7;text-align:center}
+.multi-market-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.multi-market-card{display:flex;min-width:0;min-height:90px;flex-direction:column;justify-content:space-between;gap:8px;padding:14px 15px;background:#101b14;border:1px solid #3e5143;color:#f5f4ef;text-decoration:none;transition:border-color .2s ease,background .2s ease,transform .2s ease}
+.multi-market-card:hover{border-color:#e0c277;background:#18281d;transform:translateY(-2px)}
+.multi-market-card strong{font-family:Georgia,serif;font-size:19px;font-weight:normal;color:#f1e6c8;overflow-wrap:anywhere}
+.multi-market-card span{color:#aeb9b0;font-size:10px;line-height:1.4}
+.multi-market-card small{color:#e0c277;font-size:9px;font-weight:bold;letter-spacing:1px}
+.multi-market-card.featured{background:linear-gradient(135deg,#2b2415,#162319);border-color:#d5b96c}
+.multi-market-card.featured strong{color:#ffdfa0}
+.multi-market-note{margin:18px 0 0;padding-top:14px;border-top:1px solid #34483a;color:#9eaaa1;text-align:center;font-size:10px;line-height:1.7}
+@media(max-width:980px){.catalogue-product-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.catalogue-filterbar{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:650px){.catalogue-section{padding:15px;margin:10px 0 25px}.catalogue-product-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.catalogue-product-copy{padding:10px}.catalogue-product-title{font-size:15px}.catalogue-filterbar{grid-template-columns:repeat(2,minmax(0,1fr));padding:10px}.multi-market-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:420px){.catalogue-product-grid{grid-template-columns:1fr}.catalogue-product-image,.catalogue-product-placeholder{aspect-ratio:1.2}.multi-market-grid{grid-template-columns:1fr}.catalogue-filterbar{grid-template-columns:1fr 1fr}.catalogue-filter-button{padding:0 7px;font-size:8px}}
+
 </style>
 </head>
 <body>
@@ -3252,6 +3301,27 @@ html[dir="rtl"] .account-drawer{right:0!important;left:auto!important;border-lef
     <p class="photo-note" style="text-align:center;color:#c5c8c6;font-size:11px;margin:-15px 0 24px">Editorial model photography from Pexels · Images illustrate department style and are not product listings.</p>
     <div class="results-note" id="resultsNote">25 departments · Select any subcategory to explore</div>
     <div class="brand-search-results" id="brandSearchResults" aria-live="polite" hidden></div>
+    <section class="catalogue-section" id="productCatalogue" aria-live="polite" hidden>
+      <div class="catalogue-heading">
+        <div><small>GLOBAL PRODUCT CATALOGUE</small><h2 id="catalogueTitle">Explore products worldwide</h2></div>
+        <span id="catalogueCount" class="catalogue-count">LIVE CATALOGUE</span>
+      </div>
+      <p id="catalogueStatus" class="catalogue-status" role="status">Search products from connected retailers and approved seller feeds.</p>
+      <div class="catalogue-filterbar">
+        <label>Brand<input id="catalogueBrand" type="search" placeholder="Any brand"></label>
+        <label>Size<input id="catalogueSize" type="search" placeholder="e.g. 38 / M"></label>
+        <label>Colour<input id="catalogueColor" type="search" placeholder="Any colour"></label>
+        <label>Currency<select id="catalogueCurrency"><option value="">Any currency</option><option>EUR</option><option>USD</option><option>GBP</option></select></label>
+        <label>Sort<select id="catalogueSort"><option value="relevance">Best match</option><option value="newest">Newest</option><option value="price_asc">Price: low to high</option><option value="price_desc">Price: high to low</option></select></label>
+        <label class="catalogue-price-label">Min price<input id="catalogueMinPrice" type="number" min="0" step="0.01" placeholder="0"></label>
+        <label class="catalogue-price-label">Max price<input id="catalogueMaxPrice" type="number" min="0" step="0.01" placeholder="No limit"></label>
+        <label class="catalogue-stock-filter"><input id="catalogueInStock" type="checkbox"> In stock only</label>
+        <button type="button" class="catalogue-filter-button" id="applyCatalogueFilters">APPLY FILTERS</button>
+      </div>
+      <div class="catalogue-product-grid" id="catalogueProductGrid"></div>
+      <div class="catalogue-load-row"><button type="button" id="catalogueLoadMore" class="catalogue-load-more" hidden>LOAD MORE PRODUCTS</button></div>
+      <div class="catalogue-market-links" id="catalogueMarketLinks"></div>
+    </section>
     <div class="multi-market-search" id="multiMarketSearchResults" aria-live="polite" hidden></div>
 
     <div class="departments" id="departmentGrid">
@@ -4684,6 +4754,194 @@ applySeason(localStorage.getItem("hiFashionSeason") || "auto", false);
   }
   await loadLiveProducts();
 })();
+
+// Live HI FASHION product catalogue: approved retailer feeds + eBay Browse API.
+(function initGlobalProductCatalogue(){
+  const byId=id=>document.getElementById(id);
+  const panel=byId("productCatalogue");
+  if(!panel||window.__hiFashionCatalogueReady)return;
+  window.__hiFashionCatalogueReady=true;
+  const grid=byId("catalogueProductGrid"),status=byId("catalogueStatus"),title=byId("catalogueTitle");
+  const count=byId("catalogueCount"),more=byId("catalogueLoadMore");
+  const search=byId("departmentSearch");
+  const cfg=window.HI_FASHION_SUPABASE_CONFIG||{};
+  const supabaseUrl=String(cfg.url||"").replace(/\/+$/,"");
+  let client=window.hiFashionSupabase||null;
+  if(!client&&window.supabase?.createClient&&supabaseUrl&&cfg.anonKey){
+    try{client=window.supabase.createClient(supabaseUrl,cfg.anonKey);window.__hiFashionCatalogueClient=client;}catch(error){console.warn("HI FASHION catalogue client could not start.",error);}
+  }
+  if(!client&&window.__hiFashionCatalogueClient)client=window.__hiFashionCatalogueClient;
+  let active={query:"",category:"",offset:0,limit:24,total:0,sort:"relevance"};
+  let busy=false;
+  let lastEbayTotal=0;
+  let lastLocalTotal=0;
+  const currencySymbol=code=>({EUR:"€",USD:"$",GBP:"£",BGN:"лв",JPY:"¥",CNY:"¥",TRY:"₺",PLN:"zł",CHF:"CHF",CAD:"C$",AUD:"A$",INR:"₹"})[String(code||"").trim()]||String(code||"");
+  const formatPrice=(minor,currency)=>{
+    if(minor===null||minor===undefined||!currency)return "View current price";
+    try{return new Intl.NumberFormat(undefined,{style:"currency",currency:String(currency).trim(),maximumFractionDigits:2}).format(Number(minor)/100);}
+    catch{return currencySymbol(currency)+" "+(Number(minor)/100).toFixed(2);}
+  };
+  const safeText=value=>String(value??"");
+  const escapeHtml=value=>safeText(value).replace(/[&<>"']/g,ch=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[ch]));
+  function productCard(product,kind){
+    const name=safeText(product.title||product.name||"Fashion product");
+    const brand=safeText(product.brand||"");
+    const retailer=safeText(product.retailer|| (kind==="ebay"?"eBay":"HI FASHION seller"));
+    const image=safeText(product.image_url||product.imageUrl||"");
+    const country=safeText(product.retailer_country||product.retailerCountry||"");
+    const price=kind==="ebay"?(product.price===null?null:Math.round(Number(product.price)*100)):(product.sale_price_minor??product.price_minor);
+    const currency=kind==="ebay"?product.currency:product.currency;
+    const sizes=Array.isArray(product.sizes)?product.sizes:[];
+    const availability=safeText(product.availability||"");
+    const href=safeText(product.affiliate_url||product.affiliateUrl||product.product_url||product.productUrl||"");
+    const cta=href&&/^https:\/\//i.test(href)?href:"";
+    const brandMarkup=brand?'<span class="catalogue-product-brand">'+escapeHtml(brand)+'</span>':'<span class="catalogue-product-brand">'+escapeHtml(retailer)+'</span>';
+    const imgMarkup=image&&/^https:\/\//i.test(image)?'<img class="catalogue-product-image" src="'+escapeHtml(image)+'" alt="'+escapeHtml(name)+'" loading="lazy" referrerpolicy="no-referrer">':'<div class="catalogue-product-placeholder" aria-hidden="true">HI</div>';
+    const sizeMarkup=sizes.length?'<div class="catalogue-product-meta">Sizes: '+escapeHtml(sizes.slice(0,8).join(", "))+'</div>':'';
+    const meta=[retailer,country].filter(Boolean).join(" · ");
+    const availabilityText=availability==="in_stock"?"In stock":availability==="out_of_stock"?"Out of stock":availability==="preorder"?"Pre-order":"Availability at retailer";
+    const link=cta?'<a class="catalogue-product-cta" href="'+escapeHtml(cta)+'" target="_blank" rel="noopener noreferrer sponsored">SHOP AT '+escapeHtml(retailer.toUpperCase())+' ↗</a>':'<span class="catalogue-product-cta">RETAILER LINK NOT AVAILABLE</span>';
+    return '<article class="catalogue-product-card">'+imgMarkup+'<div class="catalogue-product-copy">'+brandMarkup+'<h3 class="catalogue-product-title">'+escapeHtml(name)+'</h3><div class="catalogue-product-meta">'+escapeHtml(meta)+'<br>'+escapeHtml(availabilityText)+'</div>'+sizeMarkup+'<div class="catalogue-product-price">'+escapeHtml(formatPrice(price,currency))+'</div><span class="catalogue-product-source">'+(kind==="ebay"?"Live eBay search":"Imported retailer feed")+'</span>'+link+'</div></article>';
+  }
+  function destinationIso(){
+    const name=byId("deliveryCountry")?.value||"";
+    const map={Bulgaria:"BG",Germany:"DE",United Kingdom:"GB","United States":"US",France:"FR",Italy:"IT",Spain:"ES",Netherlands:"NL",Belgium:"BE",Austria:"AT",Switzerland:"CH",Poland:"PL",Romania:"RO",Greece:"GR",Turkey:"TR",Türkiye:"TR",Canada:"CA",Australia:"AU",Japan:"JP",China:"CN",India:"IN",Ireland:"IE",Portugal:"PT",Sweden:"SE",Norway:"NO",Denmark:"DK",Finland:"FI",Czechia:"CZ",Slovakia:"SK",Hungary:"HU",Croatia:"HR",Slovenia:"SI",Serbia:"RS","North Macedonia":"MK",Ukraine:"UA"};
+    return map[name]||null;
+  }
+  function setStatus(message,total){
+    status.textContent=message;
+    if(total!==undefined){count.textContent=total?Number(total).toLocaleString()+" PRODUCTS":"NO MATCHING PRODUCTS";}
+  }
+  async function getLocalProducts(query,offset,filters){
+    if(!client)return {data:[],error:new Error("Supabase is not connected.")};
+    const min=filters.minPrice===""?null:Math.round(Number(filters.minPrice)*100);
+    const max=filters.maxPrice===""?null:Math.round(Number(filters.maxPrice)*100);
+    return await client.rpc("search_catalogue_products",{
+      p_query:query||"",
+      p_category:active.category||null,
+      p_country:destinationIso(),
+      p_gender:null,
+      p_brand:filters.brand||null,
+      p_retailer:null,
+      p_currency:filters.currency||null,
+      p_min_price_minor:Number.isFinite(min)?min:null,
+      p_max_price_minor:Number.isFinite(max)?max:null,
+      p_in_stock_only:filters.inStock,
+      p_size:filters.size||null,
+      p_color:filters.color||null,
+      p_sort:filters.sort||"relevance",
+      p_limit:active.limit,
+      p_offset:offset
+    });
+  }
+  async function getEbayProducts(query,offset){
+    if(!supabaseUrl||!cfg.anonKey||!query)return {items:[],total:0,configured:false};
+    const country=destinationIso()||"BG";
+    const url=supabaseUrl+"/functions/v1/search-ebay-catalogue?q="+encodeURIComponent(query)+"&country="+encodeURIComponent(country)+"&limit="+active.limit+"&offset="+offset;
+    const headers={"apikey":cfg.anonKey,"Authorization":"Bearer "+cfg.anonKey,"Accept":"application/json"};
+    if(client?.auth?.getSession){
+      try{const session=await client.auth.getSession();const token=session.data?.session?.access_token;if(token)headers.Authorization="Bearer "+token;}catch{}
+    }
+    const response=await fetch(url,{headers,credentials:"omit"});
+    const result=await response.json().catch(()=>({error:"Invalid response from live marketplace search."}));
+    if(!response.ok)return {items:[],total:0,configured:false,error:result.error||"eBay search unavailable."};
+    return {items:result.items||[],total:Number(result.total||0),configured:true};
+  }
+  function filters(){
+    const min=byId("catalogueMinPrice").value.trim(),max=byId("catalogueMaxPrice").value.trim();
+    return {brand:byId("catalogueBrand").value.trim(),size:byId("catalogueSize").value.trim(),color:byId("catalogueColor").value.trim(),
+      currency:byId("catalogueCurrency").value,sort:byId("catalogueSort").value,minPrice:min,maxPrice:max,inStock:byId("catalogueInStock").checked};
+  }
+  function renderMarketLinks(query){
+    const host=byId("catalogueMarketLinks");
+    const markets=[
+      ["Google Shopping","https://www.google.com/search?tbm=shop&q="],
+      ["Amazon","https://www.amazon.com/s?k="],["eBay","https://www.ebay.com/sch/i.html?_nkw="],
+      ["Zalando","https://www.zalando.com/catalog/?q="],["ASOS","https://www.asos.com/search/?q="],
+      ["Farfetch","https://www.farfetch.com/shopping/search/items.aspx?q="]
+    ];
+    host.replaceChildren();
+    const label=document.createElement("span");label.textContent="More retailer destinations: ";host.append(label);
+    markets.forEach((item,index)=>{
+      if(index)host.append(document.createTextNode(" · "));
+      const a=document.createElement("a");a.href=item[1]+encodeURIComponent(query);a.target="_blank";a.rel="noopener noreferrer";a.textContent=item[0];a.style.color="#e3c77f";host.append(a);
+    });
+  }
+  async function runSearch(options={}){
+    const query=safeText(options.query??search?.value??"").trim();
+    const category=safeText(options.category??"").trim();
+    if(!query&&!category)return;
+    if(busy)return;
+    busy=true;
+    active.query=query;
+    active.category=category;
+    active.offset=Number(options.offset||0);
+    active.sort=byId("catalogueSort").value;
+    panel.hidden=false;
+    title.textContent=(category||query)+" · Global products";
+    if(active.offset===0)grid.replaceChildren();
+    more.hidden=true;
+    setStatus("Searching the HI FASHION catalogue and connected retailer feeds…");
+    renderMarketLinks(query||category);
+    try{
+      const searchText=query||category;
+      const [localResult,ebayResult]=await Promise.all([
+        getLocalProducts(query,active.offset,filters()),
+        getEbayProducts(searchText,active.offset).catch(error=>({items:[],total:0,configured:false,error:error.message}))
+      ]);
+      const localRows=localResult.data||[];
+      const localTotal=Number(localRows[0]?.total_count||0);
+      lastLocalTotal=localTotal;
+      lastEbayTotal=Number(ebayResult.total||0);
+      const cards=localRows.map(item=>productCard(item,"local"));
+      const ebayRows=ebayResult.items||[];
+      const ebayCards=ebayRows.map(item=>productCard(item,"ebay"));
+      if(active.offset===0)grid.replaceChildren();
+      const productHtml=cards.concat(ebayCards).join("");
+      if(productHtml){
+        const wrap=document.createElement("div");wrap.style.display="contents";wrap.innerHTML=productHtml;grid.append(...wrap.childNodes);
+      }
+      const sum=localTotal+lastEbayTotal;
+      const feedConfigured=localRows.length>0;
+      const ebayConfigured=ebayResult.configured;
+      if(sum>0){
+        setStatus("Showing "+(active.offset+1)+"–"+Math.min(active.offset+localRows.length+ebayRows.length,sum)+" of about "+sum.toLocaleString()+" results across the HI FASHION catalogue and live eBay search.",sum);
+      }else{
+        const detail=[];
+        if(!client)detail.push("Supabase is not configured");
+        else if(localResult.error)detail.push("Catalogue database: "+localResult.error.message);
+        if(!ebayConfigured)detail.push(ebayResult.error||"eBay API credentials are not configured");
+        setStatus("No connected product feeds returned listings yet. "+detail.join(" · ")+" — approved partner feeds must be connected before live retailer products appear.",0);
+      }
+      const pageHasMore=localRows.length>=active.limit||active.offset+active.limit<lastEbayTotal;
+      more.hidden=!pageHasMore;
+      more.textContent="LOAD MORE PRODUCTS";
+    }catch(error){
+      setStatus("Catalogue search could not be completed: "+(error?.message||"Unknown error"),0);
+    }finally{busy=false;}
+  }
+  window.hiFashionSearchProducts=runSearch;
+  byId("applyCatalogueFilters").addEventListener("click",()=>{active.offset=0;runSearch({query:active.query||search.value,category:active.category,offset:0});});
+  more.addEventListener("click",()=>runSearch({query:active.query,category:active.category,offset:active.offset+active.limit}));
+  const originalFilter=window.hiFashionRunCatalogueForCategory;
+  window.hiFashionRunCatalogueForCategory=(term)=>runSearch({query:term,category:term,offset:0});
+  const marketButton=byId("searchAllMarkets");
+  if(marketButton)marketButton.addEventListener("click",()=>runSearch({query:search.value,offset:0}));
+  let timer=0;
+  search.addEventListener("input",()=>{
+    window.clearTimeout(timer);
+    const q=search.value.trim();
+    if(q.length>=2)timer=window.setTimeout(()=>runSearch({query:q,offset:0}),500);
+    else if(!q)panel.hidden=true;
+  });
+  search.addEventListener("keydown",event=>{
+    if(event.key==="Enter"){
+      window.clearTimeout(timer);
+      if(search.value.trim())runSearch({query:search.value,offset:0});
+    }
+  });
+})();
+
 </script>
 </body>
 </html>
