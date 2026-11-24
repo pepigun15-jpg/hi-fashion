@@ -6,7 +6,7 @@ const json = (value: unknown, status = 200) =>
   new Response(JSON.stringify(value), { status, headers: { ...corsHeaders, "Content-Type": "application/json" } });
 
 const FIELD_ALIASES: Record<string, string[]> = {
-  external_id: ["product_id", "aw_product_id", "catalog-item-id", "catalog_item_id", "sku", "id", "merchant_product_id"],
+  external_id: ["product_id", "aw_product_id", "pid", "catalog-item-id", "catalog_item_id", "catalogitemid", "sku", "id", "merchant_product_id"],
   title: ["product_name", "name", "title"],
   brand: ["brand_name", "brand", "manufacturer", "label"],
   description: ["description", "short_description", "product_description"],
@@ -14,17 +14,17 @@ const FIELD_ALIASES: Record<string, string[]> = {
   category: ["category_name", "category", "product_type", "merchant_category"],
   category_path: ["category_path", "category_tree", "google_product_category"],
   gender: ["gender", "target_gender", "target_audience"],
-  image_url: ["merchant_image_url", "image_url", "image-url", "image", "image_link", "large_image"],
-  product_url: ["aw_deep_link", "buy-url", "buy_url", "product_url", "link", "url", "deeplink"],
-  affiliate_url: ["aw_deep_link", "buy-url", "buy_url", "affiliate_url", "tracking_url", "product_url"],
+  image_url: ["merchant_image_url", "aw_image_url", "image_url", "image-url", "imageurl", "image", "image_link", "large_image"],
+  product_url: ["aw_deep_link", "buy-url", "buy_url", "buyurl", "product_url", "link", "url", "deeplink"],
+  affiliate_url: ["aw_deep_link", "buy-url", "buy_url", "buyurl", "affiliate_url", "tracking_url", "product_url"],
   price: ["search_price", "price", "retail-price", "retail_price", "standard_price", "sale-price", "sale_price"],
   sale_price: ["sale-price", "sale_price", "discount_price", "search_price"],
   currency: ["currency", "currency_code", "currency-code"],
   availability: ["stock_status", "availability", "in_stock", "stock"],
   sizes: ["size", "sizes", "size_name", "size_name_list"],
   colors: ["colour", "color", "colors", "colour_name", "color_name"],
-  retailer: ["merchant_name", "advertiser-name", "advertiser_name", "merchant", "retailer", "shop_name"],
-  retailer_country: ["merchant_country", "country_code", "country", "retailer_country", "advertiser_country"],
+  retailer: ["merchant_name", "advertiser-name", "advertiser_name", "advertisername", "merchant", "retailer", "shop_name"],
+  retailer_country: ["merchant_country", "country_code", "country", "retailer_country", "advertiser_country", "advertisercountry"],
   ships_to: ["ships_to", "shipping_countries", "delivery_countries", "countries"],
   updated_at: ["last_updated", "updated_at", "modified_date", "date_modified"],
 };
@@ -126,7 +126,7 @@ function mapRow(headers: string[], values: string[], source: string, countryDefa
   const title=getValue(record,"title");
   const productUrl=getValue(record,"product_url");
   if(!externalId||!title||!productUrl)return null;
-  const currency=iso2(getValue(record,"currency"),"EUR") === "ZZ" ? "EUR" : getValue(record,"currency").trim().toUpperCase().slice(0,3);
+  const currencyRaw=getValue(record,"currency").trim().toUpperCase();\n  const currency=/^[A-Z]{3}$/.test(currencyRaw)?currencyRaw:"EUR";
   const mainPrice=getValue(record,"price");
   const salePrice=getValue(record,"sale_price");
   const country=iso2(getValue(record,"retailer_country"),countryDefault);
