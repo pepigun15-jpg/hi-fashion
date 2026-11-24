@@ -358,8 +358,15 @@ html[dir="rtl"] .brand-search-result{direction:rtl}
 .gift-redeem-row button{padding:0 13px;border:1px solid #c6a45a;background:#c6a45a;color:#111;font-size:10px;font-weight:bold;letter-spacing:1px;cursor:pointer;margin-top:7px}
 .checkout-fields h3{font-family:Georgia,serif;font-size:22px;font-weight:normal;color:#d8bd7c;margin-bottom:15px}
 .checkout-two-col{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.payment-method-chips{display:flex;gap:7px;flex-wrap:wrap;margin:13px 0}
-.payment-method-chips span{padding:8px 10px;background:#f4f1e8;color:#111;font-size:10px;font-weight:bold;border-radius:3px}
+.payment-method-chips{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin:14px 0}
+.payment-method-chips .payment-chip{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:42px;padding:8px 12px;background:#f4f1e8;color:#121512;font-size:11px;font-weight:800;letter-spacing:.25px;border:1px solid rgba(255,255,255,.5);border-radius:5px;white-space:nowrap}
+.payment-chip svg{display:block;flex:0 0 auto;width:27px;height:22px}
+.payment-chip-card svg{width:30px;height:22px}
+.payment-chip-visa{font-family:Arial,sans-serif;font-style:italic;font-size:18px;font-weight:900;letter-spacing:-1px;color:#143a75!important}
+.payment-chip-mastercard svg{width:38px;height:24px}
+.payment-chip-mastercard span{font-size:10px;letter-spacing:-.25px}
+.payment-chip-wallet svg{width:23px;height:24px}
+.payment-panel .payment-note{font-size:10px;line-height:1.65;color:#aeb9b0}
 .payment-panel>p{font-size:10px;line-height:1.65;color:#aeb9b0}
 .commerce-checkout{width:100%;display:flex;align-items:center;justify-content:space-between;margin-top:16px;padding:15px 17px;background:#c6a45a;border:1px solid #c6a45a;color:#111;font-size:10px;font-weight:bold;letter-spacing:1.1px;cursor:pointer}
 .commerce-checkout:hover,.commerce-add:hover{filter:brightness(1.08)}
@@ -892,7 +899,25 @@ html[dir="rtl"] .account-drawer{right:0!important;left:auto!important;border-lef
     </div>
     <div class="payment-panel">
       <span class="commerce-kicker" data-hf-i18n="securePayments">SECURE PAYMENT METHODS</span>
-      <div class="payment-method-chips"><span>VISA</span><span>Mastercard</span><span>Apple Pay*</span><span>Google Pay*</span></div>
+      <div class="payment-method-chips" aria-label="Planned payment methods">
+        <span class="payment-chip payment-chip-card" aria-label="Credit and debit cards">
+          <svg viewBox="0 0 40 28" role="img" aria-hidden="true"><rect x="1" y="2" width="38" height="24" rx="3" fill="none" stroke="currentColor" stroke-width="2"/><path d="M2 9h36" stroke="currentColor" stroke-width="3"/><path d="M7 19h10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <span>Credit / Debit</span>
+        </span>
+        <span class="payment-chip payment-chip-visa" aria-label="Visa">VISA</span>
+        <span class="payment-chip payment-chip-mastercard" aria-label="Mastercard">
+          <svg viewBox="0 0 48 30" role="img" aria-hidden="true"><circle cx="18" cy="15" r="12" fill="#e51b3e"/><circle cx="30" cy="15" r="12" fill="#f5a623"/><path d="M24 5.2a12 12 0 0 1 0 19.6 12 12 0 0 1 0-19.6" fill="#f26a21"/></svg>
+          <span>mastercard</span>
+        </span>
+        <span class="payment-chip payment-chip-wallet" aria-label="Apple Pay">
+          <svg viewBox="0 0 24 28" role="img" aria-hidden="true"><path fill="currentColor" d="M17.1 14.8c0-2.1 1.7-3.1 1.8-3.2-1-1.5-2.6-1.7-3.2-1.8-1.4-.1-2.7.8-3.4.8-.7 0-1.8-.8-3-.8-1.5 0-2.9.9-3.7 2.2-1.6 2.8-.4 6.9 1.1 9.1.7 1.1 1.6 2.3 2.8 2.2 1.1 0 1.5-.7 2.9-.7s1.8.7 3 .7c1.2 0 2-.9 2.7-2.1.9-1.2 1.2-2.4 1.2-2.5-.1 0-2.2-.9-2.2-3.9ZM14.8 8.2c.6-.8 1-1.8.9-2.9-.9.1-2 .7-2.6 1.5-.6.7-1.1 1.8-1 2.8 1 .1 2-.5 2.7-1.4Z"/></svg>
+          <span>Apple Pay*</span>
+        </span>
+        <span class="payment-chip payment-chip-wallet" aria-label="Google Pay">
+          <svg viewBox="0 0 28 28" role="img" aria-hidden="true"><path fill="#4285F4" d="M25.2 14.3c0-.8-.1-1.5-.2-2.2H14v4.2h6.3a5.4 5.4 0 0 1-2.3 3.5v2.8h3.7c2.2-2 3.5-4.9 3.5-8.3Z"/><path fill="#34A853" d="M14 26c3.2 0 5.9-1 7.8-3.4l-3.8-2.8c-1 .7-2.3 1.2-4 1.2-3.1 0-5.7-2.1-6.6-5H3.5v2.9A11.8 11.8 0 0 0 14 26Z"/><path fill="#FBBC05" d="M7.4 16a7 7 0 0 1 0-4.1V9H3.5a11.8 11.8 0 0 0 0 10l3.9-3Z"/><path fill="#EA4335" d="M14 6.9c1.8 0 3.4.6 4.7 1.8l3.2-3.2A10.8 10.8 0 0 0 14 2a11.8 11.8 0 0 0-10.5 7l3.9 3c.9-2.9 3.5-5.1 6.6-5.1Z"/></svg>
+          <span>Google Pay*</span>
+        </span>
+      </div>
       <p data-hf-i18n="paymentProviderNote">Planned: Stripe-hosted checkout. Eligible payment methods are shown by the provider for each buyer's country and device. *Wallets depend on account and browser eligibility.</p>
       <button type="button" class="commerce-checkout" id="secureCheckout"><span data-hf-i18n="continueCheckout">CONTINUE TO SECURE CHECKOUT</span> <span aria-hidden="true">→</span></button>
       <p class="commerce-status" id="checkoutStatus" role="status" data-hf-i18n="checkoutNotConnected">Checkout is in preview mode. No payment will be taken.</p>
