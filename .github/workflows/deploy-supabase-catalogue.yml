@@ -21,16 +21,21 @@ jobs:
             exit 1
           fi
 
+      - name: Check out repository
+        uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+
       - name: Set up Supabase CLI
-        uses: supabase/setup-cli@v1
+        uses: supabase/setup-cli@v3
         with:
           version: latest
 
       - name: Deploy protected feed importer
-        run: supabase functions deploy import-retailer-feed --project-ref "$SUPABASE_PROJECT_ID"
+        run: supabase functions deploy import-retailer-feed --project-ref "$SUPABASE_PROJECT_ID" --yes
 
       - name: Deploy CJ catalogue search
-        run: supabase functions deploy search-cj-catalogue --project-ref "$SUPABASE_PROJECT_ID"
+        run: supabase functions deploy search-cj-catalogue --project-ref "$SUPABASE_PROJECT_ID" --yes
 
       - name: Deploy eBay catalogue search
-        run: supabase functions deploy search-ebay-catalogue --project-ref "$SUPABASE_PROJECT_ID"
+        run: supabase functions deploy search-ebay-catalogue --project-ref "$SUPABASE_PROJECT_ID" --yes
