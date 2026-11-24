@@ -2062,6 +2062,250 @@ footer strong{color:#e6c77e!important}
  .hf-reference-product-footer a{font-size:8px!important}
 }
 </style>
+
+<style id="hi-fashion-clean-white-controls-final">
+/* One final consistent light theme: clean white canvas, near-black type, gold only on button sides. */
+:root{
+  --hf-ink:#111111!important;
+  --hf-paper:#ffffff!important;
+  --hf-gold:#b9934e!important;
+  --gold:#b9934e!important;
+  --black:#111111!important;
+  --white:#ffffff!important;
+}
+html,
+body,
+body[data-season],
+body[data-season="spring"],
+body[data-season="summer"],
+body[data-season="autumn"],
+body[data-season="winter"]{
+  min-height:100%;
+  background:#ffffff!important;
+  background-image:none!important;
+  background-attachment:scroll!important;
+  color:#111111!important;
+}
+body::before,
+body::after,
+body[data-season]::before,
+body[data-season]::after{
+  content:none!important;
+  display:none!important;
+}
+main,
+main>section,
+main>section:not(.hf-hero),
+.directory,.trending,.future,.seasonal-shop,.store-network,.info,.seller,
+.accessory-market,.commerce-preview,.commerce-live-catalog,
+#productCatalogue.catalogue-section,.hf-global-catalogue-intro,
+.hf-reference-featured{
+  background:#ffffff!important;
+  background-image:none!important;
+  color:#111111!important;
+}
+body[data-season] .hero,
+body[data-season] .hf-hero,
+.hf-hero,.hero{
+  background:#ffffff!important;
+  background-image:none!important;
+  color:#111111!important;
+}
+body :is(h1,h2,h3,h4,h5,h6,p,li,label,small,strong,em,span,legend,dt,dd),
+.section-title h2,.section-title h3,.section-title p,
+.hf-hero h1,.hf-hero h1 span,.hf-hero p,.hf-hero .eyebrow,
+.hf-catalogue-title-row h2,
+.department h3,.trend-body h3,.future-copy h3,
+.info-card h3,.seller-copy h3,.seller-form h3,
+.retail-card h3,.region-heading h3,
+.destination-panel h3,.commerce-product h3,.live-product-card h3,
+.hf-reference-product-copy small,.hf-reference-product-copy h3,
+.hf-reference-product-footer strong{
+  color:#111111!important;
+  text-shadow:none!important;
+}
+.section-title small,.trend-kicker,.future-label,.retail-region,
+.commerce-product-tag,.shipping-status,.season-controls-label,
+.hf-hero .eyebrow{
+  color:#242424!important;
+}
+.hf-premium-header,header.hf-premium-header{
+  background:#080808!important;
+  background-image:none!important;
+  border-bottom:1px solid #333333!important;
+  box-shadow:none!important;
+}
+.hf-premium-header .logo,
+.hf-premium-header .logo-title{color:#e4c783!important}
+.hf-premium-header nav a{color:#ffffff!important}
+.hf-premium-header nav a:hover{color:#e4c783!important}
+.hf-premium-header .hf-icon-link,
+.hf-premium-header .hf-icon-button{color:#111111!important}
+.brand-strip{
+  background:#ffffff!important;
+  background-image:none!important;
+  border-top:1px solid #eeeeee!important;
+  border-bottom:1px solid #cfcfcf!important;
+  box-shadow:none!important;
+}
+.top-brand-mark,.hf-reference-mark span{color:#111111!important}
+.hf-hero{
+  border-bottom:1px solid #dddddd!important;
+}
+.hf-hero::before{
+  background:linear-gradient(90deg,rgba(255,255,255,.92),rgba(255,255,255,.72) 56%,rgba(255,255,255,.08))!important;
+}
+.hf-hero h1,.hf-hero h1 span,.hf-hero p{color:#111111!important}
+.hf-hero .eyebrow{
+  background:#ffffff!important;
+  border-top:1px solid #dddddd!important;
+  border-bottom:1px solid #dddddd!important;
+  border-left:2px solid var(--hf-gold)!important;
+  border-right:2px solid var(--hf-gold)!important;
+}
+.hf-category-card,
+.hf-reference-product,
+.hf-reference-product-copy,
+#productCatalogue .catalogue-product-card,
+.department,.info-card,.seller-copy,.seller-form,.trend-card,
+.future-card,.season-card,.retail-card,.signal,.destination-panel,
+.market-note,.regional-delivery-note,.commerce-product,.live-product-card,
+.commerce-feature-row article{
+  background:#ffffff!important;
+  color:#111111!important;
+  border-color:#d7d7d7!important;
+  box-shadow:0 2px 8px rgba(0,0,0,.045)!important;
+}
+.hf-category-card{
+  border-left:2px solid var(--hf-gold)!important;
+  border-right:2px solid var(--hf-gold)!important;
+}
+.hf-category-card span,.hf-reference-product-copy small,
+.hf-reference-product-copy h3,.hf-reference-product-footer strong,
+#productCatalogue .catalogue-product-title,
+#productCatalogue .catalogue-product-price{color:#111111!important}
+.hf-region-pills a{
+  color:#111111!important;
+  background:#ffffff!important;
+}
+.hf-reference-product-footer a,
+#productCatalogue .catalogue-product-cta{
+  color:#111111!important;
+  background:#ffffff!important;
+}
+/* Every actionable button/link uses black lettering on white; gold is limited to its two side edges. */
+body button,
+body input[type="button"],
+body input[type="submit"],
+body input[type="reset"],
+body .button,
+body a.button,
+body [role="button"],
+body .tag,
+body .season-control,
+body .season-chip,
+body .trend-pill,
+body .language-toggle,
+body .destination-location-actions button,
+body .department-shop-button,
+body .hf-category-card,
+body .hf-region-pills a,
+body .hf-reference-product-footer a,
+body #productCatalogue .catalogue-product-cta,
+body .network-card,
+body .retail-card a,
+body .shipping-policy-link,
+body .catalogue-filterbar button,
+body .catalogue-pagination button,
+body .catalogue-load-more,
+body .commerce-cart button,
+body .account-drawer button,
+body .language-options button,
+body .hf-premium-header .hf-icon-button,
+body .hf-premium-header .hf-icon-link{
+  color:#111111!important;
+  background:#ffffff!important;
+  background-image:none!important;
+  border-top:1px solid #cfcfcf!important;
+  border-bottom:1px solid #cfcfcf!important;
+  border-left:2px solid var(--hf-gold)!important;
+  border-right:2px solid var(--hf-gold)!important;
+  box-shadow:none!important;
+  text-shadow:none!important;
+  text-decoration:none!important;
+}
+body button:hover,
+body input[type="button"]:hover,
+body input[type="submit"]:hover,
+body .button:hover,
+body a.button:hover,
+body [role="button"]:hover,
+body .tag:hover,
+body .season-control:hover,
+body .season-chip:hover,
+body .trend-pill:hover,
+body .language-toggle:hover,
+body .destination-location-actions button:hover,
+body .department-shop-button:hover,
+body .hf-region-pills a:hover,
+body .hf-reference-product-footer a:hover,
+body #productCatalogue .catalogue-product-cta:hover,
+body .retail-card a:hover{
+  color:#000000!important;
+  background:#f3f3f3!important;
+  border-left-color:var(--hf-gold)!important;
+  border-right-color:var(--hf-gold)!important;
+}
+body .hf-region-pills a.active,
+body .season-control.active{
+  color:#111111!important;
+  background:#f4f4f4!important;
+}
+body :is(input,select,textarea){
+  color:#111111!important;
+  background:#ffffff!important;
+  border:1px solid #bdbdbd!important;
+  box-shadow:none!important;
+}
+body :is(input,select,textarea)::placeholder{color:#666666!important;opacity:1!important}
+body :is(input,select,textarea):focus{
+  outline:1px solid #111111!important;
+  border-color:#111111!important;
+}
+.department::after,.season-card::after{
+  background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.30) 43%,rgba(255,255,255,.93) 100%)!important;
+}
+.department h3,.season-card h3{color:#111111!important;text-shadow:none!important}
+.department .tag,.season-chip{
+  color:#111111!important;background:#ffffff!important;
+}
+footer{
+  background:#ffffff!important;
+  color:#111111!important;
+  border-top:1px solid #d6d6d6!important;
+}
+footer strong,footer a{color:#111111!important}
+.language-modal{background:rgba(0,0,0,.45)!important}
+.language-dialog{
+  background:#ffffff!important;
+  border:1px solid #cfcfcf!important;
+  color:#111111!important;
+  box-shadow:0 16px 48px rgba(0,0,0,.16)!important;
+}
+.language-brand,.language-dialog h2,.language-options button strong,
+.language-intro,.language-smallprint{color:#111111!important}
+.commerce-cart,.account-drawer{
+  background:#ffffff!important;
+  color:#111111!important;
+  border:1px solid #cfcfcf!important;
+}
+.commerce-cart :is(h2,h3,p,span,strong,small,label),
+.account-drawer :is(h2,h3,h4,p,span,strong,small,label){color:#111111!important}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{scroll-behavior:auto!important;transition:none!important}
+}
+</style>
+
 </head>
 <body>
 <div class="language-modal" id="languageModal" hidden>
