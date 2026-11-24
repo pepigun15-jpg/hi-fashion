@@ -131,6 +131,27 @@ footer strong{color:var(--gold);letter-spacing:2px}
 .photo-credit{position:absolute;top:11px;right:11px;max-width:70%;padding:6px 8px;background:rgba(7,10,8,.7);color:#e6e1d3;font-size:9px;letter-spacing:.3px;z-index:1}
 @media(max-width:900px){.departments{grid-template-columns:repeat(2,minmax(0,1fr))}.department,.department-content{min-height:350px}}
 @media(max-width:650px){.departments{grid-template-columns:1fr}.department,.department-content{min-height:390px}.department-content{padding:22px}.department h3{font-size:25px}}
+
+/* Global retailer discovery and nearest-stock destination */
+.store-network{background:#0b100d}
+.destination-panel{max-width:950px;margin:0 auto 32px;padding:24px;background:#101b15;border:1px solid #58664e}
+.destination-panel h3{font-family:Georgia,serif;font-weight:normal;font-size:25px;color:var(--gold);margin-bottom:9px}
+.destination-panel p{color:var(--silver);font-size:12px;line-height:1.75;margin-bottom:17px}
+.destination-fields{display:grid;grid-template-columns:1.2fr 1fr auto;gap:10px;align-items:end}
+.destination-fields label{display:block;color:#c5c8c6;font-size:11px}
+.destination-fields input,.destination-fields select{display:block;width:100%;margin-top:7px;padding:13px;background:#080d0a;border:1px solid #526253;color:#f5f4ef;font:14px Arial,sans-serif}
+.destination-fields button{border:0;cursor:pointer;white-space:nowrap}
+.destination-status{margin-top:13px!important;color:#d8c18b!important;min-height:18px}
+.retail-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;max-width:1150px;margin:0 auto}
+.retail-card{background:#111815;border:1px solid #3b4d40;padding:20px;display:flex;flex-direction:column;min-height:190px}
+.retail-card .retail-region{color:#d2b36a;letter-spacing:1.5px;text-transform:uppercase;font-size:9px}
+.retail-card h3{font-family:Georgia,serif;font-weight:normal;font-size:24px;margin:11px 0 9px}
+.retail-card p{color:#c2c9c3;font-size:11px;line-height:1.7;flex:1}
+.retail-card a{display:inline-block;color:#e1c681;text-decoration:none;font-size:10px;letter-spacing:1.3px;margin-top:15px}
+.retail-card a:hover{text-decoration:underline}
+.retail-terms{max-width:1000px;margin:22px auto 0;color:#98a49b;font-size:10px;line-height:1.75;text-align:center}
+@media(max-width:900px){.retail-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.destination-fields{grid-template-columns:1fr 1fr}.destination-fields button{grid-column:1/-1}}
+@media(max-width:560px){.retail-grid{grid-template-columns:1fr}.destination-fields{grid-template-columns:1fr}.destination-fields button{grid-column:auto}}
 </style>
 </head>
 <body>
@@ -140,6 +161,7 @@ footer strong{color:var(--gold);letter-spacing:2px}
   <nav>
     <a href="#departments">DEPARTMENTS</a>
     <a href="#future">FUTURE 2027</a>
+    <a href="#store-network">STORE NETWORK</a>
     <a href="#trending">TRENDING NOW</a>
     <a href="#new-arrivals">NEW ARRIVALS</a>
     <a href="#brands">BRANDS</a>
@@ -269,6 +291,93 @@ footer strong{color:var(--gold);letter-spacing:2px}
       <div class="signal"><strong>+137%</strong><span>Search growth reported for sculptural heels</span></div>
     </div>
     <p class="forecast-note">Forecast and market-adoption figures are third-party research signals, not unit sales, guaranteed outcomes or HI FASHION sales data. Luminous Blue, Energy Orange, Pop Pink, Meadowland Green and Clay are WGSN/Coloro SS27 key colours; Cognac and Milk are additional supporting neutrals selected for this HI FASHION concept. Visuals are free-to-use Pexels stock photography for trend inspiration, not seller inventory; each image is credited above. <a href="https://www.pexels.com/license/" target="_blank" rel="noopener">Pexels licence</a> · <a href="https://www.wgsn.com/en/blogs/s/s-27-key-colours-have-landed" target="_blank" rel="noopener">WGSN/Coloro SS27 key colours</a> · <a href="https://fashionunited.com/news/fashion/spring-summer-2027-trend-report-navigating-a-polycrisis-season-of-pleasure-protection-and-the-quiet-return-of-elegance/2026052872627" target="_blank" rel="noopener">SS27 forecast source</a> · <a href="https://trendalytics.co/insights/spring-summer-2027-womenswear-runway-recap-data-analysis" target="_blank" rel="noopener">Trendalytics data</a>.</p>
+  </section>
+
+  <section class="store-network" id="store-network">
+    <div class="section-title">
+      <small>GLOBAL RETAIL CONNECTIONS</small>
+      <h2>Shop the World's Leading Stores</h2>
+      <p>Our first retailer connection targets span sportswear, footwear, everyday fashion and multi-category shopping.</p>
+    </div>
+
+    <div class="destination-panel">
+      <h3>Where should we find your products?</h3>
+      <p>Set your delivery destination. Once authorised retailer feeds and seller stock locations are connected, HI FASHION will prioritise products that are in stock and can be dispatched from the closest eligible location.</p>
+      <div class="destination-fields">
+        <label>Delivery country
+          <select id="deliveryCountry">
+            <option value="">Choose your country</option>
+            <option value="Bulgaria">Bulgaria</option>
+            <option value="United Kingdom">United Kingdom</option>
+            <option value="United States">United States</option>
+            <option value="Canada">Canada</option>
+            <option value="Germany">Germany</option>
+            <option value="France">France</option>
+            <option value="Italy">Italy</option>
+            <option value="Spain">Spain</option>
+            <option value="Netherlands">Netherlands</option>
+            <option value="Other">Other country</option>
+          </select>
+        </label>
+        <label>City or postal code (optional)
+          <input id="deliveryArea" type="text" maxlength="100" placeholder="e.g. Sofia / 1000">
+        </label>
+        <button class="button" id="saveDestination" type="button">SAVE DESTINATION</button>
+      </div>
+      <p class="destination-status" id="destinationStatus" role="status">No delivery destination saved yet.</p>
+    </div>
+
+    <div class="retail-grid">
+      <article class="retail-card">
+        <span class="retail-region">Global sportswear</span>
+        <h3>adidas</h3>
+        <p>Sportswear, sneakers, training apparel and accessories.</p>
+        <a href="https://www.adidas.com/" target="_blank" rel="noopener">OFFICIAL ONLINE STORE ↗</a>
+      </article>
+      <article class="retail-card">
+        <span class="retail-region">Global sportswear</span>
+        <h3>Nike</h3>
+        <p>Footwear, sports clothing, performance gear and everyday styles.</p>
+        <a href="https://www.nike.com/" target="_blank" rel="noopener">OFFICIAL ONLINE STORE ↗</a>
+      </article>
+      <article class="retail-card">
+        <span class="retail-region">Global multi-category</span>
+        <h3>Decathlon</h3>
+        <p>Sports clothing, shoes, fitness accessories and outdoor equipment.</p>
+        <a href="https://www.decathlon.com/" target="_blank" rel="noopener">OFFICIAL ONLINE STORE ↗</a>
+      </article>
+      <article class="retail-card">
+        <span class="retail-region">Global everyday fashion</span>
+        <h3>UNIQLO</h3>
+        <p>Everyday clothing, outerwear, basics and functional apparel.</p>
+        <a href="https://www.uniqlo.com/" target="_blank" rel="noopener">OFFICIAL ONLINE STORE ↗</a>
+      </article>
+      <article class="retail-card">
+        <span class="retail-region">Global sportswear</span>
+        <h3>Under Armour</h3>
+        <p>Training clothes, activewear, sports footwear and accessories.</p>
+        <a href="https://www.underarmour.com/" target="_blank" rel="noopener">OFFICIAL ONLINE STORE ↗</a>
+      </article>
+      <article class="retail-card">
+        <span class="retail-region">Footwear</span>
+        <h3>Clarks</h3>
+        <p>Casual shoes, formal footwear, boots and everyday accessories.</p>
+        <a href="https://www.clarks.com/" target="_blank" rel="noopener">OFFICIAL ONLINE STORE ↗</a>
+      </article>
+      <article class="retail-card">
+        <span class="retail-region">Performance footwear</span>
+        <h3>On</h3>
+        <p>Running shoes, performance footwear, sportswear and active clothing.</p>
+        <a href="https://www.on.com/" target="_blank" rel="noopener">OFFICIAL ONLINE STORE ↗</a>
+      </article>
+      <article class="retail-card">
+        <span class="retail-region">Multi-category marketplace</span>
+        <h3>AliExpress</h3>
+        <p>Broad selection of fashion, accessories and lifestyle products. Individual seller verification is essential.</p>
+        <a href="https://www.aliexpress.com/" target="_blank" rel="noopener">OFFICIAL ONLINE STORE ↗</a>
+      </article>
+    </div>
+    <p class="retail-terms">These are independent retailer discovery links, not confirmed HI FASHION partners or imported product listings. We will display products, prices, photos and affiliate links only after the applicable programme or seller authorises their use. Retailer delivery coverage and stock vary by destination.</p>
   </section>
 
   <section class="trending" id="trending">
@@ -649,6 +758,12 @@ footer strong{color:var(--gold);letter-spacing:2px}
         <label>Business email<input name="email" type="email" required maxlength="160" placeholder="name@company.com"></label>
         <label>Country<input name="country" required maxlength="80" placeholder="Country of business"></label>
         <label>Website or social profile<input name="website" type="url" maxlength="240" placeholder="https://..."></label>
+        <label>Stock / dispatch locations
+          <textarea name="dispatchLocations" rows="3" maxlength="800" placeholder="List each warehouse, shop or dispatch city and country"></textarea>
+        </label>
+        <label>Countries you can ship to
+          <input name="shippingCountries" maxlength="300" placeholder="e.g. Bulgaria, EU, UK, USA, Canada">
+        </label>
         <label>Main product categories
           <select name="category" required>
             <option value="">Choose a category</option>
@@ -702,6 +817,26 @@ function filterDepartments() {
 
 searchInput.addEventListener("input", filterDepartments);
 
+const deliveryCountry = document.getElementById("deliveryCountry");
+const deliveryArea = document.getElementById("deliveryArea");
+const destinationStatus = document.getElementById("destinationStatus");
+const savedDestination = JSON.parse(localStorage.getItem("hiFashionDestination") || "null");
+if (savedDestination) {
+  deliveryCountry.value = savedDestination.country || "";
+  deliveryArea.value = savedDestination.area || "";
+  destinationStatus.textContent = "Saved destination: " + [savedDestination.area, savedDestination.country].filter(Boolean).join(", ") + ". Nearest-stock matching activates when verified seller inventory and dispatch locations are connected.";
+}
+document.getElementById("saveDestination").addEventListener("click", () => {
+  const destination = {country: deliveryCountry.value, area: deliveryArea.value.trim()};
+  if (!destination.country) {
+    destinationStatus.textContent = "Please choose your delivery country first.";
+    return;
+  }
+  localStorage.setItem("hiFashionDestination", JSON.stringify(destination));
+  destinationStatus.textContent = "Saved destination: " + [destination.area, destination.country].filter(Boolean).join(", ") + ". This preference is stored in this browser only. Verified nearest-stock matching is awaiting supplier inventory connections.";
+});
+
+
 document.querySelectorAll(".trend-trigger").forEach(button => {
   button.addEventListener("click", () => {
     searchInput.value = button.dataset.search || "";
@@ -722,6 +857,8 @@ sellerForm.addEventListener("submit", function(event) {
     "Country: " + data.get("country"),
     "Website / social profile: " + (data.get("website") || "Not provided"),
     "Main categories: " + data.get("category"),
+    "Stock / dispatch locations: " + (data.get("dispatchLocations") || "Not provided"),
+    "Shipping countries: " + (data.get("shippingCountries") || "Not provided"),
     "Product information: " + (data.get("message") || "Not provided")
   ].join("\n");
   document.getElementById("formStatus").textContent =
