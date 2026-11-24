@@ -1,0 +1,127 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HI FASHION | Global Fashion Marketplace</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,sans-serif;color:#171717;background:#fff}
+header{height:76px;padding:0 6%;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #eee}
+.logo{font-size:25px;font-weight:900;letter-spacing:2px}
+.logo span{display:block;font-size:9px;letter-spacing:3px;margin-top:3px}
+nav{display:flex;gap:25px}
+nav a,.actions a{color:#171717;text-decoration:none;font-size:13px}
+.actions{display:flex;gap:18px}
+.hero{min-height:490px;background:linear-gradient(90deg,#171717 0%,#292929 48%,#777 100%);color:white;padding:95px 9%;display:flex;align-items:center}
+.hero-content{max-width:600px}
+.eyebrow{font-size:12px;letter-spacing:4px;color:#ddd;margin-bottom:22px}
+h1{font-size:clamp(44px,7vw,82px);line-height:.98;letter-spacing:-3px}
+.hero p{font-size:16px;color:#ddd;line-height:1.7;margin:25px 0}
+.button{display:inline-block;background:white;color:#171717;padding:16px 27px;text-decoration:none;font-size:12px;font-weight:bold;letter-spacing:1px}
+section{padding:65px 7%}
+.section-head{display:flex;justify-content:space-between;align-items:end;margin-bottom:30px}
+.section-head h2{font-size:30px}
+.section-head p{color:#777;font-size:13px}
+.categories{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}
+.category{height:190px;background:linear-gradient(145deg,#eee,#aaa);display:flex;align-items:end;padding:20px;color:#171717;font-size:20px;font-weight:bold}
+.category:nth-child(2){background:linear-gradient(145deg,#d8d2cb,#827c75)}
+.category:nth-child(3){background:linear-gradient(145deg,#d4d4d4,#777)}
+.category:nth-child(4){background:linear-gradient(145deg,#eee4d8,#a18d7a)}
+.sellers{background:#f5f4f1}
+.seller-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.seller{background:white;padding:28px;min-height:170px}
+.seller h3{font-size:19px;margin-bottom:12px}
+.seller p{font-size:14px;color:#666;line-height:1.6}
+.join{background:#171717;color:white;text-align:center;padding:75px 20px}
+.join h2{font-size:36px;margin-bottom:15px}
+.join p{color:#ccc;margin-bottom:25px;line-height:1.6}
+footer{padding:30px 7%;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:12px;color:#777}
+@media(max-width:700px){
+ header{padding:0 5%;height:auto;min-height:70px}
+ nav{display:none}
+ .hero{padding:75px 7%;min-height:430px}
+ section{padding:45px 6%}
+ .categories{grid-template-columns:repeat(2,1fr)}
+ .category{height:150px}
+ .seller-grid{grid-template-columns:1fr}
+ .section-head{display:block}
+ .section-head p{margin-top:10px}
+}
+</style>
+</head>
+<body>
+<header>
+ <div class="logo">HI<span>HUMAN INTELLIGENCE</span></div>
+ <nav>
+  <a href="#women">WOMEN</a>
+  <a href="#men">MEN</a>
+  <a href="#categories">CATEGORIES</a>
+  <a href="#vintage">VINTAGE</a>
+ </nav>
+ <div class="actions">
+  <a href="#search">SEARCH</a>
+  <a href="#account">ACCOUNT</a>
+  <a href="#cart">BAG (0)</a>
+ </div>
+</header>
+
+<main>
+ <div class="hero">
+  <div class="hero-content">
+   <div class="eyebrow">HI HUMAN INTELLIGENCE PRESENTS</div>
+   <h1>FASHION<br>WITHOUT<br>BORDERS.</h1>
+   <p>Discover fashion from around the world. Explore global brands, independent designers, new collections and unique second-hand finds.</p>
+   <a class="button" href="#categories">EXPLORE FASHION</a>
+  </div>
+ </div>
+
+ <section id="categories">
+  <div class="section-head">
+   <h2>EXPLORE THE WORLD</h2>
+   <p>One marketplace. Every style.</p>
+  </div>
+  <div class="categories">
+   <a class="category" id="women" href="#join">WOMEN</a>
+   <a class="category" id="men" href="#join">MEN</a>
+   <a class="category" href="#join">SHOES</a>
+   <a class="category" href="#join">BAGS & ACCESSORIES</a>
+  </div>
+ </section>
+
+ <section class="sellers" id="vintage">
+  <div class="section-head">
+   <h2>DISCOVER MORE</h2>
+   <p>Fashion for every generation.</p>
+  </div>
+  <div class="seller-grid">
+   <div class="seller">
+    <h3>GLOBAL BRANDS</h3>
+    <p>Discover established fashion labels and international collections.</p>
+   </div>
+   <div class="seller">
+    <h3>INDEPENDENT DESIGNERS</h3>
+    <p>Find original styles from boutiques and emerging designers.</p>
+   </div>
+   <div class="seller">
+    <h3>VINTAGE & PRE-OWNED</h3>
+    <p>Give exceptional clothing another life through second-hand fashion.</p>
+   </div>
+  </div>
+ </section>
+
+ <section class="join" id="join">
+  <h2>SELL WITH HI FASHION</h2>
+  <p>Are you a fashion brand, boutique, designer or individual seller?<br>Join our future global marketplace.</p>
+  <a class="button" href="mailto:hello@hifashion.example?subject=Seller%20Registration%20Interest">BECOME A SELLER</a>
+ </section>
+</main>
+
+<footer>
+ <div><strong>HI FASHION</strong> — HUMAN INTELLIGENCE</div>
+ <div>THE GLOBAL FASHION MARKETPLACE</div>
+ <div>© 2026 HI HUMAN INTELLIGENCE</div>
+</footer>
+</body>
+</html>
