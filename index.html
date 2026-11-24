@@ -179,6 +179,25 @@ footer strong{color:var(--gold);letter-spacing:2px}
 .brand-identity{display:flex;align-items:center;gap:12px;min-height:48px;margin:8px 0 9px}
 .brand-logo{display:block;width:auto;max-width:62px;height:34px;object-fit:contain;filter:brightness(0) invert(1)}
 .brand-identity .brand-wordmark{margin:0;min-height:0;font-size:21px;line-height:1.1}
+
+/* All retailer marks in the global masthead strip */
+.brand-strip{position:relative;background:#070a08;border-bottom:1px solid #344338;padding:13px 0 10px;overflow:hidden}
+.brand-strip-heading{display:flex;justify-content:center;align-items:center;gap:13px;margin:0 12px 10px}
+.brand-strip-heading span{color:#c6a45a;font-size:9px;font-weight:bold;letter-spacing:3px}
+.brand-strip-heading small{color:#89958b;font-size:8px;letter-spacing:1.3px}
+.brand-strip-window{width:100%;overflow:hidden}
+.brand-strip-track{display:flex;align-items:center;gap:28px;width:max-content;padding:5px 22px;animation:hiBrandTicker 90s linear infinite}
+.brand-strip:hover .brand-strip-track{animation-play-state:paused}
+.top-brand-mark{display:flex;align-items:center;justify-content:center;gap:8px;min-height:38px;padding:5px 8px;color:#f4f1e9;text-decoration:none;white-space:nowrap;opacity:.9;transition:opacity .2s ease,transform .2s ease}
+.top-brand-mark:hover{opacity:1;transform:translateY(-2px)}
+.top-brand-mark img{display:block;width:auto;max-width:32px;height:21px;object-fit:contain;filter:brightness(0) invert(1)}
+.top-brand-mark span{font-size:12px;font-weight:800;letter-spacing:1.35px}
+.top-brand-mark:nth-child(4n) span{font-family:Georgia,serif;font-weight:normal;letter-spacing:1px}
+.ticker-duplicate{display:flex;align-items:center;gap:28px;padding-left:28px}
+.brand-strip-note{margin:7px 12px 0;text-align:center;color:#77837b;font-size:8px;letter-spacing:.35px}
+@keyframes hiBrandTicker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media(prefers-reduced-motion:reduce){.brand-strip-track{animation:none;flex-wrap:wrap;justify-content:center;width:auto}.ticker-duplicate{display:none}}
+@media(max-width:650px){.brand-strip-track,.ticker-duplicate{gap:17px}.brand-strip-track{animation-duration:110s}.top-brand-mark span{font-size:10px}.brand-strip-heading{gap:8px;flex-wrap:wrap}}
 </style>
 </head>
 <body>
@@ -199,6 +218,262 @@ footer strong{color:var(--gold);letter-spacing:2px}
     <a href="#seller">SELLER AREA</a>
   </div>
 </header>
+
+<div class="brand-strip" id="top-brand-strip" aria-label="Global retailer trademarks and store links">
+  <div class="brand-strip-heading">
+    <span>GLOBAL BRAND DIRECTORY</span>
+    <small>30 RETAILERS · 6 WORLD REGIONS</small>
+  </div>
+  <div class="brand-strip-window">
+    <div class="brand-strip-track">
+      
+      <a class="top-brand-mark" href="https://www.nike.com/" target="_blank" rel="noopener noreferrer" aria-label="NIKE official online store">
+        <img src="https://cdn.simpleicons.org/nike/FFFFFF" alt="" loading="lazy" onerror="this.style.display='none'">
+        <span>NIKE</span>
+      </a>
+      <a class="top-brand-mark" href="https://www.adidas.com/" target="_blank" rel="noopener noreferrer" aria-label="adidas official online store">
+        <img src="https://cdn.simpleicons.org/adidas/FFFFFF" alt="" loading="lazy" onerror="this.style.display='none'">
+        <span>adidas</span>
+      </a>
+      <a class="top-brand-mark" href="https://www.amazon.com/" target="_blank" rel="noopener noreferrer" aria-label="amazon official online store">
+        <img src="https://cdn.simpleicons.org/amazon/FFFFFF" alt="" loading="lazy" onerror="this.style.display='none'">
+        <span>amazon</span>
+      </a>
+      <a class="top-brand-mark" href="https://www.ebay.com/" target="_blank" rel="noopener noreferrer" aria-label="eBay official online store">
+        <img src="https://cdn.simpleicons.org/ebay/FFFFFF" alt="" loading="lazy" onerror="this.style.display='none'">
+        <span>eBay</span>
+      </a>
+      <a class="top-brand-mark" href="https://www.nordstrom.com/" target="_blank" rel="noopener noreferrer" aria-label="NORDSTROM official online store">
+        <img src="https://cdn.simpleicons.org/nordstrom/FFFFFF" alt="" loading="lazy" onerror="this.style.display='none'">
+        <span>NORDSTROM</span>
+      </a>
+      <a class="top-brand-mark" href="https://www.levi.com/" target="_blank" rel="noopener noreferrer" aria-label="LEVI'S official online store">
+        <img src="https://cdn.simpleicons.org/levis/FFFFFF" alt="" loading="lazy" onerror="this.style.display='none'">
+        <span>LEVI'S</span>
+      </a>
+      <a class="top-brand-mark" href="https://www.zalando.com/" target="_blank" rel="noopener noreferrer" aria-label="ZALANDO official online store">
+        <img src="https://cdn.simpleicons.org/zalando/FFFFFF" alt="" loading="lazy" onerror="this.style.display='none'">
+        <span>ZALANDO</span>
+      </a>
+      <a class="top-brand-mark" href="https://www.asos.com/" target="_blank" rel="noopener noreferrer" aria-label="ASOS official online store">
+        <img src="https://cdn.simpleicons.org/asos/FFFFFF" alt="" loading="lazy" onerror="this.style.display='none'">
+        <span>ASOS</span>
+      </a>
+      <a class="top-brand-mark" href="https://www.zara.com/" target="_blank" rel="noopener noreferrer" aria-label="ZARA official online store">
+        <img src="https://cdn.simpleicons.org/zara/FFFFFF" alt="" loading="lazy" onerror="this.style.display='none'">
+        <span>ZARA</span>
+      </a>
+      <a class="top-brand-mark" href="https://www.hm.com/" target="_blank" rel="noopener noreferrer" aria-label="H&amp;M official online store">
+        <img src="https://cdn.simpleicons.org/hm/FFFFFF" alt="" loading="lazy" onerror="this.style.display='none'">
+        <span>H&amp;M</span>
+      </a>
+      <a class="top-brand-mark" href="https://www.farfetch.com/" target="_blank" rel="noopener noreferrer" aria-label="FARFETCH official online store">
+        <img src="https://cdn.simpleicons.org/farfetch/FFFFFF" alt="" loading="lazy" onerror="this.style.display='none'">
+        <span>FARFETCH</span>
+      </a>
+      <a class="top-brand-mark" href="https://www.decathlon.com/" target="_blank" rel="noopener noreferrer" aria-label="DECATHLON official online store">
+        <img src="https://cdn.simpleicons.org/decathlon/FFFFFF" alt="" loading="lazy" onerror="this.style.display='none'">
+        <span>DECATHLON</span>
+      </a>
+      <a class="top-brand-mark" href="https://www.uniqlo.com/" target="_blank" rel="noopener noreferrer" aria-label="UNIQLO official online store">
+        <img src="https://cdn.simpleicons.org/uniqlo/FFFFFF" alt="" loading="lazy" onerror="this.style.display='none'">
+        <span>UNIQLO</span>
+      </a>
+      <a class="top-brand-mark" href="https://www.clarks.com/" target="_blank" rel="noopener noreferrer" aria-label="CLARKS official online store">
+        <img src="https://cdn.simpleicons.org/clarks/FFFFFF" alt="" loading="lazy" onerror="this.style.display='none'">
+        <span>CLARKS</span>
+      </a>
+      <a class="top-brand-mark" href="https://www.myntra.com/" target="_blank" rel="noopener noreferrer" aria-label="MYNTRA official online store">
+        <img src="https://cdn.simpleicons.org/myntra/FFFFFF" alt="" loading="lazy" onerror="this.style.display='none'">
+        <span>MYNTRA</span>
+      </a>
+      <a class="top-brand-mark" href="https://www.ajio.com/" target="_blank" rel="noopener noreferrer" aria-label="AJIO official online store">
+        <img src="https://cdn.simpleicons.org/ajio/FFFFFF" alt="" loading="lazy" onerror="this.style.display='none'">
+        <span>AJIO</span>
+      </a>
+      <a class="top-brand-mark" href="https://zozo.jp/" target="_blank" rel="noopener noreferrer" aria-label="ZOZOTOWN official online store">
+        <img src="https://cdn.simpleicons.org/zozotown/FFFFFF" alt="" loading="lazy" onerror="this.style.display='none'">
+        <span>ZOZOTOWN</span>
+      </a>
+      <a class="top-brand-mark" href="https://www.musinsa.com/" target="_blank" rel="noopener noreferrer" aria-label="MUSINSA official online store">
+        <img src="https://cdn.simpleicons.org/musinsa/FFFFFF" alt="" loading="lazy" onerror="this.style.display='none'">
+        <span>MUSINSA</span>
+      </a>
+      <a class="top-brand-mark" href="https://www.aliexpress.com/" target="_blank" rel="noopener noreferrer" aria-label="AliExpress official online store">
+        <img src="https://cdn.simpleicons.org/aliexpress/FFFFFF" alt="" loading="lazy" onerror="this.style.display='none'">
+        <span>AliExpress</span>
+      </a>
+      <a class="top-brand-mark" href="https://www.zalora.com/" target="_blank" rel="noopener noreferrer" aria-label="ZALORA official online store">
+        <img src="https://cdn.simpleicons.org/zalora/FFFFFF" alt="" loading="lazy" onerror="this.style.display='none'">
+        <span>ZALORA</span>
+      </a>
+      <a class="top-brand-mark" href="https://shopee.com/" target="_blank" rel="noopener noreferrer" aria-label="Shopee official online store">
+        <img src="https://cdn.simpleicons.org/shopee/FFFFFF" alt="" loading="lazy" onerror="this.style.display='none'">
+        <span>Shopee</span>
+      </a>
+      <a class="top-brand-mark" href="https://www.lazada.com/" target="_blank" rel="noopener noreferrer" aria-label="Lazada official online store">
+        <img src="https://cdn.simpleicons.org/lazada/FFFFFF" alt="" loading="lazy" onerror="this.style.display='none'">
+        <span>Lazada</span>
+      </a>
+      <a class="top-brand-mark" href="https://www.namshi.com/" target="_blank" rel="noopener noreferrer" aria-label="NAMSHI official online store">
+        <img src="https://cdn.simpleicons.org/namshi/FFFFFF" alt="" loading="lazy" onerror="this.style.display='none'">
+        <span>NAMSHI</span>
+      </a>
+      <a class="top-brand-mark" href="https://www.ounass.ae/" target="_blank" rel="noopener noreferrer" aria-label="OUNASS official online store">
+        <img src="https://cdn.simpleicons.org/ounass/FFFFFF" alt="" loading="lazy" onerror="this.style.display='none'">
+        <span>OUNASS</span>
+      </a>
+      <a class="top-brand-mark" href="https://www.jumia.com/" target="_blank" rel="noopener noreferrer" aria-label="JUMIA official online store">
+        <img src="https://cdn.simpleicons.org/jumia/FFFFFF" alt="" loading="lazy" onerror="this.style.display='none'">
+        <span>JUMIA</span>
+      </a>
+      <a class="top-brand-mark" href="https://www.takealot.com/" target="_blank" rel="noopener noreferrer" aria-label="TAKEALOT official online store">
+        <img src="https://cdn.simpleicons.org/takealot/FFFFFF" alt="" loading="lazy" onerror="this.style.display='none'">
+        <span>TAKEALOT</span>
+      </a>
+      <a class="top-brand-mark" href="https://www.dafiti.com.br/" target="_blank" rel="noopener noreferrer" aria-label="DAFITI official online store">
+        <img src="https://cdn.simpleicons.org/dafiti/FFFFFF" alt="" loading="lazy" onerror="this.style.display='none'">
+        <span>DAFITI</span>
+      </a>
+      <a class="top-brand-mark" href="https://www.mercadolibre.com/" target="_blank" rel="noopener noreferrer" aria-label="MERCADO LIBRE official online store">
+        <img src="https://cdn.simpleicons.org/mercadolibre/FFFFFF" alt="" loading="lazy" onerror="this.style.display='none'">
+        <span>MERCADO LIBRE</span>
+      </a>
+      <a class="top-brand-mark" href="https://www.theiconic.com.au/" target="_blank" rel="noopener noreferrer" aria-label="THE ICONIC official online store">
+        <img src="https://cdn.simpleicons.org/theiconic/FFFFFF" alt="" loading="lazy" onerror="this.style.display='none'">
+        <span>THE ICONIC</span>
+      </a>
+      <a class="top-brand-mark" href="https://www.myer.com.au/" target="_blank" rel="noopener noreferrer" aria-label="MYER official online store">
+        <img src="https://cdn.simpleicons.org/myer/FFFFFF" alt="" loading="lazy" onerror="this.style.display='none'">
+        <span>MYER</span>
+      </a>
+      <div class="ticker-duplicate" aria-hidden="true">
+      <a class="top-brand-mark" href="https://www.nike.com/" target="_blank" rel="noopener noreferrer" aria-label="NIKE official online store">
+        <img src="https://cdn.simpleicons.org/nike/FFFFFF" alt="" loading="lazy" onerror="this.style.display='none'">
+        <span>NIKE</span>
+      </a>
+      <a class="top-brand-mark" href="https://www.adidas.com/" target="_blank" rel="noopener noreferrer" aria-label="adidas official online store">
+        <img src="https://cdn.simpleicons.org/adidas/FFFFFF" alt="" loading="lazy" onerror="this.style.display='none'">
+        <span>adidas</span>
+      </a>
+      <a class="top-brand-mark" href="https://www.amazon.com/" target="_blank" rel="noopener noreferrer" aria-label="amazon official online store">
+        <img src="https://cdn.simpleicons.org/amazon/FFFFFF" alt="" loading="lazy" onerror="this.style.display='none'">
+        <span>amazon</span>
+      </a>
+      <a class="top-brand-mark" href="https://www.ebay.com/" target="_blank" rel="noopener noreferrer" aria-label="eBay official online store">
+        <img src="https://cdn.simpleicons.org/ebay/FFFFFF" alt="" loading="lazy" onerror="this.style.display='none'">
+        <span>eBay</span>
+      </a>
+      <a class="top-brand-mark" href="https://www.nordstrom.com/" target="_blank" rel="noopener noreferrer" aria-label="NORDSTROM official online store">
+        <img src="https://cdn.simpleicons.org/nordstrom/FFFFFF" alt="" loading="lazy" onerror="this.style.display='none'">
+        <span>NORDSTROM</span>
+      </a>
+      <a class="top-brand-mark" href="https://www.levi.com/" target="_blank" rel="noopener noreferrer" aria-label="LEVI'S official online store">
+        <img src="https://cdn.simpleicons.org/levis/FFFFFF" alt="" loading="lazy" onerror="this.style.display='none'">
+        <span>LEVI'S</span>
+      </a>
+      <a class="top-brand-mark" href="https://www.zalando.com/" target="_blank" rel="noopener noreferrer" aria-label="ZALANDO official online store">
+        <img src="https://cdn.simpleicons.org/zalando/FFFFFF" alt="" loading="lazy" onerror="this.style.display='none'">
+        <span>ZALANDO</span>
+      </a>
+      <a class="top-brand-mark" href="https://www.asos.com/" target="_blank" rel="noopener noreferrer" aria-label="ASOS official online store">
+        <img src="https://cdn.simpleicons.org/asos/FFFFFF" alt="" loading="lazy" onerror="this.style.display='none'">
+        <span>ASOS</span>
+      </a>
+      <a class="top-brand-mark" href="https://www.zara.com/" target="_blank" rel="noopener noreferrer" aria-label="ZARA official online store">
+        <img src="https://cdn.simpleicons.org/zara/FFFFFF" alt="" loading="lazy" onerror="this.style.display='none'">
+        <span>ZARA</span>
+      </a>
+      <a class="top-brand-mark" href="https://www.hm.com/" target="_blank" rel="noopener noreferrer" aria-label="H&amp;M official online store">
+        <img src="https://cdn.simpleicons.org/hm/FFFFFF" alt="" loading="lazy" onerror="this.style.display='none'">
+        <span>H&amp;M</span>
+      </a>
+      <a class="top-brand-mark" href="https://www.farfetch.com/" target="_blank" rel="noopener noreferrer" aria-label="FARFETCH official online store">
+        <img src="https://cdn.simpleicons.org/farfetch/FFFFFF" alt="" loading="lazy" onerror="this.style.display='none'">
+        <span>FARFETCH</span>
+      </a>
+      <a class="top-brand-mark" href="https://www.decathlon.com/" target="_blank" rel="noopener noreferrer" aria-label="DECATHLON official online store">
+        <img src="https://cdn.simpleicons.org/decathlon/FFFFFF" alt="" loading="lazy" onerror="this.style.display='none'">
+        <span>DECATHLON</span>
+      </a>
+      <a class="top-brand-mark" href="https://www.uniqlo.com/" target="_blank" rel="noopener noreferrer" aria-label="UNIQLO official online store">
+        <img src="https://cdn.simpleicons.org/uniqlo/FFFFFF" alt="" loading="lazy" onerror="this.style.display='none'">
+        <span>UNIQLO</span>
+      </a>
+      <a class="top-brand-mark" href="https://www.clarks.com/" target="_blank" rel="noopener noreferrer" aria-label="CLARKS official online store">
+        <img src="https://cdn.simpleicons.org/clarks/FFFFFF" alt="" loading="lazy" onerror="this.style.display='none'">
+        <span>CLARKS</span>
+      </a>
+      <a class="top-brand-mark" href="https://www.myntra.com/" target="_blank" rel="noopener noreferrer" aria-label="MYNTRA official online store">
+        <img src="https://cdn.simpleicons.org/myntra/FFFFFF" alt="" loading="lazy" onerror="this.style.display='none'">
+        <span>MYNTRA</span>
+      </a>
+      <a class="top-brand-mark" href="https://www.ajio.com/" target="_blank" rel="noopener noreferrer" aria-label="AJIO official online store">
+        <img src="https://cdn.simpleicons.org/ajio/FFFFFF" alt="" loading="lazy" onerror="this.style.display='none'">
+        <span>AJIO</span>
+      </a>
+      <a class="top-brand-mark" href="https://zozo.jp/" target="_blank" rel="noopener noreferrer" aria-label="ZOZOTOWN official online store">
+        <img src="https://cdn.simpleicons.org/zozotown/FFFFFF" alt="" loading="lazy" onerror="this.style.display='none'">
+        <span>ZOZOTOWN</span>
+      </a>
+      <a class="top-brand-mark" href="https://www.musinsa.com/" target="_blank" rel="noopener noreferrer" aria-label="MUSINSA official online store">
+        <img src="https://cdn.simpleicons.org/musinsa/FFFFFF" alt="" loading="lazy" onerror="this.style.display='none'">
+        <span>MUSINSA</span>
+      </a>
+      <a class="top-brand-mark" href="https://www.aliexpress.com/" target="_blank" rel="noopener noreferrer" aria-label="AliExpress official online store">
+        <img src="https://cdn.simpleicons.org/aliexpress/FFFFFF" alt="" loading="lazy" onerror="this.style.display='none'">
+        <span>AliExpress</span>
+      </a>
+      <a class="top-brand-mark" href="https://www.zalora.com/" target="_blank" rel="noopener noreferrer" aria-label="ZALORA official online store">
+        <img src="https://cdn.simpleicons.org/zalora/FFFFFF" alt="" loading="lazy" onerror="this.style.display='none'">
+        <span>ZALORA</span>
+      </a>
+      <a class="top-brand-mark" href="https://shopee.com/" target="_blank" rel="noopener noreferrer" aria-label="Shopee official online store">
+        <img src="https://cdn.simpleicons.org/shopee/FFFFFF" alt="" loading="lazy" onerror="this.style.display='none'">
+        <span>Shopee</span>
+      </a>
+      <a class="top-brand-mark" href="https://www.lazada.com/" target="_blank" rel="noopener noreferrer" aria-label="Lazada official online store">
+        <img src="https://cdn.simpleicons.org/lazada/FFFFFF" alt="" loading="lazy" onerror="this.style.display='none'">
+        <span>Lazada</span>
+      </a>
+      <a class="top-brand-mark" href="https://www.namshi.com/" target="_blank" rel="noopener noreferrer" aria-label="NAMSHI official online store">
+        <img src="https://cdn.simpleicons.org/namshi/FFFFFF" alt="" loading="lazy" onerror="this.style.display='none'">
+        <span>NAMSHI</span>
+      </a>
+      <a class="top-brand-mark" href="https://www.ounass.ae/" target="_blank" rel="noopener noreferrer" aria-label="OUNASS official online store">
+        <img src="https://cdn.simpleicons.org/ounass/FFFFFF" alt="" loading="lazy" onerror="this.style.display='none'">
+        <span>OUNASS</span>
+      </a>
+      <a class="top-brand-mark" href="https://www.jumia.com/" target="_blank" rel="noopener noreferrer" aria-label="JUMIA official online store">
+        <img src="https://cdn.simpleicons.org/jumia/FFFFFF" alt="" loading="lazy" onerror="this.style.display='none'">
+        <span>JUMIA</span>
+      </a>
+      <a class="top-brand-mark" href="https://www.takealot.com/" target="_blank" rel="noopener noreferrer" aria-label="TAKEALOT official online store">
+        <img src="https://cdn.simpleicons.org/takealot/FFFFFF" alt="" loading="lazy" onerror="this.style.display='none'">
+        <span>TAKEALOT</span>
+      </a>
+      <a class="top-brand-mark" href="https://www.dafiti.com.br/" target="_blank" rel="noopener noreferrer" aria-label="DAFITI official online store">
+        <img src="https://cdn.simpleicons.org/dafiti/FFFFFF" alt="" loading="lazy" onerror="this.style.display='none'">
+        <span>DAFITI</span>
+      </a>
+      <a class="top-brand-mark" href="https://www.mercadolibre.com/" target="_blank" rel="noopener noreferrer" aria-label="MERCADO LIBRE official online store">
+        <img src="https://cdn.simpleicons.org/mercadolibre/FFFFFF" alt="" loading="lazy" onerror="this.style.display='none'">
+        <span>MERCADO LIBRE</span>
+      </a>
+      <a class="top-brand-mark" href="https://www.theiconic.com.au/" target="_blank" rel="noopener noreferrer" aria-label="THE ICONIC official online store">
+        <img src="https://cdn.simpleicons.org/theiconic/FFFFFF" alt="" loading="lazy" onerror="this.style.display='none'">
+        <span>THE ICONIC</span>
+      </a>
+      <a class="top-brand-mark" href="https://www.myer.com.au/" target="_blank" rel="noopener noreferrer" aria-label="MYER official online store">
+        <img src="https://cdn.simpleicons.org/myer/FFFFFF" alt="" loading="lazy" onerror="this.style.display='none'">
+        <span>MYER</span>
+      </a>
+      </div>
+    </div>
+  </div>
+  <p class="brand-strip-note">Select any brand mark to visit its official online store. Trademarks and logos belong to their respective owners; no partnership or endorsement is implied.</p>
+</div>
+
 
 <main>
   <div class="hero">
