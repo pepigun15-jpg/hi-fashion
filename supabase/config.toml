@@ -11,3 +11,9 @@ verify_jwt = true
 
 [functions.stripe-webhook]
 verify_jwt = false
+[functions.import-retailer-feed]
+verify_jwt = true
+[functions.search-cj-catalogue]
+verify_jwt = false
+[functions.search-ebay-catalogue]
+verify_jwt = false
