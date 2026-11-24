@@ -115,6 +115,11 @@ function normalizeAvailability(value: string): string {
   if(/pre.?order|preorder|back.?order/.test(v))return "preorder";
   return "unknown";
 }
+function validIsoDate(value:string):string|null{
+  if(!value)return null;
+  const time=Date.parse(value);
+  return Number.isFinite(time)?new Date(time).toISOString():null;
+}
 function iso2(value: string, fallback="ZZ"): string {
   const v=value.trim().toUpperCase();
   return /^[A-Z]{2}$/.test(v)?v:fallback;
@@ -143,7 +148,7 @@ function mapRow(headers: string[], values: string[], source: string, countryDefa
     gender:getValue(record,"gender").slice(0,40),
     image_url:getValue(record,"image_url").slice(0,2000)||null,
     product_url:productUrl.slice(0,3000),
-    affiliate_url:(getValue(record,"affiliate_url")||productUrl).slice(0,3000),
+    affiliate_url:getValue(record,"affiliate_url").slice(0,3000)||null,
     price_minor:parseMoney(mainPrice),
     sale_price_minor:parseMoney(salePrice),
     currency:/^[A-Z]{3}$/.test(currency)?currency:"EUR",
@@ -153,7 +158,7 @@ function mapRow(headers: string[], values: string[], source: string, countryDefa
     retailer:(getValue(record,"retailer")||source.toUpperCase()).slice(0,180),
     retailer_country:country,
     ships_to:splitList(getValue(record,"ships_to")).map(x=>iso2(x)).filter(x=>x!=="ZZ"),
-    source_updated_at:getValue(record,"updated_at") ? new Date(getValue(record,"updated_at")).toISOString() : null,
+    source_updated_at:validIsoDate(getValue(record,"updated_at")),
     imported_at:new Date().toISOString(),
     last_seen_sync_run_id:runId,
     is_active:true,
