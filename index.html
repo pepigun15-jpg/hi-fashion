@@ -707,6 +707,31 @@ html[dir="rtl"] .account-drawer{right:0!important;left:auto!important;border-lef
   .christmas-lamp,.christmas-bauble,.christmas-diamond{animation:none!important}
 }
 
+
+/* Global multi-market product search */
+.search-wrap{max-width:900px}
+.market-search-actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:12px}
+.market-search-actions button{min-height:42px;padding:11px 20px;border:1px solid #c6a45a;cursor:pointer;font-size:10px;font-weight:bold;letter-spacing:1.5px;transition:background .2s ease,color .2s ease,transform .2s ease}
+.market-search-primary{background:linear-gradient(135deg,#f2d993,#b68c3e);color:#111}
+.market-search-primary:hover{background:#fff0bf;transform:translateY(-1px)}
+.market-search-clear{background:#0b120e;color:#e2d4b4}
+.market-search-clear:hover{background:#22372a;color:#fff}
+.multi-market-search{max-width:1100px;margin:0 auto 30px;padding:23px;background:linear-gradient(145deg,#0b1710,#111c14);border:1px solid #b69755;box-shadow:0 12px 34px rgba(0,0,0,.22)}
+.multi-market-search[hidden]{display:none}
+.multi-market-heading{font-family:Georgia,serif;font-size:clamp(22px,3vw,30px);font-weight:normal;color:#f1d48d;text-align:center;letter-spacing:.5px;text-transform:uppercase}
+.multi-market-intro{max-width:760px;margin:10px auto 20px;color:#c7cec8;font-size:12px;line-height:1.7;text-align:center}
+.multi-market-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.multi-market-card{display:flex;min-width:0;min-height:90px;flex-direction:column;justify-content:space-between;gap:8px;padding:14px 15px;background:#101b14;border:1px solid #3e5143;color:#f5f4ef;text-decoration:none;transition:border-color .2s ease,background .2s ease,transform .2s ease}
+.multi-market-card:hover{border-color:#e0c277;background:#18281d;transform:translateY(-2px)}
+.multi-market-card strong{font-family:Georgia,serif;font-size:19px;font-weight:normal;color:#f1e6c8;overflow-wrap:anywhere}
+.multi-market-card span{color:#aeb9b0;font-size:10px;line-height:1.4}
+.multi-market-card small{color:#e0c277;font-size:9px;font-weight:bold;letter-spacing:1px}
+.multi-market-card.featured{background:linear-gradient(135deg,#2b2415,#162319);border-color:#d5b96c}
+.multi-market-card.featured strong{color:#ffdfa0}
+.multi-market-note{margin:18px 0 0;padding-top:14px;border-top:1px solid #34483a;color:#9eaaa1;text-align:center;font-size:10px;line-height:1.7}
+@media(max-width:760px){.multi-market-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.multi-market-search{padding:18px}}
+@media(max-width:480px){.multi-market-grid{grid-template-columns:1fr}.multi-market-card{min-height:74px}.market-search-actions{display:grid;grid-template-columns:1fr 1fr}.market-search-actions button{padding:11px 8px}}
+
 </style>
 </head>
 <body>
@@ -3366,10 +3391,15 @@ html[dir="rtl"] .account-drawer{right:0!important;left:auto!important;border-lef
 
     <div class="search-wrap" id="search">
       <input id="departmentSearch" type="search" placeholder="Search products, categories or brands — Nike, adidas, Zara..." aria-label="Search products, categories and trademarks" data-hf-placeholder="searchPlaceholder" data-hf-aria="searchAria">
+      <div class="market-search-actions">
+        <button type="button" id="searchAllMarkets" class="market-search-primary">SEARCH ALL MARKETS</button>
+        <button type="button" id="clearMarketSearch" class="market-search-clear">CLEAR</button>
+      </div>
     </div>
     <p class="photo-note" style="text-align:center;color:#c5c8c6;font-size:11px;margin:-15px 0 24px">Editorial model photography from Pexels · Images illustrate department style and are not product listings.</p>
     <div class="results-note" id="resultsNote">25 departments · Select any subcategory to explore</div>
     <div class="brand-search-results" id="brandSearchResults" aria-live="polite" hidden></div>
+    <div class="multi-market-search" id="multiMarketSearchResults" aria-live="polite" hidden></div>
 
     <div class="departments" id="departmentGrid">
 
@@ -4028,6 +4058,7 @@ function hfApplyLanguage(code, save=true) {
   if(save){try{localStorage.setItem("hiFashionLanguage",lang);}catch(error){}}
   if(typeof filterDepartments==="function" && search?.value.trim()) filterDepartments();
   if(typeof window.refreshHfAccountLanguage==="function") window.refreshHfAccountLanguage();
+  if(typeof window.hiFashionRefreshMarketSearchLanguage==="function") window.hiFashionRefreshMarketSearchLanguage();
 }
 function hfOpenLanguageChooser() {
   hfLanguageModal.hidden = false;
@@ -4069,8 +4100,88 @@ const retailerCards = [...document.querySelectorAll(".retail-card")];
 const retailerRegions = [...document.querySelectorAll(".region-section")];
 const topBrandMarks = [...document.querySelectorAll(".top-brand-mark")];
 
+const marketplaceSearchCopy = {
+  en:{button:"SEARCH ALL MARKETS",clear:"CLEAR",title:"LIVE PRODUCT SEARCH",intro:"Your search is ready across 18 global shopping destinations. Open any store to see its current listings, sizes, prices and availability.",open:"OPEN LIVE RESULTS",note:"HI FASHION currently sends searches to each marketplace's own live catalogue. Product prices, stock, delivery and seller terms are confirmed on the retailer's website. A unified in-page product feed will require approved retailer or affiliate API/catalogue connections."},
+  bg:{button:"ТЪРСИ ВЪВ ВСИЧКИ ПАЗАРИ",clear:"ИЗЧИСТИ",title:"ТЪРСЕНЕ НА ПРОДУКТИ",intro:"Търсенето е готово за 18 международни магазина и платформи. Отворете магазин, за да видите актуалните продукти, размери, цени и наличности.",open:"ОТВОРИ РЕЗУЛТАТИТЕ",note:"В момента HI FASHION отваря актуалното търсене в самия магазин. Цените, наличностите, доставката и условията се потвърждават от търговеца. Единен списък с продукти вътре в сайта изисква одобрени API или продуктови каталози."},
+  de:{button:"ALLE MÄRKTE DURCHSUCHEN",clear:"LÖSCHEN",title:"LIVE-PRODUKTSUCHE",intro:"Ihre Suche ist für 18 internationale Shopping-Plattformen vorbereitet. Öffnen Sie einen Shop, um aktuelle Angebote, Größen, Preise und Verfügbarkeit zu sehen.",open:"LIVE-ERGEBNISSE ÖFFNEN",note:"HI FASHION leitet die Suche derzeit zum Live-Katalog des jeweiligen Marktplatzes weiter. Preise, Lagerbestand, Versand und Verkäuferbedingungen werden beim Händler bestätigt. Ein gemeinsamer Produktfeed auf dieser Website benötigt genehmigte Händler- oder Affiliate-APIs/Kataloge."},
+  fr:{button:"RECHERCHER SUR TOUS LES MARCHÉS",clear:"EFFACER",title:"RECHERCHE DE PRODUITS EN DIRECT",intro:"Votre recherche est prête sur 18 plateformes internationales. Ouvrez une boutique pour voir ses articles, tailles, prix et disponibilités actuels.",open:"VOIR LES RÉSULTATS",note:"HI FASHION redirige actuellement vers le catalogue en direct de chaque marketplace. Les prix, stocks, livraisons et conditions sont confirmés sur le site du vendeur. Un catalogue unifié sur HI FASHION nécessitera des API ou flux produits autorisés."},
+  it:{button:"CERCA IN TUTTI I MERCATI",clear:"CANCELLA",title:"RICERCA PRODOTTI LIVE",intro:"La ricerca è pronta su 18 piattaforme internazionali. Apri un negozio per vedere articoli, taglie, prezzi e disponibilità aggiornati.",open:"APRI I RISULTATI",note:"HI FASHION apre al momento il catalogo live di ciascun marketplace. Prezzi, disponibilità, spedizione e condizioni sono confermati sul sito del venditore. Un catalogo unificato all'interno di HI FASHION richiede API o feed prodotto autorizzati."},
+  es:{button:"BUSCAR EN TODOS LOS MERCADOS",clear:"BORRAR",title:"BÚSQUEDA DE PRODUCTOS EN VIVO",intro:"Tu búsqueda está preparada en 18 plataformas internacionales. Abre una tienda para ver sus artículos, tallas, precios y disponibilidad actuales.",open:"ABRIR RESULTADOS",note:"HI FASHION dirige actualmente las búsquedas al catálogo en vivo de cada marketplace. Los precios, existencias, envíos y condiciones se confirman en la tienda. Un catálogo unificado dentro de HI FASHION requiere API o feeds de producto autorizados."},
+  zh:{button:"搜索所有市场",clear:"清除",title:"实时商品搜索",intro:"搜索已准备好，可前往 18 个全球购物平台。打开任一商店查看当前商品、尺码、价格和库存。",open:"打开实时结果",note:"HI FASHION 目前会将搜索转到各购物平台的实时目录。价格、库存、配送和卖家条款以商家网站为准。若要在 HI FASHION 内统一展示商品，需要获得授权的零售商或联盟 API/商品目录。"},
+  ar:{button:"ابحث في جميع الأسواق",clear:"مسح",title:"بحث مباشر عن المنتجات",intro:"بحثك جاهز عبر 18 منصة تسوق عالمية. افتح أي متجر لمشاهدة المنتجات والمقاسات والأسعار والتوفر الحالي.",open:"افتح النتائج المباشرة",note:"يوجه HI FASHION البحث حالياً إلى الكتالوج المباشر لكل سوق. يتم تأكيد الأسعار والمخزون والتوصيل وشروط البائع لدى المتجر. يتطلب عرض كتالوج موحد داخل HI FASHION واجهات API أو خلاصات منتجات معتمدة."},
+  ko:{button:"모든 마켓 검색",clear:"지우기",title:"실시간 상품 검색",intro:"18개의 글로벌 쇼핑 플랫폼에서 검색할 수 있습니다. 스토어를 열어 현재 상품, 사이즈, 가격 및 재고를 확인하세요.",open:"실시간 결과 열기",note:"현재 HI FASHION은 각 마켓플레이스의 실시간 카탈로그로 검색을 연결합니다. 가격, 재고, 배송 및 판매 조건은 판매처에서 확인해야 합니다. HI FASHION 내부의 통합 상품 피드에는 승인된 소매업체 또는 제휴 API/상품 카탈로그가 필요합니다."}
+};
+const marketplaceSearchProviders = [
+  {name:"Google Shopping",region:"Cross-store product discovery",url:q=>"https://www.google.com/search?tbm=shop&q="+encodeURIComponent(q),featured:true},
+  {name:"Bing Shopping",region:"Cross-store product discovery",url:q=>"https://www.bing.com/shop?q="+encodeURIComponent(q)},
+  {name:"Amazon",region:"Global retail",url:q=>"https://www.amazon.com/s?k="+encodeURIComponent(q)},
+  {name:"eBay",region:"New and pre-owned",url:q=>"https://www.ebay.com/sch/i.html?_nkw="+encodeURIComponent(q)},
+  {name:"Etsy",region:"Independent and handmade",url:q=>"https://www.etsy.com/search?q="+encodeURIComponent(q)},
+  {name:"AliExpress",region:"International marketplace",url:q=>"https://www.aliexpress.com/w/wholesale-"+encodeURIComponent(q).replace(/%20/g,"-")+".html"},
+  {name:"Temu",region:"International marketplace",url:q=>"https://www.temu.com/search_result.html?search_key="+encodeURIComponent(q)},
+  {name:"SHEIN",region:"Fashion marketplace",url:q=>"https://www.shein.com/pdsearch/"+encodeURIComponent(q)+"/"},
+  {name:"Walmart",region:"United States retail",url:q=>"https://www.walmart.com/search?q="+encodeURIComponent(q)},
+  {name:"Target",region:"United States retail",url:q=>"https://www.target.com/s?searchTerm="+encodeURIComponent(q)},
+  {name:"ASOS",region:"International fashion",url:q=>"https://www.asos.com/search/?q="+encodeURIComponent(q)},
+  {name:"Zalando",region:"European fashion",url:q=>"https://www.zalando.com/catalog/?q="+encodeURIComponent(q)},
+  {name:"H&M",region:"International fashion",url:q=>"https://www2.hm.com/en_us/search-results.html?q="+encodeURIComponent(q)},
+  {name:"Zara",region:"International fashion",url:q=>"https://www.zara.com/us/en/search?searchTerm="+encodeURIComponent(q)},
+  {name:"Vinted",region:"Second-hand fashion",url:q=>"https://www.vinted.com/catalog?search_text="+encodeURIComponent(q)},
+  {name:"Depop",region:"Pre-loved and vintage",url:q=>"https://www.depop.com/search/?q="+encodeURIComponent(q)},
+  {name:"Trendyol",region:"Türkiye and international",url:q=>"https://www.trendyol.com/sr?q="+encodeURIComponent(q)},
+  {name:"Farfetch",region:"Luxury boutiques",url:q=>"https://www.farfetch.com/shopping/women/search/items.aspx?q="+encodeURIComponent(q)}
+];
+function refreshMarketSearchLanguage(){
+  const copy=marketplaceSearchCopy[window.hfActiveLanguage]||marketplaceSearchCopy.en;
+  const searchButton=document.getElementById("searchAllMarkets");
+  const clearButton=document.getElementById("clearMarketSearch");
+  if(searchButton)searchButton.textContent=copy.button;
+  if(clearButton)clearButton.textContent=copy.clear;
+}
+window.hiFashionRefreshMarketSearchLanguage=refreshMarketSearchLanguage;
+refreshMarketSearchLanguage();
+
+function renderMarketplaceSearch(query){
+  const panel=document.getElementById("multiMarketSearchResults");
+  if(!panel)return;
+  const cleanQuery=String(query||"").trim();
+  panel.replaceChildren();
+  if(!cleanQuery){panel.hidden=true;return;}
+  const copy=marketplaceSearchCopy[window.hfActiveLanguage]||marketplaceSearchCopy.en;
+  const heading=document.createElement("h3");
+  heading.className="multi-market-heading";
+  heading.textContent=copy.title+" · "+cleanQuery;
+  const intro=document.createElement("p");
+  intro.className="multi-market-intro";
+  intro.textContent=copy.intro;
+  const grid=document.createElement("div");
+  grid.className="multi-market-grid";
+  marketplaceSearchProviders.forEach(provider=>{
+    const link=document.createElement("a");
+    link.className="multi-market-card"+(provider.featured?" featured":"");
+    link.href=provider.url(cleanQuery);
+    link.target="_blank";
+    link.rel="noopener noreferrer";
+    link.setAttribute("aria-label",copy.open+" — "+provider.name+" — "+cleanQuery);
+    const label=document.createElement("strong");
+    label.textContent=provider.name;
+    const region=document.createElement("span");
+    region.textContent=provider.region;
+    const action=document.createElement("small");
+    action.textContent=copy.open+" ↗";
+    link.append(label,region,action);
+    grid.appendChild(link);
+  });
+  const note=document.createElement("p");
+  note.className="multi-market-note";
+  note.textContent=copy.note;
+  panel.append(heading,intro,grid,note);
+  panel.hidden=false;
+}
+
 function filterDepartments() {
-  const query = searchInput.value.trim().toLowerCase();
+  const rawQuery = searchInput.value.trim();
+  const query = rawQuery.toLowerCase();
   let visibleDepartments = 0;
   let visibleRetailers = 0;
 
@@ -4144,11 +4255,29 @@ function filterDepartments() {
 
   noResults.style.display = query && visibleDepartments === 0 && visibleRetailers === 0 ? "block" : "none";
   noResults.textContent = hfTranslations[hfActiveLanguage].noResults;
+  renderMarketplaceSearch(rawQuery);
 }
 
-
-
 searchInput.addEventListener("input", filterDepartments);
+document.getElementById("searchAllMarkets").addEventListener("click",()=>{
+  if(!searchInput.value.trim()){searchInput.focus();return;}
+  filterDepartments();
+  document.getElementById("multiMarketSearchResults").scrollIntoView({behavior:"smooth",block:"start"});
+});
+document.getElementById("clearMarketSearch").addEventListener("click",()=>{
+  searchInput.value="";
+  filterDepartments();
+  searchInput.focus();
+});
+searchInput.addEventListener("keydown",event=>{
+  if(event.key==="Enter"){
+    event.preventDefault();
+    if(searchInput.value.trim()){
+      filterDepartments();
+      document.getElementById("multiMarketSearchResults").scrollIntoView({behavior:"smooth",block:"start"});
+    }
+  }
+});
 
 const seasonButtons = [...document.querySelectorAll("[data-season-choice]")];
 const seasonCurrent = document.getElementById("seasonCurrent");
