@@ -58,7 +58,7 @@ Deno.serve(async (request: Request) => {
     return Response.json({ error: "Choose a valid delivery country before searching eBay.", configured: true, affiliateTrackingActive: false }, { status: 400, headers: corsHeaders });
   }
   const campaignId = Deno.env.get("EBAY_AFFILIATE_CAMPAIGN_ID") || "";
-  if (!/^\\d{10}$/.test(campaignId)) {
+  if (!/^\d{10}$/.test(campaignId)) {
     return Response.json({ error: "eBay Partner Network tracking is not configured. Add the approved 10-digit EPN campaign ID before showing eBay offers.", configured: false, affiliateTrackingActive: false, setup: ["EBAY_AFFILIATE_CAMPAIGN_ID"] }, { status: 424, headers: corsHeaders });
   }
   const marketplace = MARKETPLACE_BY_COUNTRY[country] || "EBAY_DE";
