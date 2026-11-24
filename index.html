@@ -92,6 +92,30 @@ footer strong{color:var(--gold);letter-spacing:2px}
 .trend-disclaimer a{color:#d7bd80}
 @media(max-width:900px){.trend-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:560px){.trend-grid,.market-signals{grid-template-columns:1fr}.trend-trigger img{height:250px}}
+
+/* Spring / Summer 2027 future collection */
+.future{background:linear-gradient(180deg,#0d1511 0%,#101b15 100%)}
+.future-intro{max-width:850px;margin:-8px auto 32px;text-align:center;color:var(--silver);font-size:13px;line-height:1.8}
+.future-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;max-width:1250px;margin:0 auto}
+.future-card{background:#0a100c;border:1px solid #3b4d40;overflow:hidden}
+.future-card .trend-trigger{display:block;width:100%;height:100%;padding:0;border:0;background:none;color:inherit;text-align:left;cursor:pointer}
+.future-card img{display:block;width:100%;height:290px;object-fit:cover;transition:transform .45s ease}
+.future-card:hover img{transform:scale(1.035)}
+.future-copy{padding:19px}
+.future-label{display:block;color:#d3b66c;font-size:9px;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px}
+.future-copy h3{font-family:Georgia,serif;font-size:24px;font-weight:normal;line-height:1.15;margin-bottom:10px}
+.future-copy p{color:#bdc4be;font-size:12px;line-height:1.75;min-height:63px}
+.future-items{color:#e0d3b3;font-size:10px;line-height:1.7;margin-top:12px}
+.future-photo-credit{display:block;color:#849188;font-size:9px;margin-top:10px}
+.future-colors{max-width:1080px;margin:32px auto 0;border-top:1px solid #3b4d40;padding-top:25px;text-align:center}
+.future-colors h3{font-family:Georgia,serif;font-size:24px;font-weight:normal;margin-bottom:15px}
+.swatches{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.swatch{display:flex;align-items:center;gap:8px;color:#d6d8d2;font-size:10px}
+.swatch i{width:24px;height:24px;display:inline-block;border:1px solid rgba(255,255,255,.25);border-radius:50%}
+.forecast-note{max-width:1050px;margin:22px auto 0;text-align:center;color:#99a39b;font-size:10px;line-height:1.7}
+.forecast-note a{color:#d7bd80}
+@media(max-width:900px){.future-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:580px){.future-grid{grid-template-columns:1fr}.future-card img{height:270px}.future-copy p{min-height:0}}
 </style>
 </head>
 <body>
@@ -100,6 +124,7 @@ footer strong{color:var(--gold);letter-spacing:2px}
   <div class="logo">HI<small>HUMAN INTELLIGENCE</small></div>
   <nav>
     <a href="#departments">DEPARTMENTS</a>
+    <a href="#future">FUTURE 2027</a>
     <a href="#trending">TRENDING NOW</a>
     <a href="#new-arrivals">NEW ARRIVALS</a>
     <a href="#brands">BRANDS</a>
@@ -120,6 +145,116 @@ footer strong{color:var(--gold);letter-spacing:2px}
       <a class="button" href="#departments">EXPLORE ALL DEPARTMENTS</a>
     </div>
   </div>
+
+  <section class="future" id="future">
+    <div class="section-title">
+      <small>DESIGNED AHEAD OF THE SEASON</small>
+      <h2>THE FUTURE COLLECTION · SS27</h2>
+      <p>Spring / Summer 2027 fashion directions translated into the products HI FASHION should source next.</p>
+    </div>
+    <p class="future-intro">A curated edit built from runway analysis, trend-forecast reporting and consumer search/adoption signals. These are collection directions and product ideas—not confirmed stock, finished HI FASHION designs or supplier commitments.</p>
+
+    <div class="future-grid">
+      <article class="future-card">
+        <button class="trend-trigger" type="button" data-search="Handbags" aria-label="Explore crafted bags and accessories">
+          <img src="https://images.pexels.com/photos/32596220/pexels-photo-32596220.jpeg?cs=srgb&dl=pexels-mag-photography-1501456-32596220.jpg&fm=jpg" alt="Handcrafted crochet bags displayed in a boutique" loading="lazy">
+          <div class="future-copy">
+            <span class="future-label">Direction 01 · Human craft</span>
+            <h3>Crafted Earth</h3>
+            <p>Handmade character, woven surfaces and tactile detail. A natural fit for boutique accessories and small independent makers.</p>
+            <div class="future-items">SOURCE: crochet bags · macramé totes · embroidered shirts · textured knitwear · raffia accessories</div>
+            <span class="future-photo-credit">Photo: MAG Photography · Pexels</span>
+          </div>
+        </button>
+      </article>
+
+      <article class="future-card">
+        <button class="trend-trigger" type="button" data-search="Dresses" aria-label="Explore floral dresses and expressive prints">
+          <img src="https://images.pexels.com/photos/12418877/pexels-photo-12418877.jpeg?cs=srgb&dl=pexels-aldairwow-12418877.jpg&fm=jpg" alt="Colorful expressive floral fashion editorial" loading="lazy">
+          <div class="future-copy">
+            <span class="future-label">Direction 02 · Free expression</span>
+            <h3>Expressive Bloom</h3>
+            <p>Confident color, graphic florals and playful combinations bring personality back into warm-weather dressing.</p>
+            <div class="future-items">SOURCE: printed dresses · statement tops · graphic skirts · colorful scarves · expressive accessories</div>
+            <span class="future-photo-credit">Photo: Aldair Nuñez · Pexels</span>
+          </div>
+        </button>
+      </article>
+
+      <article class="future-card">
+        <button class="trend-trigger" type="button" data-search="Suits" aria-label="Explore tailored suits and belted styles">
+          <img src="https://images.pexels.com/photos/4428045/pexels-photo-4428045.jpeg?cs=srgb&dl=pexels-august-de-richelieu-4428045.jpg&fm=jpg" alt="Tailored blazer and trousers in a neutral palette" loading="lazy">
+          <div class="future-copy">
+            <span class="future-label">Direction 03 · The waist returns</span>
+            <h3>Modern Form</h3>
+            <p>Defined waists, refined tailoring and considered proportions. Build a versatile edit that can move from work to occasionwear.</p>
+            <div class="future-items">SOURCE: belted blazers · double belts · pleated trousers · tailored shorts · fitted jackets</div>
+            <span class="future-photo-credit">Photo: August de Richelieu · Pexels</span>
+          </div>
+        </button>
+      </article>
+
+      <article class="future-card">
+        <button class="trend-trigger" type="button" data-search="Jackets" aria-label="Explore technical jackets and utility clothing">
+          <img src="https://images.pexels.com/photos/8497715/pexels-photo-8497715.jpeg?cs=srgb&dl=pexels-liliana-drew-8497715.jpg&fm=jpg" alt="Black technical windbreaker jacket in an urban setting" loading="lazy">
+          <div class="future-copy">
+            <span class="future-label">Direction 04 · Protective utility</span>
+            <h3>Urban Element</h3>
+            <p>Lightweight protection meets everyday style: functional outerwear, practical pockets and breathable performance fabrics.</p>
+            <div class="future-items">SOURCE: funnel-neck windbreakers · technical jackets · cargo trousers · quick-dry layers · utility bags</div>
+            <span class="future-photo-credit">Photo: Liliana Drew · Pexels</span>
+          </div>
+        </button>
+      </article>
+
+      <article class="future-card">
+        <button class="trend-trigger" type="button" data-search="Blazers" aria-label="Explore linen and lightweight tailored clothing">
+          <img src="https://images.pexels.com/photos/18031037/pexels-photo-18031037.jpeg?cs=srgb&dl=pexels-elif-525070928-18031037.jpg&fm=jpg" alt="Light linen suit styled for warm weather" loading="lazy">
+          <div class="future-copy">
+            <span class="future-label">Direction 05 · Soft tailoring</span>
+            <h3>Natural Ease</h3>
+            <p>Airy natural-fibre looks and relaxed tailoring answer demand for clothes that feel polished without looking formal.</p>
+            <div class="future-items">SOURCE: linen suits · cotton shirts · relaxed blazers · pleated trousers · lightweight summer sets</div>
+            <span class="future-photo-credit">Photo: Elif · Pexels</span>
+          </div>
+        </button>
+      </article>
+
+      <article class="future-card">
+        <button class="trend-trigger" type="button" data-search="Jewellery" aria-label="Explore statement accessories and jewellery">
+          <img src="https://images.pexels.com/photos/35725116/pexels-photo-35725116.jpeg?cs=srgb&dl=pexels-innamykytas-35725116.jpg&fm=jpg" alt="Silver metallic fashion editorial with reflective surfaces" loading="lazy">
+          <div class="future-copy">
+            <span class="future-label">Direction 06 · Bold finish</span>
+            <h3>Future Shine</h3>
+            <p>Reflective finishes and sculptural accents provide a statement layer for eveningwear, occasion looks and modern accessories.</p>
+            <div class="future-items">SOURCE: metallic bags · sculptural jewellery · statement earrings · embellished sandals · reflective details</div>
+            <span class="future-photo-credit">Photo: Inna Mykytas · Pexels</span>
+          </div>
+        </button>
+      </article>
+    </div>
+
+    <div class="future-colors">
+      <h3>SS27 Forecast Color Direction</h3>
+      <div class="swatches">
+        <span class="swatch"><i style="background:#236c9a"></i>Luminous Blue</span>
+        <span class="swatch"><i style="background:#f26a25"></i>Energy Orange</span>
+        <span class="swatch"><i style="background:#df8ca8"></i>Pop Pink</span>
+        <span class="swatch"><i style="background:#738b50"></i>Meadowland Green</span>
+        <span class="swatch"><i style="background:#ae795d"></i>Clay</span>
+        <span class="swatch"><i style="background:#8b593d"></i>Cognac</span>
+        <span class="swatch"><i style="background:#eee3c8"></i>Milk</span>
+      </div>
+    </div>
+
+    <div class="market-signals">
+      <div class="signal"><strong>+3,800%</strong><span>Trendalytics-reported year-on-year market adoption for funnel-neck windbreakers</span></div>
+      <div class="signal"><strong>+45%</strong><span>Reported market adoption for lace and chiffon in the SS27 runway analysis</span></div>
+      <div class="signal"><strong>+100%</strong><span>Search growth reported for buckle belts</span></div>
+      <div class="signal"><strong>+137%</strong><span>Search growth reported for sculptural heels</span></div>
+    </div>
+    <p class="forecast-note">Forecast and market-adoption figures are third-party research signals, not unit sales, guaranteed outcomes or HI FASHION sales data. Palette names are WGSN/Coloro SS27 key colours as reported by FashionUnited. Visuals are free-to-use Pexels stock photography for trend inspiration, not seller inventory; each image is credited above. <a href="https://www.pexels.com/license/" target="_blank" rel="noopener">Pexels licence</a> · <a href="https://fashionunited.com/news/fashion/spring-summer-2027-trend-report-navigating-a-polycrisis-season-of-pleasure-protection-and-the-quiet-return-of-elegance/2026052872627" target="_blank" rel="noopener">SS27 forecast source</a> · <a href="https://trendalytics.co/insights/spring-summer-2027-womenswear-runway-recap-data-analysis" target="_blank" rel="noopener">Trendalytics data</a>.</p>
+  </section>
 
   <section class="trending" id="trending">
     <div class="section-title">
