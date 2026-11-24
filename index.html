@@ -327,6 +327,75 @@ html[dir="rtl"] .brand-strip-track,html[dir="rtl"] .top-brand-mark{direction:ltr
 html[dir="rtl"] .season-controls,html[dir="rtl"] .swatches,html[dir="rtl"] .trend-strip{direction:rtl}
 html[dir="rtl"] .retail-card a,html[dir="rtl"] .network-card{text-align:right}
 html[dir="rtl"] .brand-search-result{direction:rtl}
+
+/* HI FASHION commerce preview: cart, wishlist, gift cards and hosted-checkout handoff */
+.cart-toggle{display:inline-flex;align-items:center;gap:7px;padding:9px 12px;background:#c6a45a;border:1px solid #c6a45a;color:#111;font-size:10px;font-weight:bold;letter-spacing:1px;cursor:pointer;white-space:nowrap}
+.cart-toggle b{display:inline-flex;align-items:center;justify-content:center;min-width:19px;height:19px;padding:0 5px;border-radius:20px;background:#111;color:#f5f4ef;font-size:10px}
+.commerce-cart[hidden],.commerce-cart-overlay[hidden]{display:none!important}
+.commerce-cart-overlay{position:fixed;z-index:100001;inset:0;background:rgba(0,0,0,.68);backdrop-filter:blur(4px)}
+.commerce-cart{position:fixed;z-index:100002;right:0;top:0;height:100dvh;width:min(540px,100%);background:#0c120e;border-left:1px solid #826d3f;box-shadow:-25px 0 70px rgba(0,0,0,.45);display:flex;flex-direction:column;color:#f5f4ef}
+.commerce-cart-head{display:flex;justify-content:space-between;align-items:center;gap:15px;padding:22px 24px;border-bottom:1px solid #37483b;background:#101a13}
+.commerce-cart-head h2{font-family:Georgia,serif;font-size:29px;font-weight:normal;margin-top:7px}
+.commerce-close{width:40px;height:40px;border:1px solid #56654f;background:#111a14;color:#fff;font-size:27px;cursor:pointer}
+.commerce-cart-body{overflow:auto;padding:22px 24px 32px;overscroll-behavior:contain}
+.commerce-kicker{display:block;color:#c6a45a;font-size:9px;letter-spacing:2.5px;font-weight:bold}
+.cart-items{display:grid;gap:10px}
+.cart-line{display:grid;grid-template-columns:1fr auto;gap:12px;padding:13px;background:#121c15;border:1px solid #35483a}
+.cart-line strong{display:block;font-family:Georgia,serif;font-size:17px;font-weight:normal;margin-bottom:5px}
+.cart-line small{display:block;color:#aeb9b0;font-size:10px;line-height:1.6}
+.cart-line-total{font-size:13px;color:#e5cc8e;white-space:nowrap}
+.cart-line-actions{display:flex;gap:6px;align-items:center;margin-top:10px}
+.cart-line-actions button{min-width:28px;height:27px;background:#0a100c;border:1px solid #48594b;color:#eee;cursor:pointer}
+.cart-line-actions button:last-child{padding:0 9px;color:#d7bd80;font-size:10px}
+.cart-empty{padding:25px 12px;text-align:center;color:#aeb9b0;font-size:12px;line-height:1.7;border:1px dashed #4b5c4d}
+.commerce-total-row{display:flex;justify-content:space-between;align-items:center;margin-top:20px;padding-top:16px;border-top:1px solid #425246;font-size:13px}
+.commerce-total-row strong{font-size:23px;color:#e5cc8e}
+.commerce-fineprint,.commerce-status,.commerce-legal{font-size:10px;line-height:1.65;color:#a4afa6;margin-top:9px}
+.gift-redeem,.checkout-fields,.payment-panel{margin-top:21px;padding:17px;background:#101a13;border:1px solid #3e5142}
+.gift-redeem label,.checkout-fields label,.gift-card-form label{display:block;color:#d8ddd7;font-size:11px;line-height:1.5;margin-bottom:12px}
+.gift-redeem-row{display:flex;gap:8px}
+.gift-redeem-row input,.gift-card-form input,.gift-card-form select,.gift-card-form textarea,.checkout-fields input{width:100%;min-width:0;padding:11px;background:#080e0a;border:1px solid #4b5c4e;color:#f5f4ef;font:13px Arial,sans-serif;margin-top:7px;border-radius:0}
+.gift-redeem-row button{padding:0 13px;border:1px solid #c6a45a;background:#c6a45a;color:#111;font-size:10px;font-weight:bold;letter-spacing:1px;cursor:pointer;margin-top:7px}
+.checkout-fields h3{font-family:Georgia,serif;font-size:22px;font-weight:normal;color:#d8bd7c;margin-bottom:15px}
+.checkout-two-col{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.payment-method-chips{display:flex;gap:7px;flex-wrap:wrap;margin:13px 0}
+.payment-method-chips span{padding:8px 10px;background:#f4f1e8;color:#111;font-size:10px;font-weight:bold;border-radius:3px}
+.payment-panel>p{font-size:10px;line-height:1.65;color:#aeb9b0}
+.commerce-checkout{width:100%;display:flex;align-items:center;justify-content:space-between;margin-top:16px;padding:15px 17px;background:#c6a45a;border:1px solid #c6a45a;color:#111;font-size:10px;font-weight:bold;letter-spacing:1.1px;cursor:pointer}
+.commerce-checkout:hover,.commerce-add:hover{filter:brightness(1.08)}
+.commerce-legal{padding-top:15px;border-top:1px solid #35483a}
+.commerce-preview{background:linear-gradient(180deg,#101b14,#09100c);padding:70px 7%}
+.commerce-preview-banner{max-width:1120px;margin:0 auto 24px;padding:15px 18px;border:1px solid #957a42;background:#151a13;text-align:center}
+.commerce-preview-banner strong{display:block;color:#e2c174;font-size:10px;letter-spacing:2px;margin-bottom:6px}
+.commerce-preview-banner span{display:block;color:#b7c0b8;font-size:11px;line-height:1.6}
+.commerce-products{max-width:1120px;margin:0 auto;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.commerce-product{background:#0d1510;border:1px solid #35483a;overflow:hidden;display:flex;flex-direction:column}
+.commerce-product>img{width:100%;height:240px;object-fit:cover;display:block}
+.commerce-product-info{padding:17px;display:flex;flex-direction:column;flex:1}
+.commerce-product-tag{color:#c6a45a;font-size:9px;letter-spacing:1.7px;font-weight:bold}
+.commerce-product h3{font-family:Georgia,serif;font-size:23px;font-weight:normal;margin:8px 0}
+.commerce-product p{font-size:11px;color:#b5c0b7;line-height:1.7;min-height:42px}
+.commerce-product-bottom{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:16px}
+.commerce-product-bottom strong{font-family:Georgia,serif;font-size:21px;color:#ead398}
+.commerce-add{padding:11px 13px;background:#c6a45a;border:1px solid #c6a45a;color:#111;font-size:9px;font-weight:bold;letter-spacing:1px;cursor:pointer}
+.commerce-wishlist{align-self:flex-start;margin-top:12px;border:0;background:transparent;color:#c4cfc6;padding:4px 0;font-size:9px;letter-spacing:1px;cursor:pointer}
+.commerce-wishlist.is-saved{color:#e8c77d}
+.gift-shop{max-width:1120px;margin:35px auto 0;display:grid;grid-template-columns:1fr .9fr;gap:24px;padding:28px;background:linear-gradient(135deg,#1b2c20,#0e1510);border:1px solid #796740}
+.gift-shop-copy h3{font-family:Georgia,serif;font-weight:normal;font-size:35px;margin:12px 0}
+.gift-shop-copy p{font-size:12px;line-height:1.8;color:#c1cbc3;max-width:520px}
+.gift-card-perks{display:grid;gap:9px;margin-top:20px}
+.gift-card-perks span{font-size:11px;color:#dfd2ad}
+.gift-card-perks span:before{content:"✓";color:#d8b96e;margin-right:9px}
+.gift-card-form{padding:20px;background:#0a100c;border:1px solid #435344}
+.gift-card-form .gift-add{width:100%;margin-top:5px}
+.commerce-feature-row{max-width:1120px;margin:28px auto 0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}
+.commerce-feature-row article{border:1px solid #3d4e40;background:#101813;padding:20px}
+.commerce-feature-row article>span{color:#c6a45a;font-size:10px;letter-spacing:2px}
+.commerce-feature-row h3{font-family:Georgia,serif;font-weight:normal;font-size:20px;margin:10px 0}
+.commerce-feature-row p{color:#afbbb1;font-size:11px;line-height:1.7}
+@media(max-width:900px){.commerce-products{grid-template-columns:repeat(2,minmax(0,1fr))}.commerce-feature-row{grid-template-columns:1fr}}
+@media(max-width:650px){.commerce-preview{padding:48px 5%}.commerce-products,.gift-shop{grid-template-columns:1fr}.commerce-product>img{height:260px}.gift-shop{padding:19px}.commerce-cart-head,.commerce-cart-body{padding-left:17px;padding-right:17px}.cart-toggle{padding:8px 9px;font-size:9px}.checkout-two-col{grid-template-columns:1fr}}
+
 </style>
 </head>
 <body>
@@ -367,9 +436,47 @@ html[dir="rtl"] .brand-search-result{direction:rtl}
   <div class="right">
     <a href="#search" data-hf-i18n="navSearch">SEARCH</a>
     <a href="#seller" data-hf-i18n="navSellerArea">SELLER AREA</a>
+    <button class="cart-toggle" id="cartToggle" type="button" aria-haspopup="dialog" aria-controls="commerceCart" aria-label="Open shopping cart">🛍 <span data-hf-i18n="cartLabel">CART</span> <b id="cartCount">0</b></button>
     <button class="language-toggle" id="languageToggle" type="button" aria-haspopup="dialog" aria-controls="languageModal">🌐 EN</button>
   </div>
 </header>
+
+<div class="commerce-cart-overlay" id="commerceCartOverlay" hidden></div>
+<aside class="commerce-cart" id="commerceCart" role="dialog" aria-modal="true" aria-labelledby="commerceCartTitle" hidden>
+  <div class="commerce-cart-head">
+    <div><span class="commerce-kicker" data-hf-i18n="secureShopping">HI FASHION COMMERCE</span><h2 id="commerceCartTitle" data-hf-i18n="yourCart">Your shopping bag</h2></div>
+    <button type="button" class="commerce-close" id="closeCart" aria-label="Close cart">×</button>
+  </div>
+  <div class="commerce-cart-body">
+    <div id="cartItems" class="cart-items" aria-live="polite"></div>
+    <div id="cartEmpty" class="cart-empty" data-hf-i18n="cartEmpty">Your bag is empty. Add a preview item or a gift card to try the cart.</div>
+    <div class="commerce-total-row"><span data-hf-i18n="subtotal">Subtotal</span><strong id="cartSubtotal">€0.00</strong></div>
+    <p class="commerce-fineprint" data-hf-i18n="shippingTaxNote">Shipping and taxes are not calculated in this preview. Live rates and destination taxes must be connected before launch.</p>
+    <div class="gift-redeem">
+      <label for="giftCardCode" data-hf-i18n="giftCardCodeLabel">Have a gift card?</label>
+      <div class="gift-redeem-row"><input id="giftCardCode" type="text" maxlength="40" autocomplete="off" placeholder="Enter gift card code"><button type="button" id="applyGiftCard" data-hf-i18n="applyCode">APPLY</button></div>
+      <p class="commerce-status" id="giftCardStatus" role="status" data-hf-i18n="giftCardNotLive">Gift-card balance checks will activate with the secure backend.</p>
+    </div>
+    <div class="checkout-fields">
+      <h3 data-hf-i18n="deliveryDetails">Delivery & contact details</h3>
+      <label><span data-hf-i18n="fullName">Full name</span><input id="checkoutName" autocomplete="name" maxlength="120" placeholder="Name and surname"></label>
+      <label><span data-hf-i18n="emailAddress">Email address</span><input id="checkoutEmail" type="email" autocomplete="email" maxlength="160" placeholder="you@example.com"></label>
+      <label><span data-hf-i18n="deliveryAddress">Delivery address</span><input id="checkoutAddress" autocomplete="street-address" maxlength="240" placeholder="Street and number"></label>
+      <div class="checkout-two-col">
+        <label><span data-hf-i18n="country">Country</span><input id="checkoutCountry" autocomplete="country-name" maxlength="90" placeholder="Country"></label>
+        <label><span data-hf-i18n="postalCode">Postal code</span><input id="checkoutPostal" autocomplete="postal-code" maxlength="24" placeholder="Postal code"></label>
+      </div>
+    </div>
+    <div class="payment-panel">
+      <span class="commerce-kicker" data-hf-i18n="securePayments">SECURE PAYMENT METHODS</span>
+      <div class="payment-method-chips"><span>VISA</span><span>Mastercard</span><span>Apple Pay*</span><span>Google Pay*</span></div>
+      <p data-hf-i18n="paymentProviderNote">Planned: Stripe-hosted checkout. Eligible payment methods are shown by the provider for each buyer's country and device. *Wallets depend on account and browser eligibility.</p>
+      <button type="button" class="commerce-checkout" id="secureCheckout"><span data-hf-i18n="continueCheckout">CONTINUE TO SECURE CHECKOUT</span> <span aria-hidden="true">→</span></button>
+      <p class="commerce-status" id="checkoutStatus" role="status" data-hf-i18n="checkoutNotConnected">Checkout is in preview mode. No payment will be taken.</p>
+    </div>
+    <p class="commerce-legal" data-hf-i18n="previewLegal">Preview only: demo products and gift-card selections are not real offers. No order, payment, gift-card code or delivery booking is created in this version.</p>
+  </div>
+</aside>
 
 <div class="brand-strip" id="top-brand-strip" aria-label="Global retailer trademarks and store links">
   <div class="brand-strip-heading">
@@ -3071,7 +3178,47 @@ html[dir="rtl"] .brand-search-result{direction:rtl}
     <div class="no-results" id="noResults">No matching department or product category found.</div>
   </section>
 
-  <section class="info" id="new-arrivals">
+  
+<section class="commerce-preview" id="shop-preview">
+  <div class="section-title">
+    <small data-hf-i18n="commerceEyebrow">THE HI FASHION SHOPPING EXPERIENCE</small>
+    <h2 data-hf-i18n="commerceTitle">Shopping Cart, Gifts & Secure Checkout</h2>
+    <p data-hf-i18n="commerceIntro">Try the shopping experience with clearly labelled sample listings. Live seller products and payments will be enabled after the commerce backend is connected.</p>
+  </div>
+  <div class="commerce-preview-banner"><strong data-hf-i18n="demoModeTitle">COMMERCE PREVIEW · NOT LIVE FOR SALES</strong><span data-hf-i18n="demoModeCopy">These example items and prices are for testing the cart interface only. They are not real stock, seller offers or purchasable products.</span></div>
+  <div class="commerce-products">
+    <article class="commerce-product">
+      <img src="https://images.pexels.com/photos/21897118/pexels-photo-21897118.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Sample fashion tote bag" loading="lazy">
+      <div class="commerce-product-info"><span class="commerce-product-tag" data-hf-i18n="sampleListing">SAMPLE LISTING</span><h3>Everyday Structured Tote</h3><p data-hf-i18n="sampleBagDescription">Example product card for a seller-approved handbag listing.</p><div class="commerce-product-bottom"><strong>€49.00</strong><button type="button" class="commerce-add" data-add-demo="demo-tote" data-hf-i18n="addToCart">ADD TO CART</button></div><button type="button" class="commerce-wishlist" data-wishlist="demo-tote" data-hf-i18n="saveItem">♡ SAVE ITEM</button></div>
+    </article>
+    <article class="commerce-product">
+      <img src="https://images.pexels.com/photos/2529148/pexels-photo-2529148.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Sample athletic sneakers" loading="lazy">
+      <div class="commerce-product-info"><span class="commerce-product-tag" data-hf-i18n="sampleListing">SAMPLE LISTING</span><h3>Minimal Court Sneakers</h3><p data-hf-i18n="sampleShoesDescription">Example product card for a verified footwear seller listing.</p><div class="commerce-product-bottom"><strong>€79.00</strong><button type="button" class="commerce-add" data-add-demo="demo-sneakers" data-hf-i18n="addToCart">ADD TO CART</button></div><button type="button" class="commerce-wishlist" data-wishlist="demo-sneakers" data-hf-i18n="saveItem">♡ SAVE ITEM</button></div>
+    </article>
+    <article class="commerce-product">
+      <img src="https://images.pexels.com/photos/4428045/pexels-photo-4428045.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Sample tailored clothing" loading="lazy">
+      <div class="commerce-product-info"><span class="commerce-product-tag" data-hf-i18n="sampleListing">SAMPLE LISTING</span><h3>Relaxed Linen Shirt</h3><p data-hf-i18n="sampleShirtDescription">Example product card for a fashion boutique product listing.</p><div class="commerce-product-bottom"><strong>€39.00</strong><button type="button" class="commerce-add" data-add-demo="demo-shirt" data-hf-i18n="addToCart">ADD TO CART</button></div><button type="button" class="commerce-wishlist" data-wishlist="demo-shirt" data-hf-i18n="saveItem">♡ SAVE ITEM</button></div>
+    </article>
+  </div>
+  <div class="gift-shop">
+    <div class="gift-shop-copy"><span class="commerce-kicker" data-hf-i18n="giftCardEyebrow">A GIFT THAT ALWAYS FITS</span><h3 data-hf-i18n="giftCardTitle">HI FASHION Digital Gift Cards</h3><p data-hf-i18n="giftCardDescription">Choose a value, add the recipient details and place the gift card in your preview cart. In the live system, gift cards will be issued only after confirmed payment.</p><div class="gift-card-perks"><span data-hf-i18n="giftPerk1">Digital delivery by email</span><span data-hf-i18n="giftPerk2">Unique secure redemption code</span><span data-hf-i18n="giftPerk3">Balance and transaction history</span></div></div>
+    <form class="gift-card-form" id="giftCardForm">
+      <label><span data-hf-i18n="giftValue">Choose gift value</span><select id="giftAmount"><option value="25">€25</option><option value="50">€50</option><option value="100">€100</option><option value="200">€200</option></select></label>
+      <label><span data-hf-i18n="recipientName">Recipient name</span><input id="giftRecipient" maxlength="100" placeholder="Recipient name" required></label>
+      <label><span data-hf-i18n="recipientEmail">Recipient email</span><input id="giftRecipientEmail" type="email" maxlength="160" placeholder="recipient@example.com" required></label>
+      <label><span data-hf-i18n="giftMessage">Gift message (optional)</span><textarea id="giftMessageText" rows="2" maxlength="300" placeholder="A little something for you..."></textarea></label>
+      <button type="submit" class="commerce-add gift-add" data-hf-i18n="addGiftCard">ADD GIFT CARD TO CART</button>
+      <p class="commerce-status" id="giftFormStatus" role="status" data-hf-i18n="giftCardPreviewOnly">Preview only. The gift card will not be charged, activated or emailed.</p>
+    </form>
+  </div>
+  <div class="commerce-feature-row">
+    <article><span>01</span><h3 data-hf-i18n="featureBuyerProtection">Buyer protection</h3><p data-hf-i18n="featureBuyerProtectionCopy">Order confirmation, seller details, delivery updates and a clear support route must be connected before launch.</p></article>
+    <article><span>02</span><h3 data-hf-i18n="featureSellerPayouts">Seller payouts</h3><p data-hf-i18n="featureSellerPayoutsCopy">Approved sellers will complete identity and business verification before receiving marketplace payouts.</p></article>
+    <article><span>03</span><h3 data-hf-i18n="featureOrders">Orders & returns</h3><p data-hf-i18n="featureOrdersCopy">The live account area will hold order history, tracking, cancellations and return requests.</p></article>
+  </div>
+</section>
+
+<section class="info" id="new-arrivals">
     <div class="section-title">
       <small>WHAT'S NEW</small>
       <h2 data-hf-i18n="arrivalsTitle">New Arrivals</h2>
@@ -3710,6 +3857,127 @@ document.querySelectorAll(".tag").forEach(tag => {
 
 // Initialise seasonal display only after season controls have been defined.
 applySeason(localStorage.getItem("hiFashionSeason") || "auto", false);
+
+/* Commerce preview only. Real payments require a verified server-side integration. */
+(function initHiFashionCommerce(){
+  if (window.__hiFashionCommerceReady) return;
+  window.__hiFashionCommerceReady = true;
+  const products = {
+    "demo-tote": {id:"demo-tote",name:"Everyday Structured Tote",priceCents:4900,type:"demo"},
+    "demo-sneakers": {id:"demo-sneakers",name:"Minimal Court Sneakers",priceCents:7900,type:"demo"},
+    "demo-shirt": {id:"demo-shirt",name:"Relaxed Linen Shirt",priceCents:3900,type:"demo"}
+  };
+  const money = cents => new Intl.NumberFormat(undefined,{style:"currency",currency:"EUR"}).format(cents/100);
+  const copy = {
+    en:{empty:"Your bag is empty.",added:"Added to your preview cart.",removed:"Item removed.",giftAdded:"Gift card added to the preview cart. It is not active or paid.",giftNeedDetails:"Enter the recipient's name and a valid email address.",giftNotLive:"Gift-card validation is not live. No code has been checked.",checkoutEmpty:"Add an item to your cart first.",checkoutFields:"Complete your name, email and delivery address.",checkoutNoServer:"Secure checkout is not connected yet. No payment has been taken. Stripe and the order backend must be configured first.",checkoutError:"Checkout could not be started. Please try again later.",wishlistAdded:"SAVED TO WISHLIST",wishlistRemoved:"♡ SAVE ITEM",item:"item",items:"items",recipient:"Recipient",remove:"REMOVE",qty:"Qty"},
+    bg:{empty:"Количката е празна.",added:"Добавено е в тестовата количка.",removed:"Продуктът е премахнат.",giftAdded:"Подаръчната карта е добавена в тестовата количка. Не е активна и не е платена.",giftNeedDetails:"Въведете име на получателя и валиден имейл адрес.",giftNotLive:"Проверката на подаръчни карти още не е активна. Кодът не е проверен.",checkoutEmpty:"Първо добавете продукт в количката.",checkoutFields:"Попълнете име, имейл и адрес за доставка.",checkoutNoServer:"Сигурното плащане още не е свързано. Не е взето плащане. Първо трябва да се конфигурират Stripe и системата за поръчки.",checkoutError:"Плащането не може да бъде стартирано. Опитайте отново по-късно.",wishlistAdded:"ЗАПАЗЕНО В ЛЮБИМИ",wishlistRemoved:"♡ ЗАПАЗИ",item:"продукт",items:"продукта",recipient:"Получател",remove:"ПРЕМАХНИ",qty:"Брой"},
+    de:{empty:"Ihr Warenkorb ist leer.",added:"Zum Vorschau-Warenkorb hinzugefügt.",removed:"Artikel entfernt.",giftAdded:"Geschenkkarte zum Vorschau-Warenkorb hinzugefügt. Sie ist nicht aktiv oder bezahlt.",giftNeedDetails:"Geben Sie den Namen des Empfängers und eine gültige E-Mail-Adresse ein.",giftNotLive:"Die Geschenkkartenprüfung ist noch nicht aktiv. Es wurde kein Code geprüft.",checkoutEmpty:"Legen Sie zuerst einen Artikel in den Warenkorb.",checkoutFields:"Vervollständigen Sie Name, E-Mail und Lieferadresse.",checkoutNoServer:"Der sichere Checkout ist noch nicht verbunden. Es wurde keine Zahlung vorgenommen.",checkoutError:"Checkout konnte nicht gestartet werden.",wishlistAdded:"AUF DER MERKLISTE",wishlistRemoved:"♡ SPEICHERN",item:"Artikel",items:"Artikel",recipient:"Empfänger",remove:"ENTFERNEN",qty:"Menge"},
+    fr:{empty:"Votre panier est vide.",added:"Ajouté au panier de démonstration.",removed:"Article retiré.",giftAdded:"Carte cadeau ajoutée au panier de démonstration. Elle n'est ni active ni payée.",giftNeedDetails:"Saisissez le nom du destinataire et une adresse e-mail valide.",giftNotLive:"La vérification des cartes cadeaux n'est pas active. Aucun code n'a été vérifié.",checkoutEmpty:"Ajoutez d'abord un article au panier.",checkoutFields:"Renseignez votre nom, votre e-mail et votre adresse de livraison.",checkoutNoServer:"Le paiement sécurisé n'est pas encore connecté. Aucun paiement n'a été prélevé.",checkoutError:"Le paiement n'a pas pu démarrer.",wishlistAdded:"AJOUTÉ AUX FAVORIS",wishlistRemoved:"♡ ENREGISTRER",item:"article",items:"articles",recipient:"Destinataire",remove:"RETIRER",qty:"Qté"},
+    it:{empty:"Il carrello è vuoto.",added:"Aggiunto al carrello di anteprima.",removed:"Articolo rimosso.",giftAdded:"Carta regalo aggiunta al carrello di anteprima. Non è attiva né pagata.",giftNeedDetails:"Inserisci il nome del destinatario e un indirizzo e-mail valido.",giftNotLive:"La verifica delle carte regalo non è attiva. Nessun codice è stato verificato.",checkoutEmpty:"Aggiungi prima un articolo al carrello.",checkoutFields:"Inserisci nome, e-mail e indirizzo di consegna.",checkoutNoServer:"Il checkout sicuro non è ancora collegato. Non è stato effettuato alcun pagamento.",checkoutError:"Impossibile avviare il checkout.",wishlistAdded:"SALVATO NEI PREFERITI",wishlistRemoved:"♡ SALVA",item:"articolo",items:"articoli",recipient:"Destinatario",remove:"RIMUOVI",qty:"Qtà"},
+    es:{empty:"Tu cesta está vacía.",added:"Añadido a la cesta de prueba.",removed:"Artículo eliminado.",giftAdded:"Tarjeta regalo añadida a la cesta de prueba. No está activa ni pagada.",giftNeedDetails:"Introduce el nombre del destinatario y un correo electrónico válido.",giftNotLive:"La validación de tarjetas regalo aún no está activa. No se ha comprobado ningún código.",checkoutEmpty:"Añade primero un artículo a la cesta.",checkoutFields:"Completa tu nombre, correo y dirección de entrega.",checkoutNoServer:"El pago seguro aún no está conectado. No se ha realizado ningún cobro.",checkoutError:"No se pudo iniciar el pago.",wishlistAdded:"GUARDADO EN FAVORITOS",wishlistRemoved:"♡ GUARDAR",item:"artículo",items:"artículos",recipient:"Destinatario",remove:"ELIMINAR",qty:"Cant."},
+    zh:{empty:"购物袋为空。",added:"已添加到预览购物袋。",removed:"商品已移除。",giftAdded:"礼品卡已加入预览购物袋。尚未激活或付款。",giftNeedDetails:"请输入收礼人姓名和有效电子邮箱。",giftNotLive:"礼品卡验证尚未启用，未检查任何代码。",checkoutEmpty:"请先将商品加入购物袋。",checkoutFields:"请填写姓名、电子邮箱和配送地址。",checkoutNoServer:"安全结账尚未连接。未收取任何款项。",checkoutError:"无法启动结账，请稍后重试。",wishlistAdded:"已加入收藏",wishlistRemoved:"♡ 收藏",item:"件商品",items:"件商品",recipient:"收礼人",remove:"移除",qty:"数量"},
+    ar:{empty:"حقيبة التسوق فارغة.",added:"تمت الإضافة إلى حقيبة المعاينة.",removed:"تمت إزالة المنتج.",giftAdded:"تمت إضافة بطاقة الهدية إلى حقيبة المعاينة. لم يتم تفعيلها أو دفع ثمنها.",giftNeedDetails:"أدخل اسم المستلم وبريداً إلكترونياً صالحاً.",giftNotLive:"التحقق من بطاقات الهدايا غير متاح بعد. لم يتم التحقق من أي رمز.",checkoutEmpty:"أضف منتجاً إلى الحقيبة أولاً.",checkoutFields:"أكمل الاسم والبريد الإلكتروني وعنوان التوصيل.",checkoutNoServer:"لم يتم ربط الدفع الآمن بعد. لم يتم تحصيل أي مبلغ.",checkoutError:"تعذر بدء الدفع.",wishlistAdded:"تم الحفظ في المفضلة",wishlistRemoved:"♡ حفظ",item:"منتج",items:"منتجات",recipient:"المستلم",remove:"إزالة",qty:"الكمية"},
+    ko:{empty:"장바구니가 비어 있습니다.",added:"미리보기 장바구니에 추가했습니다.",removed:"상품을 삭제했습니다.",giftAdded:"기프트 카드가 미리보기 장바구니에 추가되었습니다. 아직 활성화되거나 결제되지 않았습니다.",giftNeedDetails:"받는 사람 이름과 올바른 이메일 주소를 입력하세요.",giftNotLive:"기프트 카드 확인 기능은 아직 활성화되지 않았습니다. 코드를 확인하지 않았습니다.",checkoutEmpty:"먼저 장바구니에 상품을 추가하세요.",checkoutFields:"이름, 이메일 및 배송 주소를 입력하세요.",checkoutNoServer:"보안 결제가 아직 연결되지 않았습니다. 결제는 이루어지지 않았습니다.",checkoutError:"결제를 시작할 수 없습니다.",wishlistAdded:"위시리스트에 저장됨",wishlistRemoved:"♡ 저장",item:"개 상품",items:"개 상품",recipient:"받는 사람",remove:"삭제",qty:"수량"}
+  };
+  const getLang=()=>window.hfActiveLanguage||document.body.dataset.language||"en";
+  const getCopy=()=>copy[getLang()]||copy.en;
+  const $=id=>document.getElementById(id);
+  const cartToggle=$("cartToggle"), cart=$("commerceCart"), overlay=$("commerceCartOverlay");
+  const cartItems=$("cartItems"), empty=$("cartEmpty"), count=$("cartCount"), subtotal=$("cartSubtotal");
+  const cartKey="hiFashionPreviewCartV1", wishlistKey="hiFashionWishlistV1";
+  let cartData=[], wishlist=[];
+  try{cartData=JSON.parse(localStorage.getItem(cartKey)||"[]");if(!Array.isArray(cartData))cartData=[];}catch(e){cartData=[];}
+  try{wishlist=JSON.parse(localStorage.getItem(wishlistKey)||"[]");if(!Array.isArray(wishlist))wishlist=[];}catch(e){wishlist=[];}
+  const save=()=>{try{localStorage.setItem(cartKey,JSON.stringify(cartData));}catch(e){}};
+  const saveWishlist=()=>{try{localStorage.setItem(wishlistKey,JSON.stringify(wishlist));}catch(e){}};
+  const escapeHtml=value=>String(value??"").replace(/[&<>"']/g,ch=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[ch]));
+  function render(){
+    const c=getCopy();
+    const totalItems=cartData.reduce((sum,item)=>sum+item.quantity,0);
+    count.textContent=String(totalItems);
+    const total=cartData.reduce((sum,item)=>sum+item.priceCents*item.quantity,0);
+    subtotal.textContent=money(total);
+    empty.hidden=cartData.length>0;
+    cartItems.innerHTML=cartData.map(item=>{
+      const detail=item.type==="gift" ? '<small>'+c.recipient+': '+escapeHtml(item.recipient||"")+' · '+escapeHtml(item.recipientEmail||"")+'</small>' : '<small>'+escapeHtml(item.note||"Preview item — not for sale")+'</small>';
+      return '<div class="cart-line"><div><strong>'+escapeHtml(item.name)+'</strong>'+detail+'<div class="cart-line-actions"><button type="button" data-cart-change="-1" data-cart-id="'+escapeHtml(item.key)+'" aria-label="Decrease quantity">−</button><span>'+c.qty+': '+item.quantity+'</span><button type="button" data-cart-change="1" data-cart-id="'+escapeHtml(item.key)+'" aria-label="Increase quantity">+</button><button type="button" data-cart-remove="'+escapeHtml(item.key)+'">'+c.remove+'</button></div></div><div class="cart-line-total">'+money(item.priceCents*item.quantity)+'</div></div>';
+    }).join("");
+    document.querySelectorAll("[data-wishlist]").forEach(button=>{
+      const id=button.dataset.wishlist, saved=wishlist.includes(id);
+      button.classList.toggle("is-saved",saved);
+      button.textContent=saved?c.wishlistAdded:c.wishlistRemoved;
+    });
+  }
+  function openCart(){cart.hidden=false;overlay.hidden=false;document.body.style.overflow="hidden";$("closeCart").focus();}
+  function closeCart(){cart.hidden=true;overlay.hidden=true;document.body.style.overflow="";cartToggle.focus();}
+  cartToggle.addEventListener("click",openCart);
+  $("closeCart").addEventListener("click",closeCart);
+  overlay.addEventListener("click",closeCart);
+  document.addEventListener("keydown",event=>{if(event.key==="Escape"&&!cart.hidden)closeCart();});
+  document.querySelectorAll("[data-add-demo]").forEach(button=>button.addEventListener("click",()=>{
+    const product=products[button.dataset.addDemo];if(!product)return;
+    const existing=cartData.find(item=>item.key===product.id);
+    if(existing)existing.quantity=Math.min(existing.quantity+1,20);
+    else cartData.push({...product,key:product.id,quantity:1,note:"Sample listing — not for sale"});
+    save();render();button.textContent=getLang()==="bg"?"ДОБАВЕНО":getLang()==="de"?"HINZUGEFÜGT":getLang()==="fr"?"AJOUTÉ":getLang()==="it"?"AGGIUNTO":getLang()==="es"?"AÑADIDO":"ADDED";
+    window.setTimeout(()=>{if(button.isConnected)button.textContent=(getLang()==="bg"?"ДОБАВИ В КОЛИЧКАТА":"ADD TO CART");},1100);
+  }));
+  document.querySelectorAll("[data-wishlist]").forEach(button=>button.addEventListener("click",()=>{
+    const id=button.dataset.wishlist;
+    wishlist=wishlist.includes(id)?wishlist.filter(x=>x!==id):[...wishlist,id];
+    saveWishlist();render();
+  }));
+  cartItems.addEventListener("click",event=>{
+    const remove=event.target.closest("[data-cart-remove]");
+    const change=event.target.closest("[data-cart-change]");
+    if(remove){cartData=cartData.filter(item=>item.key!==remove.dataset.cartRemove);save();render();return;}
+    if(change){
+      const item=cartData.find(x=>x.key===change.dataset.cartId);if(!item)return;
+      item.quantity+=Number(change.dataset.cartChange);
+      if(item.quantity<=0)cartData=cartData.filter(x=>x!==item);
+      if(item.quantity>20)item.quantity=20;
+      save();render();
+    }
+  });
+  $("giftCardForm").addEventListener("submit",event=>{
+    event.preventDefault();
+    const recipient=$("giftRecipient").value.trim(), email=$("giftRecipientEmail").value.trim();
+    if(!recipient||!/^\S+@\S+\.\S+$/.test(email)){$("giftFormStatus").textContent=getCopy().giftNeedDetails;return;}
+    const amount=Number($("giftAmount").value);
+    if(![25,50,100,200].includes(amount))return;
+    const key="gift-"+Date.now()+"-"+Math.random().toString(36).slice(2,7);
+    cartData.push({key,id:"gift-card",name:"HI FASHION Digital Gift Card",priceCents:amount*100,type:"gift",quantity:1,recipient,recipientEmail:email,message:$("giftMessageText").value.trim()});
+    save();render();$("giftFormStatus").textContent=getCopy().giftAdded;$("giftCardForm").reset();
+    openCart();
+  });
+  $("applyGiftCard").addEventListener("click",()=>{
+    $("giftCardStatus").textContent=getCopy().giftNotLive;
+  });
+  $("secureCheckout").addEventListener("click",async()=>{
+    const c=getCopy();
+    if(!cartData.length){$("checkoutStatus").textContent=c.checkoutEmpty;return;}
+    const buyer={name:$("checkoutName").value.trim(),email:$("checkoutEmail").value.trim(),address:$("checkoutAddress").value.trim(),country:$("checkoutCountry").value.trim(),postalCode:$("checkoutPostal").value.trim()};
+    if(!buyer.name||!/^\S+@\S+\.\S+$/.test(buyer.email)||!buyer.address||!buyer.country){$("checkoutStatus").textContent=c.checkoutFields;return;}
+    const endpoint=String(window.HI_FASHION_COMMERCE?.checkoutEndpoint||"").trim();
+    if(!endpoint){$("checkoutStatus").textContent=c.checkoutNoServer;return;}
+    try{
+      $("secureCheckout").disabled=true;
+      $("checkoutStatus").textContent=c.checkoutNoServer;
+      const response=await fetch(endpoint,{method:"POST",headers:{"Content-Type":"application/json"},credentials:"same-origin",body:JSON.stringify({buyer,items:cartData.map(item=>({id:item.id,quantity:item.quantity,type:item.type,recipient:item.recipient||null,recipientEmail:item.recipientEmail||null,message:item.message||null}))})});
+      if(!response.ok)throw new Error("Checkout request failed");
+      const result=await response.json();
+      if(!result||typeof result.checkoutUrl!=="string")throw new Error("Invalid checkout response");
+      const destination=new URL(result.checkoutUrl,window.location.origin);
+      if(destination.protocol!=="https:"&&destination.origin!==window.location.origin)throw new Error("Unsafe checkout URL");
+      window.location.assign(destination.href);
+    }catch(error){$("checkoutStatus").textContent=c.checkoutError;}
+    finally{$("secureCheckout").disabled=false;}
+  });
+  const initialLang=getLang();
+  if(typeof window.hfApplyLanguage==="function")window.hfApplyLanguage(initialLang,false);
+  render();
+})();
+
 </script>
 </body>
 </html>
