@@ -728,6 +728,48 @@ body[data-season] .hero{
 .brand-identity{gap:12px}
 .retail-card .brand-logo{flex:0 0 auto}
 
+
+/* Dark controls for the department market search */
+#departments .market-search-actions{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:10px;
+  margin-top:12px;
+}
+#departments #searchAllMarkets,
+#departments #clearMarketSearch{
+  min-height:43px;
+  padding:0 20px;
+  background:#090d0a!important;
+  color:#eee9dc!important;
+  border:1px solid #364238!important;
+  border-radius:2px;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.035),0 4px 12px rgba(0,0,0,.32)!important;
+  text-shadow:none!important;
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:1.5px;
+  cursor:pointer;
+  transition:background .18s ease,border-color .18s ease,color .18s ease,transform .18s ease;
+}
+#departments #searchAllMarkets:hover,
+#departments #clearMarketSearch:hover{
+  background:#151c17!important;
+  border-color:#71816f!important;
+  color:#fff!important;
+  transform:translateY(-1px);
+}
+#departments #searchAllMarkets:focus-visible,
+#departments #clearMarketSearch:focus-visible{
+  outline:2px solid #a6b29d;
+  outline-offset:3px;
+}
+@media(max-width:480px){
+  #departments .market-search-actions{gap:8px}
+  #departments #searchAllMarkets,#departments #clearMarketSearch{padding:0 14px;flex:1}
+}
+
 </style>
 </head>
 <body>
