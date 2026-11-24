@@ -210,6 +210,41 @@ footer strong{color:var(--gold);letter-spacing:2px}
 .brand-search-result:hover{border-color:#c6a45a}
 .retail-card[hidden],.region-section[hidden],.top-brand-mark[hidden]{display:none!important}
 @media(max-width:600px){.brand-search-result{align-items:flex-start;flex-direction:column;gap:5px}.brand-search-result strong{min-width:0}}
+
+/* Four-season site themes and seasonal wardrobe selector */
+body[data-season="spring"]{--season-accent:#b9d8a2;--season-panel:#14291d;--season-directory:#183528;--season-hero:linear-gradient(90deg,rgba(7,16,10,.91),rgba(7,16,10,.36)),radial-gradient(ellipse at 78% 22%,rgba(177,208,133,.45),transparent 39%),linear-gradient(135deg,#294c36,#101d16 75%);--season-deep:#0b1710}
+body[data-season="summer"]{--season-accent:#f2cf75;--season-panel:#193245;--season-directory:#172e40;--season-hero:linear-gradient(90deg,rgba(5,15,25,.88),rgba(5,15,25,.25)),radial-gradient(ellipse at 82% 22%,rgba(244,193,92,.48),transparent 38%),linear-gradient(135deg,#27617a,#10283a 75%);--season-deep:#0b1722}
+body[data-season="autumn"]{--season-accent:#e2a16c;--season-panel:#321e16;--season-directory:#302016;--season-hero:linear-gradient(90deg,rgba(18,9,6,.92),rgba(18,9,6,.34)),radial-gradient(ellipse at 78% 24%,rgba(200,105,49,.4),transparent 38%),linear-gradient(135deg,#65351f,#21150f 78%);--season-deep:#160e0a}
+body[data-season="winter"]{--season-accent:#b9d3e7;--season-panel:#172635;--season-directory:#172838;--season-hero:linear-gradient(90deg,rgba(5,12,20,.94),rgba(5,12,20,.34)),radial-gradient(ellipse at 78% 20%,rgba(163,202,231,.4),transparent 38%),linear-gradient(135deg,#34556d,#111d2a 78%);--season-deep:#0b141d}
+body{transition:background-color .4s ease}
+body[data-season] .hero{background:var(--season-hero)!important;transition:background .5s ease}
+body[data-season] .directory{background:var(--season-directory)!important;transition:background .5s ease}
+body[data-season] .future,body[data-season] .accessory-market{background:linear-gradient(180deg,var(--season-panel),var(--season-deep))!important;transition:background .5s ease}
+body[data-season] .trending,body[data-season] .store-network,body[data-season] .info{background:var(--season-deep)!important;transition:background .5s ease}
+body[data-season] .seasonal-shop{background:linear-gradient(145deg,var(--season-panel),var(--season-deep))}
+.season-controls{display:flex;align-items:center;justify-content:center;gap:9px;flex-wrap:wrap;padding:12px 15px;background:#0b100d;border-bottom:1px solid #354439}
+.season-controls-label{color:#c6a45a;font-size:9px;font-weight:bold;letter-spacing:2px;margin-right:5px}
+.season-control{background:#121a15;border:1px solid #465749;color:#e9e8e0;padding:9px 13px;font-size:9px;letter-spacing:1.2px;cursor:pointer;transition:all .2s}
+.season-control:hover,.season-control.active{background:var(--season-accent);border-color:var(--season-accent);color:#111}
+.season-current{color:#aab5ac;font-size:9px;letter-spacing:.7px;margin-left:5px}
+.seasonal-shop{background:#101913}
+.seasonal-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;max-width:1250px;margin:0 auto}
+.season-card{position:relative;min-height:365px;background:#111a14;border:1px solid #415344;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end}
+.season-card::before{content:"";position:absolute;inset:0;background:var(--season-card-image) center/cover no-repeat;transition:transform .5s ease;z-index:0}
+.season-card:hover::before{transform:scale(1.045)}
+.season-card::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,9,7,.02) 10%,rgba(5,9,7,.35) 46%,rgba(5,9,7,.96) 100%);z-index:0}
+.season-card-content{position:relative;z-index:1;padding:20px}
+.season-card small{color:var(--season-accent);font-size:9px;letter-spacing:2px}
+.season-card h3{font-family:Georgia,serif;font-size:28px;font-weight:normal;color:#fff;margin:8px 0}
+.season-card p{font-size:11px;line-height:1.7;color:#e2e5df;margin-bottom:13px}
+.season-card button{padding:10px 12px;background:rgba(7,12,8,.8);border:1px solid var(--season-accent);color:#fff;font-size:9px;letter-spacing:1.5px;cursor:pointer}
+.season-card button:hover{background:var(--season-accent);color:#111}
+.season-chip-list{display:flex;gap:6px;flex-wrap:wrap;margin-top:13px}
+.season-chip{border:1px solid rgba(255,255,255,.4);background:rgba(4,8,5,.72);color:#f1eee5;padding:6px 8px;font-size:9px;cursor:pointer}
+.season-chip:hover{border-color:var(--season-accent);color:var(--season-accent)}
+.seasonal-caption{max-width:950px;margin:20px auto 0;color:#9da99f;text-align:center;font-size:10px;line-height:1.7}
+@media(max-width:980px){.seasonal-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:580px){.seasonal-grid{grid-template-columns:1fr}.season-card{min-height:400px}.season-controls{gap:6px}.season-control{padding:8px 10px}.season-current{width:100%;text-align:center}}
 </style>
 </head>
 <body>
@@ -218,6 +253,7 @@ footer strong{color:var(--gold);letter-spacing:2px}
   <div class="logo">HI<small>HUMAN INTELLIGENCE</small></div>
   <nav>
     <a href="#departments">DEPARTMENTS</a>
+    <a href="#seasonal-shop">4 SEASONS</a>
     <a href="#future">FUTURE 2027</a>
     <a href="#store-network">STORE NETWORK</a>
     <a href="#trending">TRENDING NOW</a>
@@ -485,6 +521,16 @@ footer strong{color:var(--gold);letter-spacing:2px}
   </div>
   <p class="brand-strip-note">Select any brand mark to visit its official online store. Trademarks and logos belong to their respective owners; no partnership or endorsement is implied.</p>
 </div>
+<div class="season-controls" id="season-controls" aria-label="Choose website season theme">
+  <span class="season-controls-label">SEASONAL STYLE</span>
+  <button class="season-control active" type="button" data-season-choice="auto">AUTO</button>
+  <button class="season-control" type="button" data-season-choice="spring">SPRING</button>
+  <button class="season-control" type="button" data-season-choice="summer">SUMMER</button>
+  <button class="season-control" type="button" data-season-choice="autumn">AUTUMN</button>
+  <button class="season-control" type="button" data-season-choice="winter">WINTER</button>
+  <span class="season-current" id="seasonCurrent" aria-live="polite">AUTO SEASON</span>
+</div>
+
 
 
 <main>
@@ -823,6 +869,50 @@ footer strong{color:var(--gold);letter-spacing:2px}
     </div>
 
     <p class="trend-disclaimer">Search-growth figures are year-on-year changes in product search interest reported in MediaVision's January 2026 Fashion Report; they are not sales totals. International purchase figures come from DHL's 2026 E-Commerce Trends Report. Images are Pexels editorial stock photos used for trend inspiration only—not actual seller inventory or product listings. Real catalogue photos will be supplied and authorised by participating sellers. <a href="https://www.pexels.com/license/" target="_blank" rel="noopener">Pexels licence</a>.</p>
+  </section>
+
+
+  <section class="seasonal-shop" id="seasonal-shop">
+    <div class="section-title">
+      <small>DRESS FOR THE MOMENT</small>
+      <h2>Shop by Season</h2>
+      <p>Choose Spring, Summer, Autumn or Winter to discover clothing and accessories for that time of year.</p>
+    </div>
+    <div class="seasonal-grid">
+      <article class="season-card" style="--season-card-image:url('https://images.pexels.com/photos/32596220/pexels-photo-32596220.jpeg?auto=compress&cs=tinysrgb&w=1200')">
+        <div class="season-card-content">
+          <small>FRESH · LIGHT · LAYERED</small><h3>Spring</h3>
+          <p>Light jackets, floral dresses, knitwear, shirts and transitional accessories.</p>
+          <button type="button" data-season-choice="spring">EXPLORE SPRING</button>
+          <div class="season-chip-list"><button class="season-chip" data-search="Dresses">Dresses</button><button class="season-chip" data-search="Jackets">Light Jackets</button><button class="season-chip" data-search="Knitwear">Knitwear</button><button class="season-chip" data-search="Scarves">Scarves</button></div>
+        </div>
+      </article>
+      <article class="season-card" style="--season-card-image:url('https://images.pexels.com/photos/18031037/pexels-photo-18031037.jpeg?cs=srgb&dl=pexels-elif-525070928-18031037.jpg&fm=jpg')">
+        <div class="season-card-content">
+          <small>BRIGHT · BREEZY · EASY</small><h3>Summer</h3>
+          <p>Linen, swimwear, sandals, sunglasses, shorts and holiday bags.</p>
+          <button type="button" data-season-choice="summer">EXPLORE SUMMER</button>
+          <div class="season-chip-list"><button class="season-chip" data-search="Dresses">Summer Dresses</button><button class="season-chip" data-search="Sandals">Sandals</button><button class="season-chip" data-search="Sunglasses">Sunglasses</button><button class="season-chip" data-search="Travel Bags">Travel Bags</button></div>
+        </div>
+      </article>
+      <article class="season-card" style="--season-card-image:url('https://images.pexels.com/photos/8497715/pexels-photo-8497715.jpeg?cs=srgb&dl=pexels-liliana-drew-8497715.jpg&fm=jpg')">
+        <div class="season-card-content">
+          <small>RICH · TEXTURED · RELAXED</small><h3>Autumn</h3>
+          <p>Coats, leather accessories, boots, layered knitwear and warm tones.</p>
+          <button type="button" data-season-choice="autumn">EXPLORE AUTUMN</button>
+          <div class="season-chip-list"><button class="season-chip" data-search="Coats">Coats</button><button class="season-chip" data-search="Boots">Boots</button><button class="season-chip" data-search="Belts">Belts</button><button class="season-chip" data-search="Scarves">Scarves</button></div>
+        </div>
+      </article>
+      <article class="season-card" style="--season-card-image:url('https://images.pexels.com/photos/30076368/pexels-photo-30076368.jpeg?auto=compress&cs=tinysrgb&w=1200')">
+        <div class="season-card-content">
+          <small>WARM · COSY · PROTECTED</small><h3>Winter</h3>
+          <p>Warm coats, sweaters, boots, gloves, hats and thermal layers.</p>
+          <button type="button" data-season-choice="winter">EXPLORE WINTER</button>
+          <div class="season-chip-list"><button class="season-chip" data-search="Coats">Winter Coats</button><button class="season-chip" data-search="Knitwear">Sweaters</button><button class="season-chip" data-search="Gloves">Gloves</button><button class="season-chip" data-search="Boots">Boots</button></div>
+        </div>
+      </article>
+    </div>
+    <p class="seasonal-caption">Choose a season to change the website's visual atmosphere and explore matching department categories. Product availability and regional seasonality will be added as verified seller catalogues are connected.</p>
   </section>
 
   <section class="directory" id="departments">
@@ -1231,7 +1321,56 @@ function filterDepartments() {
 }
 
 
+
 searchInput.addEventListener("input", filterDepartments);
+
+const seasonButtons = [...document.querySelectorAll("[data-season-choice]")];
+const seasonCurrent = document.getElementById("seasonCurrent");
+const southernHemisphereCountries = new Set([
+  "Argentina","Australia","Bolivia","Botswana","Brazil","Burundi","Chile","Comoros",
+  "Eswatini","Fiji","Lesotho","Madagascar","Malawi","Mauritius","Mozambique","Namibia",
+  "Nauru","New Zealand","Paraguay","Peru","Rwanda","Samoa","Seychelles","Solomon Islands",
+  "South Africa","Timor-Leste","Tuvalu","Uruguay","Vanuatu","Zambia","Zimbabwe"
+]);
+const northernSeasonByMonth = ["winter","winter","spring","spring","spring","summer","summer","summer","autumn","autumn","autumn","winter"];
+function resolveSeason(country) {
+  const month = new Date().getMonth();
+  const northSeason = northernSeasonByMonth[month];
+  if (southernHemisphereCountries.has(country)) {
+    return {winter:"summer",spring:"autumn",summer:"winter",autumn:"spring"}[northSeason];
+  }
+  return northSeason;
+}
+function applySeason(mode, save=true) {
+  const storedDestination = JSON.parse(localStorage.getItem("hiFashionDestination") || "null");
+  const actualSeason = mode === "auto" ? resolveSeason(storedDestination?.country || "") : mode;
+  document.body.dataset.season = actualSeason;
+  document.body.dataset.seasonMode = mode;
+  seasonButtons.forEach(button => button.classList.toggle("active", button.dataset.seasonChoice === mode));
+  seasonCurrent.textContent = mode === "auto"
+    ? "AUTO · " + actualSeason.toUpperCase() + (storedDestination?.country ? " · " + storedDestination.country.toUpperCase() : " · NORTHERN HEMISPHERE")
+    : actualSeason.toUpperCase() + " COLLECTION";
+  if(save) localStorage.setItem("hiFashionSeason", mode);
+}
+const savedSeasonMode = localStorage.getItem("hiFashionSeason") || "auto";
+applySeason(savedSeasonMode, false);
+seasonButtons.forEach(button => {
+  button.addEventListener("click", () => applySeason(button.dataset.seasonChoice));
+});
+document.querySelectorAll(".season-card [data-season-choice]").forEach(button => {
+  button.addEventListener("click", () => {
+    applySeason(button.dataset.seasonChoice);
+    document.getElementById("departments").scrollIntoView({behavior:"smooth"});
+  });
+});
+document.querySelectorAll(".season-chip").forEach(button => {
+  button.addEventListener("click", () => {
+    searchInput.value = button.dataset.search || button.textContent.trim();
+    filterDepartments();
+    document.getElementById("departments").scrollIntoView({behavior:"smooth"});
+  });
+});
+
 
 const deliveryCountry = document.getElementById("deliveryCountry");
 const allWorldMarkets = [
@@ -1282,6 +1421,7 @@ document.getElementById("saveDestination").addEventListener("click", () => {
   }
   localStorage.setItem("hiFashionDestination", JSON.stringify(destination));
   destinationStatus.textContent = "Saved destination: " + [destination.area, destination.postalCode, destination.country].filter(Boolean).join(", ") + ". Stored in this browser only; nearest-stock sorting is not live until verified stock locations and shipping coverage are connected.";
+  if (localStorage.getItem("hiFashionSeason") === "auto") applySeason("auto", false);
 });
 
 
