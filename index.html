@@ -609,6 +609,8 @@ html[dir="rtl"] .account-drawer{right:0!important;left:auto!important;border-lef
           <button type="button" class="commerce-add" id="connectPayoutsButton" data-hf-account="connectPayouts">CONNECT PAYOUTS WITH STRIPE</button>
           <h4 data-hf-account="myListings">My product listings</h4>
           <div id="sellerProductList" class="account-list"></div>
+          <h4 data-hf-account="sellerOrders">Recent seller orders</h4>
+          <div id="sellerOrders" class="account-list"></div>
           <form id="sellerProductForm" class="account-form">
             <h4 data-hf-account="addListing">Add a product</h4>
             <label><span data-hf-account="productName">Product name</span><input id="newProductName" maxlength="120" required></label>
@@ -3487,6 +3489,7 @@ html[dir="rtl"] .account-drawer{right:0!important;left:auto!important;border-lef
   <div>© 2026 HI HUMAN INTELLIGENCE</div>
 </footer>
 
+<script src="./site-config.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
 const hfTranslations = {
@@ -3789,6 +3792,7 @@ function hfApplyLanguage(code, save=true) {
   hfTranslateCountryOptions(lang);
   if(save){try{localStorage.setItem("hiFashionLanguage",lang);}catch(error){}}
   if(typeof filterDepartments==="function" && search?.value.trim()) filterDepartments();
+  if(typeof window.refreshHfAccountLanguage==="function") window.refreshHfAccountLanguage();
 }
 function hfOpenLanguageChooser() {
   hfLanguageModal.hidden = false;
@@ -4117,6 +4121,7 @@ applySeason(localStorage.getItem("hiFashionSeason") || "auto", false);
   }
   function openCart(){cart.hidden=false;overlay.hidden=false;document.body.style.overflow="hidden";$("closeCart").focus();}
   function closeCart(){cart.hidden=true;overlay.hidden=true;document.body.style.overflow="";cartToggle.focus();}
+  window.hiFashionCartClose=closeCart;
   cartToggle.addEventListener("click",openCart);
   $("closeCart").addEventListener("click",closeCart);
   overlay.addEventListener("click",closeCart);
@@ -4300,6 +4305,20 @@ applySeason(localStorage.getItem("hiFashionSeason") || "auto", false);
       const payoutState=sellerProfile.payouts_enabled&&sellerProfile.charges_enabled?"Payout account verified and enabled.":"Payout onboarding or verification is still required.";
       setStatus("sellerPayoutStatus",payoutState);
       await loadSellerProducts();
+      await loadSellerOrders();
+    }
+  }
+  async function loadSellerOrders(){
+    const host=$("sellerOrders");if(!host||!currentUser)return;host.innerHTML="";
+    const {data,error}=await client.from("orders").select("id,status,total_minor,currency,created_at,customer_name").eq("seller_id",currentUser.id).order("created_at",{ascending:false}).limit(30);
+    if(error){host.textContent="Seller order history is unavailable.";return;}
+    if(!data?.length){host.textContent="No orders for your products yet.";return;}
+    for(const row of data){
+      const el=document.createElement("article");el.className="account-list-item";
+      const title=document.createElement("strong");title.textContent=row.customer_name||"Customer order";
+      const info=document.createElement("span");info.textContent=new Intl.NumberFormat(undefined,{style:"currency",currency:row.currency||"EUR"}).format((row.total_minor||0)/100)+" · "+row.status;
+      const date=document.createElement("small");date.textContent=new Date(row.created_at).toLocaleDateString()+" · "+row.id.slice(0,8).toUpperCase();
+      el.append(title,info,date);host.append(el);
     }
   }
   async function loadSellerProducts(){
@@ -4311,7 +4330,15 @@ applySeason(localStorage.getItem("hiFashionSeason") || "auto", false);
       const el=document.createElement("article");el.className="account-list-item";
       const title=document.createElement("strong");title.textContent=row.name;
       const info=document.createElement("span");info.textContent="€"+(row.price_minor/100).toFixed(2)+" · Stock "+row.stock+" · "+(row.is_published?"Published":"Draft");
-      el.append(title,info);host.append(el);
+      const toggle=document.createElement("button");toggle.type="button";toggle.className="account-secondary";toggle.textContent=row.is_published?"UNPUBLISH":"PUBLISH";
+      toggle.addEventListener("click",async()=>{
+        toggle.disabled=true;
+        const {error:updateError}=await client.from("products").update({is_published:!row.is_published,updated_at:new Date().toISOString()}).eq("id",row.id).eq("seller_id",currentUser.id);
+        toggle.disabled=false;
+        if(updateError){setStatus("sellerProductStatus",updateError.message);return;}
+        await loadSellerProducts();await loadLiveProducts();
+      });
+      el.append(title,info,toggle);host.append(el);
     }
   }
   async function loadLiveProducts(){
