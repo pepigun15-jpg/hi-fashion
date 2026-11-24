@@ -2467,234 +2467,481 @@ body :is(input,select,textarea){color:#111!important;background:#fff!important}
 
 
 <style id="hf-final-diamond-background-and-header-controls">
-/* The diamond photograph is the actual page canvas, not a white overlay. */
+/* Exact desktop composition from the supplied HI FASHION reference. */
+:root{--hf-ink:#111;--hf-gold:#c6a45a}
 html{
   min-height:100%!important;
-  background:#e9edf2 url("assets/diamond-background-user.svg") center center/cover fixed no-repeat!important;
+  background:#edf0f3!important;
 }
 body{
   min-height:100vh!important;
+  position:relative!important;
+  isolation:isolate!important;
   background:transparent!important;
   background-image:none!important;
   background-color:transparent!important;
   color:#111!important;
 }
-body::before{content:none!important;display:none!important}
-main,main>section,main>div{background-color:transparent!important}
-main>section:not(.hf-hero),
-body[data-season] .directory,body[data-season] .trending,body[data-season] .future,
-body[data-season] .accessory-market,body[data-season] .store-network,body[data-season] .info,
-body[data-season] .seller,body[data-season] .seasonal-shop,
-#productCatalogue.catalogue-section,.hf-quick-categories,.hf-global-catalogue-intro,
-.hf-reference-featured,.future,.store-network{
-  background-color:rgba(255,255,255,.12)!important;
+body::before{
+  content:""!important;
+  display:block!important;
+  position:fixed!important;
+  inset:0!important;
+  z-index:-1!important;
+  pointer-events:none!important;
+  background-image:url("assets/diamond-background-user.svg")!important;
+  background-position:center center!important;
+  background-size:cover!important;
+  background-repeat:no-repeat!important;
+  opacity:1!important;
+}
+body::after{content:none!important;display:none!important}
+
+/* Header: black bar, gold wordmark, the same navigation and three simple icons. */
+header.hf-premium-header,.hf-premium-header{
+  position:relative!important;
+  top:auto!important;
+  z-index:120!important;
+  display:flex!important;
+  flex-flow:row nowrap!important;
+  align-items:center!important;
+  justify-content:space-between!important;
+  box-sizing:border-box!important;
+  width:100%!important;
+  height:60px!important;
+  min-height:60px!important;
+  padding:0 38px 0 58px!important;
+  gap:28px!important;
+  background:#050505!important;
   background-image:none!important;
-  color:#111!important;
-  backdrop-filter:blur(1.5px);
+  border:0!important;
+  border-bottom:1px solid #9c895d!important;
+  box-shadow:0 2px 9px rgba(0,0,0,.2)!important;
 }
-/* Keep product tiles legible while the diamond remains visible around them. */
-main :is(.hf-category-card,.hf-reference-product,.catalogue-product-card,.department,
-.info-card,.seller-copy,.seller-form,.trend-card,.future-card,.season-card,
-.retail-card,.network-card,.commerce-product,.live-product-card){
-  background:rgba(255,255,255,.90)!important;
+.hf-premium-header .logo{
+  display:flex!important;
+  flex:0 0 auto!important;
+  align-items:center!important;
+  gap:10px!important;
+  height:100%!important;
+  padding-right:38px!important;
+  border-right:1px solid rgba(210,190,145,.72)!important;
+  color:#ead5a4!important;
+  font-family:Georgia,"Times New Roman",serif!important;
+  font-size:34px!important;
+  line-height:1!important;
+  letter-spacing:.3px!important;
+  text-decoration:none!important;
+  white-space:nowrap!important;
 }
-/* The hero shares the same diamond photograph as the rest of the page. */
-.hf-hero,body[data-season] .hf-hero,.hero{
-  background-color:transparent!important;
-  background-image:linear-gradient(90deg,rgba(255,255,255,.12) 0%,rgba(255,255,255,.06) 50%,rgba(255,255,255,0) 100%),url("assets/diamond-background-user.svg")!important;
-  background-position:center center,center center!important;
-  background-size:cover,cover!important;
-  background-repeat:no-repeat,no-repeat!important;
+.hf-premium-header .logo small{display:none!important}
+.hf-premium-header .logo-title{color:#ead5a4!important;font-size:inherit!important}
+.hf-premium-header .hf-diamond-mark{
+  display:block!important;width:49px!important;height:38px!important;
+  fill:none!important;stroke:#f1e5ca!important;stroke-width:1.65!important;
 }
-.hf-hero::before{
-  background:linear-gradient(90deg,rgba(255,255,255,.10),rgba(255,255,255,.035) 58%,rgba(255,255,255,0))!important;
+.hf-premium-header nav{
+  display:flex!important;
+  flex:1 1 auto!important;
+  align-items:center!important;
+  justify-content:space-evenly!important;
+  gap:clamp(14px,2.25vw,38px)!important;
+  flex-wrap:nowrap!important;
+  min-width:0!important;
+  overflow:visible!important;
+}
+.hf-premium-header nav a{
+  color:#f7f7f7!important;
+  font-family:Arial,Helvetica,sans-serif!important;
+  font-size:13px!important;
+  font-weight:700!important;
+  letter-spacing:1.1px!important;
+  line-height:1!important;
+  white-space:nowrap!important;
+  text-decoration:none!important;
+}
+.hf-premium-header nav a[href="#departments"]::after{
+  content:""!important;
+  display:inline-block!important;
+  width:7px!important;height:7px!important;
+  margin:0 0 3px 9px!important;
+  border-right:2px solid currentColor!important;
+  border-bottom:2px solid currentColor!important;
+  transform:rotate(45deg)!important;
+}
+.hf-premium-header nav a:hover{color:#e8d09b!important}
+.hf-premium-header .hf-header-actions{
+  display:flex!important;
+  flex:0 0 auto!important;
+  align-items:center!important;
+  justify-content:flex-end!important;
+  gap:19px!important;
+  height:100%!important;
+  margin:0!important;
+  padding-left:27px!important;
+  border-left:1px solid rgba(210,190,145,.72)!important;
+}
+.hf-premium-header .hf-header-actions .hf-icon-link,
+.hf-premium-header .hf-header-actions .hf-icon-button,
+.hf-premium-header .hf-header-actions #accountToggle,
+.hf-premium-header .hf-header-actions #cartToggle{
+  position:relative!important;
+  display:inline-flex!important;
+  flex:0 0 31px!important;
+  align-items:center!important;
+  justify-content:center!important;
+  width:31px!important;height:36px!important;
+  min-width:31px!important;min-height:36px!important;
+  max-height:36px!important;
+  margin:0!important;padding:0!important;
+  border:0!important;border-radius:0!important;
+  background:transparent!important;background-image:none!important;
+  color:#fff!important;box-shadow:none!important;
+  text-decoration:none!important;cursor:pointer!important;
+  transform:none!important;
+}
+.hf-premium-header .hf-header-actions svg{
+  display:block!important;width:26px!important;height:26px!important;
+  fill:none!important;stroke:#f5f5f5!important;stroke-width:1.65!important;
+  stroke-linecap:round!important;stroke-linejoin:round!important;
+}
+.hf-premium-header .hf-header-actions .hf-action-label,
+.hf-premium-header .hf-header-actions #cartCount,
+.hf-premium-header .language-toggle{display:none!important}
+.hf-premium-header .hf-header-actions button:hover,
+.hf-premium-header .hf-header-actions a:hover{opacity:.78!important;background:transparent!important;box-shadow:none!important}
+.hf-premium-header .hf-header-actions button:focus-visible{
+  outline:1px solid #e6cb91!important;outline-offset:3px!important;
 }
 
-/* Restore the full moving retailer-emblem rail. */
+/* White strip with nine marks; the same nine repeat smoothly as a continuous ticker. */
 #top-brand-strip.brand-strip{
-  position:relative!important;
   display:block!important;
-  min-height:62px!important;
-  padding:5px 0!important;
+  position:relative!important;
+  box-sizing:border-box!important;
+  width:100%!important;
+  height:55px!important;
+  min-height:55px!important;
+  padding:0!important;
+  margin:0!important;
   overflow:hidden!important;
-  background:rgba(7,10,13,.88)!important;
-  background-image:linear-gradient(180deg,rgba(255,255,255,.08),rgba(0,0,0,.20))!important;
-  border-top:1px solid rgba(232,205,145,.52)!important;
-  border-bottom:1px solid #c6a45a!important;
-  box-shadow:0 5px 22px rgba(0,0,0,.18),inset 0 1px rgba(255,255,255,.12)!important;
+  background:#fff!important;
+  background-image:none!important;
+  border:0!important;
+  border-bottom:1px solid #d7d2c8!important;
+  box-shadow:0 2px 6px rgba(0,0,0,.045)!important;
 }
 #top-brand-strip .brand-strip-heading,
 #top-brand-strip .brand-strip-note{display:none!important}
 #top-brand-strip .brand-strip-window{
-  display:block!important;
-  width:100%!important;
+  display:block!important;width:100%!important;height:55px!important;
   overflow:hidden!important;
 }
 #top-brand-strip .brand-strip-track{
-  display:flex!important;
-  flex-flow:row nowrap!important;
-  align-items:center!important;
-  justify-content:flex-start!important;
-  gap:22px!important;
-  width:max-content!important;
-  min-width:max-content!important;
-  padding:3px 18px!important;
-  margin:0!important;
-  animation:hiBrandTicker 150s linear infinite!important;
-  animation-play-state:running!important;
-  transform:translate3d(0,0,0);
-  will-change:transform;
+  display:flex!important;flex-flow:row nowrap!important;
+  align-items:stretch!important;justify-content:flex-start!important;
+  gap:0!important;width:max-content!important;min-width:max-content!important;
+  height:55px!important;padding:0!important;margin:0!important;
+  animation:hiBrandTicker 100s linear infinite!important;
+  animation-play-state:running!important;will-change:transform!important;
 }
 #top-brand-strip:hover .brand-strip-track{animation-play-state:paused!important}
-#top-brand-strip .brand-strip-track>.top-brand-mark,
-#top-brand-strip .brand-strip-track>.top-brand-mark:not(.hf-reference-mark),
-#top-brand-strip .brand-strip-track>.hf-reference-mark{
-  display:flex!important;
-  position:relative!important;
-  flex:0 0 auto!important;
-  align-items:center!important;
-  justify-content:center!important;
-  gap:8px!important;
-  min-width:96px!important;
-  min-height:42px!important;
-  width:auto!important;
-  padding:5px 12px!important;
-  margin:0!important;
-  color:#fff!important;
-  background:rgba(255,255,255,.045)!important;
-  border:1px solid rgba(224,195,130,.24)!important;
-  border-radius:6px!important;
-  opacity:1!important;
+#top-brand-strip .brand-strip-track>.top-brand-mark.hf-reference-mark,
+#top-brand-strip .ticker-duplicate>.top-brand-mark.hf-reference-mark{
+  display:flex!important;flex:0 0 calc(100vw / 9)!important;
+  align-items:center!important;justify-content:center!important;
+  box-sizing:border-box!important;
+  width:calc(100vw / 9)!important;min-width:0!important;
+  height:55px!important;min-height:55px!important;
+  margin:0!important;padding:0 12px!important;
+  background:#fff!important;border:0!important;border-right:1px solid #a9a9a9!important;
+  border-radius:0!important;box-shadow:none!important;opacity:1!important;
   text-decoration:none!important;
-  white-space:nowrap!important;
-  box-shadow:inset 0 1px rgba(255,255,255,.08)!important;
-  transition:background .2s ease,border-color .2s ease,transform .2s ease!important;
 }
-#top-brand-strip .brand-strip-track>.top-brand-mark:hover{
-  background:rgba(210,176,104,.18)!important;
-  border-color:rgba(232,205,145,.8)!important;
-  transform:translateY(-2px)!important;
+#top-brand-strip .brand-strip-track>.top-brand-mark.hf-reference-mark:nth-child(9),
+#top-brand-strip .ticker-duplicate>.top-brand-mark.hf-reference-mark:nth-child(9){border-right:0!important}
+#top-brand-strip .brand-strip-track>.top-brand-mark:not(.hf-reference-mark){display:none!important}
+#top-brand-strip .ticker-duplicate{
+  display:flex!important;flex:0 0 100vw!important;
+  align-items:stretch!important;justify-content:flex-start!important;
+  gap:0!important;width:100vw!important;height:55px!important;
+  padding:0!important;margin:0!important;background:#fff!important;
 }
 #top-brand-strip .top-brand-mark img,
-#top-brand-strip .hf-brand-logo{
-  display:block!important;
-  width:auto!important;
-  height:25px!important;
-  max-width:100px!important;
-  object-fit:contain!important;
-  filter:brightness(0) invert(1)!important;
-  opacity:1!important;
-}
-#top-brand-strip .top-brand-mark span{
-  display:inline-block!important;
-  color:#f7edda!important;
-  font-size:11px!important;
-  font-weight:800!important;
-  letter-spacing:.6px!important;
-  text-shadow:0 1px 5px rgba(0,0,0,.8)!important;
+#top-brand-strip .hf-reference-mark img.hf-brand-logo{
+  display:block!important;width:auto!important;height:27px!important;
+  max-width:145px!important;object-fit:contain!important;
+  filter:grayscale(1) brightness(.18)!important;opacity:1!important;
 }
 #top-brand-strip .hf-reference-mark span{display:none!important}
-#top-brand-strip .ticker-duplicate{
-  display:flex!important;
-  flex:0 0 auto!important;
-  align-items:center!important;
-  gap:22px!important;
-  padding-left:22px!important;
-  background:transparent!important;
-}
 @media(prefers-reduced-motion:reduce){
-  #top-brand-strip .brand-strip-track{animation:none!important;transform:none!important;flex-wrap:wrap!important;justify-content:center!important;width:100%!important}
+  #top-brand-strip .brand-strip-track{animation:none!important;transform:none!important}
   #top-brand-strip .ticker-duplicate{display:none!important}
 }
 
-/* Luxury obsidian-and-champagne account and shopping-bag buttons. */
-.hf-premium-header .hf-header-actions{
-  display:flex!important;align-items:center!important;justify-content:flex-end!important;
-  gap:11px!important;flex:0 0 auto!important;
+/* The page canvas stays transparent so the diamond photograph is visible everywhere. */
+main,main>section,main>div,
+main>section:not(.hf-hero),
+.hf-quick-categories,.hf-global-catalogue-intro,.hf-reference-featured,
+#productCatalogue.catalogue-section,.future,.store-network,.trending,
+.seasonal-shop,.directory,.commerce-live-catalog,.commerce-preview,
+.info,.seller,.accessory-market{
+  background:transparent!important;
+  background-image:none!important;
+  border-color:transparent!important;
+  box-shadow:none!important;
 }
-.hf-premium-header .hf-header-actions #accountToggle,
-.hf-premium-header .hf-header-actions #cartToggle{
-  position:relative!important;top:auto!important;right:auto!important;left:auto!important;
-  transform:none!important;display:inline-flex!important;flex-direction:row!important;
-  align-items:center!important;justify-content:center!important;gap:9px!important;
-  width:auto!important;height:44px!important;min-width:112px!important;min-height:44px!important;
-  max-height:44px!important;padding:0 15px!important;margin:0!important;
-  border:1px solid #c6a45a!important;border-radius:9px!important;
-  background:linear-gradient(145deg,#29251d 0%,#111 54%,#080808 100%)!important;
-  color:#f3d994!important;
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.15),inset 0 -2px 0 rgba(0,0,0,.5),0 4px 13px rgba(0,0,0,.32)!important;
-  cursor:pointer!important;z-index:130!important;flex-shrink:0!important;
-  white-space:nowrap!important;opacity:1!important;visibility:visible!important;
-  transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease,background .2s ease!important;
+main{display:block!important;width:100%!important}
+.hf-hero,body[data-season] .hf-hero,.hero{
+  position:relative!important;isolation:isolate!important;overflow:hidden!important;
+  box-sizing:border-box!important;
+  display:flex!important;align-items:center!important;
+  width:100%!important;height:325px!important;min-height:325px!important;
+  margin:0!important;padding:25px clamp(34px,9.7vw,150px)!important;
+  background:transparent!important;background-image:none!important;
+  border:0!important;box-shadow:none!important;
 }
-.hf-premium-header .hf-header-actions #cartToggle{min-width:96px!important}
-.hf-premium-header .hf-header-actions #accountToggle::before,
-.hf-premium-header .hf-header-actions #cartToggle::before{
-  content:"";position:absolute;inset:3px;border-radius:6px;
-  border:1px solid rgba(236,211,155,.12);pointer-events:none;
+.hf-hero::before{
+  content:""!important;position:absolute!important;inset:0!important;
+  z-index:0!important;pointer-events:none!important;
+  background:linear-gradient(90deg,rgba(255,255,255,.08),rgba(255,255,255,.025) 58%,rgba(255,255,255,0))!important;
 }
-.hf-premium-header .hf-header-actions #accountToggle svg,
-.hf-premium-header .hf-header-actions #cartToggle svg{
-  display:block!important;width:20px!important;height:20px!important;
-  fill:none!important;stroke:#e7c77e!important;stroke-width:1.8!important;
-  flex:0 0 auto!important;filter:drop-shadow(0 0 4px rgba(222,188,111,.25))!important;
+.hf-hero .hero-content{
+  position:relative!important;z-index:3!important;
+  display:block!important;width:min(48%,540px)!important;
+  max-width:540px!important;margin:0!important;padding:0!important;
+  text-align:left!important;
 }
-.hf-premium-header .hf-header-actions .hf-action-label{
-  display:inline-block!important;color:#f1dfb5!important;
-  font-family:Arial,Helvetica,sans-serif!important;font-size:10px!important;
-  font-weight:800!important;letter-spacing:1.1px!important;line-height:1!important;
-  visibility:visible!important;opacity:1!important;
+.hf-hero .eyebrow{display:none!important}
+.hf-hero h1,.hf-hero h1 span{
+  display:block!important;width:auto!important;
+  margin:0!important;padding:0!important;
+  color:#080808!important;background:transparent!important;
+  border:0!important;box-shadow:none!important;
+  font-family:Georgia,"Times New Roman",serif!important;
+  font-size:clamp(39px,3.65vw,56px)!important;
+  font-weight:500!important;line-height:.99!important;
+  letter-spacing:-.8px!important;text-shadow:none!important;
 }
-.hf-premium-header .hf-header-actions #cartCount{
-  position:absolute!important;top:-7px!important;right:-7px!important;
-  min-width:20px!important;height:20px!important;padding:0 5px!important;
+.hf-hero .hero-diamond-divider{
   display:flex!important;align-items:center!important;justify-content:center!important;
-  border:1px solid #f5e4bb!important;border-radius:50%!important;
-  background:linear-gradient(145deg,#e9d39c,#b68d42)!important;
-  color:#17130b!important;font-size:10px!important;font-weight:900!important;
-  box-shadow:0 2px 7px rgba(0,0,0,.4)!important;
+  gap:10px!important;width:min(310px,80%)!important;
+  margin:14px auto 11px!important;color:#98743d!important;
 }
-.hf-premium-header .hf-header-actions #accountToggle:hover,
-.hf-premium-header .hf-header-actions #cartToggle:hover{
-  border-color:#f1dca8!important;
-  background:linear-gradient(145deg,#49402e 0%,#19150f 60%,#080808 100%)!important;
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.2),0 0 0 2px rgba(214,179,103,.12),0 7px 18px rgba(0,0,0,.38)!important;
-  transform:translateY(-2px)!important;
+.hf-hero .hero-diamond-divider span{
+  height:1px!important;flex:1!important;background:#b58d4b!important;
 }
-.hf-premium-header .hf-header-actions #accountToggle:focus-visible,
-.hf-premium-header .hf-header-actions #cartToggle:focus-visible{
-  outline:2px solid #f0d99e!important;outline-offset:3px!important;
+.hf-hero .hero-diamond-divider b{font-size:23px!important;font-weight:400!important}
+.hf-hero p{
+  margin:0 auto 15px!important;
+  color:#141414!important;
+  font-family:Georgia,"Times New Roman",serif!important;
+  font-size:clamp(17px,1.5vw,23px)!important;
+  line-height:1.2!important;text-align:center!important;
+  text-shadow:none!important;
 }
+.hf-hero .button{
+  display:flex!important;align-items:center!important;justify-content:center!important;
+  gap:14px!important;width:min(370px,100%)!important;min-width:0!important;
+  min-height:49px!important;margin:0 auto!important;padding:0 20px!important;
+  color:#fff!important;background:#050505!important;background-image:none!important;
+  border:1px solid #c9a65d!important;border-left:3px solid #e6ca8b!important;
+  border-right:3px solid #e6ca8b!important;border-radius:0!important;
+  box-shadow:0 3px 10px rgba(0,0,0,.2)!important;
+  font-family:Arial,Helvetica,sans-serif!important;font-size:16px!important;
+  font-weight:700!important;letter-spacing:1px!important;text-decoration:none!important;
+}
+.hf-hero .button span{color:#fff!important;font-size:22px!important;line-height:1!important}
+.hero-editorial{
+  position:absolute!important;z-index:1!important;top:0!important;right:0!important;bottom:0!important;
+  display:flex!important;align-items:stretch!important;width:61%!important;height:100%!important;
+  overflow:hidden!important;pointer-events:none!important;
+  mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.34) 6%,#000 19%)!important;
+}
+.hero-model{display:block!important;flex:1 1 0!important;min-width:0!important;height:100%!important;object-fit:cover!important}
+.hero-model-men{width:32%!important;object-position:center 12%!important}
+.hero-model-india{width:36%!important;object-position:center 12%!important}
+.hero-model-modest{width:32%!important;object-position:center 12%!important}
+
+/* Eight equal category cards sit directly below the hero. */
+.hf-quick-categories{
+  position:relative!important;z-index:3!important;
+  display:grid!important;grid-template-columns:repeat(8,minmax(0,1fr))!important;
+  gap:9px!important;box-sizing:border-box!important;
+  width:100%!important;max-width:1430px!important;
+  height:144px!important;margin:0 auto!important;
+  padding:0 18px!important;background:transparent!important;
+}
+.hf-category-card{
+  display:flex!important;flex-direction:column!important;align-items:center!important;
+  justify-content:space-between!important;gap:4px!important;
+  box-sizing:border-box!important;width:100%!important;height:144px!important;
+  min-width:0!important;margin:0!important;padding:7px 8px 8px!important;
+  overflow:hidden!important;cursor:pointer!important;
+  color:#111!important;background:rgba(255,255,255,.96)!important;
+  border:1px solid #d7c9b0!important;border-radius:14px!important;
+  box-shadow:0 3px 9px rgba(31,39,48,.08)!important;
+}
+.hf-category-card img{
+  display:block!important;flex:1 1 auto!important;
+  width:100%!important;height:98px!important;min-height:0!important;
+  object-fit:cover!important;object-position:center 35%!important;
+  border-radius:7px!important;background:#f0f0ef!important;
+}
+.hf-category-card span{
+  display:flex!important;align-items:center!important;justify-content:center!important;
+  width:100%!important;min-height:27px!important;
+  color:#111!important;font-family:Arial,Helvetica,sans-serif!important;
+  font-size:clamp(9px,.92vw,13px)!important;font-weight:800!important;
+  letter-spacing:.65px!important;line-height:1.08!important;text-align:center!important;
+}
+
+/* Global catalogue title, six region buttons and the four reference product cards. */
+.hf-global-catalogue-intro{
+  display:block!important;box-sizing:border-box!important;
+  max-width:1320px!important;margin:18px auto 0!important;padding:0 18px!important;
+  background:transparent!important;text-align:center!important;
+}
+.hf-catalogue-title-row{
+  display:flex!important;align-items:center!important;justify-content:center!important;
+  gap:25px!important;width:100%!important;
+}
+.hf-catalogue-title-row>span{
+  display:block!important;flex:1 1 auto!important;max-width:240px!important;height:1px!important;
+  background:#b58e4f!important;
+}
+.hf-catalogue-title-row h2{
+  margin:0!important;padding:0!important;
+  color:#080808!important;background:transparent!important;
+  font-family:Georgia,"Times New Roman",serif!important;
+  font-size:clamp(27px,2.85vw,42px)!important;
+  font-weight:500!important;letter-spacing:0!important;
+  line-height:1.15!important;white-space:nowrap!important;
+}
+.hf-global-catalogue-intro>p{display:none!important}
+.hf-region-pills{
+  display:flex!important;align-items:center!important;justify-content:center!important;
+  flex-wrap:nowrap!important;gap:10px!important;margin:14px auto 0!important;
+}
+.hf-region-pills a{
+  display:flex!important;align-items:center!important;justify-content:center!important;
+  box-sizing:border-box!important;min-width:0!important;min-height:36px!important;
+  padding:7px 20px!important;
+  color:#171717!important;background:rgba(255,255,255,.84)!important;
+  border:1px solid #c8c4be!important;border-radius:9px!important;
+  box-shadow:0 2px 5px rgba(0,0,0,.045)!important;
+  font-family:Arial,Helvetica,sans-serif!important;font-size:12px!important;
+  font-weight:800!important;letter-spacing:.4px!important;text-decoration:none!important;
+  white-space:nowrap!important;
+}
+.hf-region-pills a.active,.hf-region-pills a:hover{
+  color:#17130a!important;
+  background:linear-gradient(135deg,#f0d79e,#bd964f)!important;
+  border-color:#b9924c!important;
+}
+.hf-reference-featured{
+  display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;
+  align-items:stretch!important;gap:12px!important;
+  box-sizing:border-box!important;width:calc(100% - 64px)!important;
+  max-width:1388px!important;margin:17px auto 8px!important;padding:0!important;
+  background:transparent!important;
+}
+.hf-reference-product{
+  display:flex!important;flex-direction:column!important;min-width:0!important;
+  overflow:hidden!important;margin:0!important;
+  background:rgba(255,255,255,.98)!important;color:#111!important;
+  border:1px solid #d5d5d5!important;border-radius:13px!important;
+  box-shadow:0 4px 13px rgba(0,0,0,.10)!important;
+}
+.hf-reference-image-link{
+  display:block!important;width:100%!important;height:192px!important;
+  overflow:hidden!important;background:#eee!important;
+}
+.hf-reference-image-link img{
+  display:block!important;width:100%!important;height:100%!important;
+  object-fit:cover!important;object-position:center 28%!important;
+}
+.hf-reference-product-copy{
+  display:flex!important;flex:1!important;flex-direction:column!important;gap:2px!important;
+  padding:7px 12px 10px!important;background:rgba(255,255,255,.98)!important;
+}
+.hf-reference-product-copy small{
+  color:#111!important;font:700 17px Georgia,"Times New Roman",serif!important;
+}
+.hf-reference-product-copy h3{
+  margin:0!important;color:#111!important;
+  font:14px Georgia,"Times New Roman",serif!important;line-height:1.2!important;
+}
+.hf-reference-product-footer{
+  display:flex!important;align-items:center!important;justify-content:space-between!important;
+  gap:8px!important;margin-top:8px!important;
+}
+.hf-reference-product-footer strong{
+  color:#070707!important;font:700 22px Georgia,"Times New Roman",serif!important;white-space:nowrap!important;
+}
+.hf-reference-product-footer a{
+  display:inline-flex!important;align-items:center!important;justify-content:center!important;
+  gap:8px!important;min-width:132px!important;min-height:29px!important;padding:5px 10px!important;
+  color:#fff!important;background:#050505!important;
+  border:1px solid #c59b50!important;border-left:2px solid #e5c77e!important;
+  border-right:2px solid #e5c77e!important;border-radius:0!important;
+  font-size:10px!important;font-weight:800!important;letter-spacing:.65px!important;
+  text-decoration:none!important;white-space:nowrap!important;
+}
+.hf-reference-product-footer a span{font-size:17px!important;line-height:10px!important;color:#fff!important}
+.hf-reference-disclaimer{display:none!important}
+
+/* Other working shopping panels remain available; this style only changes their launcher icons. */
 .account-drawer[hidden],.account-overlay[hidden],
 .commerce-cart[hidden],.commerce-cart-overlay[hidden]{display:none!important}
 
-@media(max-width:900px){
-  .hf-premium-header .hf-header-actions{gap:7px!important}
-  .hf-premium-header .hf-header-actions #accountToggle{min-width:94px!important;padding:0 10px!important}
-  .hf-premium-header .hf-header-actions #cartToggle{min-width:82px!important;padding:0 10px!important}
+/* Responsive adaptation without changing the desktop reference composition. */
+@media(max-width:1100px){
+  header.hf-premium-header,.hf-premium-header{gap:15px!important;padding:0 18px!important}
+  .hf-premium-header .logo{font-size:27px!important;padding-right:18px!important;gap:7px!important}
+  .hf-premium-header .hf-diamond-mark{width:39px!important;height:32px!important}
+  .hf-premium-header nav{gap:12px!important}
+  .hf-premium-header nav a{font-size:10px!important;letter-spacing:.5px!important}
+  .hf-premium-header .hf-header-actions{gap:12px!important;padding-left:14px!important}
+  .hf-category-card{padding:6px 5px!important}
+  .hf-reference-featured{width:calc(100% - 36px)!important}
 }
-@media(max-width:650px){
-  html{background-attachment:scroll!important;background-position:center top!important;background-size:auto 100vh!important}
-  .hf-premium-header .hf-header-actions{gap:6px!important}
-  .hf-premium-header .hf-header-actions #accountToggle{min-width:78px!important;height:39px!important;min-height:39px!important;padding:0 8px!important;gap:6px!important}
-  .hf-premium-header .hf-header-actions #cartToggle{min-width:68px!important;height:39px!important;min-height:39px!important;padding:0 8px!important;gap:6px!important}
-  .hf-premium-header .hf-header-actions #accountToggle svg,
-  .hf-premium-header .hf-header-actions #cartToggle svg{width:17px!important;height:17px!important}
-  .hf-premium-header .hf-header-actions .hf-action-label{font-size:8px!important;letter-spacing:.5px!important}
-  #top-brand-strip.brand-strip{min-height:56px!important}
-  #top-brand-strip .brand-strip-track{gap:13px!important;animation-duration:185s!important}
-  #top-brand-strip .brand-strip-track>.top-brand-mark{min-width:82px!important;min-height:37px!important;padding:4px 8px!important}
-  #top-brand-strip .top-brand-mark img{height:22px!important;max-width:78px!important}
-  #top-brand-strip .top-brand-mark span{font-size:9px!important}
-  #top-brand-strip .ticker-duplicate{gap:13px!important;padding-left:13px!important}
-}
-@media(max-width:390px){
-  .hf-premium-header .hf-header-actions{gap:4px!important}
-  .hf-premium-header .hf-header-actions #accountToggle{min-width:69px!important;padding:0 6px!important}
-  .hf-premium-header .hf-header-actions #cartToggle{min-width:60px!important;padding:0 6px!important}
-  .hf-premium-header .hf-header-actions #accountToggle svg,
-  .hf-premium-header .hf-header-actions #cartToggle svg{width:15px!important;height:15px!important}
-  .hf-premium-header .hf-header-actions .hf-action-label{font-size:7px!important;letter-spacing:.25px!important}
+@media(max-width:760px){
+  header.hf-premium-header,.hf-premium-header{
+    min-height:58px!important;height:auto!important;flex-wrap:wrap!important;
+    padding:8px 12px!important;gap:8px!important;
+  }
+  .hf-premium-header .logo{height:42px!important;font-size:23px!important;padding-right:12px!important}
+  .hf-premium-header .hf-diamond-mark{width:34px!important;height:28px!important}
+  .hf-premium-header nav{order:3!important;flex:1 0 100%!important;justify-content:flex-start!important;overflow-x:auto!important;padding:6px 0!important}
+  .hf-premium-header .hf-header-actions{margin-left:auto!important;padding-left:8px!important;gap:8px!important}
+  .hf-hero{height:470px!important;min-height:470px!important;align-items:flex-start!important;padding:26px 18px 238px!important}
+  .hf-hero .hero-content{width:100%!important;max-width:520px!important}
+  .hf-hero h1,.hf-hero h1 span{font-size:clamp(34px,8vw,52px)!important}
+  .hf-hero .hero-diamond-divider{margin:12px auto 8px!important}
+  .hf-hero p{font-size:16px!important}
+  .hf-hero .button{width:min(330px,100%)!important;font-size:12px!important}
+  .hero-editorial{top:auto!important;bottom:0!important;left:0!important;right:0!important;width:100%!important;height:235px!important;mask-image:linear-gradient(180deg,transparent 0%,#000 15%)!important}
+  .hf-quick-categories{height:auto!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:8px!important;padding:0 10px!important}
+  .hf-category-card{height:130px!important;padding:6px!important}
+  .hf-category-card img{height:88px!important}
+  .hf-category-card span{font-size:9px!important}
+  .hf-global-catalogue-intro{margin-top:18px!important;padding:0 10px!important}
+  .hf-catalogue-title-row{gap:8px!important}
+  .hf-catalogue-title-row h2{font-size:22px!important;white-space:normal!important}
+  .hf-region-pills{flex-wrap:wrap!important;gap:6px!important}
+  .hf-region-pills a{flex:1 1 28%!important;padding:8px 7px!important;font-size:8px!important}
+  .hf-reference-featured{grid-template-columns:repeat(2,minmax(0,1fr))!important;width:calc(100% - 20px)!important;gap:8px!important;margin-top:14px!important}
+  .hf-reference-image-link{height:155px!important}
+  .hf-reference-product-copy{padding:8px!important}
+  .hf-reference-product-copy small{font-size:14px!important}
+  .hf-reference-product-copy h3{font-size:11px!important}
+  .hf-reference-product-footer{align-items:flex-start!important;flex-direction:column!important}
+  .hf-reference-product-footer strong{font-size:18px!important}
+  .hf-reference-product-footer a{width:100%!important;min-width:0!important}
+  #top-brand-strip .brand-strip-track>.top-brand-mark.hf-reference-mark,
+  #top-brand-strip .ticker-duplicate>.top-brand-mark.hf-reference-mark{flex-basis:110px!important;width:110px!important}
+  #top-brand-strip .ticker-duplicate{flex-basis:990px!important;width:990px!important}
 }
 </style>
 </head>
@@ -3507,606 +3754,15 @@ main :is(.hf-category-card,.hf-reference-product,.catalogue-product-card,.depart
         <span>Noon</span></a>
       <a class="top-brand-mark" href="https://www.tiktok.com/shop" target="_blank" rel="noopener noreferrer" aria-label="TikTok Shop official online store"><img src="https://cdn.simpleicons.org/tiktok" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.tiktok.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
         <span>TikTok Shop</span></a>
-            <div class="ticker-duplicate" aria-hidden="true">
-      
-      <a class="top-brand-mark" href="https://www.nike.com/" target="_blank" rel="noopener noreferrer" aria-label="NIKE official online store">
-        <img src="https://cdn.simpleicons.org/nike" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.nike.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>NIKE</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.adidas.com/" target="_blank" rel="noopener noreferrer" aria-label="adidas official online store">
-        <img src="https://cdn.simpleicons.org/adidas" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.adidas.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>adidas</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.amazon.com/" target="_blank" rel="noopener noreferrer" aria-label="amazon official online store">
-        <img src="https://cdn.simpleicons.org/amazon" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.amazon.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>amazon</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.ebay.com/" target="_blank" rel="noopener noreferrer" aria-label="eBay official online store">
-        <img src="https://cdn.simpleicons.org/ebay" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.ebay.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>eBay</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.nordstrom.com/" target="_blank" rel="noopener noreferrer" aria-label="NORDSTROM official online store">
-        <img src="https://cdn.simpleicons.org/nordstrom" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.nordstrom.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>NORDSTROM</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.levi.com/" target="_blank" rel="noopener noreferrer" aria-label="LEVI'S official online store">
-        <img src="https://cdn.simpleicons.org/levis" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.levi.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>LEVI'S</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.zalando.com/" target="_blank" rel="noopener noreferrer" aria-label="ZALANDO official online store">
-        <img src="https://cdn.simpleicons.org/zalando" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.zalando.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>ZALANDO</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.asos.com/" target="_blank" rel="noopener noreferrer" aria-label="ASOS official online store">
-        <img src="https://cdn.simpleicons.org/asos" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.asos.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>ASOS</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.zara.com/" target="_blank" rel="noopener noreferrer" aria-label="ZARA official online store">
-        <img src="https://cdn.simpleicons.org/zara" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.zara.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>ZARA</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.hm.com/" target="_blank" rel="noopener noreferrer" aria-label="H&amp;M official online store">
-        <img src="https://cdn.simpleicons.org/hm" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.hm.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>H&amp;M</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.farfetch.com/" target="_blank" rel="noopener noreferrer" aria-label="FARFETCH official online store">
-        <img src="https://cdn.simpleicons.org/farfetch" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.farfetch.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>FARFETCH</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.decathlon.com/" target="_blank" rel="noopener noreferrer" aria-label="DECATHLON official online store">
-        <img src="https://cdn.simpleicons.org/decathlon" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.decathlon.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>DECATHLON</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.uniqlo.com/" target="_blank" rel="noopener noreferrer" aria-label="UNIQLO official online store">
-        <img src="https://cdn.simpleicons.org/uniqlo" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.uniqlo.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>UNIQLO</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.clarks.com/" target="_blank" rel="noopener noreferrer" aria-label="CLARKS official online store">
-        <img src="https://cdn.simpleicons.org/clarks" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.clarks.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>CLARKS</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.myntra.com/" target="_blank" rel="noopener noreferrer" aria-label="MYNTRA official online store">
-        <img src="https://cdn.simpleicons.org/myntra" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.myntra.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>MYNTRA</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.ajio.com/" target="_blank" rel="noopener noreferrer" aria-label="AJIO official online store">
-        <img src="https://cdn.simpleicons.org/ajio" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.ajio.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>AJIO</span>
-      </a>
-      <a class="top-brand-mark" href="https://zozo.jp/" target="_blank" rel="noopener noreferrer" aria-label="ZOZOTOWN official online store">
-        <img src="https://cdn.simpleicons.org/zozotown" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=zozo.jp&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>ZOZOTOWN</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.musinsa.com/" target="_blank" rel="noopener noreferrer" aria-label="MUSINSA official online store">
-        <img src="https://cdn.simpleicons.org/musinsa" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.musinsa.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>MUSINSA</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.aliexpress.com/" target="_blank" rel="noopener noreferrer" aria-label="AliExpress official online store">
-        <img src="https://cdn.simpleicons.org/aliexpress" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.aliexpress.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>AliExpress</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.zalora.com/" target="_blank" rel="noopener noreferrer" aria-label="ZALORA official online store">
-        <img src="https://cdn.simpleicons.org/zalora" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.zalora.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>ZALORA</span>
-      </a>
-      <a class="top-brand-mark" href="https://shopee.com/" target="_blank" rel="noopener noreferrer" aria-label="Shopee official online store">
-        <img src="https://cdn.simpleicons.org/shopee" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=shopee.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Shopee</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.lazada.com/" target="_blank" rel="noopener noreferrer" aria-label="Lazada official online store">
-        <img src="https://cdn.simpleicons.org/lazada" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.lazada.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Lazada</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.namshi.com/" target="_blank" rel="noopener noreferrer" aria-label="NAMSHI official online store">
-        <img src="https://cdn.simpleicons.org/namshi" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.namshi.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>NAMSHI</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.ounass.ae/" target="_blank" rel="noopener noreferrer" aria-label="OUNASS official online store">
-        <img src="https://cdn.simpleicons.org/ounass" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.ounass.ae&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>OUNASS</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.jumia.com/" target="_blank" rel="noopener noreferrer" aria-label="JUMIA official online store">
-        <img src="https://cdn.simpleicons.org/jumia" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.jumia.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>JUMIA</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.takealot.com/" target="_blank" rel="noopener noreferrer" aria-label="TAKEALOT official online store">
-        <img src="https://cdn.simpleicons.org/takealot" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.takealot.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>TAKEALOT</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.dafiti.com.br/" target="_blank" rel="noopener noreferrer" aria-label="DAFITI official online store">
-        <img src="https://cdn.simpleicons.org/dafiti" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.dafiti.com.br&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>DAFITI</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.mercadolibre.com/" target="_blank" rel="noopener noreferrer" aria-label="MERCADO LIBRE official online store">
-        <img src="https://cdn.simpleicons.org/mercadolibre" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.mercadolibre.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>MERCADO LIBRE</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.theiconic.com.au/" target="_blank" rel="noopener noreferrer" aria-label="THE ICONIC official online store">
-        <img src="https://cdn.simpleicons.org/theiconic" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.theiconic.com.au&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>THE ICONIC</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.myer.com.au/" target="_blank" rel="noopener noreferrer" aria-label="MYER official online store">
-        <img src="https://cdn.simpleicons.org/myer" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.myer.com.au&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>MYER</span>
-      </a>
-      
-      <a class="top-brand-mark" href="https://www.oakley.com/" target="_blank" rel="noopener noreferrer" aria-label="Oakley official website">
-        <img src="https://cdn.simpleicons.org/oakley" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.oakley.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Oakley</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.ray-ban.com/" target="_blank" rel="noopener noreferrer" aria-label="Ray-Ban official website">
-        <img src="https://cdn.simpleicons.org/rayban" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.ray-ban.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Ray-Ban</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.persol.com/" target="_blank" rel="noopener noreferrer" aria-label="Persol official website">
-        <img src="https://cdn.simpleicons.org/persol" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.persol.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Persol</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.oliverpeoples.com/" target="_blank" rel="noopener noreferrer" aria-label="Oliver Peoples official website">
-        <img src="https://cdn.simpleicons.org/oliverpeoples" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.oliverpeoples.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Oliver Peoples</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.vogue-eyewear.com/" target="_blank" rel="noopener noreferrer" aria-label="Vogue Eyewear official website">
-        <img src="https://cdn.simpleicons.org/vogueeyewear" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.vogue-eyewear.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Vogue Eyewear</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.arnette.com/" target="_blank" rel="noopener noreferrer" aria-label="Arnette official website">
-        <img src="https://cdn.simpleicons.org/arnette" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.arnette.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Arnette</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.costadelmar.com/" target="_blank" rel="noopener noreferrer" aria-label="Costa Del Mar official website">
-        <img src="https://cdn.simpleicons.org/costadelmar" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.costadelmar.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Costa Del Mar</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.bliz.com/" target="_blank" rel="noopener noreferrer" aria-label="Bliz official website">
-        <img src="https://cdn.simpleicons.org/bliz" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.bliz.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Bliz</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.sunglasshut.com/" target="_blank" rel="noopener noreferrer" aria-label="Sunglass Hut official website">
-        <img src="https://cdn.simpleicons.org/sunglasshut" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.sunglasshut.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Sunglass Hut</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.gucci.com/" target="_blank" rel="noopener noreferrer" aria-label="Gucci official website">
-        <img src="https://cdn.simpleicons.org/gucci" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.gucci.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Gucci</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.prada.com/" target="_blank" rel="noopener noreferrer" aria-label="Prada official website">
-        <img src="https://cdn.simpleicons.org/prada" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.prada.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Prada</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.louisvuitton.com/" target="_blank" rel="noopener noreferrer" aria-label="Louis Vuitton official website">
-        <img src="https://cdn.simpleicons.org/louisvuitton" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.louisvuitton.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Louis Vuitton</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.chanel.com/" target="_blank" rel="noopener noreferrer" aria-label="Chanel official website">
-        <img src="https://cdn.simpleicons.org/chanel" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.chanel.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Chanel</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.dior.com/" target="_blank" rel="noopener noreferrer" aria-label="Dior official website">
-        <img src="https://cdn.simpleicons.org/dior" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.dior.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Dior</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.burberry.com/" target="_blank" rel="noopener noreferrer" aria-label="Burberry official website">
-        <img src="https://cdn.simpleicons.org/burberry" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.burberry.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Burberry</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.versace.com/" target="_blank" rel="noopener noreferrer" aria-label="Versace official website">
-        <img src="https://cdn.simpleicons.org/versace" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.versace.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Versace</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.dolcegabbana.com/" target="_blank" rel="noopener noreferrer" aria-label="Dolce & Gabbana official website">
-        <img src="https://cdn.simpleicons.org/dolcegabbana" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.dolcegabbana.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Dolce & Gabbana</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.bottegaveneta.com/" target="_blank" rel="noopener noreferrer" aria-label="Bottega Veneta official website">
-        <img src="https://cdn.simpleicons.org/bottegaveneta" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.bottegaveneta.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Bottega Veneta</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.ysl.com/" target="_blank" rel="noopener noreferrer" aria-label="Saint Laurent official website">
-        <img src="https://cdn.simpleicons.org/ysl" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.ysl.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Saint Laurent</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.celine.com/" target="_blank" rel="noopener noreferrer" aria-label="Celine official website">
-        <img src="https://cdn.simpleicons.org/celine" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.celine.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Celine</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.loewe.com/" target="_blank" rel="noopener noreferrer" aria-label="Loewe official website">
-        <img src="https://cdn.simpleicons.org/loewe" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.loewe.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Loewe</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.miumiu.com/" target="_blank" rel="noopener noreferrer" aria-label="Miu Miu official website">
-        <img src="https://cdn.simpleicons.org/miumiu" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.miumiu.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Miu Miu</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.fendi.com/" target="_blank" rel="noopener noreferrer" aria-label="Fendi official website">
-        <img src="https://cdn.simpleicons.org/fendi" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.fendi.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Fendi</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.moncler.com/" target="_blank" rel="noopener noreferrer" aria-label="Moncler official website">
-        <img src="https://cdn.simpleicons.org/moncler" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.moncler.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Moncler</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.valentino.com/" target="_blank" rel="noopener noreferrer" aria-label="Valentino official website">
-        <img src="https://cdn.simpleicons.org/valentino" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.valentino.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Valentino</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.ferragamo.com/" target="_blank" rel="noopener noreferrer" aria-label="Ferragamo official website">
-        <img src="https://cdn.simpleicons.org/ferragamo" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.ferragamo.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Ferragamo</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.coach.com/" target="_blank" rel="noopener noreferrer" aria-label="Coach official website">
-        <img src="https://cdn.simpleicons.org/coach" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.coach.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Coach</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.michaelkors.com/" target="_blank" rel="noopener noreferrer" aria-label="Michael Kors official website">
-        <img src="https://cdn.simpleicons.org/michaelkors" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.michaelkors.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Michael Kors</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.toryburch.com/" target="_blank" rel="noopener noreferrer" aria-label="Tory Burch official website">
-        <img src="https://cdn.simpleicons.org/toryburch" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.toryburch.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Tory Burch</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.katespade.com/" target="_blank" rel="noopener noreferrer" aria-label="Kate Spade official website">
-        <img src="https://cdn.simpleicons.org/katespade" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.katespade.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Kate Spade</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.marcjacobs.com/" target="_blank" rel="noopener noreferrer" aria-label="Marc Jacobs official website">
-        <img src="https://cdn.simpleicons.org/marcjacobs" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.marcjacobs.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Marc Jacobs</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.newbalance.com/" target="_blank" rel="noopener noreferrer" aria-label="New Balance official website">
-        <img src="https://cdn.simpleicons.org/newbalance" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.newbalance.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>New Balance</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.puma.com/" target="_blank" rel="noopener noreferrer" aria-label="PUMA official website">
-        <img src="https://cdn.simpleicons.org/puma" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.puma.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>PUMA</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.reebok.com/" target="_blank" rel="noopener noreferrer" aria-label="Reebok official website">
-        <img src="https://cdn.simpleicons.org/reebok" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.reebok.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Reebok</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.asics.com/" target="_blank" rel="noopener noreferrer" aria-label="ASICS official website">
-        <img src="https://cdn.simpleicons.org/asics" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.asics.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>ASICS</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.skechers.com/" target="_blank" rel="noopener noreferrer" aria-label="Skechers official website">
-        <img src="https://cdn.simpleicons.org/skechers" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.skechers.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Skechers</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.crocs.com/" target="_blank" rel="noopener noreferrer" aria-label="Crocs official website">
-        <img src="https://cdn.simpleicons.org/crocs" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.crocs.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Crocs</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.converse.com/" target="_blank" rel="noopener noreferrer" aria-label="Converse official website">
-        <img src="https://cdn.simpleicons.org/converse" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.converse.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Converse</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.vans.com/" target="_blank" rel="noopener noreferrer" aria-label="Vans official website">
-        <img src="https://cdn.simpleicons.org/vans" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.vans.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Vans</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.nike.com/jordan" target="_blank" rel="noopener noreferrer" aria-label="Jordan official website">
-        <img src="https://cdn.simpleicons.org/airjordan" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.nike.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Jordan</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.salomon.com/" target="_blank" rel="noopener noreferrer" aria-label="Salomon official website">
-        <img src="https://cdn.simpleicons.org/salomon" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.salomon.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Salomon</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.hoka.com/" target="_blank" rel="noopener noreferrer" aria-label="HOKA official website">
-        <img src="https://cdn.simpleicons.org/hoka" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.hoka.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>HOKA</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.thenorthface.com/" target="_blank" rel="noopener noreferrer" aria-label="The North Face official website">
-        <img src="https://cdn.simpleicons.org/thenorthface" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.thenorthface.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>The North Face</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.patagonia.com/" target="_blank" rel="noopener noreferrer" aria-label="Patagonia official website">
-        <img src="https://cdn.simpleicons.org/patagonia" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.patagonia.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Patagonia</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.columbia.com/" target="_blank" rel="noopener noreferrer" aria-label="Columbia official website">
-        <img src="https://cdn.simpleicons.org/columbia" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.columbia.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Columbia</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.timberland.com/" target="_blank" rel="noopener noreferrer" aria-label="Timberland official website">
-        <img src="https://cdn.simpleicons.org/timberland" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.timberland.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Timberland</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.drmartens.com/" target="_blank" rel="noopener noreferrer" aria-label="Dr. Martens official website">
-        <img src="https://cdn.simpleicons.org/drmartens" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.drmartens.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Dr. Martens</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.ugg.com/" target="_blank" rel="noopener noreferrer" aria-label="UGG official website">
-        <img src="https://cdn.simpleicons.org/ugg" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.ugg.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>UGG</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.birkenstock.com/" target="_blank" rel="noopener noreferrer" aria-label="Birkenstock official website">
-        <img src="https://cdn.simpleicons.org/birkenstock" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.birkenstock.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Birkenstock</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.lacoste.com/" target="_blank" rel="noopener noreferrer" aria-label="Lacoste official website">
-        <img src="https://cdn.simpleicons.org/lacoste" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.lacoste.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Lacoste</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.champion.com/" target="_blank" rel="noopener noreferrer" aria-label="Champion official website">
-        <img src="https://cdn.simpleicons.org/champion" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.champion.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Champion</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.fila.com/" target="_blank" rel="noopener noreferrer" aria-label="FILA official website">
-        <img src="https://cdn.simpleicons.org/fila" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.fila.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>FILA</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.havaianas.com/" target="_blank" rel="noopener noreferrer" aria-label="Havaianas official website">
-        <img src="https://cdn.simpleicons.org/havaianas" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.havaianas.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Havaianas</span>
-      </a>
-      <a class="top-brand-mark" href="https://shop.lululemon.com/" target="_blank" rel="noopener noreferrer" aria-label="Lululemon official website">
-        <img src="https://cdn.simpleicons.org/lululemon" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=shop.lululemon.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Lululemon</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.underarmour.com/" target="_blank" rel="noopener noreferrer" aria-label="Under Armour official website">
-        <img src="https://cdn.simpleicons.org/underarmour" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.underarmour.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Under Armour</span>
-      </a>
-      <a class="top-brand-mark" href="https://shop.mango.com/" target="_blank" rel="noopener noreferrer" aria-label="Mango official website">
-        <img src="https://cdn.simpleicons.org/mango" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=shop.mango.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Mango</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.massimodutti.com/" target="_blank" rel="noopener noreferrer" aria-label="Massimo Dutti official website">
-        <img src="https://cdn.simpleicons.org/massimodutti" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.massimodutti.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Massimo Dutti</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.bershka.com/" target="_blank" rel="noopener noreferrer" aria-label="Bershka official website">
-        <img src="https://cdn.simpleicons.org/bershka" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.bershka.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Bershka</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.pullandbear.com/" target="_blank" rel="noopener noreferrer" aria-label="Pull&Bear official website">
-        <img src="https://cdn.simpleicons.org/pullandbear" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.pullandbear.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Pull&Bear</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.stradivarius.com/" target="_blank" rel="noopener noreferrer" aria-label="Stradivarius official website">
-        <img src="https://cdn.simpleicons.org/stradivarius" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.stradivarius.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Stradivarius</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.reserved.com/" target="_blank" rel="noopener noreferrer" aria-label="Reserved official website">
-        <img src="https://cdn.simpleicons.org/reserved" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.reserved.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Reserved</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.sinsay.com/" target="_blank" rel="noopener noreferrer" aria-label="Sinsay official website">
-        <img src="https://cdn.simpleicons.org/sinsay" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.sinsay.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Sinsay</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.gap.com/" target="_blank" rel="noopener noreferrer" aria-label="GAP official website">
-        <img src="https://cdn.simpleicons.org/gap" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.gap.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>GAP</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.gant.com/" target="_blank" rel="noopener noreferrer" aria-label="GANT official website">
-        <img src="https://cdn.simpleicons.org/gant" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.gant.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>GANT</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.hugoboss.com/" target="_blank" rel="noopener noreferrer" aria-label="HUGO BOSS official website">
-        <img src="https://cdn.simpleicons.org/hugoboss" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.hugoboss.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>HUGO BOSS</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.ralphlauren.com/" target="_blank" rel="noopener noreferrer" aria-label="Ralph Lauren official website">
-        <img src="https://cdn.simpleicons.org/ralphlauren" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.ralphlauren.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Ralph Lauren</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.tommy.com/" target="_blank" rel="noopener noreferrer" aria-label="Tommy Hilfiger official website">
-        <img src="https://cdn.simpleicons.org/tommyhilfiger" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.tommy.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Tommy Hilfiger</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.calvinklein.com/" target="_blank" rel="noopener noreferrer" aria-label="Calvin Klein official website">
-        <img src="https://cdn.simpleicons.org/calvinklein" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.calvinklein.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Calvin Klein</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.diesel.com/" target="_blank" rel="noopener noreferrer" aria-label="Diesel official website">
-        <img src="https://cdn.simpleicons.org/diesel" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.diesel.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Diesel</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.superdry.com/" target="_blank" rel="noopener noreferrer" aria-label="Superdry official website">
-        <img src="https://cdn.simpleicons.org/superdry" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.superdry.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Superdry</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.pandora.net/" target="_blank" rel="noopener noreferrer" aria-label="Pandora official website">
-        <img src="https://cdn.simpleicons.org/pandora" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.pandora.net&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Pandora</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.swarovski.com/" target="_blank" rel="noopener noreferrer" aria-label="Swarovski official website">
-        <img src="https://cdn.simpleicons.org/swarovski" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.swarovski.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Swarovski</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.tiffany.com/" target="_blank" rel="noopener noreferrer" aria-label="Tiffany & Co. official website">
-        <img src="https://cdn.simpleicons.org/tiffanyandco" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.tiffany.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Tiffany & Co.</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.cartier.com/" target="_blank" rel="noopener noreferrer" aria-label="Cartier official website">
-        <img src="https://cdn.simpleicons.org/cartier" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.cartier.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Cartier</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.bulgari.com/" target="_blank" rel="noopener noreferrer" aria-label="Bulgari official website">
-        <img src="https://cdn.simpleicons.org/bulgari" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.bulgari.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Bulgari</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.rolex.com/" target="_blank" rel="noopener noreferrer" aria-label="Rolex official website">
-        <img src="https://cdn.simpleicons.org/rolex" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.rolex.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Rolex</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.casio.com/" target="_blank" rel="noopener noreferrer" aria-label="CASIO official website">
-        <img src="https://cdn.simpleicons.org/casio" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.casio.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>CASIO</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.seikowatches.com/" target="_blank" rel="noopener noreferrer" aria-label="Seiko official website">
-        <img src="https://cdn.simpleicons.org/seiko" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.seikowatches.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Seiko</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.swatch.com/" target="_blank" rel="noopener noreferrer" aria-label="Swatch official website">
-        <img src="https://cdn.simpleicons.org/swatch" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.swatch.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Swatch</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.tissotwatches.com/" target="_blank" rel="noopener noreferrer" aria-label="Tissot official website">
-        <img src="https://cdn.simpleicons.org/tissot" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.tissotwatches.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Tissot</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.fossil.com/" target="_blank" rel="noopener noreferrer" aria-label="Fossil official website">
-        <img src="https://cdn.simpleicons.org/fossil" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.fossil.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Fossil</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.tagheuer.com/" target="_blank" rel="noopener noreferrer" aria-label="TAG Heuer official website">
-        <img src="https://cdn.simpleicons.org/tagheuer" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.tagheuer.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>TAG Heuer</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.longines.com/" target="_blank" rel="noopener noreferrer" aria-label="Longines official website">
-        <img src="https://cdn.simpleicons.org/longines" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.longines.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Longines</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.omegawatches.com/" target="_blank" rel="noopener noreferrer" aria-label="OMEGA official website">
-        <img src="https://cdn.simpleicons.org/omega" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.omegawatches.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>OMEGA</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.breitling.com/" target="_blank" rel="noopener noreferrer" aria-label="Breitling official website">
-        <img src="https://cdn.simpleicons.org/breitling" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.breitling.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Breitling</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.jdsports.com/" target="_blank" rel="noopener noreferrer" aria-label="JD Sports official website">
-        <img src="https://cdn.simpleicons.org/jdsports" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.jdsports.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>JD Sports</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.footlocker.com/" target="_blank" rel="noopener noreferrer" aria-label="Foot Locker official website">
-        <img src="https://cdn.simpleicons.org/footlocker" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.footlocker.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Foot Locker</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.ssense.com/" target="_blank" rel="noopener noreferrer" aria-label="SSENSE official website">
-        <img src="https://cdn.simpleicons.org/ssense" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.ssense.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>SSENSE</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.net-a-porter.com/" target="_blank" rel="noopener noreferrer" aria-label="NET-A-PORTER official website">
-        <img src="https://cdn.simpleicons.org/netaporter" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.net-a-porter.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>NET-A-PORTER</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.mrporter.com/" target="_blank" rel="noopener noreferrer" aria-label="MR PORTER official website">
-        <img src="https://cdn.simpleicons.org/mrporter" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.mrporter.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>MR PORTER</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.yoox.com/" target="_blank" rel="noopener noreferrer" aria-label="YOOX official website">
-        <img src="https://cdn.simpleicons.org/yoox" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.yoox.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>YOOX</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.mytheresa.com/" target="_blank" rel="noopener noreferrer" aria-label="Mytheresa official website">
-        <img src="https://cdn.simpleicons.org/mytheresa" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.mytheresa.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Mytheresa</span>
-      </a>
-      <a class="top-brand-mark" href="https://www.luisaviaroma.com/" target="_blank" rel="noopener noreferrer" aria-label="LUISAVIAROMA official website">
-        <img src="https://cdn.simpleicons.org/luisaviaroma" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.luisaviaroma.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>LUISAVIAROMA</span>
-      </a>
-<a class="top-brand-mark" href="https://www.hermes.com/us/en/" target="_blank" rel="noopener noreferrer" aria-label="Hermès official brand website"><img src="https://www.google.com/s2/favicons?domain=hermes.com&amp;sz=128" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.hermes.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Hermès</span></a>
-      <a class="top-brand-mark" href="https://www.balenciaga.com/" target="_blank" rel="noopener noreferrer" aria-label="Balenciaga official brand website"><img src="https://www.google.com/s2/favicons?domain=balenciaga.com&amp;sz=128" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.balenciaga.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Balenciaga</span></a>
-      <a class="top-brand-mark" href="https://www.givenchy.com/" target="_blank" rel="noopener noreferrer" aria-label="Givenchy official brand website"><img src="https://www.google.com/s2/favicons?domain=givenchy.com&amp;sz=128" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.givenchy.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Givenchy</span></a>
-      <a class="top-brand-mark" href="https://www.alexandermcqueen.com/" target="_blank" rel="noopener noreferrer" aria-label="Alexander McQueen official brand website"><img src="https://www.google.com/s2/favicons?domain=alexandermcqueen.com&amp;sz=128" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.alexandermcqueen.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Alexander McQueen</span></a>
-      <a class="top-brand-mark" href="https://www.armani.com/" target="_blank" rel="noopener noreferrer" aria-label="Armani official brand website"><img src="https://www.google.com/s2/favicons?domain=armani.com&amp;sz=128" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.armani.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Armani</span></a>
-      <a class="top-brand-mark" href="https://shop.brunellocucinelli.com/" target="_blank" rel="noopener noreferrer" aria-label="Brunello Cucinelli official brand website"><img src="https://www.google.com/s2/favicons?domain=shop.brunellocucinelli.com&amp;sz=128" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=shop.brunellocucinelli.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Brunello Cucinelli</span></a>
-      <a class="top-brand-mark" href="https://www.loropiana.com/" target="_blank" rel="noopener noreferrer" aria-label="Loro Piana official brand website"><img src="https://www.google.com/s2/favicons?domain=loropiana.com&amp;sz=128" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.loropiana.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Loro Piana</span></a>
-      <a class="top-brand-mark" href="https://www.jimmychoo.com/" target="_blank" rel="noopener noreferrer" aria-label="Jimmy Choo official brand website"><img src="https://www.google.com/s2/favicons?domain=jimmychoo.com&amp;sz=128" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.jimmychoo.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Jimmy Choo</span></a>
-      <a class="top-brand-mark" href="https://www.tomford.com/" target="_blank" rel="noopener noreferrer" aria-label="Tom Ford official brand website"><img src="https://www.google.com/s2/favicons?domain=tomford.com&amp;sz=128" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.tomford.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Tom Ford</span></a>
-      <a class="top-brand-mark" href="https://www.chloe.com/" target="_blank" rel="noopener noreferrer" aria-label="Chloé official brand website"><img src="https://www.google.com/s2/favicons?domain=chloe.com&amp;sz=128" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.chloe.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Chloé</span></a>
-      <a class="top-brand-mark" href="https://www.maison-alaia.com/" target="_blank" rel="noopener noreferrer" aria-label="Alaïa official brand website"><img src="https://www.google.com/s2/favicons?domain=maison-alaia.com&amp;sz=128" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.maison-alaia.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Alaïa</span></a>
-      <a class="top-brand-mark" href="https://www.balmain.com/" target="_blank" rel="noopener noreferrer" aria-label="Balmain official brand website"><img src="https://www.google.com/s2/favicons?domain=balmain.com&amp;sz=128" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.balmain.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Balmain</span></a>
-      <a class="top-brand-mark" href="https://www.stellamccartney.com/" target="_blank" rel="noopener noreferrer" aria-label="Stella McCartney official brand website"><img src="https://www.google.com/s2/favicons?domain=stellamccartney.com&amp;sz=128" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.stellamccartney.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Stella McCartney</span></a>
-      <a class="top-brand-mark" href="https://www.off---white.com/" target="_blank" rel="noopener noreferrer" aria-label="Off-White official brand website"><img src="https://www.google.com/s2/favicons?domain=off---white.com&amp;sz=128" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.off---white.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Off-White</span></a>
-      <a class="top-brand-mark" href="https://www.maisonmargiela.com/" target="_blank" rel="noopener noreferrer" aria-label="Maison Margiela official brand website"><img src="https://www.google.com/s2/favicons?domain=maisonmargiela.com&amp;sz=128" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.maisonmargiela.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Maison Margiela</span></a>
-      <a class="top-brand-mark" href="https://www.jacquemus.com/" target="_blank" rel="noopener noreferrer" aria-label="Jacquemus official brand website"><img src="https://www.google.com/s2/favicons?domain=jacquemus.com&amp;sz=128" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.jacquemus.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Jacquemus</span></a>
-      <a class="top-brand-mark" href="https://www.mcmworldwide.com/" target="_blank" rel="noopener noreferrer" aria-label="MCM official brand website"><img src="https://www.google.com/s2/favicons?domain=mcmworldwide.com&amp;sz=128" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.mcmworldwide.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>MCM</span></a>
-      <a class="top-brand-mark" href="https://www.goldengoose.com/" target="_blank" rel="noopener noreferrer" aria-label="Golden Goose official brand website"><img src="https://www.google.com/s2/favicons?domain=goldengoose.com&amp;sz=128" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.goldengoose.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Golden Goose</span></a>
-      <a class="top-brand-mark" href="https://www.longchamp.com/" target="_blank" rel="noopener noreferrer" aria-label="Longchamp official brand website"><img src="https://www.google.com/s2/favicons?domain=longchamp.com&amp;sz=128" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.longchamp.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Longchamp</span></a>
-      <a class="top-brand-mark" href="https://www.mulberry.com/" target="_blank" rel="noopener noreferrer" aria-label="Mulberry official brand website"><img src="https://www.google.com/s2/favicons?domain=mulberry.com&amp;sz=128" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.mulberry.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Mulberry</span></a>
-      <a class="top-brand-mark" href="https://www.isabelmarant.com/" target="_blank" rel="noopener noreferrer" aria-label="Isabel Marant official brand website"><img src="https://www.google.com/s2/favicons?domain=isabelmarant.com&amp;sz=128" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.isabelmarant.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Isabel Marant</span></a>
-      <a class="top-brand-mark" href="https://www.etro.com/" target="_blank" rel="noopener noreferrer" aria-label="Etro official brand website"><img src="https://www.google.com/s2/favicons?domain=etro.com&amp;sz=128" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.etro.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Etro</span></a>
-      <a class="top-brand-mark" href="https://www.maxmara.com/" target="_blank" rel="noopener noreferrer" aria-label="Max Mara official brand website"><img src="https://www.google.com/s2/favicons?domain=maxmara.com&amp;sz=128" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.maxmara.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Max Mara</span></a>
-      <a class="top-brand-mark" href="https://www.zegna.com/" target="_blank" rel="noopener noreferrer" aria-label="Zegna official brand website"><img src="https://www.google.com/s2/favicons?domain=zegna.com&amp;sz=128" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.zegna.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Zegna</span></a>
-      <a class="top-brand-mark" href="https://www.kenzo.com/" target="_blank" rel="noopener noreferrer" aria-label="Kenzo official brand website"><img src="https://www.google.com/s2/favicons?domain=kenzo.com&amp;sz=128" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.kenzo.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Kenzo</span></a>
-      <a class="top-brand-mark" href="https://www.moschino.com/" target="_blank" rel="noopener noreferrer" aria-label="Moschino official brand website"><img src="https://www.google.com/s2/favicons?domain=moschino.com&amp;sz=128" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.moschino.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Moschino</span></a>
-      <a class="top-brand-mark" href="https://www.shein.com/" target="_blank" rel="noopener noreferrer" aria-label="SHEIN official online store"><img src="https://www.google.com/s2/favicons?domain=shein.com&amp;sz=128" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.shein.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>SHEIN</span></a>
-      <a class="top-brand-mark" href="https://www.temu.com/" target="_blank" rel="noopener noreferrer" aria-label="Temu official online store"><img src="https://www.google.com/s2/favicons?domain=temu.com&amp;sz=128" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.temu.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Temu</span></a>
-      <a class="top-brand-mark" href="https://www.etsy.com/" target="_blank" rel="noopener noreferrer" aria-label="Etsy official online store"><img src="https://cdn.simpleicons.org/etsy" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.etsy.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Etsy</span></a>
-      <a class="top-brand-mark" href="https://www.vinted.com/" target="_blank" rel="noopener noreferrer" aria-label="Vinted official online store"><img src="https://cdn.simpleicons.org/vinted" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.vinted.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Vinted</span></a>
-      <a class="top-brand-mark" href="https://www.depop.com/" target="_blank" rel="noopener noreferrer" aria-label="Depop official online store"><img src="https://www.google.com/s2/favicons?domain=depop.com&amp;sz=128" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.depop.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Depop</span></a>
-      <a class="top-brand-mark" href="https://www.vestiairecollective.com/" target="_blank" rel="noopener noreferrer" aria-label="Vestiaire Collective official online store"><img src="https://www.google.com/s2/favicons?domain=vestiairecollective.com&amp;sz=128" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.vestiairecollective.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Vestiaire Collective</span></a>
-      <a class="top-brand-mark" href="https://stockx.com/" target="_blank" rel="noopener noreferrer" aria-label="StockX official online store"><img src="https://cdn.simpleicons.org/stockx" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=stockx.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>StockX</span></a>
-      <a class="top-brand-mark" href="https://www.goat.com/" target="_blank" rel="noopener noreferrer" aria-label="GOAT official online store"><img src="https://www.google.com/s2/favicons?domain=goat.com&amp;sz=128" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.goat.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>GOAT</span></a>
-      <a class="top-brand-mark" href="https://www.grailed.com/" target="_blank" rel="noopener noreferrer" aria-label="Grailed official online store"><img src="https://www.google.com/s2/favicons?domain=grailed.com&amp;sz=128" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.grailed.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Grailed</span></a>
-      <a class="top-brand-mark" href="https://www.aboutyou.com/" target="_blank" rel="noopener noreferrer" aria-label="ABOUT YOU official online store"><img src="https://www.google.com/s2/favicons?domain=aboutyou.com&amp;sz=128" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.aboutyou.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>ABOUT YOU</span></a>
-      <a class="top-brand-mark" href="https://www.otto.de/" target="_blank" rel="noopener noreferrer" aria-label="OTTO official online store"><img src="https://cdn.simpleicons.org/otto" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.otto.de&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>OTTO</span></a>
-      <a class="top-brand-mark" href="https://allegro.pl/" target="_blank" rel="noopener noreferrer" aria-label="Allegro official online store"><img src="https://cdn.simpleicons.org/allegro" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=allegro.pl&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Allegro</span></a>
-      <a class="top-brand-mark" href="https://www.bol.com/" target="_blank" rel="noopener noreferrer" aria-label="bol official online store"><img src="https://www.google.com/s2/favicons?domain=bol.com&amp;sz=128" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.bol.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>bol</span></a>
-      <a class="top-brand-mark" href="https://www.trendyol.com/" target="_blank" rel="noopener noreferrer" aria-label="Trendyol official online store"><img src="https://www.google.com/s2/favicons?domain=trendyol.com&amp;sz=128" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.trendyol.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Trendyol</span></a>
-      <a class="top-brand-mark" href="https://www.hepsiburada.com/" target="_blank" rel="noopener noreferrer" aria-label="Hepsiburada official online store"><img src="https://www.google.com/s2/favicons?domain=hepsiburada.com&amp;sz=128" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.hepsiburada.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Hepsiburada</span></a>
-      <a class="top-brand-mark" href="https://www.n11.com/" target="_blank" rel="noopener noreferrer" aria-label="n11 official online store"><img src="https://www.google.com/s2/favicons?domain=n11.com&amp;sz=128" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.n11.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>n11</span></a>
-      <a class="top-brand-mark" href="https://www.jd.com/" target="_blank" rel="noopener noreferrer" aria-label="JD.com official online store"><img src="https://www.google.com/s2/favicons?domain=jd.com&amp;sz=128" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.jd.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>JD.com</span></a>
-      <a class="top-brand-mark" href="https://www.tmall.com/" target="_blank" rel="noopener noreferrer" aria-label="Tmall official online store"><img src="https://www.google.com/s2/favicons?domain=tmall.com&amp;sz=128" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.tmall.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Tmall</span></a>
-      <a class="top-brand-mark" href="https://www.rakuten.co.jp/" target="_blank" rel="noopener noreferrer" aria-label="Rakuten official online store"><img src="https://cdn.simpleicons.org/rakuten" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.rakuten.co.jp&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Rakuten</span></a>
-      <a class="top-brand-mark" href="https://www.tatacliq.com/" target="_blank" rel="noopener noreferrer" aria-label="Tata CLiQ official online store"><img src="https://www.google.com/s2/favicons?domain=tatacliq.com&amp;sz=128" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.tatacliq.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Tata CLiQ</span></a>
-      <a class="top-brand-mark" href="https://www.nykaafashion.com/" target="_blank" rel="noopener noreferrer" aria-label="Nykaa Fashion official online store"><img src="https://www.google.com/s2/favicons?domain=nykaafashion.com&amp;sz=128" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.nykaafashion.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Nykaa Fashion</span></a>
-      <a class="top-brand-mark" href="https://www.poizon.com/" target="_blank" rel="noopener noreferrer" aria-label="POIZON official online store"><img src="https://www.google.com/s2/favicons?domain=poizon.com&amp;sz=128" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.poizon.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>POIZON</span></a>
-      <a class="top-brand-mark" href="https://www.superbalist.com/" target="_blank" rel="noopener noreferrer" aria-label="Superbalist official online store"><img src="https://www.google.com/s2/favicons?domain=superbalist.com&amp;sz=128" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.superbalist.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Superbalist</span></a>
-      <a class="top-brand-mark" href="https://bash.com/" target="_blank" rel="noopener noreferrer" aria-label="Bash official online store"><img src="https://www.google.com/s2/favicons?domain=bash.com&amp;sz=128" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=bash.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Bash</span></a>
-      <a class="top-brand-mark" href="https://www.noon.com/" target="_blank" rel="noopener noreferrer" aria-label="Noon official online store"><img src="https://www.google.com/s2/favicons?domain=noon.com&amp;sz=128" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.noon.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>Noon</span></a>
-      <a class="top-brand-mark" href="https://www.tiktok.com/shop" target="_blank" rel="noopener noreferrer" aria-label="TikTok Shop official online store"><img src="https://cdn.simpleicons.org/tiktok" alt="" loading="lazy" data-logo-fallback="https://www.google.com/s2/favicons?domain=www.tiktok.com&amp;sz=128" onerror="if(this.dataset.logoFallback){const fallback=this.dataset.logoFallback;this.dataset.logoFallback='';this.onerror=function(){this.style.display='none'};this.src=fallback}else{this.style.display='none'}">
-        <span>TikTok Shop</span></a>
-      </div>
+            <div class="ticker-duplicate" aria-hidden="true"><a class="top-brand-mark hf-reference-mark nike-ref" href="https://www.nike.com/" target="_blank" rel="noopener noreferrer" aria-label="NIKE logo" title="NIKE"><img class="hf-brand-logo" src="https://cdn.simpleicons.org/nike/111111" alt="NIKE logo" loading="lazy" onerror="this.onerror=null;this.src='https://www.google.com/s2/favicons?domain=nike.com&amp;sz=128'"></a>
+<a class="top-brand-mark hf-reference-mark adidas-ref" href="https://www.adidas.com/" target="_blank" rel="noopener noreferrer" aria-label="adidas logo" title="adidas"><img class="hf-brand-logo" src="https://cdn.simpleicons.org/adidas/111111" alt="adidas logo" loading="lazy" onerror="this.onerror=null;this.src='https://www.google.com/s2/favicons?domain=adidas.com&amp;sz=128'"></a>
+<a class="top-brand-mark hf-reference-mark zara-ref" href="https://www.zara.com/" target="_blank" rel="noopener noreferrer" aria-label="ZARA logo" title="ZARA"><img class="hf-brand-logo" src="https://cdn.simpleicons.org/zara/111111" alt="ZARA logo" loading="lazy" onerror="this.onerror=null;this.src='https://www.google.com/s2/favicons?domain=zara.com&amp;sz=128'"></a>
+<a class="top-brand-mark hf-reference-mark hm-ref" href="https://www.hm.com/" target="_blank" rel="noopener noreferrer" aria-label="H&M logo" title="H&M"><img class="hf-brand-logo" src="https://cdn.simpleicons.org/hm/E50010" alt="H&M logo" loading="lazy" onerror="this.onerror=null;this.src='https://www.google.com/s2/favicons?domain=hm.com&amp;sz=128'"></a>
+<a class="top-brand-mark hf-reference-mark levis-ref" href="https://www.levi.com/" target="_blank" rel="noopener noreferrer" aria-label="LEVI’S logo" title="LEVI’S"><img class="hf-brand-logo" src="https://cdn.simpleicons.org/levis/D71920" alt="LEVI’S logo" loading="lazy" onerror="this.onerror=null;this.src='https://www.google.com/s2/favicons?domain=levi.com&amp;sz=128'"></a>
+<a class="top-brand-mark hf-reference-mark puma-ref" href="https://eu.puma.com/" target="_blank" rel="noopener noreferrer" aria-label="PUMA logo" title="PUMA"><img class="hf-brand-logo" src="https://cdn.simpleicons.org/puma/111111" alt="PUMA logo" loading="lazy" onerror="this.onerror=null;this.src='https://www.google.com/s2/favicons?domain=puma.com&amp;sz=128'"></a>
+<a class="top-brand-mark hf-reference-mark asos-ref" href="https://www.asos.com/" target="_blank" rel="noopener noreferrer" aria-label="ASOS logo" title="ASOS"><img class="hf-brand-logo" src="https://cdn.simpleicons.org/asos/111111" alt="ASOS logo" loading="lazy" onerror="this.onerror=null;this.src='https://www.google.com/s2/favicons?domain=asos.com&amp;sz=128'"></a>
+<a class="top-brand-mark hf-reference-mark rayban-ref" href="https://www.ray-ban.com/" target="_blank" rel="noopener noreferrer" aria-label="RAY-BAN logo" title="RAY-BAN"><img class="hf-brand-logo" src="https://cdn.simpleicons.org/rayban/111111" alt="RAY-BAN logo" loading="lazy" onerror="this.onerror=null;this.src='https://www.google.com/s2/favicons?domain=ray-ban.com&amp;sz=128'"></a>
+<a class="top-brand-mark hf-reference-mark newbalance-ref" href="https://www.newbalance.com/" target="_blank" rel="noopener noreferrer" aria-label="NEW BALANCE logo" title="NEW BALANCE"><img class="hf-brand-logo" src="https://cdn.simpleicons.org/newbalance/CF0A2C" alt="NEW BALANCE logo" loading="lazy" onerror="this.onerror=null;this.src='https://www.google.com/s2/favicons?domain=newbalance.com&amp;sz=128'"></a></div>
     </div>
   </div>
   <p class="brand-strip-note">Select any brand mark to visit its official online store. Trademarks and logos belong to their respective owners; no partnership or endorsement is implied.</p>
