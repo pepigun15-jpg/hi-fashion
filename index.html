@@ -4855,7 +4855,7 @@ applySeason(localStorage.getItem("hiFashionSeason") || "auto", false);
   }
   function destinationIso(){
     const name=byId("deliveryCountry")?.value||"";
-    const map={Bulgaria:"BG",Germany:"DE",United Kingdom:"GB","United States":"US",France:"FR",Italy:"IT",Spain:"ES",Netherlands:"NL",Belgium:"BE",Austria:"AT",Switzerland:"CH",Poland:"PL",Romania:"RO",Greece:"GR",Turkey:"TR",Türkiye:"TR",Canada:"CA",Australia:"AU",Japan:"JP",China:"CN",India:"IN",Ireland:"IE",Portugal:"PT",Sweden:"SE",Norway:"NO",Denmark:"DK",Finland:"FI",Czechia:"CZ",Slovakia:"SK",Hungary:"HU",Croatia:"HR",Slovenia:"SI",Serbia:"RS","North Macedonia":"MK",Ukraine:"UA"};
+    const map={Bulgaria:"BG",Germany:"DE","United Kingdom":"GB","United States":"US",France:"FR",Italy:"IT",Spain:"ES",Netherlands:"NL",Belgium:"BE",Austria:"AT",Switzerland:"CH",Poland:"PL",Romania:"RO",Greece:"GR",Turkey:"TR",Türkiye:"TR",Canada:"CA",Australia:"AU",Japan:"JP",China:"CN",India:"IN",Ireland:"IE",Portugal:"PT",Sweden:"SE",Norway:"NO",Denmark:"DK",Finland:"FI",Czechia:"CZ",Slovakia:"SK",Hungary:"HU",Croatia:"HR",Slovenia:"SI",Serbia:"RS","North Macedonia":"MK",Ukraine:"UA"};
     return map[name]||null;
   }
   function setStatus(message,total){
