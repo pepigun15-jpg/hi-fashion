@@ -877,6 +877,200 @@ body[data-season] .hero{transition:background .5s ease}
 @media(max-width:900px){header{background:rgba(24,31,40,.97)!important}}
 @media(prefers-reduced-motion:reduce){body::before,body[data-season]::before{transform:none}*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
 
+
+/* ============================================================
+   HI FASHION — APPROVED DIAMOND EDITORIAL HOMEPAGE
+   ============================================================ */
+:root{
+  --hf-ink:#111318;--hf-copy:#414750;--hf-muted:#6b737d;
+  --hf-gold:#b28a48;--hf-gold-light:#e4ca91;--hf-white:rgba(255,255,255,.90);
+}
+html{scroll-behavior:smooth}
+body,html{background:#edf1f6!important;color:var(--hf-ink)!important}
+body::before,body[data-season]::before{
+ content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+ background:#edf1f6 url("assets/diamond-facets.svg") center center/cover fixed!important;
+ opacity:1!important;filter:none!important;
+}
+header.hf-premium-header{
+ min-height:62px;padding:8px clamp(18px,4vw,58px);
+ display:flex;align-items:center;justify-content:space-between;gap:26px;
+ background:rgba(4,5,7,.98)!important;border-bottom:1px solid rgba(212,180,116,.55)!important;
+ box-shadow:0 5px 22px rgba(0,0,0,.20)!important;backdrop-filter:blur(16px);
+}
+.hf-premium-header .logo{
+ display:flex;align-items:center;gap:11px;flex:0 0 auto;
+ color:#f0d79e!important;text-decoration:none!important;font-family:Georgia,serif;
+ font-size:clamp(23px,2.5vw,34px);letter-spacing:.5px;white-space:nowrap;
+}
+.hf-premium-header .hf-diamond-mark{width:49px;height:38px;fill:none;stroke:#e2c58b;stroke-width:1.65;stroke-linejoin:round;stroke-linecap:round}
+.hf-premium-header .logo-title{font-family:Georgia,serif}
+.hf-premium-header .logo small{display:none!important}
+.hf-premium-header nav{display:flex;align-items:center;justify-content:center;gap:clamp(13px,2.4vw,38px);flex:1;flex-wrap:nowrap}
+.hf-premium-header nav a{color:#f4f3f0!important;font-size:clamp(9px,.82vw,12px);font-weight:700;letter-spacing:1.25px;text-decoration:none;white-space:nowrap}
+.hf-premium-header nav a:hover{color:#e6c98c!important}
+.hf-header-actions{display:flex;align-items:center;gap:clamp(10px,1.5vw,22px)!important;flex:0 0 auto}
+.hf-premium-header .hf-icon-link,.hf-premium-header .hf-icon-button{
+ width:31px;height:35px;padding:4px;display:inline-flex;align-items:center;justify-content:center;
+ position:relative;background:transparent!important;border:0!important;color:#f8f5ef!important;text-decoration:none!important;cursor:pointer;
+}
+.hf-premium-header .hf-icon-link svg,.hf-premium-header .hf-icon-button svg{width:26px;height:26px;fill:none;stroke:#f5f2eb;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.hf-premium-header #cartCount{
+ position:absolute;top:-3px;right:-6px;min-width:18px;height:18px;display:flex;align-items:center;justify-content:center;
+ border-radius:50%;background:#dfbd78;color:#151515;font-size:10px;font-weight:800;
+}
+.hf-premium-header .language-toggle{padding:6px 9px!important;border:1px solid rgba(225,198,143,.48)!important;background:rgba(255,255,255,.07)!important;color:#f4e9d2!important;font-size:10px}
+.brand-strip{
+ min-height:53px;padding:5px 10px 6px;background:rgba(255,255,255,.94)!important;
+ border-bottom:1px solid rgba(166,151,126,.34)!important;box-shadow:0 3px 12px rgba(47,55,65,.05);
+}
+.brand-strip-heading{display:none!important}
+.brand-strip-window{width:100%;overflow:hidden}
+.brand-strip-track{min-height:41px;align-items:center;gap:clamp(23px,3.3vw,52px);padding:2px 24px;animation-duration:100s}
+.top-brand-mark{min-height:34px;gap:8px;padding:4px 9px;border-right:1px solid rgba(111,116,124,.28);opacity:1!important}
+.top-brand-mark img{max-width:43px!important;height:25px!important;max-height:25px!important;background:transparent!important;border:0!important;padding:0!important;filter:none!important;object-fit:contain}
+.top-brand-mark span{font-size:clamp(11px,.95vw,14px);font-weight:800;letter-spacing:1.3px;color:#191b1f!important;text-shadow:none!important}
+.brand-strip-note{display:none!important}
+.hf-hero{
+ position:relative;isolation:isolate;overflow:hidden;min-height:clamp(340px,33vw,470px);
+ padding:clamp(42px,5vw,72px) clamp(28px,8vw,126px)!important;
+ display:flex;align-items:center;
+ background:transparent!important;border:0!important;
+}
+.hf-hero::before{
+ content:"";position:absolute;inset:0;z-index:-2;pointer-events:none;
+ background:linear-gradient(90deg,rgba(255,255,255,.35),rgba(255,255,255,.12) 55%,rgba(255,255,255,.02));
+}
+.hf-hero .hero-content{position:relative;z-index:2;width:min(48%,620px);max-width:620px}
+.hf-hero .eyebrow{margin:0 0 18px;color:#9b753d!important;font-size:10px;letter-spacing:3px;font-weight:700}
+.hf-hero h1{margin:0;font-family:Georgia,'Times New Roman',serif;font-size:clamp(38px,5.1vw,76px);line-height:.99;letter-spacing:-1.4px;font-weight:500;color:#0d0e10!important;text-shadow:none!important}
+.hf-hero h1 span{color:#0d0e10!important}
+.hf-hero .hero-diamond-divider{display:flex;align-items:center;gap:12px;width:min(310px,85%);margin:17px auto 17px 0;color:#9b753d}
+.hf-hero .hero-diamond-divider span{height:1px;flex:1;background:linear-gradient(90deg,transparent,#ae8749)}
+.hf-hero .hero-diamond-divider span:last-child{background:linear-gradient(90deg,#ae8749,transparent)}
+.hf-hero .hero-diamond-divider b{font-size:23px;font-weight:400;line-height:1}
+.hf-hero p{margin:0 0 22px;color:#262b31!important;font-family:Georgia,serif;font-size:clamp(15px,1.35vw,20px);line-height:1.5;text-shadow:none!important}
+.hf-hero .button{
+ display:inline-flex;align-items:center;justify-content:center;gap:18px;min-height:48px;padding:0 26px;
+ background:linear-gradient(135deg,#0a0a0b,#202024)!important;border:1px solid #d3b36f!important;
+ color:#fff!important;font-size:11px;letter-spacing:1.4px;box-shadow:0 4px 15px rgba(0,0,0,.16),inset 0 0 0 1px rgba(255,255,255,.1)!important;
+}
+.hf-hero .button span{font-size:22px;color:#e2c58b;line-height:1}
+.hf-hero .button:hover{background:#27211a!important;color:#f6dfad!important}
+.hero-editorial{
+ position:absolute;z-index:1;right:0;top:0;bottom:0;width:61%;display:flex;align-items:stretch;
+ overflow:hidden;pointer-events:none;
+ mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.3) 6%,#000 20%);
+}
+.hero-model{display:block;min-width:0;height:100%;object-fit:cover;object-position:center top;flex:1}
+.hero-model-men{width:32%;object-position:center 12%}
+.hero-model-india{width:36%;object-position:center 12%}
+.hero-model-modest{width:32%;object-position:center 12%}
+.hf-quick-categories{
+ display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:10px;
+ max-width:1420px;margin:-2px auto 0;padding:0 clamp(18px,4.3vw,64px);
+ position:relative;z-index:3;
+}
+.hf-category-card{
+ display:flex;min-width:0;flex-direction:column;align-items:center;justify-content:space-between;gap:9px;
+ padding:8px 8px 12px;border:1px solid rgba(181,157,116,.46)!important;border-radius:12px;
+ background:rgba(255,255,255,.91)!important;box-shadow:0 7px 20px rgba(38,49,62,.09),inset 0 1px 0 white;
+ overflow:hidden;cursor:pointer;color:#111!important;transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease;
+}
+.hf-category-card:hover{transform:translateY(-4px);border-color:#b18a4d!important;box-shadow:0 13px 26px rgba(38,49,62,.15)}
+.hf-category-card img{display:block;width:100%;height:clamp(75px,8vw,116px);object-fit:cover;object-position:center 35%;border-radius:8px;background:#eef1f4}
+.hf-category-card span{display:block;min-height:30px;display:flex;align-items:center;justify-content:center;text-align:center;color:#17191d;font-size:clamp(9px,.87vw,12px);font-weight:800;letter-spacing:.8px;line-height:1.25}
+.hf-global-catalogue-intro{max-width:1320px;margin:19px auto 8px;padding:0 clamp(18px,4.3vw,64px);text-align:center}
+.hf-catalogue-title-row{display:flex;align-items:center;justify-content:center;gap:25px}
+.hf-catalogue-title-row>span{height:1px;flex:1;max-width:240px;background:linear-gradient(90deg,transparent,#b58e4f)}
+.hf-catalogue-title-row>span:last-child{background:linear-gradient(90deg,#b58e4f,transparent)}
+.hf-catalogue-title-row h2{margin:0;color:#11151b!important;font-family:Georgia,'Times New Roman',serif;font-size:clamp(25px,3.1vw,43px);font-weight:500;letter-spacing:.35px;white-space:nowrap}
+.hf-global-catalogue-intro>p{margin:7px 0 13px;color:#4e5965!important;font-size:12px}
+.hf-region-pills{display:flex;justify-content:center;gap:9px;flex-wrap:wrap}
+.hf-region-pills a{
+ min-width:120px;padding:9px 16px;border:1px solid rgba(145,151,159,.5);border-radius:7px;
+ background:rgba(255,255,255,.76);color:#1f252c!important;text-decoration:none;font-size:10px;font-weight:800;letter-spacing:.65px;
+ box-shadow:0 3px 9px rgba(35,47,60,.06);transition:all .18s ease
+}
+.hf-region-pills a:hover,.hf-region-pills a.active{background:linear-gradient(135deg,#e3cb98,#b68e50);border-color:#b08a4b;color:#141518!important}
+#productCatalogue.catalogue-section{
+ max-width:1430px;margin:8px auto 38px;padding:13px clamp(18px,4.3vw,64px) 30px;
+ background:transparent!important;border:0!important;box-shadow:none!important;backdrop-filter:none!important;
+}
+#productCatalogue .catalogue-heading{background:rgba(255,255,255,.77)!important;border:1px solid rgba(167,151,122,.26);border-radius:10px;padding:13px 18px}
+#productCatalogue .catalogue-heading h2{font-family:Georgia,serif;color:#181c21!important}
+#productCatalogue .catalogue-heading small{color:#997440!important}
+#productCatalogue .catalogue-count{color:#876533;border-color:#b99a67}
+#productCatalogue .catalogue-status{color:#515c68!important;text-align:center}
+#productCatalogue .catalogue-filterbar{background:rgba(255,255,255,.82)!important;border:1px solid rgba(145,158,175,.35);border-radius:10px}
+#productCatalogue .catalogue-product-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+#productCatalogue .catalogue-product-card{background:rgba(255,255,255,.96)!important;border:1px solid rgba(153,162,173,.34)!important;border-radius:12px;box-shadow:0 6px 16px rgba(36,48,62,.10)!important}
+#productCatalogue .catalogue-product-image{aspect-ratio:4/4.5;background:#edf1f5}
+#productCatalogue .catalogue-product-title{color:#181c21!important}
+#productCatalogue .catalogue-product-meta{color:#596574!important}
+#productCatalogue .catalogue-product-price{color:#29251f!important}
+#productCatalogue .catalogue-product-cta{background:linear-gradient(135deg,#101114,#25272b)!important;color:white!important;border:1px solid #c3a46d!important;border-radius:4px}
+#productCatalogue .catalogue-product-source{color:#7b828b!important}
+#catalogueProductGrid:empty::after{
+ content:"Live product offers will appear here when an approved retailer feed returns real products for your selected destination. Choose one of the categories above to search.";
+ display:block;grid-column:1/-1;padding:26px 20px;text-align:center;
+ color:#596573;background:rgba(255,255,255,.72);border:1px dashed rgba(153,162,173,.55);border-radius:10px;font-size:12px;line-height:1.6;
+}
+#departments .search-wrap{margin-top:0}
+#departments .section-title h2{color:#1b2027!important}
+#departments .section-title p{color:#596573!important}
+#departments .department{border-radius:12px;overflow:hidden}
+.region-section[id^="retailer-region-"]{scroll-margin-top:90px}
+.season-controls{display:flex;justify-content:center;align-items:center;gap:8px;padding:10px 16px;margin:0 auto 15px;background:rgba(255,255,255,.78)!important;border-top:1px solid rgba(155,167,180,.24);border-bottom:1px solid rgba(155,167,180,.24)}
+.season-controls-label,.season-current{color:#65717f!important;font-size:9px;letter-spacing:1px}
+.season-control{padding:6px 11px!important;border-radius:18px!important;background:rgba(255,255,255,.8)!important;border:1px solid rgba(145,158,175,.42)!important;color:#35404c!important;font-size:9px}
+.season-control.active{background:#e5d1a8!important;color:#1e242b!important;border-color:#b18a4d!important}
+footer{color:#687482!important;border-top:1px solid rgba(145,158,175,.35)!important}
+@media(max-width:1100px){
+ .hf-premium-header{gap:15px!important;padding-left:18px!important;padding-right:18px!important}
+ .hf-premium-header nav{gap:12px!important}
+ .hf-premium-header nav a{font-size:9px!important}
+ .hf-hero .hero-content{width:50%}
+ .hero-editorial{width:58%}
+ .hf-quick-categories{padding-left:18px;padding-right:18px;gap:7px}
+}
+@media(max-width:760px){
+ header.hf-premium-header{min-height:58px;flex-wrap:wrap;gap:7px;padding:8px 12px!important}
+ .hf-premium-header .logo{font-size:23px}
+ .hf-premium-header .hf-diamond-mark{width:35px;height:28px}
+ .hf-premium-header nav{order:3;flex:1 0 100%;overflow-x:auto;justify-content:flex-start;padding:5px 0 2px;gap:20px}
+ .hf-premium-header nav a{font-size:9px!important}
+ .hf-header-actions{margin-left:auto;gap:8px!important}
+ .hf-premium-header .hf-icon-link,.hf-premium-header .hf-icon-button{width:28px}
+ .hf-hero{min-height:480px;padding:30px 22px 260px!important;align-items:flex-start}
+ .hf-hero .hero-content{width:100%;max-width:500px}
+ .hf-hero h1{font-size:clamp(35px,8vw,56px)}
+ .hf-hero p{font-size:15px}
+ .hero-editorial{top:auto;bottom:0;left:0;right:0;width:100%;height:260px;mask-image:linear-gradient(180deg,transparent 0%,#000 14%)}
+ .hero-model-men,.hero-model-india,.hero-model-modest{width:33.333%}
+ .hf-quick-categories{grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-top:10px;padding:0 12px}
+ .hf-category-card img{height:88px}
+ .hf-category-card span{font-size:9px}
+ .hf-global-catalogue-intro{padding:0 12px;margin-top:22px}
+ .hf-catalogue-title-row{gap:9px}
+ .hf-catalogue-title-row h2{font-size:22px;white-space:normal}
+ .hf-region-pills{gap:6px}
+ .hf-region-pills a{min-width:0;flex:1 1 30%;padding:9px 6px;font-size:8px}
+ #productCatalogue.catalogue-section{padding:12px}
+ #productCatalogue .catalogue-product-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ #productCatalogue .catalogue-filterbar{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .season-controls{flex-wrap:wrap}
+}
+@media(max-width:430px){
+ .hf-premium-header .logo{font-size:19px;gap:6px}
+ .hf-premium-header .hf-diamond-mark{width:30px}
+ .hf-header-actions .language-toggle{font-size:9px;padding:5px!important}
+ .hf-hero{min-height:455px;padding-bottom:235px!important}
+ .hero-editorial{height:235px}
+ #productCatalogue .catalogue-product-grid{grid-template-columns:1fr}
+}
+@media(prefers-reduced-motion:reduce){.hf-category-card,.hf-premium-header *{transition:none!important}}
+
 </style>
 </head>
 <body>
@@ -901,25 +1095,31 @@ body[data-season] .hero{transition:background .5s ease}
   </div>
 </div>
 
-<header>
-  <div class="logo">HI<small>HUMAN INTELLIGENCE</small></div>
-  <nav>
+<header class="hf-premium-header">
+  <a class="logo" href="#" aria-label="HI FASHION home">
+    <svg class="hf-diamond-mark" viewBox="0 0 64 48" aria-hidden="true"><path d="M8 10 18 3h28l10 7-24 34L8 10Z"/><path d="M8 10h48M18 3l8 7 6 34 6-34 8-7M18 3l8 7M46 3l-8 7" /></svg>
+    <span class="logo-title">HI FASHION</span>
+    <small>GLOBAL STYLE MARKETPLACE</small>
+  </a>
+  <nav aria-label="Main navigation">
     <a href="#departments" data-hf-i18n="navDepartments">DEPARTMENTS</a>
-    <a href="#seasonal-shop" data-hf-i18n="navSeasons">4 SEASONS</a>
-    <a href="#future" data-hf-i18n="navFuture">FUTURE 2027</a>
-    <a href="#store-network" data-hf-i18n="navStores">STORE NETWORK</a>
-    <a href="#international-shipping-network" data-hf-i18n="navDelivery">INTERNATIONAL DELIVERY</a>
-    <a href="#trending" data-hf-i18n="navTrending">TRENDING NOW</a>
     <a href="#new-arrivals" data-hf-i18n="navArrivals">NEW ARRIVALS</a>
     <a href="#brands" data-hf-i18n="navBrands">BRANDS</a>
+    <a href="#global-catalogue">GLOBAL CATALOGUE</a>
     <a href="#seller" data-hf-i18n="navSeller">SELL WITH US</a>
   </nav>
-  <div class="right">
-    <a href="#search" data-hf-i18n="navSearch">SEARCH</a>
-    <a href="#seller" data-hf-i18n="navSellerArea">SELLER AREA</a>
-    <button class="cart-toggle" id="cartToggle" type="button" aria-haspopup="dialog" aria-controls="commerceCart" aria-label="Open shopping cart">🛍 <span data-hf-i18n="cartLabel">CART</span> <b id="cartCount">0</b></button>
-    <button class="account-toggle" id="accountToggle" type="button" aria-haspopup="dialog" aria-controls="accountDrawer"><span>♙</span> <span data-hf-account="account">MY ACCOUNT</span></button>
-    <button class="language-toggle" id="languageToggle" type="button" aria-haspopup="dialog" aria-controls="languageModal">🌐 EN</button>
+  <div class="right hf-header-actions">
+    <a class="hf-icon-link" href="#search" aria-label="Search catalogue" title="Search catalogue">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></svg>
+    </a>
+    <button class="account-toggle hf-icon-button" id="accountToggle" type="button" aria-haspopup="dialog" aria-controls="accountDrawer" aria-label="My account" title="My account">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="7.5" r="4"/><path d="M4.5 21v-2.2a7.5 7.5 0 0 1 15 0V21"/></svg>
+    </button>
+    <button class="cart-toggle hf-icon-button" id="cartToggle" type="button" aria-haspopup="dialog" aria-controls="commerceCart" aria-label="Shopping bag" title="Shopping bag">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l1 13H4L5 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+      <b id="cartCount">0</b>
+    </button>
+    <button class="language-toggle" id="languageToggle" type="button" aria-haspopup="dialog" aria-controls="languageModal" aria-label="Choose language">🌐 EN</button>
   </div>
 </header>
 
@@ -2274,7 +2474,89 @@ body[data-season] .hero{transition:background .5s ease}
   </div>
   <p class="brand-strip-note">Select any brand mark to visit its official online store. Trademarks and logos belong to their respective owners; no partnership or endorsement is implied.</p>
 </div>
-<div class="season-controls" id="season-controls" aria-label="Choose website season theme">
+
+
+
+
+<main>
+  <section class="hero hf-hero" aria-label="Discover global fashion">
+    <div class="hero-content">
+      <div class="eyebrow">HI FASHION · ONE GLOBAL STYLE DESTINATION</div>
+      <h1>DISCOVER FASHION<br><span>WITHOUT BORDERS</span></h1>
+      <div class="hero-diamond-divider"><span></span><b>◇</b><span></span></div>
+      <p>One global catalogue. Thousands of styles.<br>Brands from every region.</p>
+      <a class="button" href="#global-catalogue">EXPLORE THE CATALOGUE <span aria-hidden="true">›</span></a>
+    </div>
+    <div class="hero-editorial" aria-hidden="true">
+      <img class="hero-model hero-model-men" src="https://images.pexels.com/photos/12515248/pexels-photo-12515248.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1100" alt="" fetchpriority="high">
+      <img class="hero-model hero-model-india" src="https://images.pexels.com/photos/19432652/pexels-photo-19432652.jpeg?cs=srgb&amp;dl=pexels-konrads-photo-19432652.jpg&amp;fm=jpg" alt="" fetchpriority="high">
+      <img class="hero-model hero-model-modest" src="https://images.pexels.com/photos/33600455/pexels-photo-33600455.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1100" alt="" fetchpriority="high">
+    </div>
+  </section>
+
+
+  <section class="hf-quick-categories" aria-label="Shop popular fashion departments">
+    <button class="hf-category-card" type="button" data-hf-quick-query="Dresses" data-hf-quick-category="Women's Fashion">
+      <img src="https://images.pexels.com/photos/30246255/pexels-photo-30246255.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=700" alt="" loading="lazy"><span>WOMEN</span>
+    </button>
+    <button class="hf-category-card" type="button" data-hf-quick-query="Shirts" data-hf-quick-category="Men's Fashion">
+      <img src="https://images.pexels.com/photos/12515248/pexels-photo-12515248.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=700" alt="" loading="lazy"><span>MEN</span>
+    </button>
+    <button class="hf-category-card" type="button" data-hf-quick-query="Shoes" data-hf-quick-category="Shoes &amp; Boots">
+      <img src="https://images.pexels.com/photos/25643222/pexels-photo-25643222.jpeg?cs=srgb&amp;dl=pexels-victor-velasco-636253646-25643222.jpg&amp;fm=jpg" alt="" loading="lazy"><span>SHOES</span>
+    </button>
+    <button class="hf-category-card" type="button" data-hf-quick-query="Handbags" data-hf-quick-category="Bags &amp; Handbags">
+      <img src="https://images.pexels.com/photos/16154678/pexels-photo-16154678.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=700" alt="" loading="lazy"><span>BAGS</span>
+    </button>
+    <button class="hf-category-card" type="button" data-hf-quick-query="Jewellery" data-hf-quick-category="Jewellery">
+      <img src="https://images.pexels.com/photos/10050220/pexels-photo-10050220.jpeg?cs=srgb&amp;dl=pexels-pexels-user-127740499-10050220.jpg&amp;fm=jpg" alt="" loading="lazy"><span>JEWELLERY</span>
+    </button>
+    <button class="hf-category-card" type="button" data-hf-quick-query="Tactical Jackets" data-hf-quick-category="Military &amp; Tactical Clothing">
+      <img src="https://images.pexels.com/photos/19121029/pexels-photo-19121029.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=700" alt="" loading="lazy"><span>MILITARY &amp; TACTICAL</span>
+    </button>
+    <button class="hf-category-card" type="button" data-hf-quick-query="Hiking Jackets" data-hf-quick-category="Outdoor &amp; Adventure">
+      <img src="https://images.pexels.com/photos/37171542/pexels-photo-37171542.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=700" alt="" loading="lazy"><span>OUTDOOR</span>
+    </button>
+    <button class="hf-category-card" type="button" data-hf-quick-query="Dog Coats" data-hf-quick-category="Pet Fashion">
+      <img src="https://images.pexels.com/photos/16614997/pexels-photo-16614997.jpeg?cs=srgb&amp;dl=pexels-miyatavictor-16614997.jpg&amp;fm=jpg" alt="" loading="lazy"><span>PET FASHION</span>
+    </button>
+  </section>
+
+  <section class="hf-global-catalogue-intro" id="global-catalogue" aria-label="Global product catalogue">
+    <div class="hf-catalogue-title-row"><span></span><h2>GLOBAL PRODUCT CATALOGUE</h2><span></span></div>
+    <p>Explore fashion from retailers and brands across six world regions.</p>
+    <div class="hf-region-pills" aria-label="Browse retailer regions">
+      <a href="#retailer-region-europe" class="active">EUROPE</a>
+      <a href="#retailer-region-india">INDIA</a>
+      <a href="#retailer-region-middle-east">MIDDLE EAST</a>
+      <a href="#retailer-region-north-america">NORTH AMERICA</a>
+      <a href="#retailer-region-asia-pacific">ASIA-PACIFIC</a>
+      <a href="#retailer-region-africa">AFRICA</a>
+    </div>
+  </section>
+
+  <section class="catalogue-section" id="productCatalogue" aria-live="polite">
+      <div class="catalogue-heading">
+        <div><small>GLOBAL PRODUCT CATALOGUE</small><h2 id="catalogueTitle">Explore products worldwide</h2></div>
+        <span id="catalogueCount" class="catalogue-count">LIVE PARTNER OFFERS</span>
+      </div>
+      <p id="catalogueStatus" class="catalogue-status" role="status">Choose a category or search. Only real products with a verified partner offer are displayed.</p>
+      <div class="catalogue-filterbar">
+        <label>Brand<input id="catalogueBrand" type="search" placeholder="Any brand"></label>
+        <label>Size<input id="catalogueSize" type="search" placeholder="e.g. 38 / M"></label>
+        <label>Colour<input id="catalogueColor" type="search" placeholder="Any colour"></label>
+        <label>Currency<select id="catalogueCurrency"><option value="">Any currency</option><option>EUR</option><option>USD</option><option>GBP</option></select></label>
+        <label>Sort<select id="catalogueSort"><option value="relevance">Best match</option><option value="newest">Newest</option><option value="price_asc">Price: low to high</option><option value="price_desc">Price: high to low</option></select></label>
+        <label class="catalogue-price-label">Min price<input id="catalogueMinPrice" type="number" min="0" step="0.01" placeholder="0"></label>
+        <label class="catalogue-price-label">Max price<input id="catalogueMaxPrice" type="number" min="0" step="0.01" placeholder="No limit"></label>
+        <label class="catalogue-stock-filter"><input id="catalogueInStock" type="checkbox"> In stock only</label>
+        <button type="button" class="catalogue-filter-button" id="applyCatalogueFilters">APPLY FILTERS</button>
+      </div>
+      <div class="catalogue-product-grid" id="catalogueProductGrid"></div>
+      <div class="catalogue-load-row"><button type="button" id="catalogueLoadMore" class="catalogue-load-more" hidden>LOAD MORE PRODUCTS</button></div>
+      <div class="catalogue-market-links" id="catalogueMarketLinks"></div>
+    </section>
+  <div class="season-controls" id="season-controls" aria-label="Choose website season theme">
   <span class="season-controls-label" data-hf-i18n="seasonLabel">SEASONAL STYLE</span>
   <button class="season-control active" type="button" data-season-choice="auto" data-hf-i18n="seasonAuto">AUTO</button>
   <button class="season-control" type="button" data-season-choice="spring" data-hf-i18n="seasonSpring">SPRING</button>
@@ -2283,18 +2565,6 @@ body[data-season] .hero{transition:background .5s ease}
   <button class="season-control" type="button" data-season-choice="winter" data-hf-i18n="seasonWinter">WINTER</button>
   <span class="season-current" id="seasonCurrent" aria-live="polite">AUTO SEASON</span>
 </div>
-
-
-
-<main>
-  <div class="hero">
-    <div class="hero-content">
-      <div class="eyebrow" data-hf-i18n="heroEyebrow">HI HUMAN INTELLIGENCE PRESENTS</div>
-      <h1>FASHION<br><span>WITHOUT</span><br>BORDERS.</h1>
-      <p data-hf-i18n="heroDescription">One global destination for clothing, shoes, accessories and exceptional products from brands, boutiques and independent designers around the world.</p>
-      <a class="button" href="#departments" data-hf-i18n="heroButton">EXPLORE ALL DEPARTMENTS</a>
-    </div>
-  </div>
 
   <section class="future" id="future">
     <div class="section-title">
@@ -2464,7 +2734,7 @@ body[data-season] .hero{transition:background .5s ease}
     <div class="regional-delivery-note"><strong>Regional brand stores are still included below</strong><span>Brands such as Nike, Oakley, Zara and many others operate country-specific storefronts. They are useful for local sourcing, but their sites do not necessarily dispatch orders across borders. For example, Nike says orders ship only within the country or region where the order is placed. Always check the local store's shipping policy before showing a product to a customer.</span></div>
 
 
-    <div class="region-section">
+    <div class="region-section" id="retailer-region-north-america">
       <div class="region-heading"><span>01</span><h3>North America</h3><small>United States · Canada · Mexico</small></div>
       <div class="global-brand-grid">
         <article class="retail-card"><span class="retail-region">Sportswear · Global</span><div class="brand-identity"><img class="brand-logo" src="https://cdn.simpleicons.org/nike" alt="NIKE logo" loading="lazy" onerror="this.style.display='none'"><div class="brand-wordmark">NIKE</div></div><p>Footwear, sports clothing, performance gear and lifestyle apparel.</p><a href="https://www.nike.com/" target="_blank" rel="noopener">OFFICIAL STORE ↗</a></article>
@@ -2476,7 +2746,7 @@ body[data-season] .hero{transition:background .5s ease}
       </div>
     </div>
 
-    <div class="region-section">
+    <div class="region-section" id="retailer-region-europe">
       <div class="region-heading"><span>02</span><h3>Europe & United Kingdom</h3><small>EU · UK · EEA · Switzerland</small></div>
       <div class="global-brand-grid">
         <article class="retail-card"><span class="retail-region">Fashion marketplace</span><div class="brand-identity"><img class="brand-logo" src="https://cdn.simpleicons.org/zalando" alt="ZALANDO logo" loading="lazy" onerror="this.style.display='none'"><div class="brand-wordmark">ZALANDO</div></div><p>Clothing, shoes, sportswear, bags and beauty categories in supported countries.</p><a href="https://www.zalando.com/" target="_blank" rel="noopener">OFFICIAL STORE ↗</a></article>
@@ -2490,7 +2760,7 @@ body[data-season] .hero{transition:background .5s ease}
       </div>
     </div>
 
-    <div class="region-section">
+    <div class="region-section" id="retailer-region-india">
       <div class="region-heading"><span>03</span><h3>Asia & India</h3><small>India · Japan · South Korea · China</small></div>
       <div class="global-brand-grid">
         <article class="retail-card"><span class="retail-region">India · Fashion marketplace</span><div class="brand-identity"><img class="brand-logo" src="https://www.google.com/s2/favicons?domain=myntra.com&amp;sz=128" alt="MYNTRA logo" loading="lazy" onerror="this.style.display='none'"><div class="brand-wordmark">MYNTRA</div></div><p>Fashion, footwear, beauty and accessories from many brands.</p><a href="https://www.myntra.com/" target="_blank" rel="noopener">OFFICIAL STORE ↗</a></article>
@@ -2502,7 +2772,7 @@ body[data-season] .hero{transition:background .5s ease}
       </div>
     </div>
 
-    <div class="region-section">
+    <div class="region-section" id="retailer-region-asia-pacific">
       <div class="region-heading"><span>04</span><h3>Southeast Asia</h3><small>Indonesia · Malaysia · Philippines · Singapore · Thailand · Vietnam</small></div>
       <div class="global-brand-grid">
         <article class="retail-card"><span class="retail-region">Regional fashion platform</span><div class="brand-identity"><img class="brand-logo" src="https://www.google.com/s2/favicons?domain=zalora.com&amp;sz=128" alt="ZALORA logo" loading="lazy" onerror="this.style.display='none'"><div class="brand-wordmark">ZALORA</div></div><p>Fashion and lifestyle products across supported Southeast Asian markets.</p><a href="https://www.zalora.com/" target="_blank" rel="noopener">OFFICIAL STORE ↗</a></article>
@@ -2511,7 +2781,7 @@ body[data-season] .hero{transition:background .5s ease}
       </div>
     </div>
 
-    <div class="region-section">
+    <div class="region-section" id="retailer-region-middle-east">
       <div class="region-heading"><span>05</span><h3>Middle East & Africa</h3><small>Gulf countries · North Africa · Sub-Saharan Africa · South Africa</small></div>
       <div class="global-brand-grid">
         <article class="retail-card"><span class="retail-region">Middle East · Fashion</span><div class="brand-identity"><img class="brand-logo" src="https://www.google.com/s2/favicons?domain=namshi.com&amp;sz=128" alt="NAMSHI logo" loading="lazy" onerror="this.style.display='none'"><div class="brand-wordmark">NAMSHI</div></div><p>Clothing, sneakers, beauty and accessories for supported regional markets.</p><a href="https://www.namshi.com/" target="_blank" rel="noopener">OFFICIAL STORE ↗</a></article>
@@ -2521,7 +2791,7 @@ body[data-season] .hero{transition:background .5s ease}
       </div>
     </div>
 
-    <div class="region-section">
+    <div class="region-section" id="retailer-region-africa">
       <div class="region-heading"><span>06</span><h3>Latin America & Oceania</h3><small>Brazil · Colombia · Australia · New Zealand</small></div>
       <div class="global-brand-grid">
         <article class="retail-card"><span class="retail-region">Latin America · Fashion</span><div class="brand-identity"><img class="brand-logo" src="https://www.google.com/s2/favicons?domain=dafiti.com.br&amp;sz=128" alt="DAFITI logo" loading="lazy" onerror="this.style.display='none'"><div class="brand-wordmark">DAFITI</div></div><p>Fashion, footwear and lifestyle brands in supported Latin American markets.</p><a href="https://www.dafiti.com.br/" target="_blank" rel="noopener">OFFICIAL STORE ↗</a></article>
@@ -3644,30 +3914,10 @@ body[data-season] .hero{transition:background .5s ease}
         <button type="button" id="clearMarketSearch" class="market-search-clear">CLEAR</button>
       </div>
     </div>
-    <p class="photo-note" style="text-align:center;color:#c5c8c6;font-size:11px;margin:-15px 0 24px">Editorial model photography from Pexels · Images illustrate department style and are not product listings.</p>
+    <p class="photo-note" style="text-align:center;color:#c5c8c6;font-size:11px;margin:-15px 0 24px">Editorial photography illustrates the department categories; live offers are loaded only from connected retailer catalogues.</p>
     <div class="results-note" id="resultsNote">35 departments · Select any subcategory to explore</div>
     <div class="brand-search-results" id="brandSearchResults" aria-live="polite" hidden></div>
-    <section class="catalogue-section" id="productCatalogue" aria-live="polite" hidden>
-      <div class="catalogue-heading">
-        <div><small>GLOBAL PRODUCT CATALOGUE</small><h2 id="catalogueTitle">Explore products worldwide</h2></div>
-        <span id="catalogueCount" class="catalogue-count">LIVE CATALOGUE</span>
-      </div>
-      <p id="catalogueStatus" class="catalogue-status" role="status">Search products from connected retailers and approved seller feeds.</p>
-      <div class="catalogue-filterbar">
-        <label>Brand<input id="catalogueBrand" type="search" placeholder="Any brand"></label>
-        <label>Size<input id="catalogueSize" type="search" placeholder="e.g. 38 / M"></label>
-        <label>Colour<input id="catalogueColor" type="search" placeholder="Any colour"></label>
-        <label>Currency<select id="catalogueCurrency"><option value="">Any currency</option><option>EUR</option><option>USD</option><option>GBP</option></select></label>
-        <label>Sort<select id="catalogueSort"><option value="relevance">Best match</option><option value="newest">Newest</option><option value="price_asc">Price: low to high</option><option value="price_desc">Price: high to low</option></select></label>
-        <label class="catalogue-price-label">Min price<input id="catalogueMinPrice" type="number" min="0" step="0.01" placeholder="0"></label>
-        <label class="catalogue-price-label">Max price<input id="catalogueMaxPrice" type="number" min="0" step="0.01" placeholder="No limit"></label>
-        <label class="catalogue-stock-filter"><input id="catalogueInStock" type="checkbox"> In stock only</label>
-        <button type="button" class="catalogue-filter-button" id="applyCatalogueFilters">APPLY FILTERS</button>
-      </div>
-      <div class="catalogue-product-grid" id="catalogueProductGrid"></div>
-      <div class="catalogue-load-row"><button type="button" id="catalogueLoadMore" class="catalogue-load-more" hidden>LOAD MORE PRODUCTS</button></div>
-      <div class="catalogue-market-links" id="catalogueMarketLinks"></div>
-    </section>
+    
     <div class="multi-market-search" id="multiMarketSearchResults" aria-live="polite" hidden></div>
 
     <div class="departments" id="departmentGrid">
@@ -5506,6 +5756,14 @@ applySeason(localStorage.getItem("hiFashionSeason") || "auto", false);
       runSearch({query:term,category:term,offset:0});
     });
     content.appendChild(button);
+  });
+  document.querySelectorAll("[data-hf-quick-category]").forEach(button=>{
+    button.addEventListener("click",()=>{
+      const category=button.getAttribute("data-hf-quick-category")||"";
+      const query=button.getAttribute("data-hf-quick-query")||category;
+      runSearch({query,category,offset:0});
+      panel.scrollIntoView({behavior:"smooth",block:"start"});
+    });
   });
   window.hiFashionSearchProducts=runSearch;
   byId("applyCatalogueFilters").addEventListener("click",()=>{active.offset=0;runSearch({query:active.query||search.value,category:active.category,offset:0});});
