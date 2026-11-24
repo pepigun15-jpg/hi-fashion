@@ -76,7 +76,10 @@ Deno.serve(async (request: Request) => {
     apiUrl.searchParams.set("offset", String(offset));
     apiUrl.searchParams.set("sort", "best_match");
     // Return only listings that eBay says can be delivered to the selected destination.
-    apiUrl.searchParams.set("filter", `deliveryCountry:${country}`);
+    const deliveryFilter = postalCode
+      ? `deliveryCountry:${country},deliveryPostalCode:${postalCode}`
+      : `deliveryCountry:${country}`;
+    apiUrl.searchParams.set("filter", deliveryFilter);
 
     const headers: Record<string, string> = {
       "Authorization": `Bearer ${token}`,
@@ -112,8 +115,10 @@ Deno.serve(async (request: Request) => {
       condition: item.condition || "",
       retailer: "eBay",
       retailerCountry: country,
+      deliveryCountry: country,
+      shipsTo: [country],
       availability: "unknown",
-      productUrl: item.itemAffiliateWebUrl || item.itemWebUrl || "",
+      productUrl: item.itemWebUrl || "",
       affiliateUrl: item.itemAffiliateWebUrl || "",
       seller: item.seller?.username || "",
       shipping: item.shippingOptions?.[0]?.shippingCost?.value
