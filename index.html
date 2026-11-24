@@ -2465,6 +2465,94 @@ body :is(input,select,textarea){color:#111!important;background:#fff!important}
 }
 </style>
 
+
+<style id="hf-final-diamond-background-and-header-controls">
+/* Keep the supplied diamond photograph visible behind the whole storefront. */
+html,body{min-height:100%!important;background-color:#f8f8fa!important}
+body{
+  background-image:url("assets/diamond-background-user.svg")!important;
+  background-position:center center!important;
+  background-size:cover!important;
+  background-repeat:no-repeat!important;
+  background-attachment:fixed!important;
+  color:#111!important;
+}
+body::before{content:none!important;display:none!important}
+main{background:transparent!important}
+main>section:not(.hf-hero),
+.directory,.trending,.future,.seasonal-shop,.store-network,.info,.seller,
+.accessory-market,.commerce-preview,.commerce-live-catalog,
+#productCatalogue.catalogue-section,.hf-global-catalogue-intro,.hf-reference-featured{
+  background-color:rgba(255,255,255,.22)!important;
+  background-image:none!important;
+  color:#111!important;
+}
+/* The hero uses the same supplied diamond photo, not a competing stock image. */
+.hf-hero,body[data-season] .hf-hero,.hero{
+  background-color:transparent!important;
+  background-image:linear-gradient(90deg,rgba(255,255,255,.16) 0%,rgba(255,255,255,.08) 50%,rgba(255,255,255,0) 100%),url("assets/diamond-background-user.svg")!important;
+  background-position:center center,center center!important;
+  background-size:cover,cover!important;
+  background-repeat:no-repeat,no-repeat!important;
+}
+.hf-hero::before{background:linear-gradient(90deg,rgba(255,255,255,.12),rgba(255,255,255,.04) 58%,rgba(255,255,255,0))!important}
+
+/* Large, readable account and cart actions in the main header. */
+.hf-premium-header .hf-header-actions{display:flex!important;align-items:center!important;gap:10px!important;flex:0 0 auto!important}
+.hf-premium-header .hf-header-actions #accountToggle,
+.hf-premium-header .hf-header-actions #cartToggle{
+  position:relative!important;top:auto!important;right:auto!important;left:auto!important;
+  transform:none!important;display:inline-flex!important;flex-direction:row!important;
+  align-items:center!important;justify-content:center!important;gap:7px!important;
+  width:auto!important;height:42px!important;min-width:96px!important;min-height:42px!important;
+  max-height:42px!important;padding:0 11px!important;margin:0!important;
+  border:1px solid #c6a45a!important;border-radius:6px!important;
+  background:linear-gradient(135deg,#fff 0%,#eee0bd 100%)!important;
+  color:#111!important;box-shadow:0 3px 14px rgba(0,0,0,.20)!important;
+  cursor:pointer!important;z-index:130!important;flex-shrink:0!important;
+  white-space:nowrap!important;opacity:1!important;visibility:visible!important;
+}
+.hf-premium-header .hf-header-actions #cartToggle{min-width:78px!important}
+.hf-premium-header .hf-header-actions #accountToggle svg,
+.hf-premium-header .hf-header-actions #cartToggle svg{
+  display:block!important;width:19px!important;height:19px!important;
+  fill:none!important;stroke:#171717!important;stroke-width:1.8!important;
+  flex:0 0 auto!important;
+}
+.hf-premium-header .hf-header-actions .hf-action-label{
+  display:inline-block!important;color:#171717!important;font-size:9px!important;
+  font-weight:800!important;letter-spacing:.7px!important;line-height:1!important;
+  visibility:visible!important;opacity:1!important;
+}
+.hf-premium-header .hf-header-actions #cartCount{
+  position:absolute!important;top:-7px!important;right:-7px!important;
+  min-width:19px!important;height:19px!important;padding:0 4px!important;
+  display:flex!important;align-items:center!important;justify-content:center!important;
+  border:1px solid #fff!important;border-radius:50%!important;
+  background:#161616!important;color:#fff!important;font-size:10px!important;
+}
+.hf-premium-header .hf-header-actions #accountToggle:hover,
+.hf-premium-header .hf-header-actions #cartToggle:hover{
+  filter:brightness(1.04)!important;transform:translateY(-1px)!important;
+}
+.account-drawer[hidden],.account-overlay[hidden],
+.commerce-cart[hidden],.commerce-cart-overlay[hidden]{display:none!important}
+@media(max-width:760px){
+  body{background-attachment:scroll!important;background-size:cover!important}
+  .hf-premium-header .hf-header-actions{gap:7px!important}
+  .hf-premium-header .hf-header-actions #accountToggle{min-width:82px!important;padding:0 8px!important}
+  .hf-premium-header .hf-header-actions #cartToggle{min-width:70px!important;padding:0 8px!important}
+  .hf-premium-header .hf-header-actions .hf-action-label{font-size:8px!important;letter-spacing:.3px!important}
+}
+@media(max-width:390px){
+  .hf-premium-header .hf-header-actions{gap:5px!important}
+  .hf-premium-header .hf-header-actions #accountToggle{min-width:72px!important}
+  .hf-premium-header .hf-header-actions #cartToggle{min-width:62px!important}
+  .hf-premium-header .hf-header-actions #accountToggle svg,
+  .hf-premium-header .hf-header-actions #cartToggle svg{width:17px!important;height:17px!important}
+  .hf-premium-header .hf-header-actions .hf-action-label{font-size:7px!important}
+}
+</style>
 </head>
 <body>
 <div class="language-modal" id="languageModal" hidden>
@@ -2507,9 +2595,11 @@ body :is(input,select,textarea){color:#111!important;background:#fff!important}
     </a>
     <button class="account-toggle hf-icon-button" id="accountToggle" type="button" aria-haspopup="dialog" aria-controls="accountDrawer" aria-label="My account" title="My account">
       <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="7.5" r="4"/><path d="M4.5 21v-2.2a7.5 7.5 0 0 1 15 0V21"/></svg>
+      <span class="hf-action-label">ACCOUNT</span>
     </button>
     <button class="cart-toggle hf-icon-button" id="cartToggle" type="button" aria-haspopup="dialog" aria-controls="commerceCart" aria-label="Shopping bag" title="Shopping bag">
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l1 13H4L5 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+      <span class="hf-action-label">CART</span>
       <b id="cartCount">0</b>
     </button>
     <button class="language-toggle" id="languageToggle" type="button" aria-haspopup="dialog" aria-controls="languageModal" aria-label="Choose language">🌐 EN</button>
@@ -7231,6 +7321,35 @@ applySeason(localStorage.getItem("hiFashionSeason") || "auto", false);
   });
 })();
 
+</script>
+
+<script id="hf-final-panel-fallback">
+(function(){
+  const byId=id=>document.getElementById(id);
+  const accountButton=byId("accountToggle"), accountPanel=byId("accountDrawer"), accountShade=byId("accountOverlay");
+  const cartButton=byId("cartToggle"), cartPanel=byId("commerceCart"), cartShade=byId("commerceCartOverlay");
+  function open(panel,shade,otherPanel,otherShade){
+    if(otherPanel)otherPanel.hidden=true;
+    if(otherShade)otherShade.hidden=true;
+    if(panel)panel.hidden=false;
+    if(shade)shade.hidden=false;
+    document.body.style.overflow="hidden";
+  }
+  function close(panel,shade){
+    if(panel)panel.hidden=true;
+    if(shade)shade.hidden=true;
+    document.body.style.overflow="";
+  }
+  if(accountButton)accountButton.addEventListener("click",function(){open(accountPanel,accountShade,cartPanel,cartShade);});
+  if(cartButton)cartButton.addEventListener("click",function(){open(cartPanel,cartShade,accountPanel,accountShade);});
+  byId("closeAccount")?.addEventListener("click",function(){close(accountPanel,accountShade);});
+  byId("closeCart")?.addEventListener("click",function(){close(cartPanel,cartShade);});
+  accountShade?.addEventListener("click",function(){close(accountPanel,accountShade);});
+  cartShade?.addEventListener("click",function(){close(cartPanel,cartShade);});
+  document.addEventListener("keydown",function(event){
+    if(event.key==="Escape"){close(accountPanel,accountShade);close(cartPanel,cartShade);}
+  });
+})();
 </script>
 </body>
 </html>
