@@ -58,7 +58,7 @@ Set these private Edge Function secrets in Supabase (never commit values to GitH
 - `STRIPE_SECRET_KEY` (test key initially)
 - `STRIPE_WEBHOOK_SECRET`
 - `APP_BASE_URL` (exact HTTPS origin of the deployed website)
-- `PLATFORM_COMMISSION_BPS` (100 basis points = 1%; agree the commission first)
+- `PLATFORM_COMMISSION_BPS` = `1000` (1000 basis points = 10%; approved HI FASHION platform commission, calculated on product subtotal before shipping and tax). The checkout function defaults to 10% if this private secret is not set.
 - `STRIPE_SHIPPING_RATE_ID` (active EUR shipping rate)
 - `STRIPE_AUTOMATIC_TAX_ENABLED` = `true` only after Stripe Tax is configured
 - `COMMERCE_LIVE_ENABLED` = keep disabled until test and launch checks pass
@@ -67,6 +67,34 @@ Set these private Edge Function secrets in Supabase (never commit values to GitH
 - `GIFT_CARD_ENCRYPTION_KEY` = base64-encoded random 32-byte key
 - `RESEND_API_KEY`
 - `GIFT_CARD_FROM_EMAIL` = verified sender address on your email domain
+
+
+### HI FASHION commission and Revolut bank payouts
+
+The approved HI FASHION platform commission is **10%** of the product subtotal for physical product orders processed through HI FASHION's own Stripe Checkout. Shipping and tax are excluded. Gift-card-only checkouts do not incur this product commission.
+
+Set the matching private Supabase Edge Function secret:
+
+```bash
+supabase secrets set PLATFORM_COMMISSION_BPS=1000
+```
+
+The checkout function has a 10% default, but explicitly setting this secret makes the production configuration clear.
+
+For product orders, Stripe Connect destination charges send the application fee to the HI FASHION platform Stripe balance and route the remaining product proceeds to the seller's connected Stripe account. The application fee is gross platform commission before Stripe processing fees, refunds, disputes or other applicable costs. The platform's Stripe processing fees may reduce net commission.
+
+To receive HI FASHION platform payouts in Revolut:
+1. Use a Revolut Business account belonging to the same legal business/entity shown on the HI FASHION platform Stripe account. Revolut's Bulgarian Business help centre states that Revolut Business can receive payouts from Stripe. Personal-account eligibility must be confirmed with Stripe before relying on it.
+2. In Revolut Business, open the EUR account and choose **Details**. Copy the EUR IBAN, BIC and account-holder details shown there. EEA business accounts may have an LT IBAN; use the exact details displayed by Revolut for the EUR account.
+3. In the HI FASHION platform's Stripe Dashboard, open **Settings → Business → Bank accounts and currencies** (wording may vary), select EUR settlement and add the Revolut EUR account. Complete any ownership or verification prompts from Stripe.
+4. Set the Stripe payout schedule after the account is verified. The commission first accrues in the platform Stripe balance; it is paid to Revolut on the selected payout schedule, not immediately at each customer sale.
+5. Keep seller bank details separate: each marketplace seller completes their own Stripe Connect onboarding and adds their own payout bank account.
+
+Never put Revolut account numbers, IBANs, login credentials, card details, Stripe secret keys or verification codes in this repository, in website JavaScript or in ChatGPT. Add bank details only through the official Revolut and Stripe apps/sites.
+
+**External retailer links:** HI FASHION does not automatically earn 10% when a buyer follows a link and buys on an outside retailer's website. Those sales require an approved affiliate/partner agreement and tracking with that retailer.
+
+Live checkout must remain disabled until the Stripe platform account, EUR Revolut payout account, seller Connect onboarding, tax, shipping, test transactions and required legal/operational checks are completed.
 
 ## 3. Deploy Supabase Edge Functions
 
