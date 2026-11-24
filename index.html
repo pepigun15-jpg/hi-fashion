@@ -2383,6 +2383,88 @@ body .hf-premium-header .language-toggle{
 }
 </style>
 
+
+<style id="hi-fashion-diamond-photo-and-colour-logos">
+/* Use the exact diamond photograph supplied by the site owner as the site-wide backdrop. */
+html,body{min-height:100%;background-color:#fff!important}
+body{
+  background-image:url("assets/diamond-background-user.svg")!important;
+  background-position:center center!important;
+  background-size:cover!important;
+  background-repeat:no-repeat!important;
+  background-attachment:fixed!important;
+  color:#111!important;
+}
+main,main>section,main>section:not(.hf-hero),
+.directory,.trending,.future,.seasonal-shop,.store-network,.info,.seller,
+.accessory-market,.commerce-preview,.commerce-live-catalog,
+#productCatalogue.catalogue-section,.hf-global-catalogue-intro,.hf-reference-featured{
+  background-color:rgba(255,255,255,.86)!important;
+  background-image:none!important;
+  color:#111!important;
+}
+.hf-hero,body[data-season] .hf-hero,.hero{
+  background-image:linear-gradient(90deg,rgba(255,255,255,.86) 0%,rgba(255,255,255,.70) 45%,rgba(255,255,255,.16) 100%),url("assets/diamond-background-user.svg")!important;
+  background-position:center center,center center!important;
+  background-size:cover,cover!important;
+  background-repeat:no-repeat!important;
+}
+.hf-hero::before{background:linear-gradient(90deg,rgba(255,255,255,.34),rgba(255,255,255,.08) 58%,rgba(255,255,255,0))!important}
+.brand-strip{
+  background:rgba(255,255,255,.97)!important;
+  background-image:none!important;
+  border-top:1px solid #dedede!important;
+  border-bottom:1px solid #c7a45f!important;
+  box-shadow:0 3px 14px rgba(0,0,0,.06)!important;
+}
+.brand-strip-track>.hf-reference-mark{
+  display:flex!important;align-items:center!important;justify-content:center!important;
+  min-width:clamp(76px,10.4vw,150px)!important;min-height:48px!important;
+  padding:5px 12px!important;border-right:1px solid #cfcfcf!important;
+  background:transparent!important;
+}
+.hf-reference-mark img.hf-brand-logo{
+  display:block!important;width:auto!important;height:31px!important;max-width:112px!important;
+  object-fit:contain!important;filter:none!important;opacity:1!important;
+}
+.hf-reference-mark span{display:none!important}
+.brand-strip-heading span,.brand-strip-heading small,.brand-strip-note,
+.top-brand-mark span{color:#111!important;text-shadow:none!important}
+body main :is(h1,h2,h3,h4,h5,h6,p,li,label,small,strong,em,span,legend,dt,dd,a,button),
+body footer :is(h1,h2,h3,h4,h5,h6,p,li,label,small,strong,em,span,a){
+  color:#111!important;text-shadow:none!important;
+}
+body :is(.eyebrow,.section-title small,.trend-kicker,.future-label,.retail-region,
+.commerce-product-tag,.shipping-status,.season-controls-label,.season-current,
+.catalogue-heading small,.commerce-kicker,.brand-search-heading,.region-heading small,
+.hf-reference-product-copy small){color:#111!important}
+.hf-premium-header,header.hf-premium-header{
+  background:#080808!important;background-image:none!important;border-bottom:1px solid #333!important;
+}
+.hf-premium-header .logo,.hf-premium-header .logo-title{color:#fff!important}
+.hf-premium-header .hf-diamond-mark{stroke:#fff!important}
+.hf-premium-header nav a,.hf-premium-header .hf-icon-link,
+.hf-premium-header .hf-icon-button{color:#fff!important}
+.hf-premium-header nav a:hover{color:#d7b66c!important}
+body button,body input[type="button"],body input[type="submit"],body input[type="reset"],
+body .button,body a.button,body [role="button"],body .season-control,body .season-chip,
+body .trend-pill,body .language-toggle,body .hf-region-pills a,
+body .hf-reference-product-footer a,body #productCatalogue .catalogue-product-cta,
+body .catalogue-filterbar button,body .catalogue-pagination button,body .catalogue-load-more,
+body .commerce-cart button,body .account-drawer button,body .language-options button{
+  color:#111!important;background:#fff!important;background-image:none!important;
+  border-top:1px solid #d0d0d0!important;border-bottom:1px solid #d0d0d0!important;
+  border-left:2px solid #b9934e!important;border-right:2px solid #b9934e!important;
+  text-shadow:none!important;box-shadow:none!important;
+}
+body :is(input,select,textarea){color:#111!important;background:#fff!important}
+@media(max-width:650px){
+  body{background-attachment:scroll!important;background-size:auto 100vh!important}
+  .brand-strip-track>.hf-reference-mark{min-width:78px!important;padding:4px 7px!important}
+  .hf-reference-mark img.hf-brand-logo{height:25px!important;max-width:76px!important}
+}
+</style>
+
 </head>
 <body>
 <div class="language-modal" id="languageModal" hidden>
@@ -2583,15 +2665,15 @@ body .hf-premium-header .language-toggle{
   </div>
   <div class="brand-strip-window">
     <div class="brand-strip-track">
-      <a class="top-brand-mark hf-reference-mark nike-ref" href="https://www.nike.com/" target="_blank" rel="noopener noreferrer"><span>NIKE</span></a>
-      <a class="top-brand-mark hf-reference-mark adidas-ref" href="https://www.adidas.com/" target="_blank" rel="noopener noreferrer"><span>adidas</span></a>
-      <a class="top-brand-mark hf-reference-mark zara-ref" href="https://www.zara.com/" target="_blank" rel="noopener noreferrer"><span>ZARA</span></a>
-      <a class="top-brand-mark hf-reference-mark hm-ref" href="https://www.hm.com/" target="_blank" rel="noopener noreferrer"><span>H&M</span></a>
-      <a class="top-brand-mark hf-reference-mark levis-ref" href="https://www.levi.com/" target="_blank" rel="noopener noreferrer"><span>LEVI’S</span></a>
-      <a class="top-brand-mark hf-reference-mark puma-ref" href="https://eu.puma.com/" target="_blank" rel="noopener noreferrer"><span>PUMA</span></a>
-      <a class="top-brand-mark hf-reference-mark asos-ref" href="https://www.asos.com/" target="_blank" rel="noopener noreferrer"><span>ASOS</span></a>
-      <a class="top-brand-mark hf-reference-mark rayban-ref" href="https://www.ray-ban.com/" target="_blank" rel="noopener noreferrer"><span>RAY-BAN</span></a>
-      <a class="top-brand-mark hf-reference-mark newbalance-ref" href="https://www.newbalance.com/" target="_blank" rel="noopener noreferrer"><span>NEW BALANCE</span></a>
+      <a class="top-brand-mark hf-reference-mark nike-ref" href="https://www.nike.com/" target="_blank" rel="noopener noreferrer" aria-label="NIKE logo" title="NIKE"><img class="hf-brand-logo" src="https://cdn.simpleicons.org/nike/111111" alt="NIKE logo" loading="lazy" onerror="this.onerror=null;this.src='https://www.google.com/s2/favicons?domain=nike.com&amp;sz=128'"></a>
+      <a class="top-brand-mark hf-reference-mark adidas-ref" href="https://www.adidas.com/" target="_blank" rel="noopener noreferrer" aria-label="adidas logo" title="adidas"><img class="hf-brand-logo" src="https://cdn.simpleicons.org/adidas/111111" alt="adidas logo" loading="lazy" onerror="this.onerror=null;this.src='https://www.google.com/s2/favicons?domain=adidas.com&amp;sz=128'"></a>
+      <a class="top-brand-mark hf-reference-mark zara-ref" href="https://www.zara.com/" target="_blank" rel="noopener noreferrer" aria-label="ZARA logo" title="ZARA"><img class="hf-brand-logo" src="https://cdn.simpleicons.org/zara/111111" alt="ZARA logo" loading="lazy" onerror="this.onerror=null;this.src='https://www.google.com/s2/favicons?domain=zara.com&amp;sz=128'"></a>
+      <a class="top-brand-mark hf-reference-mark hm-ref" href="https://www.hm.com/" target="_blank" rel="noopener noreferrer" aria-label="H&M logo" title="H&M"><img class="hf-brand-logo" src="https://cdn.simpleicons.org/hm/E50010" alt="H&M logo" loading="lazy" onerror="this.onerror=null;this.src='https://www.google.com/s2/favicons?domain=hm.com&amp;sz=128'"></a>
+      <a class="top-brand-mark hf-reference-mark levis-ref" href="https://www.levi.com/" target="_blank" rel="noopener noreferrer" aria-label="LEVI’S logo" title="LEVI’S"><img class="hf-brand-logo" src="https://cdn.simpleicons.org/levis/D71920" alt="LEVI’S logo" loading="lazy" onerror="this.onerror=null;this.src='https://www.google.com/s2/favicons?domain=levi.com&amp;sz=128'"></a>
+      <a class="top-brand-mark hf-reference-mark puma-ref" href="https://eu.puma.com/" target="_blank" rel="noopener noreferrer" aria-label="PUMA logo" title="PUMA"><img class="hf-brand-logo" src="https://cdn.simpleicons.org/puma/111111" alt="PUMA logo" loading="lazy" onerror="this.onerror=null;this.src='https://www.google.com/s2/favicons?domain=puma.com&amp;sz=128'"></a>
+      <a class="top-brand-mark hf-reference-mark asos-ref" href="https://www.asos.com/" target="_blank" rel="noopener noreferrer" aria-label="ASOS logo" title="ASOS"><img class="hf-brand-logo" src="https://cdn.simpleicons.org/asos/111111" alt="ASOS logo" loading="lazy" onerror="this.onerror=null;this.src='https://www.google.com/s2/favicons?domain=asos.com&amp;sz=128'"></a>
+      <a class="top-brand-mark hf-reference-mark rayban-ref" href="https://www.ray-ban.com/" target="_blank" rel="noopener noreferrer" aria-label="RAY-BAN logo" title="RAY-BAN"><img class="hf-brand-logo" src="https://cdn.simpleicons.org/rayban/111111" alt="RAY-BAN logo" loading="lazy" onerror="this.onerror=null;this.src='https://www.google.com/s2/favicons?domain=ray-ban.com&amp;sz=128'"></a>
+      <a class="top-brand-mark hf-reference-mark newbalance-ref" href="https://www.newbalance.com/" target="_blank" rel="noopener noreferrer" aria-label="NEW BALANCE logo" title="NEW BALANCE"><img class="hf-brand-logo" src="https://cdn.simpleicons.org/newbalance/CF0A2C" alt="NEW BALANCE logo" loading="lazy" onerror="this.onerror=null;this.src='https://www.google.com/s2/favicons?domain=newbalance.com&amp;sz=128'"></a>
       
       
       <a class="top-brand-mark" href="https://www.nike.com/" target="_blank" rel="noopener noreferrer" aria-label="NIKE official online store">
