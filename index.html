@@ -446,6 +446,58 @@ html[dir="rtl"] .cart-toggle{right:auto!important;left:0!important;border-right:
   body :is(h1,h2,h3,h4,.logo,.section-title small,.commerce-kicker,.brand-wordmark,.top-brand-mark span,.gift-shop h3,.commerce-cart-head h2),.cart-toggle{animation:none!important}
 }
 
+
+/* Account centre, seller workspace and verified live catalogue */
+.account-toggle{display:inline-flex;align-items:center;gap:7px;padding:9px 11px;background:#111914;border:1px solid #c6a45a;color:#f0d27b;font-size:10px;font-weight:bold;letter-spacing:1px;cursor:pointer;white-space:nowrap}
+.account-toggle:hover{background:#c6a45a;color:#111}
+.account-overlay[hidden],.account-drawer[hidden]{display:none!important}
+.account-overlay{position:fixed;inset:0;z-index:100003;background:rgba(0,0,0,.72);backdrop-filter:blur(5px)}
+.account-drawer{position:fixed;z-index:100004;top:0;right:0;left:auto;width:min(600px,100%);height:100dvh;display:flex;flex-direction:column;background:#0b120d;border-left:1px solid #c6a45a;box-shadow:-20px 0 65px rgba(0,0,0,.65),-1px 0 25px rgba(230,203,132,.18)}
+.account-head{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:21px 24px;background:linear-gradient(120deg,#1b2c20,#0b120d);border-bottom:1px solid #695833}
+.account-head h2{font-family:Georgia,serif;font-size:30px;font-weight:normal;color:#f0d27b;margin-top:6px}
+.account-body{padding:20px 24px 35px;overflow:auto;overscroll-behavior:contain}
+.account-connection{padding:12px 14px;margin-bottom:15px;border:1px solid #665633;background:#131a13;color:#e8d49d;font-size:11px;line-height:1.7}
+.account-form,.account-subsection{margin-top:17px;padding:18px;background:#101a13;border:1px solid #3e5142}
+.account-form h3,.account-subsection h3{font-family:Georgia,serif;font-size:22px;font-weight:normal;color:#efd27b;margin-bottom:15px}
+.account-form h4,.account-subsection h4{font-family:Georgia,serif;font-size:18px;font-weight:normal;color:#efd27b;margin:18px 0 10px}
+.account-form label{display:block;margin:0 0 12px;color:#e6d49b;font-size:11px;line-height:1.5}
+.account-form input,.account-form select,.account-form textarea{display:block;width:100%;margin-top:6px;padding:11px;background:#080e0a;border:1px solid #806b40;color:#f3dfaa;font:13px Arial,sans-serif}
+.account-form input:focus,.account-form select:focus,.account-form textarea:focus{outline:1px solid #f0d27b}
+.account-actions{display:flex;gap:9px;flex-wrap:wrap}
+.account-secondary,.account-text-button{background:transparent;border:1px solid #8d7540;color:#e8ce86;padding:10px 12px;font-size:9px;letter-spacing:1px;cursor:pointer}
+.account-text-button{border:0;padding:12px 0 0;text-decoration:underline}
+.account-profile-top{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px;background:#121b14;border:1px solid #4a5c49}
+.account-profile-top strong{display:block;margin-top:7px;color:#f1d78d;font-size:12px;overflow-wrap:anywhere}
+.account-subsection{margin-top:17px}
+.account-muted{color:#b6ad8f;font-size:11px;line-height:1.7}
+.account-list{display:grid;gap:9px;margin-top:12px}
+.account-list-item{padding:12px;background:#0b120d;border:1px solid #35483a}
+.account-list-item strong{display:block;color:#f0d27b;font-size:12px;margin-bottom:5px}
+.account-list-item span,.account-list-item small{display:block;color:#beb38d;font-size:10px;line-height:1.65}
+.account-two-col{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.seller-workspace{border-color:#947a42;background:linear-gradient(150deg,#151e16,#0b120d)}
+.seller-workspace>h3{margin-top:9px}
+#sellerApprovedArea[hidden],#sellerApplicationArea[hidden]{display:none!important}
+.account-drawer[dir="rtl"]{direction:rtl}
+.commerce-live-catalog{padding:62px 7%;background:#0b120d;border-top:1px solid #57482c}
+.commerce-connection-note{max-width:1100px;margin:0 auto 18px;padding:13px 16px;border:1px solid #57482c;background:#121a13;color:#d7bd80;font-size:11px;text-align:center;line-height:1.6}
+.commerce-live-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px}
+.live-product-card{background:#101813;border:1px solid #51452d;display:flex;flex-direction:column;overflow:hidden;min-width:0}
+.live-product-card img{width:100%;height:230px;object-fit:cover;background:#111;display:block}
+.live-product-card .live-product-copy{padding:17px;display:flex;flex-direction:column;gap:9px;flex:1}
+.live-product-card h3{font-family:Georgia,serif;font-weight:normal;font-size:22px;color:#f0d27b}
+.live-product-card p{font-size:11px;line-height:1.7;color:#c6b98f;flex:1}
+.live-product-card .live-product-meta{font-size:9px;letter-spacing:1px;color:#b5a474}
+.live-product-card .live-product-purchase{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:7px}
+.live-product-card .live-product-purchase strong{font-family:Georgia,serif;font-size:21px;color:#f0d27b}
+.live-product-card .live-product-purchase button{padding:10px 12px;background:#c6a45a;border:0;color:#111;font-size:9px;font-weight:bold;letter-spacing:1px;cursor:pointer}
+@media(max-width:900px){.commerce-live-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.commerce-live-grid{grid-template-columns:1fr}.account-drawer{width:100%}.account-body{padding:16px}.account-two-col{grid-template-columns:1fr}}
+/* Always keep the cart at the right edge, including Arabic RTL pages. */
+html[dir="rtl"] .cart-toggle{right:0!important;left:auto!important;border-right:0!important;border-left:1px solid #f8e5aa!important;border-radius:17px 0 0 17px!important}
+html[dir="rtl"] .commerce-cart{right:0!important;left:auto!important;border-left:1px solid #e3c77f!important;border-right:0!important}
+html[dir="rtl"] .account-drawer{right:0!important;left:auto!important;border-left:1px solid #c6a45a!important;border-right:0!important}
+
 </style>
 </head>
 <body>
@@ -487,9 +539,94 @@ html[dir="rtl"] .cart-toggle{right:auto!important;left:0!important;border-right:
     <a href="#search" data-hf-i18n="navSearch">SEARCH</a>
     <a href="#seller" data-hf-i18n="navSellerArea">SELLER AREA</a>
     <button class="cart-toggle" id="cartToggle" type="button" aria-haspopup="dialog" aria-controls="commerceCart" aria-label="Open shopping cart">🛍 <span data-hf-i18n="cartLabel">CART</span> <b id="cartCount">0</b></button>
+    <button class="account-toggle" id="accountToggle" type="button" aria-haspopup="dialog" aria-controls="accountDrawer"><span>♙</span> <span data-hf-account="account">MY ACCOUNT</span></button>
     <button class="language-toggle" id="languageToggle" type="button" aria-haspopup="dialog" aria-controls="languageModal">🌐 EN</button>
   </div>
 </header>
+
+<div class="account-overlay" id="accountOverlay" hidden></div>
+<aside class="account-drawer" id="accountDrawer" role="dialog" aria-modal="true" aria-labelledby="accountTitle" hidden>
+  <div class="account-head">
+    <div><span class="commerce-kicker">HI FASHION · MEMBER AREA</span><h2 id="accountTitle" data-hf-account="accountTitle">My Account</h2></div>
+    <button type="button" class="commerce-close" id="closeAccount" aria-label="Close account">×</button>
+  </div>
+  <div class="account-body">
+    <p class="account-connection" id="accountConnection" role="status">Account services need Supabase configuration before registration and sign-in can be used.</p>
+    <form id="accountAuthForm" class="account-form">
+      <h3 data-hf-account="welcomeAccount">Welcome</h3>
+      <label><span data-hf-account="email">Email address</span><input id="accountEmail" type="email" maxlength="160" autocomplete="email" required placeholder="you@example.com"></label>
+      <label><span data-hf-account="password">Password</span><input id="accountPassword" type="password" minlength="8" maxlength="128" autocomplete="current-password" required placeholder="At least 8 characters"></label>
+      <div class="account-actions">
+        <button type="submit" class="commerce-add" id="signInButton" data-hf-account="signIn">SIGN IN</button>
+        <button type="button" class="account-secondary" id="signUpButton" data-hf-account="createAccount">CREATE ACCOUNT</button>
+      </div>
+      <button type="button" class="account-text-button" id="resetPasswordButton" data-hf-account="forgotPassword">Forgot your password?</button>
+    </form>
+
+    <section id="accountSignedIn" hidden>
+      <div class="account-profile-top">
+        <div><span class="commerce-kicker" data-hf-account="signedInAs">SIGNED IN AS</span><strong id="accountUserEmail">—</strong></div>
+        <button type="button" class="account-secondary" id="signOutButton" data-hf-account="signOut">SIGN OUT</button>
+      </div>
+
+      <form id="profileForm" class="account-form">
+        <h3 data-hf-account="profile">Customer profile</h3>
+        <label><span data-hf-account="fullName">Full name</span><input id="profileName" maxlength="120" autocomplete="name"></label>
+        <label><span data-hf-account="countryCode">Country code (2 letters)</span><input id="profileCountry" maxlength="2" placeholder="BG" autocomplete="country"></label>
+        <label><span data-hf-account="phone">Phone (optional)</span><input id="profilePhone" maxlength="40" autocomplete="tel"></label>
+        <button type="submit" class="commerce-add" data-hf-account="saveProfile">SAVE PROFILE</button>
+        <p class="commerce-status" id="profileStatus" role="status"></p>
+      </form>
+
+      <section class="account-subsection">
+        <h3 data-hf-account="orderHistory">Order history</h3>
+        <div id="accountOrders" class="account-list"><p class="account-muted" data-hf-account="loadingOrders">Loading your orders…</p></div>
+      </section>
+
+      <section class="account-subsection">
+        <h3 data-hf-account="giftCards">My gift cards</h3>
+        <p class="account-muted" data-hf-account="giftCardsPrivacy">Gift-card balances and full redemption codes are kept private and will appear here after the secure account lookup is enabled.</p>
+      </section>
+
+      <section class="account-subsection seller-workspace" id="sellerWorkspace">
+        <span class="commerce-kicker" data-hf-account="sellerArea">SELLER CENTRE</span>
+        <h3 data-hf-account="growBusiness">Grow your business with HI FASHION</h3>
+        <div id="sellerApplicationArea">
+          <p class="account-muted" data-hf-account="sellerApplyIntro">Apply to become a seller. Applications are reviewed before listings and payouts are enabled.</p>
+          <form id="sellerApplicationForm" class="account-form">
+            <label><span data-hf-account="businessName">Business / brand name</span><input id="sellerBusinessName" maxlength="120" required></label>
+            <label><span data-hf-account="businessCountry">Business country (ISO code)</span><input id="sellerCountryCode" maxlength="2" placeholder="BG" required></label>
+            <label><span data-hf-account="businessWebsite">Website (optional)</span><input id="sellerWebsite" type="url" maxlength="240" placeholder="https://"></label>
+            <label><span data-hf-account="productCategory">Main product category</span><select id="sellerCategory" required><option value="">Choose a category</option><option>Women's and men's clothing</option><option>Shoes and sneakers</option><option>Bags and accessories</option><option>Jewellery and watches</option><option>Sportswear</option><option>Multiple categories</option></select></label>
+            <label><span data-hf-account="businessDescription">Tell us about your business</span><textarea id="sellerDescription" rows="3" maxlength="1200" required></textarea></label>
+            <button type="submit" class="commerce-add" data-hf-account="submitApplication">SUBMIT SELLER APPLICATION</button>
+            <p class="commerce-status" id="sellerApplicationStatus" role="status"></p>
+          </form>
+          <div id="sellerApplicationHistory" class="account-list"></div>
+        </div>
+        <div id="sellerApprovedArea" hidden>
+          <p class="account-connection" id="sellerPayoutStatus" role="status">Seller profile connected.</p>
+          <button type="button" class="commerce-add" id="connectPayoutsButton" data-hf-account="connectPayouts">CONNECT PAYOUTS WITH STRIPE</button>
+          <h4 data-hf-account="myListings">My product listings</h4>
+          <div id="sellerProductList" class="account-list"></div>
+          <form id="sellerProductForm" class="account-form">
+            <h4 data-hf-account="addListing">Add a product</h4>
+            <label><span data-hf-account="productName">Product name</span><input id="newProductName" maxlength="120" required></label>
+            <label><span data-hf-account="productDescription">Description</span><textarea id="newProductDescription" rows="3" maxlength="1500"></textarea></label>
+            <label><span data-hf-account="productCategory">Category</span><input id="newProductCategory" maxlength="80" required></label>
+            <label><span data-hf-account="imageUrl">Product image URL (optional)</span><input id="newProductImage" type="url" maxlength="500"></label>
+            <div class="account-two-col">
+              <label><span data-hf-account="priceEuro">Price (EUR)</span><input id="newProductPrice" type="number" min="0.01" max="100000" step="0.01" required></label>
+              <label><span data-hf-account="stock">Stock</span><input id="newProductStock" type="number" min="0" max="100000" step="1" required></label>
+            </div>
+            <button type="submit" class="commerce-add" data-hf-account="saveListing">SAVE DRAFT LISTING</button>
+            <p class="commerce-status" id="sellerProductStatus" role="status"></p>
+          </form>
+        </div>
+      </section>
+    </section>
+  </div>
+</aside>
 
 <div class="commerce-cart-overlay" id="commerceCartOverlay" hidden></div>
 <aside class="commerce-cart" id="commerceCart" role="dialog" aria-modal="true" aria-labelledby="commerceCartTitle" hidden>
@@ -513,7 +650,7 @@ html[dir="rtl"] .cart-toggle{right:auto!important;left:0!important;border-right:
       <label><span data-hf-i18n="emailAddress">Email address</span><input id="checkoutEmail" type="email" autocomplete="email" maxlength="160" placeholder="you@example.com"></label>
       <label><span data-hf-i18n="deliveryAddress">Delivery address</span><input id="checkoutAddress" autocomplete="street-address" maxlength="240" placeholder="Street and number"></label>
       <div class="checkout-two-col">
-        <label><span data-hf-i18n="country">Country</span><input id="checkoutCountry" autocomplete="country-name" maxlength="90" placeholder="Country"></label>
+        <label><span data-hf-i18n="country">Country code (ISO)</span><input id="checkoutCountry" autocomplete="country" maxlength="2" pattern="[A-Za-z]{2}" placeholder="BG"></label>
         <label><span data-hf-i18n="postalCode">Postal code</span><input id="checkoutPostal" autocomplete="postal-code" maxlength="24" placeholder="Postal code"></label>
       </div>
     </div>
@@ -3229,6 +3366,17 @@ html[dir="rtl"] .cart-toggle{right:auto!important;left:0!important;border-right:
   </section>
 
   
+
+<section class="commerce-live-catalog" id="live-products">
+  <div class="section-title">
+    <small data-hf-account="approvedSellers">APPROVED SELLERS · LIVE CATALOGUE</small>
+    <h2 data-hf-account="shopLiveProducts">Shop verified seller products</h2>
+    <p data-hf-account="liveProductsIntro">Products published by approved HI FASHION sellers. Availability and delivery are checked again at checkout.</p>
+  </div>
+  <p class="commerce-connection-note" id="liveCatalogStatus" role="status">Live product catalogue is waiting for the Supabase project configuration.</p>
+  <div class="commerce-live-grid" id="liveProductGrid"></div>
+</section>
+
 <section class="commerce-preview" id="shop-preview">
   <div class="section-title">
     <small data-hf-i18n="commerceEyebrow">THE HI FASHION SHOPPING EXPERIENCE</small>
@@ -3339,6 +3487,7 @@ html[dir="rtl"] .cart-toggle{right:auto!important;left:0!important;border-right:
   <div>© 2026 HI HUMAN INTELLIGENCE</div>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
 const hfTranslations = {
 en:{
@@ -3940,6 +4089,14 @@ applySeason(localStorage.getItem("hiFashionSeason") || "auto", false);
   try{wishlist=JSON.parse(localStorage.getItem(wishlistKey)||"[]");if(!Array.isArray(wishlist))wishlist=[];}catch(e){wishlist=[];}
   const save=()=>{try{localStorage.setItem(cartKey,JSON.stringify(cartData));}catch(e){}};
   const saveWishlist=()=>{try{localStorage.setItem(wishlistKey,JSON.stringify(wishlist));}catch(e){}};
+  window.hiFashionAddProductToCart = function(product){
+    if(!product || !product.id || !Number.isInteger(Number(product.price_minor)) || Number(product.price_minor)<=0) return false;
+    const key=String(product.id);
+    const existing=cartData.find(item=>item.key===key);
+    if(existing) existing.quantity=Math.min(existing.quantity+1,10);
+    else cartData.push({key,id:key,name:String(product.name||"Seller product"),priceCents:Number(product.price_minor),type:"product",quantity:1,note:"Seller listing"});
+    save();render();return true;
+  };
   const escapeHtml=value=>String(value??"").replace(/[&<>"']/g,ch=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[ch]));
   function render(){
     const c=getCopy();
@@ -3996,7 +4153,7 @@ applySeason(localStorage.getItem("hiFashionSeason") || "auto", false);
     const amount=Number($("giftAmount").value);
     if(![25,50,100,200].includes(amount))return;
     const key="gift-"+Date.now()+"-"+Math.random().toString(36).slice(2,7);
-    cartData.push({key,id:"gift-card",name:"HI FASHION Digital Gift Card",priceCents:amount*100,type:"gift",quantity:1,recipient,recipientEmail:email,message:$("giftMessageText").value.trim()});
+    cartData.push({key,id:"gift-"+(amount*100),name:"HI FASHION Digital Gift Card",priceCents:amount*100,type:"gift",quantity:1,recipient,recipientEmail:email,message:$("giftMessageText").value.trim()});
     save();render();$("giftFormStatus").textContent=getCopy().giftAdded;$("giftCardForm").reset();
     openCart();
   });
@@ -4013,7 +4170,12 @@ applySeason(localStorage.getItem("hiFashionSeason") || "auto", false);
     try{
       $("secureCheckout").disabled=true;
       $("checkoutStatus").textContent=c.checkoutNoServer;
-      const response=await fetch(endpoint,{method:"POST",headers:{"Content-Type":"application/json"},credentials:"same-origin",body:JSON.stringify({buyer,items:cartData.map(item=>({id:item.id,quantity:item.quantity,type:item.type,recipient:item.recipient||null,recipientEmail:item.recipientEmail||null,message:item.message||null}))})});
+      const client=window.hiFashionSupabase;
+      if(!client){$("checkoutStatus").textContent="Sign in and connect the customer account service before checkout.";return;}
+      const sessionResult=await client.auth.getSession();
+      const accessToken=sessionResult.data?.session?.access_token;
+      if(!accessToken){$("checkoutStatus").textContent="Please sign in before checkout.";return;}
+      const response=await fetch(endpoint,{method:"POST",headers:{"Content-Type":"application/json","Authorization":"Bearer "+accessToken},credentials:"same-origin",body:JSON.stringify({buyer,items:cartData.map(item=>({id:item.id,quantity:item.quantity,type:item.type,recipient:item.recipient||null,recipientEmail:item.recipientEmail||null,message:item.message||null}))})});
       if(!response.ok)throw new Error("Checkout request failed");
       const result=await response.json();
       if(!result||typeof result.checkoutUrl!=="string")throw new Error("Invalid checkout response");
@@ -4028,6 +4190,256 @@ applySeason(localStorage.getItem("hiFashionSeason") || "auto", false);
   render();
 })();
 
+
+/* Supabase customer account, order history and seller workspace */
+(async function initHiFashionAccounts(){
+  const $=id=>document.getElementById(id);
+  const accountToggle=$("accountToggle"), drawer=$("accountDrawer"), overlay=$("accountOverlay");
+  const cfg=window.HI_FASHION_SUPABASE_CONFIG||{};
+  const configured=typeof cfg.url==="string" && /^https:\/\/[a-z0-9-]+\.supabase\.co$/i.test(cfg.url) &&
+    typeof cfg.anonKey==="string" && cfg.anonKey.length>40 && !cfg.anonKey.includes("YOUR_");
+  const client=(window.supabase?.createClient && configured) ? window.supabase.createClient(cfg.url,cfg.anonKey) : null;
+  window.hiFashionSupabase=client;
+  const appRoot=window.HI_FASHION_COMMERCE||{};
+  const endpoint=path=>String(appRoot[path]|| (cfg.url ? cfg.url+"/functions/v1/"+path.replace(/[A-Z]/g,m=>"-"+m.toLowerCase()) : "")).trim();
+  const lang=()=>document.body.dataset.language||"en";
+  const labels={
+    en:{account:"MY ACCOUNT",accountTitle:"My Account",welcomeAccount:"Welcome",email:"Email address",password:"Password",signIn:"SIGN IN",createAccount:"CREATE ACCOUNT",forgotPassword:"Forgot your password?",signOut:"SIGN OUT",signedInAs:"SIGNED IN AS",profile:"Customer profile",fullName:"Full name",countryCode:"Country code (2 letters)",phone:"Phone (optional)",saveProfile:"SAVE PROFILE",orderHistory:"Order history",loadingOrders:"Loading your orders…",giftCards:"My gift cards",giftCardsPrivacy:"Gift-card balances and full redemption codes are kept private and will appear here after secure lookup is enabled.",sellerArea:"SELLER CENTRE",growBusiness:"Grow your business with HI FASHION",sellerApplyIntro:"Apply to become a seller. Applications are reviewed before listings and payouts are enabled.",businessName:"Business / brand name",businessCountry:"Business country (ISO code)",businessWebsite:"Website (optional)",productCategory:"Main product category",businessDescription:"Tell us about your business",submitApplication:"SUBMIT SELLER APPLICATION",connectPayouts:"CONNECT PAYOUTS WITH STRIPE",myListings:"My product listings",addListing:"Add a product",productName:"Product name",productDescription:"Description",imageUrl:"Product image URL (optional)",priceEuro:"Price (EUR)",stock:"Stock",saveListing:"SAVE DRAFT LISTING",approvedSellers:"APPROVED SELLERS · LIVE CATALOGUE",shopLiveProducts:"Shop verified seller products",liveProductsIntro:"Products published by approved HI FASHION sellers. Availability and delivery are checked again at checkout."},
+    bg:{account:"МОЯТ ПРОФИЛ",accountTitle:"Моят профил",welcomeAccount:"Добре дошли",email:"Имейл адрес",password:"Парола",signIn:"ВХОД",createAccount:"СЪЗДАЙ ПРОФИЛ",forgotPassword:"Забравена парола?",signOut:"ИЗХОД",signedInAs:"ВЛЕЗЛИ СТЕ КАТО",profile:"Клиентски профил",fullName:"Име и фамилия",countryCode:"Код на държавата (2 букви)",phone:"Телефон (по желание)",saveProfile:"ЗАПАЗИ ПРОФИЛА",orderHistory:"История на поръчките",loadingOrders:"Зареждане на поръчките…",giftCards:"Моите подаръчни карти",giftCardsPrivacy:"Балансите и кодовете на подаръчните карти се пазят защитено.",sellerArea:"ЦЕНТЪР ЗА ТЪРГОВЦИ",growBusiness:"Развийте бизнеса си с HI FASHION",sellerApplyIntro:"Кандидатствайте за продавач. Заявките се преглеждат преди активиране на обяви и изплащания.",businessName:"Име на фирма / марка",businessCountry:"Държава на фирмата (ISO код)",businessWebsite:"Уебсайт (по желание)",productCategory:"Основна категория",businessDescription:"Представете бизнеса си",submitApplication:"ИЗПРАТИ ЗАЯВКА",connectPayouts:"СВЪРЖИ ИЗПЛАЩАНИЯТА СЪС STRIPE",myListings:"Моите продукти",addListing:"Добави продукт",productName:"Име на продукта",productDescription:"Описание",imageUrl:"Линк към снимка (по желание)",priceEuro:"Цена (EUR)",stock:"Наличност",saveListing:"ЗАПАЗИ ЧЕРНОВА",approvedSellers:"ОДОБРЕНИ ПРОДАВАЧИ · КАТАЛОГ",shopLiveProducts:"Пазарувайте от одобрени продавачи",liveProductsIntro:"Продукти от одобрени търговци. Наличността и доставката се проверяват отново при плащане."},
+    de:{account:"MEIN KONTO",accountTitle:"Mein Konto",welcomeAccount:"Willkommen",email:"E-Mail-Adresse",password:"Passwort",signIn:"ANMELDEN",createAccount:"KONTO ERSTELLEN",forgotPassword:"Passwort vergessen?",signOut:"ABMELDEN",signedInAs:"ANGEMELDET ALS",profile:"Kundenprofil",fullName:"Vollständiger Name",countryCode:"Ländercode (2 Buchstaben)",phone:"Telefon (optional)",saveProfile:"PROFIL SPEICHERN",orderHistory:"Bestellverlauf",loadingOrders:"Bestellungen werden geladen…",giftCards:"Meine Geschenkkarten",giftCardsPrivacy:"Guthaben und vollständige Geschenkkartencodes bleiben geschützt.",sellerArea:"VERKÄUFERBEREICH",growBusiness:"Wachsen Sie mit HI FASHION",sellerApplyIntro:"Bewerben Sie sich als Verkäufer. Angebote und Auszahlungen werden erst nach Prüfung aktiviert.",businessName:"Firmen- / Markenname",businessCountry:"Geschäftsland (ISO-Code)",businessWebsite:"Website (optional)",productCategory:"Hauptkategorie",businessDescription:"Beschreiben Sie Ihr Unternehmen",submitApplication:"BEWERBUNG SENDEN",connectPayouts:"AUSZAHLUNGEN MIT STRIPE VERBINDEN",myListings:"Meine Produkte",addListing:"Produkt hinzufügen",productName:"Produktname",productDescription:"Beschreibung",imageUrl:"Produktbild-URL (optional)",priceEuro:"Preis (EUR)",stock:"Lagerbestand",saveListing:"ENTWURF SPEICHERN",approvedSellers:"GENEHMIGTE VERKÄUFER · LIVE-KATALOG",shopLiveProducts:"Produkte genehmigter Verkäufer",liveProductsIntro:"Produkte genehmigter HI FASHION-Verkäufer. Bestand und Versand werden beim Checkout erneut geprüft."},
+    fr:{account:"MON COMPTE",accountTitle:"Mon compte",welcomeAccount:"Bienvenue",email:"Adresse e-mail",password:"Mot de passe",signIn:"CONNEXION",createAccount:"CRÉER UN COMPTE",forgotPassword:"Mot de passe oublié ?",signOut:"DÉCONNEXION",signedInAs:"CONNECTÉ EN TANT QUE",profile:"Profil client",fullName:"Nom complet",countryCode:"Code pays (2 lettres)",phone:"Téléphone (facultatif)",saveProfile:"ENREGISTRER LE PROFIL",orderHistory:"Historique des commandes",loadingOrders:"Chargement des commandes…",giftCards:"Mes cartes cadeaux",giftCardsPrivacy:"Les soldes et codes complets des cartes cadeaux restent protégés.",sellerArea:"ESPACE VENDEUR",growBusiness:"Développez votre activité avec HI FASHION",sellerApplyIntro:"Devenez vendeur. Les candidatures sont examinées avant l'activation des annonces et des paiements.",businessName:"Nom de l'entreprise / marque",businessCountry:"Pays de l'entreprise (code ISO)",businessWebsite:"Site web (facultatif)",productCategory:"Catégorie principale",businessDescription:"Présentez votre entreprise",submitApplication:"ENVOYER LA CANDIDATURE",connectPayouts:"CONNECTER LES VERSEMENTS STRIPE",myListings:"Mes produits",addListing:"Ajouter un produit",productName:"Nom du produit",productDescription:"Description",imageUrl:"URL de l'image (facultatif)",priceEuro:"Prix (EUR)",stock:"Stock",saveListing:"ENREGISTRER LE BROUILLON",approvedSellers:"VENDEURS APPROUVÉS · CATALOGUE",shopLiveProducts:"Acheter auprès de vendeurs vérifiés",liveProductsIntro:"Produits publiés par des vendeurs approuvés. Le stock et la livraison sont revérifiés au paiement."},
+    it:{account:"IL MIO ACCOUNT",accountTitle:"Il mio account",welcomeAccount:"Benvenuto",email:"Indirizzo e-mail",password:"Password",signIn:"ACCEDI",createAccount:"CREA ACCOUNT",forgotPassword:"Password dimenticata?",signOut:"ESCI",signedInAs:"ACCESSO COME",profile:"Profilo cliente",fullName:"Nome completo",countryCode:"Codice paese (2 lettere)",phone:"Telefono (facoltativo)",saveProfile:"SALVA PROFILO",orderHistory:"Cronologia ordini",loadingOrders:"Caricamento ordini…",giftCards:"Le mie gift card",giftCardsPrivacy:"Saldo e codici completi delle gift card sono protetti.",sellerArea:"AREA VENDITORI",growBusiness:"Fai crescere il tuo business con HI FASHION",sellerApplyIntro:"Candidati come venditore. Le candidature vengono valutate prima di abilitare annunci e pagamenti.",businessName:"Nome azienda / marchio",businessCountry:"Paese azienda (codice ISO)",businessWebsite:"Sito web (facoltativo)",productCategory:"Categoria principale",businessDescription:"Descrivi la tua attività",submitApplication:"INVIA CANDIDATURA",connectPayouts:"COLLEGA PAGAMENTI STRIPE",myListings:"I miei prodotti",addListing:"Aggiungi prodotto",productName:"Nome prodotto",productDescription:"Descrizione",imageUrl:"URL immagine (facoltativo)",priceEuro:"Prezzo (EUR)",stock:"Disponibilità",saveListing:"SALVA BOZZA",approvedSellers:"VENDITORI APPROVATI · CATALOGO",shopLiveProducts:"Acquista dai venditori verificati",liveProductsIntro:"Prodotti di venditori approvati. Disponibilità e spedizione sono ricontrollate al checkout."},
+    es:{account:"MI CUENTA",accountTitle:"Mi cuenta",welcomeAccount:"Bienvenido",email:"Correo electrónico",password:"Contraseña",signIn:"INICIAR SESIÓN",createAccount:"CREAR CUENTA",forgotPassword:"¿Olvidaste tu contraseña?",signOut:"CERRAR SESIÓN",signedInAs:"SESIÓN INICIADA COMO",profile:"Perfil del cliente",fullName:"Nombre completo",countryCode:"Código de país (2 letras)",phone:"Teléfono (opcional)",saveProfile:"GUARDAR PERFIL",orderHistory:"Historial de pedidos",loadingOrders:"Cargando pedidos…",giftCards:"Mis tarjetas regalo",giftCardsPrivacy:"Los saldos y códigos completos de las tarjetas regalo se mantienen protegidos.",sellerArea:"CENTRO DE VENDEDORES",growBusiness:"Haz crecer tu negocio con HI FASHION",sellerApplyIntro:"Solicita vender. Las solicitudes se revisan antes de habilitar anuncios y pagos.",businessName:"Nombre de empresa / marca",businessCountry:"País de empresa (código ISO)",businessWebsite:"Sitio web (opcional)",productCategory:"Categoría principal",businessDescription:"Cuéntanos sobre tu negocio",submitApplication:"ENVIAR SOLICITUD",connectPayouts:"CONECTAR PAGOS CON STRIPE",myListings:"Mis productos",addListing:"Añadir producto",productName:"Nombre del producto",productDescription:"Descripción",imageUrl:"URL de imagen (opcional)",priceEuro:"Precio (EUR)",stock:"Existencias",saveListing:"GUARDAR BORRADOR",approvedSellers:"VENDEDORES APROBADOS · CATÁLOGO",shopLiveProducts:"Compra a vendedores verificados",liveProductsIntro:"Productos publicados por vendedores aprobados. La disponibilidad y el envío se verifican de nuevo al pagar."},
+    zh:{account:"我的账户",accountTitle:"我的账户",welcomeAccount:"欢迎",email:"电子邮箱",password:"密码",signIn:"登录",createAccount:"创建账户",forgotPassword:"忘记密码？",signOut:"退出登录",signedInAs:"当前账户",profile:"客户资料",fullName:"姓名",countryCode:"国家代码（2个字母）",phone:"电话（选填）",saveProfile:"保存资料",orderHistory:"订单记录",loadingOrders:"正在加载订单…",giftCards:"我的礼品卡",giftCardsPrivacy:"礼品卡余额及完整兑换码将受到保护。",sellerArea:"卖家中心",growBusiness:"通过 HI FASHION 拓展业务",sellerApplyIntro:"申请成为卖家。审核通过后才会启用商品和收款。",businessName:"企业 / 品牌名称",businessCountry:"企业所在国家（ISO代码）",businessWebsite:"网站（选填）",productCategory:"主要商品类别",businessDescription:"介绍您的业务",submitApplication:"提交卖家申请",connectPayouts:"连接 STRIPE 收款",myListings:"我的商品",addListing:"添加商品",productName:"商品名称",productDescription:"商品描述",imageUrl:"商品图片链接（选填）",priceEuro:"价格（EUR）",stock:"库存",saveListing:"保存草稿",approvedSellers:"已批准卖家 · 商品目录",shopLiveProducts:"购买已验证卖家的商品",liveProductsIntro:"已批准卖家发布的商品。库存和配送将在结账时再次核实。"},
+    ar:{account:"حسابي",accountTitle:"حسابي",welcomeAccount:"مرحباً",email:"البريد الإلكتروني",password:"كلمة المرور",signIn:"تسجيل الدخول",createAccount:"إنشاء حساب",forgotPassword:"هل نسيت كلمة المرور؟",signOut:"تسجيل الخروج",signedInAs:"تم تسجيل الدخول باسم",profile:"ملف العميل",fullName:"الاسم الكامل",countryCode:"رمز الدولة (حرفان)",phone:"الهاتف (اختياري)",saveProfile:"حفظ الملف",orderHistory:"سجل الطلبات",loadingOrders:"جارٍ تحميل الطلبات…",giftCards:"بطاقات الهدايا الخاصة بي",giftCardsPrivacy:"يتم الحفاظ على سرية الأرصدة ورموز بطاقات الهدايا الكاملة.",sellerArea:"مركز البائع",growBusiness:"طوّر أعمالك مع HI FASHION",sellerApplyIntro:"قدّم طلباً لتصبح بائعاً. تتم مراجعة الطلبات قبل تفعيل المنتجات والمدفوعات.",businessName:"اسم الشركة / العلامة التجارية",businessCountry:"بلد العمل (رمز ISO)",businessWebsite:"الموقع الإلكتروني (اختياري)",productCategory:"الفئة الرئيسية",businessDescription:"أخبرنا عن عملك",submitApplication:"إرسال طلب البائع",connectPayouts:"ربط المدفوعات عبر STRIPE",myListings:"منتجاتي",addListing:"إضافة منتج",productName:"اسم المنتج",productDescription:"الوصف",imageUrl:"رابط صورة المنتج (اختياري)",priceEuro:"السعر (EUR)",stock:"المخزون",saveListing:"حفظ المسودة",approvedSellers:"البائعون المعتمدون · الكتالوج",shopLiveProducts:"تسوق من البائعين المعتمدين",liveProductsIntro:"منتجات البائعين المعتمدين. تتم إعادة التحقق من المخزون والتوصيل عند الدفع."},
+    ko:{account:"내 계정",accountTitle:"내 계정",welcomeAccount:"환영합니다",email:"이메일 주소",password:"비밀번호",signIn:"로그인",createAccount:"계정 만들기",forgotPassword:"비밀번호를 잊으셨나요?",signOut:"로그아웃",signedInAs:"로그인 계정",profile:"고객 프로필",fullName:"이름",countryCode:"국가 코드(2자)",phone:"전화번호(선택)",saveProfile:"프로필 저장",orderHistory:"주문 내역",loadingOrders:"주문을 불러오는 중…",giftCards:"내 기프트 카드",giftCardsPrivacy:"기프트 카드 잔액과 전체 사용 코드는 안전하게 보호됩니다.",sellerArea:"판매자 센터",growBusiness:"HI FASHION과 함께 비즈니스를 성장시키세요",sellerApplyIntro:"판매자 신청을 제출하세요. 승인 후 상품 등록과 정산이 활성화됩니다.",businessName:"사업체 / 브랜드 이름",businessCountry:"사업 국가(ISO 코드)",businessWebsite:"웹사이트(선택)",productCategory:"주요 상품 카테고리",businessDescription:"사업 소개",submitApplication:"판매자 신청 제출",connectPayouts:"STRIPE 정산 연결",myListings:"내 상품 목록",addListing:"상품 추가",productName:"상품명",productDescription:"설명",imageUrl:"상품 이미지 URL(선택)",priceEuro:"가격(EUR)",stock:"재고",saveListing:"초안 저장",approvedSellers:"승인된 판매자 · 라이브 카탈로그",shopLiveProducts:"검증된 판매자 상품 쇼핑",liveProductsIntro:"승인된 HI FASHION 판매자가 등록한 상품입니다. 재고와 배송은 결제 시 다시 확인됩니다."}
+  };
+  function translateAccount(){
+    const dict=labels[lang()]||labels.en;
+    document.querySelectorAll("[data-hf-account]").forEach(el=>{
+      const key=el.dataset.hfAccount;
+      if(dict[key]) el.textContent=dict[key];
+    });
+    if(drawer) drawer.dir=lang()==="ar"?"rtl":"ltr";
+  }
+  window.refreshHfAccountLanguage=translateAccount;
+  translateAccount();
+
+  let currentUser=null;
+  let sellerProfile=null;
+  function setStatus(id,message){const el=$(id);if(el)el.textContent=message;}
+  function closeDrawer(){
+    drawer.hidden=true;overlay.hidden=true;document.body.style.overflow="";
+    accountToggle?.focus();
+  }
+  function openDrawer(){
+    if(window.hiFashionCartClose) window.hiFashionCartClose();
+    drawer.hidden=false;overlay.hidden=false;document.body.style.overflow="hidden";
+    $("closeAccount").focus();
+  }
+  accountToggle?.addEventListener("click",openDrawer);
+  $("closeAccount").addEventListener("click",closeDrawer);
+  overlay.addEventListener("click",closeDrawer);
+  document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!drawer.hidden)closeDrawer();});
+
+  function showSignedOut(message){
+    currentUser=null;
+    $("accountAuthForm").hidden=false;
+    $("accountSignedIn").hidden=true;
+    $("accountConnection").textContent=message;
+  }
+  function showSignedIn(user){
+    currentUser=user;
+    $("accountAuthForm").hidden=true;
+    $("accountSignedIn").hidden=false;
+    $("accountUserEmail").textContent=user.email||"";
+    $("checkoutEmail").value=user.email||"";
+    $("accountConnection").textContent="Your HI FASHION customer account is connected.";
+  }
+  async function loadProfile(){
+    if(!client||!currentUser)return;
+    const {data,error}=await client.from("customer_profiles").select("display_name,country_code,phone").eq("user_id",currentUser.id).maybeSingle();
+    if(error){setStatus("profileStatus","Profile could not be loaded.");return;}
+    $("profileName").value=data?.display_name||currentUser.user_metadata?.full_name||"";
+    $("profileCountry").value=data?.country_code||"";
+    $("profilePhone").value=data?.phone||"";
+    await loadOrders();
+    await loadSellerArea();
+  }
+  async function loadOrders(){
+    const host=$("accountOrders");
+    host.innerHTML="";
+    const {data:orders,error}=await client.from("orders").select("id,status,total_minor,currency,created_at").eq("user_id",currentUser.id).order("created_at",{ascending:false}).limit(30);
+    if(error){host.textContent="Order history is unavailable right now.";return;}
+    if(!orders?.length){host.textContent="No orders yet. Your confirmed purchases will appear here.";return;}
+    for(const order of orders){
+      const el=document.createElement("article");
+      el.className="account-list-item";
+      const date=new Date(order.created_at).toLocaleDateString();
+      const amount=new Intl.NumberFormat(undefined,{style:"currency",currency:order.currency||"EUR"}).format((order.total_minor||0)/100);
+      const title=document.createElement("strong");title.textContent="HI FASHION · "+amount;
+      const status=document.createElement("span");status.textContent="Status: "+order.status;
+      const reference=document.createElement("small");reference.textContent=date+" · "+order.id.slice(0,8).toUpperCase();
+      el.append(title,status,reference);host.append(el);
+    }
+  }
+  async function loadSellerArea(){
+    const {data:applicationRows}=await client.from("seller_applications").select("business_name,status,created_at").eq("user_id",currentUser.id).order("created_at",{ascending:false}).limit(5);
+    $("sellerApplicationHistory").innerHTML="";
+    for(const row of applicationRows||[]){
+      const el=document.createElement("article");el.className="account-list-item";
+      const title=document.createElement("strong");title.textContent=row.business_name;
+      const status=document.createElement("span");status.textContent="Application: "+row.status;
+      el.append(title,status);$("sellerApplicationHistory").append(el);
+    }
+    const {data:profile}=await client.from("seller_profiles").select("user_id,business_name,stripe_account_id,charges_enabled,payouts_enabled,details_submitted,is_approved").eq("user_id",currentUser.id).maybeSingle();
+    sellerProfile=profile||null;
+    $("sellerApplicationArea").hidden=!!sellerProfile?.is_approved;
+    $("sellerApprovedArea").hidden=!sellerProfile?.is_approved;
+    if(sellerProfile?.is_approved){
+      const payoutState=sellerProfile.payouts_enabled&&sellerProfile.charges_enabled?"Payout account verified and enabled.":"Payout onboarding or verification is still required.";
+      setStatus("sellerPayoutStatus",payoutState);
+      await loadSellerProducts();
+    }
+  }
+  async function loadSellerProducts(){
+    const host=$("sellerProductList");host.innerHTML="";
+    const {data,error}=await client.from("products").select("id,name,price_minor,stock,is_published").eq("seller_id",currentUser.id).order("created_at",{ascending:false}).limit(50);
+    if(error){host.textContent="Your listings could not be loaded.";return;}
+    if(!data?.length){host.textContent="You have not added any products yet.";return;}
+    for(const row of data){
+      const el=document.createElement("article");el.className="account-list-item";
+      const title=document.createElement("strong");title.textContent=row.name;
+      const info=document.createElement("span");info.textContent="€"+(row.price_minor/100).toFixed(2)+" · Stock "+row.stock+" · "+(row.is_published?"Published":"Draft");
+      el.append(title,info);host.append(el);
+    }
+  }
+  async function loadLiveProducts(){
+    const grid=$("liveProductGrid");
+    const status=$("liveCatalogStatus");
+    if(!client){status.textContent="Connect the Supabase project to display approved sellers’ live products.";return;}
+    const {data,error}=await client.from("products").select("id,name,description,category,image_url,price_minor,currency,stock").eq("is_published",true).gt("stock",0).eq("currency","EUR").order("created_at",{ascending:false}).limit(60);
+    if(error){status.textContent="The live catalogue could not be loaded.";return;}
+    grid.innerHTML="";
+    if(!data?.length){status.textContent="No approved seller products are published yet.";return;}
+    status.textContent=data.length+" live seller listings";
+    for(const product of data){
+      const card=document.createElement("article");card.className="live-product-card";
+      const image=document.createElement("img");image.loading="lazy";image.alt=product.name;
+      image.src=product.image_url||"https://images.pexels.com/photos/298863/pexels-photo-298863.jpeg?auto=compress&cs=tinysrgb&w=900";
+      const copy=document.createElement("div");copy.className="live-product-copy";
+      const meta=document.createElement("span");meta.className="live-product-meta";meta.textContent=product.category+" · "+product.stock+" in stock";
+      const title=document.createElement("h3");title.textContent=product.name;
+      const desc=document.createElement("p");desc.textContent=product.description||"A product offered by an approved HI FASHION seller.";
+      const purchase=document.createElement("div");purchase.className="live-product-purchase";
+      const price=document.createElement("strong");price.textContent=new Intl.NumberFormat(undefined,{style:"currency",currency:"EUR"}).format(product.price_minor/100);
+      const add=document.createElement("button");add.type="button";add.textContent="ADD TO BAG";
+      add.addEventListener("click",()=>{
+        if(window.hiFashionAddProductToCart?.(product)){
+          add.textContent="ADDED";
+          setTimeout(()=>{if(add.isConnected)add.textContent="ADD TO BAG";},1100);
+        }
+      });
+      purchase.append(price,add);copy.append(meta,title,desc,purchase);card.append(image,copy);grid.append(card);
+    }
+  }
+
+  $("accountAuthForm").addEventListener("submit",async e=>{
+    e.preventDefault();
+    if(!client){setStatus("accountConnection","Account service is not configured. Add the Supabase URL and anon key to the site setup.");return;}
+    const email=$("accountEmail").value.trim(),password=$("accountPassword").value;
+    $("signInButton").disabled=true;
+    const {data,error}=await client.auth.signInWithPassword({email,password});
+    $("signInButton").disabled=false;
+    if(error){setStatus("accountConnection",error.message);return;}
+    showSignedIn(data.user);await loadProfile();
+  });
+  $("signUpButton").addEventListener("click",async()=>{
+    if(!client){setStatus("accountConnection","Account service is not configured. Add the Supabase URL and anon key to the site setup.");return;}
+    const email=$("accountEmail").value.trim(),password=$("accountPassword").value;
+    if(password.length<8){setStatus("accountConnection","Use a password with at least 8 characters.");return;}
+    const {data,error}=await client.auth.signUp({email,password,options:{emailRedirectTo:window.location.origin}});
+    if(error){setStatus("accountConnection",error.message);return;}
+    if(data.session&&data.user){showSignedIn(data.user);await loadProfile();}
+    else setStatus("accountConnection","Check your email to confirm your account, then sign in.");
+  });
+  $("resetPasswordButton").addEventListener("click",async()=>{
+    if(!client){setStatus("accountConnection","Account service is not configured.");return;}
+    const email=$("accountEmail").value.trim();
+    if(!email){setStatus("accountConnection","Enter your email address first.");return;}
+    const {error}=await client.auth.resetPasswordForEmail(email,{redirectTo:window.location.origin});
+    setStatus("accountConnection",error?error.message:"Password reset instructions have been sent if the account exists.");
+  });
+  $("signOutButton").addEventListener("click",async()=>{
+    if(client)await client.auth.signOut();
+    showSignedOut("You have signed out of HI FASHION.");
+  });
+  $("profileForm").addEventListener("submit",async e=>{
+    e.preventDefault();if(!client||!currentUser)return;
+    const country=$("profileCountry").value.trim().toUpperCase();
+    if(country&&!/^[A-Z]{2}$/.test(country)){setStatus("profileStatus","Country code must contain two letters, e.g. BG.");return;}
+    const {error}=await client.from("customer_profiles").upsert({
+      user_id:currentUser.id,display_name:$("profileName").value.trim(),country_code:country||null,
+      phone:$("profilePhone").value.trim()||null,updated_at:new Date().toISOString()
+    });
+    setStatus("profileStatus",error?error.message:"Profile saved.");
+  });
+  $("sellerApplicationForm").addEventListener("submit",async e=>{
+    e.preventDefault();if(!client||!currentUser)return;
+    const country=$("sellerCountryCode").value.trim().toUpperCase();
+    if(!/^[A-Z]{2}$/.test(country)){setStatus("sellerApplicationStatus","Enter a two-letter country code such as BG.");return;}
+    const payload={
+      user_id:currentUser.id,business_name:$("sellerBusinessName").value.trim(),country_code:country,
+      website:$("sellerWebsite").value.trim()||null,category:$("sellerCategory").value,
+      description:$("sellerDescription").value.trim(),status:"pending"
+    };
+    const {error}=await client.from("seller_applications").insert(payload);
+    setStatus("sellerApplicationStatus",error?error.message:"Application submitted. Our team must review it before seller tools and payouts are activated.");
+    if(!error){$("sellerApplicationForm").reset();await loadSellerArea();}
+  });
+  $("sellerProductForm").addEventListener("submit",async e=>{
+    e.preventDefault();if(!client||!currentUser||!sellerProfile?.is_approved)return;
+    const price=Math.round(Number($("newProductPrice").value)*100),stock=Number($("newProductStock").value);
+    if(!Number.isSafeInteger(price)||price<1||!Number.isInteger(stock)||stock<0){setStatus("sellerProductStatus","Enter a valid EUR price and whole-number stock quantity.");return;}
+    const slug=$("newProductName").value.trim().toLowerCase().normalize("NFKD").replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"").slice(0,90)+"-"+crypto.randomUUID().slice(0,8);
+    const {error}=await client.from("products").insert({
+      seller_id:currentUser.id,slug,name:$("newProductName").value.trim(),description:$("newProductDescription").value.trim(),
+      category:$("newProductCategory").value.trim(),image_url:$("newProductImage").value.trim()||null,
+      currency:"EUR",price_minor:price,stock,is_published:false
+    });
+    setStatus("sellerProductStatus",error?error.message:"Draft listing saved. Publish after review and fulfilment checks are complete.");
+    if(!error){$("sellerProductForm").reset();await loadSellerProducts();}
+  });
+  $("connectPayoutsButton").addEventListener("click",async()=>{
+    if(!client)return;
+    const session=await client.auth.getSession();
+    const token=session.data?.session?.access_token;
+    const url=endpoint("createConnectOnboardingLink");
+    if(!token||!url){setStatus("sellerPayoutStatus","Connect the Supabase function and sign in again.");return;}
+    try{
+      const response=await fetch(url,{method:"POST",headers:{"Content-Type":"application/json","Authorization":"Bearer "+token}});
+      const result=await response.json();
+      if(!response.ok||!result.url)throw new Error(result.error||"Unable to start Stripe onboarding.");
+      const next=new URL(result.url);
+      if(next.protocol!=="https:")throw new Error("Unsafe onboarding URL.");
+      window.location.assign(next.href);
+    }catch(error){setStatus("sellerPayoutStatus",error.message||"Stripe onboarding unavailable.");}
+  });
+
+  if(client){
+    setStatus("accountConnection","Secure account service connected. Sign in or create an account.");
+    const {data:{session}}=await client.auth.getSession();
+    if(session?.user){showSignedIn(session.user);await loadProfile();}
+    else showSignedOut("Sign in or create a customer account to view your orders and seller tools.");
+    client.auth.onAuthStateChange(async(_event,session)=>{
+      if(session?.user){showSignedIn(session.user);await loadProfile();}
+      else showSignedOut("Sign in or create a customer account to view your orders and seller tools.");
+    });
+  } else {
+    showSignedOut("Supabase is not configured yet. Account and order-history screens are ready, but registration is not live.");
+  }
+  await loadLiveProducts();
+})();
 </script>
 </body>
 </html>
