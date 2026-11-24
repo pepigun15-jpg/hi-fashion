@@ -48,38 +48,39 @@ function detectDelimiter(bytes: Uint8Array): string {
   return winner[0]===9 ? "\t" : String.fromCharCode(winner[0]);
 }
 
-function parseCsv(bytes: Uint8Array, delimiter: string, finalChunk: boolean): CsvResult {
+function parseCsv(bytes: Uint8Array, delimiter: string, finalChunk: boolean, maxRows = 20000): CsvResult {
   const delim=delimiter.charCodeAt(0);
   const rows: string[][]=[];
   let row: string[]=[];
   let field: number[]=[];
   let quoted=false;
   let rowStart=0;
-  const pushField=()=>{row.push(decoder.decode(new Uint8Array(field)).replace(/^\uFEFF/,"").trim());field=[];};
+  const pushField=()=>{row.push(decoder.decode(new Uint8Array(field)).replace(/^\\uFEFF/,"").trim());field=[];};
   const pushRow=()=>{pushField();if(row.some(x=>x!==""))rows.push(row);row=[];};
   for(let i=0;i<bytes.length;i++){
-    const b=bytes[i];
+    const byte=bytes[i];
     if(quoted){
-      if(b===34){
+      if(byte===34){
         if(i+1<bytes.length && bytes[i+1]===34){field.push(34);i++;}
         else quoted=false;
-      } else field.push(b);
+      }else field.push(byte);
       continue;
     }
-    if(b===34 && field.length===0){quoted=true;continue;}
-    if(b===delim){pushField();continue;}
-    if(b===10 || b===13){
-      if(b===13 && bytes[i+1]===10)i++;
-      pushRow();rowStart=i+1;continue;
+    if(byte===34 && field.length===0){quoted=true;continue;}
+    if(byte===delim){pushField();continue;}
+    if(byte===10 || byte===13){
+      if(byte===13 && bytes[i+1]===10)i++;
+      pushRow();rowStart=i+1;
+      if(rows.length>=maxRows)return {rows,consumed:rowStart};
+      continue;
     }
-    field.push(b);
+    field.push(byte);
   }
-  const incomplete=quoted;
-  if(finalChunk && !incomplete && rowStart<bytes.length) {
+  if(finalChunk && !quoted && rowStart<bytes.length){
     pushRow();
-    rowStart=bytes.length;
+    return {rows,consumed:bytes.length};
   }
-  return {rows,consumed:incomplete || rowStart<bytes.length ? rowStart : bytes.length};
+  return {rows,consumed:rowStart};
 }
 
 function getValue(record: Record<string,string>, field: string): string {
@@ -255,22 +256,21 @@ Deno.serve(async(req:Request)=>{
     const bytes=read.bytes;
     if(!headers.length){
       delimiter=detectDelimiter(bytes);
-      const parsed=parseCsv(bytes,delimiter,finalChunk);
-      if(parsed.rows.length<1)return json({error:"Feed does not contain a CSV header row."},422);
-      headers=parsed.rows[0].map(x=>x.trim());
-      const dataRows=parsed.rows.slice(1);
-      const dataBytes=bytes.slice(parsed.rows.length>1?parsed.consumed:parsed.consumed);
-      // Reparse after the header row is consumed using its precise byte boundary.
-      const firstRowEnd=findFirstCsvRecordEnd(bytes);
-      const rest=bytes.slice(firstRowEnd);
-      const parsedData=parseCsv(rest,delimiter,finalChunk);
-      const processed=await importRows(admin,source,runId,headers,parsedData.rows,configuredCountry,maxRows);
-      const nextOffset=firstRowEnd+parsedData.consumed;
+      const headerEnd=findFirstCsvRecordEnd(bytes);
+      if(headerEnd<=0)return json({error:"Feed does not contain a CSV header row."},422);
+      const headerBytes=bytes.slice(0,headerEnd);
+      const headerParsed=parseCsv(headerBytes,delimiter,true,1);
+      if(!headerParsed.rows.length)return json({error:"Feed does not contain a valid CSV header row."},422);
+      headers=headerParsed.rows[0].map(x=>x.trim());
+      const dataBytes=bytes.slice(headerEnd);
+      const parsedData=parseCsv(dataBytes,delimiter,finalChunk, maxRows);
+      const processed=await importRows(admin,source,runId,headers,parsedData.rows,configuredCountry);
+      const nextOffset=headerEnd+parsedData.consumed;
       const isComplete=finalChunk && nextOffset>=bytes.length;
       return await finishBatch(admin,source,feedKey,runId,nextOffset,totalBytes,headers,delimiter,processed,isComplete);
     }else{
-      const parsed=parseCsv(bytes,delimiter,finalChunk);
-      const processed=await importRows(admin,source,runId,headers,parsed.rows,configuredCountry,maxRows);
+      const parsed=parseCsv(bytes,delimiter,finalChunk,maxRows);
+      const processed=await importRows(admin,source,runId,headers,parsed.rows,configuredCountry);
       const nextOffset=offset+parsed.consumed;
       const isComplete=finalChunk && parsed.consumed>=bytes.length;
       return await finishBatch(admin,source,feedKey,runId,nextOffset,totalBytes,headers,delimiter,processed,isComplete);
@@ -294,10 +294,10 @@ function findFirstCsvRecordEnd(bytes:Uint8Array):number{
   return bytes.length;
 }
 
-async function importRows(admin:any,source:string,runId:string,headers:string[],values:string[][],countryDefault:string,maxRows:number){
+async function importRows(admin:any,source:string,runId:string,headers:string[],values:string[][],countryDefault:string){
   const rows:any[]=[];
   let failed=0,received=0;
-  for(const valuesRow of values.slice(0,maxRows)){
+  for(const valuesRow of values){
     received++;
     const row=mapRow(headers,valuesRow,source,countryDefault,runId);
     if(row)rows.push(row);else failed++;
@@ -327,7 +327,7 @@ async function finishBatch(admin:any,source:string,feedKey:string,runId:string,n
   };
   if(complete){
     const {error:deactivateError}=await admin.from("catalogue_products").update({is_active:false,updated_at:new Date().toISOString()})
-      .eq("source_code",source).neq("last_seen_sync_run_id",runId);
+      .eq("source_code",source).or(`last_seen_sync_run_id.is.null,last_seen_sync_run_id.neq.${runId}`);
     if(deactivateError)throw new Error(`Could not retire stale feed products: ${deactivateError.message}`);
     await admin.from("catalogue_sources").update({
       is_enabled:true,last_synced_at:new Date().toISOString(),last_sync_status:counts.failed?"partial":"ok",
