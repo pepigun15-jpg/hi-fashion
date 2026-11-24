@@ -1369,6 +1369,35 @@ footer strong{color:#e5c57e!important}
   .brand-strip-note{color:#333!important}
 }
 
+
+/* Ensure the diamond edition remains visible when automatic seasons are selected. */
+body[data-season="spring"] .hf-hero,
+body[data-season="summer"] .hf-hero,
+body[data-season="autumn"] .hf-hero,
+body[data-season="winter"] .hf-hero{
+  background:#eef0f2 url("assets/diamond-facets.svg") center center/cover no-repeat!important;
+}
+body[data-season="spring"] .hero::before,
+body[data-season="summer"] .hero::before,
+body[data-season="autumn"] .hero::before,
+body[data-season="winter"] .hero::before{
+  background:linear-gradient(90deg,rgba(255,255,255,.62) 0%,rgba(255,255,255,.38) 44%,rgba(255,255,255,.02) 76%)!important;
+}
+body[data-season="spring"] .directory,body[data-season="summer"] .directory,
+body[data-season="autumn"] .directory,body[data-season="winter"] .directory,
+body[data-season="spring"] .future,body[data-season="summer"] .future,
+body[data-season="autumn"] .future,body[data-season="winter"] .future,
+body[data-season="spring"] .trending,body[data-season="summer"] .trending,
+body[data-season="autumn"] .trending,body[data-season="winter"] .trending,
+body[data-season="spring"] .store-network,body[data-season="summer"] .store-network,
+body[data-season="autumn"] .store-network,body[data-season="winter"] .store-network,
+body[data-season="spring"] .info,body[data-season="summer"] .info,
+body[data-season="autumn"] .info,body[data-season="winter"] .info,
+body[data-season="spring"] .seller,body[data-season="summer"] .seller,
+body[data-season="autumn"] .seller,body[data-season="winter"] .seller{
+  background:rgba(255,255,255,.62)!important;
+}
+
 </style>
 </head>
 <body>
