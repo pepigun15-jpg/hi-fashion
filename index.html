@@ -152,6 +152,29 @@ footer strong{color:var(--gold);letter-spacing:2px}
 .retail-terms{max-width:1000px;margin:22px auto 0;color:#98a49b;font-size:10px;line-height:1.75;text-align:center}
 @media(max-width:900px){.retail-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.destination-fields{grid-template-columns:1fr 1fr}.destination-fields button{grid-column:1/-1}}
 @media(max-width:560px){.retail-grid{grid-template-columns:1fr}.destination-fields{grid-template-columns:1fr}.destination-fields button{grid-column:auto}}
+
+.market-note{max-width:1100px;margin:0 auto 24px;padding:17px 20px;border:1px solid #52634f;background:#101b15;text-align:center}
+.market-note strong{display:block;color:var(--gold);font-family:Georgia,serif;font-size:23px;font-weight:normal;margin-bottom:6px}
+.market-note span{color:#c5c8c6;font-size:11px;line-height:1.6}
+.region-section{max-width:1180px;margin:0 auto 35px}
+.region-heading{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin:0 0 14px;border-bottom:1px solid #36473b;padding:0 0 12px}
+.region-heading span{font-size:12px;color:var(--gold);letter-spacing:2px}
+.region-heading h3{font-family:Georgia,serif;font-size:25px;font-weight:normal;color:#f5f4ef}
+.region-heading small{font-size:10px;color:#a9b3ac;letter-spacing:1px}
+.global-brand-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px}
+.brand-wordmark{min-height:40px;display:flex;align-items:center;color:#f4f1e9;font-size:24px;font-weight:800;letter-spacing:1px;margin:10px 0 7px;line-height:1.05;text-transform:uppercase}
+.retail-card{min-height:205px}
+.retail-card p{min-height:58px}
+.network-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px;margin-top:16px}
+.network-card{display:flex;flex-direction:column;gap:7px;padding:15px;background:#0a100c;border:1px solid #415344;text-decoration:none}
+.network-card strong{color:#e3c77f;letter-spacing:2px;font-size:15px}
+.network-card span{color:#e9e9e2;font-size:12px}
+.network-card small{color:#aab4ac;font-size:10px;line-height:1.55}
+.network-card:hover{border-color:var(--gold)}
+.retail-terms{max-width:1050px}
+@media(max-width:1000px){.global-brand-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:700px){.global-brand-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.network-grid{grid-template-columns:1fr}}
+@media(max-width:480px){.global-brand-grid{grid-template-columns:1fr}.region-heading h3{font-size:22px}}
 </style>
 </head>
 <body>
@@ -306,17 +329,7 @@ footer strong{color:var(--gold);letter-spacing:2px}
       <div class="destination-fields">
         <label>Delivery country
           <select id="deliveryCountry">
-            <option value="">Choose your country</option>
-            <option value="Bulgaria">Bulgaria</option>
-            <option value="United Kingdom">United Kingdom</option>
-            <option value="United States">United States</option>
-            <option value="Canada">Canada</option>
-            <option value="Germany">Germany</option>
-            <option value="France">France</option>
-            <option value="Italy">Italy</option>
-            <option value="Spain">Spain</option>
-            <option value="Netherlands">Netherlands</option>
-            <option value="Other">Other country</option>
+            <option value="">Choose any country or market</option>
           </select>
         </label>
         <label>City / area
@@ -330,62 +343,99 @@ footer strong{color:var(--gold);letter-spacing:2px}
       <p class="destination-status" id="destinationStatus" role="status">No delivery destination saved yet.</p>
     </div>
 
-    <div class="retail-grid">
-      <article class="retail-card">
-        <span class="retail-region">Global sportswear</span>
-        <h3>adidas</h3>
-        <p>Sportswear, sneakers, training apparel and accessories.</p>
-        <a href="https://www.adidas.com/" target="_blank" rel="noopener">OFFICIAL ONLINE STORE ↗</a>
-      </article>
-      <article class="retail-card">
-        <span class="retail-region">Global sportswear</span>
-        <h3>Nike</h3>
-        <p>Footwear, sports clothing, performance gear and everyday styles.</p>
-        <a href="https://www.nike.com/" target="_blank" rel="noopener">OFFICIAL ONLINE STORE ↗</a>
-      </article>
-      <article class="retail-card">
-        <span class="retail-region">Global multi-category</span>
-        <h3>Decathlon</h3>
-        <p>Sports clothing, shoes, fitness accessories and outdoor equipment.</p>
-        <a href="https://www.decathlon.com/" target="_blank" rel="noopener">OFFICIAL ONLINE STORE ↗</a>
-      </article>
-      <article class="retail-card">
-        <span class="retail-region">Global everyday fashion</span>
-        <h3>UNIQLO</h3>
-        <p>Everyday clothing, outerwear, basics and functional apparel.</p>
-        <a href="https://www.uniqlo.com/" target="_blank" rel="noopener">OFFICIAL ONLINE STORE ↗</a>
-      </article>
-      <article class="retail-card">
-        <span class="retail-region">Global sportswear</span>
-        <h3>Under Armour</h3>
-        <p>Training clothes, activewear, sports footwear and accessories.</p>
-        <a href="https://www.underarmour.com/" target="_blank" rel="noopener">OFFICIAL ONLINE STORE ↗</a>
-      </article>
-      <article class="retail-card">
-        <span class="retail-region">Footwear</span>
-        <h3>Clarks</h3>
-        <p>Casual shoes, formal footwear, boots and everyday accessories.</p>
-        <a href="https://www.clarks.com/" target="_blank" rel="noopener">OFFICIAL ONLINE STORE ↗</a>
-      </article>
-      <article class="retail-card">
-        <span class="retail-region">Performance footwear</span>
-        <h3>On</h3>
-        <p>Running shoes, performance footwear, sportswear and active clothing.</p>
-        <a href="https://www.on.com/" target="_blank" rel="noopener">OFFICIAL ONLINE STORE ↗</a>
-      </article>
-      <article class="retail-card">
-        <span class="retail-region">Multi-category marketplace</span>
-        <h3>AliExpress</h3>
-        <p>Broad selection of fashion, accessories and lifestyle products. Individual seller verification is essential.</p>
-        <a href="https://www.aliexpress.com/" target="_blank" rel="noopener">OFFICIAL ONLINE STORE ↗</a>
-      </article>
+    <div class="market-note">
+      <strong>Worldwide discovery · 6 world regions · 30+ retailers and marketplaces</strong>
+      <span>Browse the official stores by region. Store links are for discovery; actual stock, delivery and affiliate availability are checked by country and seller.</span>
     </div>
+
+    <div class="region-section">
+      <div class="region-heading"><span>01</span><h3>North America</h3><small>United States · Canada · Mexico</small></div>
+      <div class="global-brand-grid">
+        <article class="retail-card"><span class="retail-region">Sportswear · Global</span><div class="brand-wordmark">NIKE</div><p>Footwear, sports clothing, performance gear and lifestyle apparel.</p><a href="https://www.nike.com/" target="_blank" rel="noopener">OFFICIAL STORE ↗</a></article>
+        <article class="retail-card"><span class="retail-region">Sportswear · Global</span><div class="brand-wordmark">adidas</div><p>Sneakers, sportswear, apparel and accessories.</p><a href="https://www.adidas.com/" target="_blank" rel="noopener">OFFICIAL STORE ↗</a></article>
+        <article class="retail-card"><span class="retail-region">Multi-category marketplace</span><div class="brand-wordmark">amazon</div><p>Broad product selection across fashion, shoes, accessories and lifestyle.</p><a href="https://www.amazon.com/" target="_blank" rel="noopener">OFFICIAL STORE ↗</a></article>
+        <article class="retail-card"><span class="retail-region">Global marketplace</span><div class="brand-wordmark">eBay</div><p>New fashion, footwear, accessories and independent merchant offers.</p><a href="https://www.ebay.com/" target="_blank" rel="noopener">OFFICIAL STORE ↗</a></article>
+        <article class="retail-card"><span class="retail-region">Department store · USA</span><div class="brand-wordmark">NORDSTROM</div><p>Designer clothing, shoes, bags, beauty and accessories.</p><a href="https://www.nordstrom.com/" target="_blank" rel="noopener">OFFICIAL STORE ↗</a></article>
+        <article class="retail-card"><span class="retail-region">Fashion essentials · USA</span><div class="brand-wordmark">LEVI'S</div><p>Denim, jackets, casual clothing and accessories.</p><a href="https://www.levi.com/" target="_blank" rel="noopener">OFFICIAL STORE ↗</a></article>
+      </div>
+    </div>
+
+    <div class="region-section">
+      <div class="region-heading"><span>02</span><h3>Europe & United Kingdom</h3><small>EU · UK · EEA · Switzerland</small></div>
+      <div class="global-brand-grid">
+        <article class="retail-card"><span class="retail-region">Fashion marketplace</span><div class="brand-wordmark">ZALANDO</div><p>Clothing, shoes, sportswear, bags and beauty categories in supported countries.</p><a href="https://www.zalando.com/" target="_blank" rel="noopener">OFFICIAL STORE ↗</a></article>
+        <article class="retail-card"><span class="retail-region">Fashion · UK and international</span><div class="brand-wordmark">ASOS</div><p>Clothing, footwear, accessories and beauty.</p><a href="https://www.asos.com/" target="_blank" rel="noopener">OFFICIAL STORE ↗</a></article>
+        <article class="retail-card"><span class="retail-region">Global fashion</span><div class="brand-wordmark">ZARA</div><p>Women's, men's and children's fashion, shoes and accessories.</p><a href="https://www.zara.com/" target="_blank" rel="noopener">OFFICIAL STORE ↗</a></article>
+        <article class="retail-card"><span class="retail-region">Global fashion</span><div class="brand-wordmark">H&M</div><p>Clothing, accessories, basics and seasonal collections.</p><a href="https://www.hm.com/" target="_blank" rel="noopener">OFFICIAL STORE ↗</a></article>
+        <article class="retail-card"><span class="retail-region">Luxury · Global</span><div class="brand-wordmark">FARFETCH</div><p>Luxury fashion from designer brands and boutiques around the world.</p><a href="https://www.farfetch.com/" target="_blank" rel="noopener">OFFICIAL STORE ↗</a></article>
+        <article class="retail-card"><span class="retail-region">Sports · Europe and global</span><div class="brand-wordmark">DECATHLON</div><p>Sports clothing, shoes, fitness accessories and outdoor equipment.</p><a href="https://www.decathlon.com/" target="_blank" rel="noopener">OFFICIAL STORE ↗</a></article>
+        <article class="retail-card"><span class="retail-region">Everyday fashion</span><div class="brand-wordmark">UNIQLO</div><p>Functional apparel, basics, outerwear and everyday fashion.</p><a href="https://www.uniqlo.com/" target="_blank" rel="noopener">OFFICIAL STORE ↗</a></article>
+        <article class="retail-card"><span class="retail-region">Footwear</span><div class="brand-wordmark">CLARKS</div><p>Casual shoes, formal footwear, boots and accessories.</p><a href="https://www.clarks.com/" target="_blank" rel="noopener">OFFICIAL STORE ↗</a></article>
+      </div>
+    </div>
+
+    <div class="region-section">
+      <div class="region-heading"><span>03</span><h3>Asia & India</h3><small>India · Japan · South Korea · China</small></div>
+      <div class="global-brand-grid">
+        <article class="retail-card"><span class="retail-region">India · Fashion marketplace</span><div class="brand-wordmark">MYNTRA</div><p>Fashion, footwear, beauty and accessories from many brands.</p><a href="https://www.myntra.com/" target="_blank" rel="noopener">OFFICIAL STORE ↗</a></article>
+        <article class="retail-card"><span class="retail-region">India · Fashion marketplace</span><div class="brand-wordmark">AJIO</div><p>Clothing, designer styles, footwear and fashion accessories.</p><a href="https://www.ajio.com/" target="_blank" rel="noopener">OFFICIAL STORE ↗</a></article>
+        <article class="retail-card"><span class="retail-region">Japan · Fashion marketplace</span><div class="brand-wordmark">ZOZOTOWN</div><p>Japanese fashion labels, streetwear, shoes and accessories.</p><a href="https://zozo.jp/" target="_blank" rel="noopener">OFFICIAL STORE ↗</a></article>
+        <article class="retail-card"><span class="retail-region">South Korea · Fashion</span><div class="brand-wordmark">MUSINSA</div><p>Korean fashion, streetwear, sneakers and emerging labels.</p><a href="https://www.musinsa.com/" target="_blank" rel="noopener">OFFICIAL STORE ↗</a></article>
+        <article class="retail-card"><span class="retail-region">Global marketplace</span><div class="brand-wordmark">AliExpress</div><p>Broad range of fashion, accessories and lifestyle products; verify each merchant.</p><a href="https://www.aliexpress.com/" target="_blank" rel="noopener">OFFICIAL STORE ↗</a></article>
+        <article class="retail-card"><span class="retail-region">Japan · Global fashion</span><div class="brand-wordmark">UNIQLO</div><p>Functional clothing and accessories with regional stores.</p><a href="https://www.uniqlo.com/" target="_blank" rel="noopener">OFFICIAL STORE ↗</a></article>
+      </div>
+    </div>
+
+    <div class="region-section">
+      <div class="region-heading"><span>04</span><h3>Southeast Asia</h3><small>Indonesia · Malaysia · Philippines · Singapore · Thailand · Vietnam</small></div>
+      <div class="global-brand-grid">
+        <article class="retail-card"><span class="retail-region">Regional fashion platform</span><div class="brand-wordmark">ZALORA</div><p>Fashion and lifestyle products across supported Southeast Asian markets.</p><a href="https://www.zalora.com/" target="_blank" rel="noopener">OFFICIAL STORE ↗</a></article>
+        <article class="retail-card"><span class="retail-region">Regional marketplace</span><div class="brand-wordmark">Shopee</div><p>Fashion, beauty, footwear and accessories from regional merchants.</p><a href="https://shopee.com/" target="_blank" rel="noopener">OFFICIAL STORE ↗</a></article>
+        <article class="retail-card"><span class="retail-region">Regional marketplace</span><div class="brand-wordmark">Lazada</div><p>Clothing, shoes, accessories and multi-category shopping.</p><a href="https://www.lazada.com/" target="_blank" rel="noopener">OFFICIAL STORE ↗</a></article>
+      </div>
+    </div>
+
+    <div class="region-section">
+      <div class="region-heading"><span>05</span><h3>Middle East & Africa</h3><small>Gulf countries · North Africa · Sub-Saharan Africa · South Africa</small></div>
+      <div class="global-brand-grid">
+        <article class="retail-card"><span class="retail-region">Middle East · Fashion</span><div class="brand-wordmark">NAMSHI</div><p>Clothing, sneakers, beauty and accessories for supported regional markets.</p><a href="https://www.namshi.com/" target="_blank" rel="noopener">OFFICIAL STORE ↗</a></article>
+        <article class="retail-card"><span class="retail-region">Middle East · Luxury</span><div class="brand-wordmark">OUNASS</div><p>Luxury fashion, designer accessories, shoes and beauty.</p><a href="https://www.ounass.ae/" target="_blank" rel="noopener">OFFICIAL STORE ↗</a></article>
+        <article class="retail-card"><span class="retail-region">Africa · Marketplace</span><div class="brand-wordmark">JUMIA</div><p>Multi-category marketplace with fashion and accessories in selected African markets.</p><a href="https://www.jumia.com/" target="_blank" rel="noopener">OFFICIAL STORE ↗</a></article>
+        <article class="retail-card"><span class="retail-region">South Africa · Retail</span><div class="brand-wordmark">TAKEALOT</div><p>Multi-category online retailer with clothing, footwear and lifestyle products.</p><a href="https://www.takealot.com/" target="_blank" rel="noopener">OFFICIAL STORE ↗</a></article>
+      </div>
+    </div>
+
+    <div class="region-section">
+      <div class="region-heading"><span>06</span><h3>Latin America & Oceania</h3><small>Brazil · Colombia · Australia · New Zealand</small></div>
+      <div class="global-brand-grid">
+        <article class="retail-card"><span class="retail-region">Latin America · Fashion</span><div class="brand-wordmark">DAFITI</div><p>Fashion, footwear and lifestyle brands in supported Latin American markets.</p><a href="https://www.dafiti.com.br/" target="_blank" rel="noopener">OFFICIAL STORE ↗</a></article>
+        <article class="retail-card"><span class="retail-region">Latin America · Marketplace</span><div class="brand-wordmark">MERCADO LIBRE</div><p>Regional marketplace covering many consumer categories and sellers.</p><a href="https://www.mercadolibre.com/" target="_blank" rel="noopener">OFFICIAL STORE ↗</a></article>
+        <article class="retail-card"><span class="retail-region">Australia & New Zealand</span><div class="brand-wordmark">THE ICONIC</div><p>Fashion, footwear, sportswear and lifestyle brands in ANZ.</p><a href="https://www.theiconic.com.au/" target="_blank" rel="noopener">OFFICIAL STORE ↗</a></article>
+        <article class="retail-card"><span class="retail-region">Australia · Department store</span><div class="brand-wordmark">MYER</div><p>Fashion, shoes, handbags, beauty, jewellery and home products.</p><a href="https://www.myer.com.au/" target="_blank" rel="noopener">OFFICIAL STORE ↗</a></article>
+      </div>
+    </div>
+
+    <div class="destination-panel" style="margin-top:30px">
+      <h3>Commission and product-feed networks</h3>
+      <p>These are the routes we will apply to for authorised product data, tracking links, official creative assets and commission terms. Their availability and approval are separate from the retailer links above.</p>
+      <div class="network-grid">
+        <a class="network-card" href="https://www.awin.com/" target="_blank" rel="noopener"><strong>AWIN</strong><span>30,000+ brands · global affiliate network</span><small>Retailers include adidas, Nike, Decathlon and UNIQLO</small></a>
+        <a class="network-card" href="https://www.admitad.com/affiliates/" target="_blank" rel="noopener"><strong>ADMITAD</strong><span>3,000+ advertisers · 100+ countries</span><small>XML product feeds available to publishers</small></a>
+        <a class="network-card" href="https://www.cj.com/publisher" target="_blank" rel="noopener"><strong>CJ</strong><span>Global advertiser marketplace</span><small>Publisher payments supported in 150+ currencies</small></a>
+        <a class="network-card" href="https://www.farfetch.com/pag1987.aspx" target="_blank" rel="noopener"><strong>FARFETCH AFFILIATES</strong><span>Luxury product feed · multi-currency</span><small>Global affiliate programme; shipping to 190+ countries</small></a>
+        <a class="network-card" href="https://affiliate-program.amazon.com/" target="_blank" rel="noopener"><strong>AMAZON ASSOCIATES</strong><span>Millions of products</span><small>Separate country-level programme applications and rules</small></a>
+        <a class="network-card" href="https://partnernetwork.ebay.com/" target="_blank" rel="noopener"><strong>EBAY PARTNER NETWORK</strong><span>Global shopping marketplace</span><small>Affiliate links, APIs and data feeds</small></a>
+        <a class="network-card" href="https://portals.aliexpress.com/" target="_blank" rel="noopener"><strong>ALIEXPRESS PORTALS</strong><span>International marketplace products</span><small>Authorised affiliate content and programme rules</small></a>
+        <a class="network-card" href="https://rakutenadvertising.com/publishers/" target="_blank" rel="noopener"><strong>RAKUTEN ADVERTISING</strong><span>Global publisher network</span><small>Regional advertisers, offers and feeds</small></a>
+      </div>
+    </div>
+
     <div class="destination-panel" style="margin-top:26px">
       <h3>How nearest-stock matching will work</h3>
       <p>For each product, the live platform will check that stock is available, that the seller ships to the buyer's destination, and where the item can dispatch from. It will then rank eligible offers by distance to the dispatch location and show estimated delivery and shipping cost where supplied. We will not claim an item is nearby unless the seller confirms its stock location and availability.</p>
       <p style="margin-bottom:0"><strong style="color:#d7bd80">Product-feed route:</strong> <a href="https://www.awin.com/" target="_blank" rel="noopener" style="color:#e2c984">Awin publisher network</a> · <a href="https://success.awin.com/s/article/How-do-I-join-an-advertiser-programme?language=en_US" target="_blank" rel="noopener" style="color:#e2c984">Apply to advertiser programmes</a> · <a href="https://shopify.dev/docs/api/admin-graphql/latest/objects/Location" target="_blank" rel="noopener" style="color:#e2c984">Shopify stock-location API</a></p>
     </div>
-    <p class="retail-terms">These are independent retailer discovery links, not confirmed HI FASHION partners or imported product listings. Awin product feeds can provide product details, images and prices after approval; seller or retailer inventory-location access requires a separate authorised integration. Affiliate purchases will be completed on the retailer's website, while HI FASHION marketplace seller orders will use a separate checkout. Retailer delivery coverage and stock vary by destination.</p>
+    <p class="retail-terms">Retailer names are displayed as text wordmarks for identification only; trademarks belong to their respective owners. This site is not endorsed by or affiliated with the retailers listed unless a future written agreement says otherwise. Their websites are independent shopping destinations, not confirmed HI FASHION partners. Some retailers and affiliate programmes do not serve every country. Product feeds, official logo artwork, image rights, prices and tracking links will only be used after the relevant programme or seller approves HI FASHION. Affiliate purchases are completed on retailer websites; direct marketplace orders will use separate seller checkout and inventory integrations.</p>
   </section>
 
   <section class="trending" id="trending">
@@ -826,6 +876,32 @@ function filterDepartments() {
 searchInput.addEventListener("input", filterDepartments);
 
 const deliveryCountry = document.getElementById("deliveryCountry");
+const allWorldMarkets = [
+"Afghanistan","Albania","Algeria","Andorra","Angola","Antigua and Barbuda","Argentina","Armenia","Australia","Austria","Azerbaijan",
+"Bahamas","Bahrain","Bangladesh","Barbados","Belarus","Belgium","Belize","Benin","Bhutan","Bolivia","Bosnia and Herzegovina","Botswana","Brazil","Brunei","Bulgaria","Burkina Faso","Burundi",
+"Cabo Verde","Cambodia","Cameroon","Canada","Central African Republic","Chad","Chile","China","Colombia","Comoros","Congo","Costa Rica","Côte d'Ivoire","Croatia","Cuba","Cyprus","Czechia",
+"Democratic Republic of the Congo","Denmark","Djibouti","Dominica","Dominican Republic","Ecuador","Egypt","El Salvador","Equatorial Guinea","Eritrea","Estonia","Eswatini","Ethiopia",
+"Fiji","Finland","France","Gabon","Gambia","Georgia","Germany","Ghana","Greece","Grenada","Guatemala","Guinea","Guinea-Bissau","Guyana",
+"Haiti","Honduras","Hungary","Iceland","India","Indonesia","Iran","Iraq","Ireland","Israel","Italy",
+"Jamaica","Japan","Jordan","Kazakhstan","Kenya","Kiribati","Kosovo","Kuwait","Kyrgyzstan",
+"Laos","Latvia","Lebanon","Lesotho","Liberia","Libya","Liechtenstein","Lithuania","Luxembourg",
+"Madagascar","Malawi","Malaysia","Maldives","Mali","Malta","Marshall Islands","Mauritania","Mauritius","Mexico","Micronesia","Moldova","Monaco","Mongolia","Montenegro","Morocco","Mozambique","Myanmar",
+"Namibia","Nauru","Nepal","Netherlands","New Zealand","Nicaragua","Niger","Nigeria","North Korea","North Macedonia","Norway",
+"Oman","Pakistan","Palau","Palestine","Panama","Papua New Guinea","Paraguay","Peru","Philippines","Poland","Portugal",
+"Qatar","Romania","Russia","Rwanda",
+"Saint Kitts and Nevis","Saint Lucia","Saint Vincent and the Grenadines","Samoa","San Marino","São Tomé and Príncipe","Saudi Arabia","Senegal","Serbia","Seychelles","Sierra Leone","Singapore","Slovakia","Slovenia","Solomon Islands","Somalia","South Africa","South Korea","South Sudan","Spain","Sri Lanka","Sudan","Suriname","Sweden","Switzerland","Syria",
+"Taiwan","Tajikistan","Tanzania","Thailand","Timor-Leste","Togo","Tonga","Trinidad and Tobago","Tunisia","Türkiye","Turkmenistan","Tuvalu",
+"Uganda","Ukraine","United Arab Emirates","United Kingdom","United States","Uruguay","Uzbekistan",
+"Vanuatu","Vatican City","Venezuela","Vietnam",
+"Yemen","Zambia","Zimbabwe",
+"Hong Kong","Macao","Puerto Rico","Greenland","Faroe Islands","Guam","Aruba","Curaçao","Bermuda","Cayman Islands","British Virgin Islands","U.S. Virgin Islands","French Polynesia","New Caledonia","Isle of Man","Jersey","Guernsey","Gibraltar"
+].sort((a,b)=>a.localeCompare(b));
+allWorldMarkets.forEach(country => {
+  const option = document.createElement("option");
+  option.value = country;
+  option.textContent = country;
+  deliveryCountry.appendChild(option);
+});
 const deliveryArea = document.getElementById("deliveryArea");
 const deliveryPostalCode = document.getElementById("deliveryPostalCode");
 const destinationStatus = document.getElementById("destinationStatus");
