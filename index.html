@@ -4,177 +4,691 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>HI FASHION | Human Intelligence</title>
+<meta name="description" content="HI FASHION — Discover fashion from brands, boutiques and designers around the world.">
+<title>HI FASHION | Global Fashion Marketplace</title>
+
 <style>
 :root {
   --black:#090b0a;
+  --panel:#111713;
   --green:#123b2d;
   --green2:#1d4b39;
   --gold:#c6a45a;
   --silver:#c5c8c6;
   --white:#f5f4ef;
 }
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{background:var(--black);color:var(--white);font-family:Arial,sans-serif}
-header{
- display:flex;align-items:center;justify-content:space-between;
- padding:22px 6%;border-bottom:1px solid #353b37;
- position:sticky;top:0;background:rgba(9,11,10,.97);z-index:10
+* {box-sizing:border-box;margin:0;padding:0}
+html {scroll-behavior:smooth}
+body {
+  background:var(--black);
+  color:var(--white);
+  font-family:Arial,sans-serif;
 }
-.logo{color:var(--gold);font-size:27px;font-weight:bold;letter-spacing:4px}
-.logo small{display:block;color:var(--silver);font-size:9px;letter-spacing:3px;margin-top:5px}
-nav{display:flex;gap:25px}
-nav a,.right a{color:var(--silver);text-decoration:none;font-size:11px;letter-spacing:1px}
-nav a:hover,.right a:hover{color:var(--gold)}
-.right{display:flex;gap:18px}
-.hero{
- min-height:570px;display:flex;align-items:center;padding:80px 9%;
- background:linear-gradient(90deg,rgba(5,9,7,.96),rgba(5,9,7,.35)),
- linear-gradient(135deg,#123b2d,#080b09 75%);
+button,select,input {font:inherit}
+header {
+  min-height:82px;
+  padding:15px 5%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  border-bottom:1px solid #343c36;
+  background:#090b0a;
+  position:sticky;
+  top:0;
+  z-index:20;
 }
-.hero-content{max-width:650px}
-.eyebrow{color:var(--gold);letter-spacing:5px;font-size:11px;margin-bottom:25px}
-h1{font-family:Georgia,serif;font-weight:normal;font-size:clamp(52px,8vw,100px);line-height:.95;letter-spacing:-3px}
-h1 span{color:var(--gold)}
-.hero p{color:var(--silver);line-height:1.8;font-size:15px;max-width:520px;margin:28px 0}
-.button{
- display:inline-block;padding:16px 27px;background:var(--gold);
- color:#111;text-decoration:none;font-size:11px;font-weight:bold;letter-spacing:2px;
+.logo {
+  color:var(--gold);
+  font-size:29px;
+  font-weight:bold;
+  letter-spacing:5px;
+  white-space:nowrap;
 }
-.button:hover{background:#e0c47d}
-section{padding:75px 7%}
-.section-title{text-align:center;margin-bottom:38px}
-.section-title small{color:var(--gold);letter-spacing:4px;font-size:10px}
-.section-title h2{font-family:Georgia,serif;font-size:38px;font-weight:normal;margin-top:12px}
-.section-title p{color:var(--silver);font-size:13px;margin-top:12px}
-.categories{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}
-.category{
- min-height:220px;background:linear-gradient(145deg,#254638,#101512);
- border:1px solid #4c604f;display:flex;align-items:end;padding:22px;
- color:var(--gold);font-family:Georgia,serif;font-size:23px;text-decoration:none;
+.logo small {
+  display:block;
+  color:var(--silver);
+  font-size:9px;
+  letter-spacing:3px;
+  margin-top:5px;
 }
-.category:nth-child(even){background:linear-gradient(145deg,#343a38,#111513)}
-.category:hover{border-color:var(--gold);transform:translateY(-3px)}
-.collection{background:#10291f}
-.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.card{background:#0b100d;border:1px solid #34453a}
-.card-visual{height:210px;background:linear-gradient(145deg,#244c39,#111714);display:flex;align-items:center;justify-content:center;color:var(--gold);font-family:Georgia,serif;font-size:25px}
-.card-info{padding:22px}
-.card-info h3{font-family:Georgia,serif;color:var(--gold);font-size:20px;font-weight:normal}
-.card-info p{font-size:13px;color:var(--silver);line-height:1.7;margin-top:10px}
-.card-info a{display:inline-block;margin-top:17px;color:var(--gold);font-size:10px;letter-spacing:2px;text-decoration:none}
-.seller{background:#171b18;text-align:center}
-.seller h2{font-family:Georgia,serif;font-size:42px;font-weight:normal}
-.seller p{color:var(--silver);max-width:600px;margin:20px auto 28px;line-height:1.8;font-size:14px}
-footer{padding:35px 7%;border-top:1px solid #353b37;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;color:var(--silver);font-size:11px}
-footer strong{color:var(--gold);letter-spacing:2px}
-@media(max-width:800px){
- nav{display:none}
- .categories{grid-template-columns:repeat(2,1fr)}
- .cards{grid-template-columns:1fr}
- header{padding:18px 5%}
- .hero{min-height:490px;padding:65px 7%}
- section{padding:55px 6%}
+nav {
+  display:flex;
+  align-items:center;
+  gap:20px;
+}
+nav a,.header-actions a {
+  color:var(--silver);
+  text-decoration:none;
+  font-size:10px;
+  letter-spacing:1px;
+}
+nav a:hover,.header-actions a:hover {color:var(--gold)}
+.header-actions {
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
+.market-select {
+  background:#10291f;
+  color:var(--gold);
+  border:1px solid var(--gold);
+  padding:10px;
+  max-width:175px;
+  font-size:11px;
+  cursor:pointer;
+}
+.hero {
+  min-height:570px;
+  display:flex;
+  align-items:center;
+  padding:80px 9%;
+  background:
+    radial-gradient(ellipse at 80% 50%,#28523d 0%,transparent 40%),
+    linear-gradient(110deg,#080b09 15%,#10291f 65%,#080b09);
+}
+.hero-content {max-width:680px}
+.eyebrow {
+  color:var(--gold);
+  letter-spacing:5px;
+  font-size:11px;
+  margin-bottom:25px;
+}
+h1 {
+  font-family:Georgia,serif;
+  font-weight:normal;
+  font-size:clamp(52px,8vw,100px);
+  line-height:.96;
+  letter-spacing:-3px;
+}
+h1 span {color:var(--gold)}
+.hero p {
+  color:var(--silver);
+  line-height:1.8;
+  font-size:15px;
+  max-width:520px;
+  margin:28px 0;
+}
+.button {
+  display:inline-block;
+  padding:16px 27px;
+  background:var(--gold);
+  color:#111;
+  border:0;
+  text-decoration:none;
+  font-size:11px;
+  font-weight:bold;
+  letter-spacing:2px;
+  cursor:pointer;
+}
+.button:hover {background:#e2c77e}
+section {padding:75px 7%}
+.section-title {
+  text-align:center;
+  margin-bottom:38px;
+}
+.section-title small {
+  color:var(--gold);
+  letter-spacing:4px;
+  font-size:10px;
+}
+.section-title h2 {
+  font-family:Georgia,serif;
+  font-size:38px;
+  font-weight:normal;
+  margin-top:12px;
+}
+.section-title p {
+  color:var(--silver);
+  font-size:13px;
+  margin-top:12px;
+}
+.categories {
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:15px;
+}
+.category {
+  min-height:180px;
+  display:flex;
+  align-items:end;
+  padding:22px;
+  background:linear-gradient(145deg,#28513d,#101713);
+  border:1px solid #52634f;
+  color:var(--gold);
+  font-family:Georgia,serif;
+  font-size:23px;
+  text-decoration:none;
+  transition:.2s;
+}
+.category:nth-child(even) {
+  background:linear-gradient(145deg,#454a46,#111713);
+}
+.category:hover {
+  border-color:var(--gold);
+  transform:translateY(-3px);
+}
+.catalogue {background:#0e1712}
+.catalogue-tools {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:15px;
+  flex-wrap:wrap;
+  margin-bottom:28px;
+}
+.search {
+  flex:1;
+  min-width:220px;
+  max-width:420px;
+  padding:13px 15px;
+  color:white;
+  background:#171e19;
+  border:1px solid #596358;
+  outline:none;
+}
+.search:focus {border-color:var(--gold)}
+.filters {
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+}
+.filter {
+  background:transparent;
+  color:var(--silver);
+  border:1px solid #596358;
+  padding:10px 13px;
+  cursor:pointer;
+  font-size:11px;
+}
+.filter.active,.filter:hover {
+  background:var(--gold);
+  color:#111;
+  border-color:var(--gold);
+}
+.products {
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:18px;
+}
+.product {
+  background:#151b17;
+  border:1px solid #303b33;
+  overflow:hidden;
+}
+.product-art {
+  height:210px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:15px;
+  background:linear-gradient(145deg,#274534,#101713);
+  color:var(--gold);
+  font-family:Georgia,serif;
+  font-size:23px;
+}
+.product:nth-child(2n) .product-art {
+  background:linear-gradient(145deg,#4a4d49,#161a17);
+}
+.product:nth-child(3n) .product-art {
+  background:linear-gradient(145deg,#274b45,#111816);
+}
+.product-info {padding:17px}
+.product-info small {
+  color:var(--gold);
+  font-size:9px;
+  letter-spacing:2px;
+}
+.product-info h3 {
+  font-family:Georgia,serif;
+  font-weight:normal;
+  font-size:18px;
+  margin:9px 0;
+}
+.product-info p {
+  color:var(--silver);
+  font-size:12px;
+  line-height:1.6;
+}
+.product-bottom {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:8px;
+  margin-top:15px;
+}
+.price {
+  color:var(--gold);
+  font-weight:bold;
+}
+.add-button {
+  background:transparent;
+  border:1px solid var(--gold);
+  color:var(--gold);
+  padding:9px 10px;
+  font-size:10px;
+  cursor:pointer;
+}
+.add-button:hover {
+  background:var(--gold);
+  color:#111;
+}
+.demo-note {
+  color:#aeb5ae;
+  font-size:11px;
+  text-align:center;
+  margin-top:25px;
+  line-height:1.6;
+}
+.no-results {
+  grid-column:1/-1;
+  padding:35px;
+  color:var(--silver);
+  text-align:center;
+}
+.seller {
+  background:#171d18;
+  text-align:center;
+}
+.seller h2 {
+  font-family:Georgia,serif;
+  font-size:42px;
+  font-weight:normal;
+}
+.seller p {
+  color:var(--silver);
+  max-width:600px;
+  margin:20px auto 28px;
+  line-height:1.8;
+  font-size:14px;
+}
+footer {
+  padding:35px 7%;
+  border-top:1px solid #353b37;
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
+  flex-wrap:wrap;
+  color:var(--silver);
+  font-size:11px;
+}
+footer strong {color:var(--gold);letter-spacing:2px}
+.status {
+  position:fixed;
+  bottom:18px;
+  right:18px;
+  background:#173b2b;
+  border:1px solid var(--gold);
+  color:white;
+  padding:12px 18px;
+  font-size:12px;
+  z-index:30;
+  display:none;
+}
+@media(max-width:1050px) {
+  nav {gap:10px}
+  .products {grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:760px) {
+  header {flex-wrap:wrap;padding:15px 5%}
+  nav {order:3;width:100%;justify-content:center}
+  .header-actions {margin-left:auto}
+  .categories {grid-template-columns:repeat(2,1fr)}
+  .hero {min-height:480px;padding:65px 7%}
+  section {padding:55px 6%}
+}
+@media(max-width:460px) {
+  .products {grid-template-columns:1fr}
+  .market-select {max-width:145px}
+  .logo {font-size:24px}
+  .category {min-height:145px;font-size:19px}
+  .hero h1 {font-size:54px}
 }
 </style>
 </head>
+
 <body>
+
 <header>
- <div class="logo">HI<small>HUMAN INTELLIGENCE</small></div>
- <nav>
-  <a href="#women">WOMEN</a>
-  <a href="#men">MEN</a>
-  <a href="#collections">COLLECTIONS</a>
-  <a href="#vintage">VINTAGE</a>
- </nav>
- <div class="right">
-  <a href="#collections">SEARCH</a>
-  <a href="#seller">SELL WITH US</a>
- </div>
+  <a href="#" style="text-decoration:none">
+    <div class="logo">HI
+      <small>HUMAN INTELLIGENCE</small>
+    </div>
+  </a>
+
+  <nav>
+    <a href="#categories">CATEGORIES</a>
+    <a href="#catalogue">SHOP</a>
+    <a href="#seller">SELL WITH US</a>
+  </nav>
+
+  <div class="header-actions">
+    <select class="market-select" id="marketSelect"
+      aria-label="Choose shopping market">
+      <option value="EUR">🇪🇺 EUROPE · EUR €</option>
+      <option value="USD">🇺🇸 USA · USD $</option>
+      <option value="GBP">🇬🇧 GREAT BRITAIN · GBP £</option>
+      <option value="CAD">🇨🇦 CANADA · CAD $</option>
+      <option value="EUR">🌍 REST OF WORLD · EUR €</option>
+    </select>
+    <a href="#catalogue">BAG (<span id="bagCount">0</span>)</a>
+  </div>
 </header>
-<div style="display:flex;align-items:center;gap:8px;margin-left:15px">
-  <select id="marketSelect"
-    onchange="document.getElementById('marketLabel').textContent=this.options[this.selectedIndex].text"
-    style="background:#10291f;color:#c6a45a;border:1px solid #c6a45a;padding:10px;font-size:11px;max-width:180px">
-    <option>🌍 Select Market</option>
-    <option>🇺🇸 United States — USD $</option>
-    <option>🇬🇧 Great Britain — GBP £</option>
-    <option>🇨🇦 Canada — CAD $</option>
-    <option>🇪🇺 Europe — EUR €</option>
-    <option>🌍 Rest of World</option>
-  </select>
-</div>
+
 <main>
- <div class="hero">
-  <div class="hero-content">
-   <div class="eyebrow">HI HUMAN INTELLIGENCE PRESENTS</div>
-   <h1>FASHION<br><span>WITHOUT</span><br>BORDERS.</h1>
-   <p>A new destination for global fashion. Discover established brands, independent designers, exceptional collections and unique second-hand finds.</p>
-   <a class="button" href="#collections">DISCOVER THE COLLECTION</a>
-  </div>
- </div>
 
- <section>
-  <div class="section-title">
-   <small>EXPLORE THE WORLD</small>
-   <h2>Find Your Style</h2>
-   <p>Fashion from every corner of the world.</p>
+  <div class="hero">
+    <div class="hero-content">
+      <div class="eyebrow">HI HUMAN INTELLIGENCE PRESENTS</div>
+      <h1>FASHION<br><span>WITHOUT</span><br>BORDERS.</h1>
+      <p>
+        Discover fashion from around the world.
+        Explore global brands, independent designers,
+        new collections and exceptional styles.
+      </p>
+      <a class="button" href="#catalogue">DISCOVER THE COLLECTION</a>
+    </div>
   </div>
-  <div class="categories">
-   <a class="category" id="women" href="#collections">WOMEN</a>
-   <a class="category" id="men" href="#collections">MEN</a>
-   <a class="category" href="#collections">SHOES</a>
-   <a class="category" href="#collections">BAGS & ACCESSORIES</a>
-  </div>
- </section>
 
- <section class="collection" id="collections">
-  <div class="section-title">
-   <small>THE HI FASHION EDIT</small>
-   <h2>Discover More</h2>
-   <p>New fashion. Timeless finds. Independent creativity.</p>
-  </div>
-  <div class="cards">
-   <div class="card">
-    <div class="card-visual">NEW ARRIVALS</div>
-    <div class="card-info">
-     <h3>New Collections</h3>
-     <p>Discover the latest styles from brands and designers around the world.</p>
-     <a href="#seller">EXPLORE →</a>
+  <section id="categories">
+    <div class="section-title">
+      <small>EXPLORE THE WORLD</small>
+      <h2>Find Your Style</h2>
+      <p>Fashion from every corner of the world.</p>
     </div>
-   </div>
-   <div class="card" id="vintage">
-    <div class="card-visual">PRE-OWNED</div>
-    <div class="card-info">
-     <h3>Vintage & Second-hand</h3>
-     <p>Find distinctive pieces and give exceptional fashion a new life.</p>
-     <a href="#seller">EXPLORE →</a>
-    </div>
-   </div>
-   <div class="card">
-    <div class="card-visual">DESIGNERS</div>
-    <div class="card-info">
-     <h3>Independent Designers</h3>
-     <p>Discover original creativity from independent fashion businesses.</p>
-     <a href="#seller">EXPLORE →</a>
-    </div>
-   </div>
-  </div>
- </section>
 
- <section class="seller" id="seller">
-  <small style="color:#c6a45a;letter-spacing:4px">BECOME PART OF HI FASHION</small>
-  <h2>Sell With Us</h2>
-  <p>Are you a fashion brand, boutique, independent designer or individual seller? Bring your collection to our global fashion community.</p>
-  <a class="button" href="mailto:hello@hifashion.example?subject=HI%20FASHION%20Seller%20Interest">JOIN OUR SELLER COMMUNITY</a>
- </section>
+    <div class="categories">
+      <a class="category" href="#catalogue" data-category="Women">WOMEN</a>
+      <a class="category" href="#catalogue" data-category="Men">MEN</a>
+      <a class="category" href="#catalogue" data-category="Shoes">SHOES</a>
+      <a class="category" href="#catalogue" data-category="Accessories">BAGS & ACCESSORIES</a>
+    </div>
+  </section>
+
+  <section class="catalogue" id="catalogue">
+    <div class="section-title">
+      <small>THE HI FASHION EDIT</small>
+      <h2>Discover the Collection</h2>
+      <p>New fashion. Global style. Endless possibilities.</p>
+    </div>
+
+    <div class="catalogue-tools">
+      <input class="search" id="searchInput"
+        type="search" placeholder="Search fashion products..."
+        aria-label="Search products">
+
+      <div class="filters">
+        <button class="filter active" data-filter="All">ALL</button>
+        <button class="filter" data-filter="Women">WOMEN</button>
+        <button class="filter" data-filter="Men">MEN</button>
+        <button class="filter" data-filter="Shoes">SHOES</button>
+        <button class="filter" data-filter="Accessories">ACCESSORIES</button>
+      </div>
+    </div>
+
+    <div class="products" id="productGrid">
+
+      <article class="product" data-category="Women" data-name="premium t shirt">
+        <div class="product-art">ESSENTIAL<br>COLLECTION</div>
+        <div class="product-info">
+          <small>WOMEN · NEW</small>
+          <h3>Premium T-Shirt</h3>
+          <p>Minimalist everyday fashion.</p>
+          <div class="product-bottom">
+            <span class="price" data-eur="35">€35.00</span>
+            <button class="add-button">ADD TO BAG</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="product" data-category="Shoes" data-name="classic sneakers">
+        <div class="product-art">URBAN<br>MOVEMENT</div>
+        <div class="product-info">
+          <small>FOOTWEAR · NEW</small>
+          <h3>Classic Sneakers</h3>
+          <p>Everyday casual footwear.</p>
+          <div class="product-bottom">
+            <span class="price" data-eur="89">€89.00</span>
+            <button class="add-button">ADD TO BAG</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="product" data-category="Accessories" data-name="shoulder handbag">
+        <div class="product-art">TIMELESS<br>ACCESSORIES</div>
+        <div class="product-info">
+          <small>ACCESSORIES · NEW</small>
+          <h3>Shoulder Handbag</h3>
+          <p>Modern everyday elegance.</p>
+          <div class="product-bottom">
+            <span class="price" data-eur="95">€95.00</span>
+            <button class="add-button">ADD TO BAG</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="product" data-category="Women" data-name="activewear set">
+        <div class="product-art">ACTIVE<br>COLLECTION</div>
+        <div class="product-info">
+          <small>SPORT · NEW</small>
+          <h3>Activewear Set</h3>
+          <p>Comfort and movement.</p>
+          <div class="product-bottom">
+            <span class="price" data-eur="59">€59.00</span>
+            <button class="add-button">ADD TO BAG</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="product" data-category="Men" data-name="modern polo shirt">
+        <div class="product-art">MODERN<br>ESSENTIALS</div>
+        <div class="product-info">
+          <small>MEN · NEW</small>
+          <h3>Modern Polo Shirt</h3>
+          <p>Contemporary everyday style.</p>
+          <div class="product-bottom">
+            <span class="price" data-eur="45">€45.00</span>
+            <button class="add-button">ADD TO BAG</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="product" data-category="Men" data-name="premium hoodie">
+        <div class="product-art">URBAN<br>STYLE</div>
+        <div class="product-info">
+          <small>MEN · NEW</small>
+          <h3>Premium Hoodie</h3>
+          <p>Comfortable modern streetwear.</p>
+          <div class="product-bottom">
+            <span class="price" data-eur="69">€69.00</span>
+            <button class="add-button">ADD TO BAG</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="product" data-category="Women" data-name="elegant dress">
+        <div class="product-art">ELEGANCE<br>COLLECTION</div>
+        <div class="product-info">
+          <small>WOMEN · NEW</small>
+          <h3>Elegant Dress</h3>
+          <p>Contemporary occasion wear.</p>
+          <div class="product-bottom">
+            <span class="price" data-eur="119">€119.00</span>
+            <button class="add-button">ADD TO BAG</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="product" data-category="Accessories" data-name="leather belt">
+        <div class="product-art">REFINED<br>DETAILS</div>
+        <div class="product-info">
+          <small>ACCESSORIES · NEW</small>
+          <h3>Leather Belt</h3>
+          <p>A timeless wardrobe accessory.</p>
+          <div class="product-bottom">
+            <span class="price" data-eur="39">€39.00</span>
+            <button class="add-button">ADD TO BAG</button>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+    <p class="demo-note">
+      Demonstration catalogue only. These sample products and prices
+      are not actual offers or confirmed seller inventory.
+    </p>
+  </section>
+
+  <section class="seller" id="seller">
+    <small style="color:#c6a45a;letter-spacing:4px">
+      BECOME PART OF HI FASHION
+    </small>
+    <h2>Sell With Us</h2>
+    <p>
+      Are you a fashion brand, boutique, independent designer
+      or manufacturer? Bring your collection to our global
+      fashion community.
+    </p>
+    <a class="button" href="mailto:YOUR-EMAIL@example.com?subject=HI%20FASHION%20Seller%20Enquiry">
+      BECOME A SELLER
+    </a>
+  </section>
+
 </main>
 
 <footer>
- <div><strong>HI FASHION</strong> — HUMAN INTELLIGENCE</div>
- <div>THE GLOBAL FASHION MARKETPLACE</div>
- <div>© 2026 HI HUMAN INTELLIGENCE</div>
+  <div><strong>HI FASHION</strong> — HUMAN INTELLIGENCE</div>
+  <div>THE GLOBAL FASHION MARKETPLACE</div>
+  <div>© 2026 HI HUMAN INTELLIGENCE</div>
 </footer>
+
+<div class="status" id="statusMessage"></div>
+
+<script>
+// Demonstration exchange rates only.
+// Replace with a live exchange-rate service before commercial launch.
+const rates = {
+  EUR:1,
+  USD:1.08,
+  GBP:0.84,
+  CAD:1.48
+};
+
+const symbols = {
+  EUR:"€",
+  USD:"$",
+  GBP:"£",
+  CAD:"CA$"
+};
+
+const marketSelect = document.getElementById("marketSelect");
+const bagCount = document.getElementById("bagCount");
+const statusMessage = document.getElementById("statusMessage");
+
+let bagItems = 0;
+let activeCategory = "All";
+
+function updatePrices() {
+  const currency = marketSelect.value;
+  const rate = rates[currency];
+
+  document.querySelectorAll(".price").forEach(price => {
+    const euroPrice = Number(price.dataset.eur);
+    const converted = euroPrice * rate;
+
+    price.textContent =
+      symbols[currency] + converted.toFixed(2);
+  });
+}
+
+marketSelect.addEventListener("change", updatePrices);
+
+document.querySelectorAll(".add-button").forEach(button => {
+  button.addEventListener("click", () => {
+    bagItems++;
+    bagCount.textContent = bagItems;
+
+    statusMessage.textContent =
+      "Demonstration: item added to shopping bag.";
+
+    statusMessage.style.display = "block";
+
+    setTimeout(() => {
+      statusMessage.style.display = "none";
+    }, 2500);
+  });
+});
+
+function filterProducts() {
+  const search = document.getElementById("searchInput")
+    .value.toLowerCase();
+
+  let visible = 0;
+
+  document.querySelectorAll(".product").forEach(product => {
+    const category = product.dataset.category;
+    const name = product.dataset.name;
+
+    const categoryMatch =
+      activeCategory === "All" || category === activeCategory;
+
+    const searchMatch = name.includes(search);
+
+    const show = categoryMatch && searchMatch;
+
+    product.style.display = show ? "" : "none";
+
+    if (show) visible++;
+  });
+
+  let noResults = document.getElementById("noResults");
+
+  if (!visible && !noResults) {
+    noResults = document.createElement("div");
+    noResults.id = "noResults";
+    noResults.className = "no-results";
+    noResults.textContent = "No matching products found.";
+    document.getElementById("productGrid").appendChild(noResults);
+  } else if (visible && noResults) {
+    noResults.remove();
+  }
+}
+
+document.querySelectorAll(".filter").forEach(button => {
+  button.addEventListener("click", () => {
+    document.querySelectorAll(".filter").forEach(item =>
+      item.classList.remove("active")
+    );
+
+    button.classList.add("active");
+    activeCategory = button.dataset.filter;
+    filterProducts();
+  });
+});
+
+document.getElementById("searchInput")
+  .addEventListener("input", filterProducts);
+
+document.querySelectorAll(".category[data-category]")
+  .forEach(link => {
+    link.addEventListener("click", () => {
+      activeCategory = link.dataset.category;
+
+      document.querySelectorAll(".filter").forEach(button => {
+        button.classList.toggle(
+          "active",
+          button.dataset.filter === activeCategory
+        );
+      });
+
+      filterProducts();
+    });
+  });
+
+updatePrices();
+</script>
+
 </body>
 </html>
