@@ -641,6 +641,11 @@ html[dir="rtl"] .account-drawer{right:0!important;left:auto!important;border-lef
 @media(max-width:650px){.catalogue-section{padding:15px;margin:10px 0 25px}.catalogue-product-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.catalogue-product-copy{padding:10px}.catalogue-product-title{font-size:15px}.catalogue-filterbar{grid-template-columns:repeat(2,minmax(0,1fr));padding:10px}.multi-market-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:420px){.catalogue-product-grid{grid-template-columns:1fr}.catalogue-product-image,.catalogue-product-placeholder{aspect-ratio:1.2}.multi-market-grid{grid-template-columns:1fr}.catalogue-filterbar{grid-template-columns:1fr 1fr}.catalogue-filter-button{padding:0 7px;font-size:8px}}
 
+
+.department-content{position:relative}
+.department-shop-button{align-self:flex-start;margin-top:15px;padding:10px 13px;background:rgba(5,12,8,.88);border:1px solid #c6a45a;color:#f1d894;font-size:9px;font-weight:bold;letter-spacing:1.2px;cursor:pointer;backdrop-filter:blur(4px)}
+.department-shop-button:hover{background:#c6a45a;color:#101410}
+
 </style>
 </head>
 <body>
@@ -4818,7 +4823,7 @@ applySeason(localStorage.getItem("hiFashionSeason") || "auto", false);
     const max=filters.maxPrice===""?null:Math.round(Number(filters.maxPrice)*100);
     return await client.rpc("search_catalogue_products",{
       p_query:query||"",
-      p_category:active.category||null,
+      p_category:null,
       p_country:destinationIso(),
       p_gender:null,
       p_brand:filters.brand||null,
@@ -4920,6 +4925,28 @@ applySeason(localStorage.getItem("hiFashionSeason") || "auto", false);
       setStatus("Catalogue search could not be completed: "+(error?.message||"Unknown error"),0);
     }finally{busy=false;}
   }
+  // Every department tag, seasonal shortcut and editorial trend should open real catalogue results.
+  document.querySelectorAll(".tag,.season-chip,.trend-trigger").forEach(button=>{
+    button.addEventListener("click",()=>{
+      const term=(button.dataset.search||button.textContent||"").trim();
+      if(term)runSearch({query:term,category:term,offset:0});
+    });
+  });
+  // Add a dedicated product-search action to the large department cards.
+  document.querySelectorAll(".department").forEach(card=>{
+    const content=card.querySelector(".department-content");
+    if(!content||content.querySelector(".department-shop-button"))return;
+    const button=document.createElement("button");
+    button.type="button";
+    button.className="department-shop-button";
+    button.textContent="EXPLORE PRODUCTS →";
+    button.addEventListener("click",()=>{
+      const heading=card.querySelector("h3")?.textContent||"Fashion";
+      const term=heading.replace(/^\\d+\\.\\s*/,"").trim();
+      runSearch({query:term,category:term,offset:0});
+    });
+    content.appendChild(button);
+  });
   window.hiFashionSearchProducts=runSearch;
   byId("applyCatalogueFilters").addEventListener("click",()=>{active.offset=0;runSearch({query:active.query||search.value,category:active.category,offset:0});});
   more.addEventListener("click",()=>runSearch({query:active.query,category:active.category,offset:active.offset+active.limit}));
