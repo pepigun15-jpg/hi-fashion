@@ -67,6 +67,31 @@ footer strong{color:var(--gold);letter-spacing:2px}
 .seller-form .button{border:0;cursor:pointer;width:100%;margin-top:5px}
 .form-status{font-size:11px;color:#aeb7b0;line-height:1.6;margin-top:14px}
 @media(max-width:800px){.seller-layout{grid-template-columns:1fr}.seller-copy,.seller-form{padding:22px}}
+
+/* Trend-led product inspiration */
+.trending{background:#0b100d}
+.trend-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;max-width:1250px;margin:0 auto}
+.trend-card{position:relative;min-width:0;background:#111815;border:1px solid #34453a;overflow:hidden}
+.trend-trigger{display:block;width:100%;height:100%;padding:0;border:0;background:none;color:inherit;text-align:left;cursor:pointer}
+.trend-trigger img{display:block;width:100%;height:285px;object-fit:cover;transition:transform .5s ease;filter:saturate(.88)}
+.trend-card:hover img{transform:scale(1.045)}
+.trend-body{padding:18px 19px 20px}
+.trend-kicker{display:block;color:var(--gold);font-size:9px;letter-spacing:2px;text-transform:uppercase;margin-bottom:9px}
+.trend-body h3{font-family:Georgia,serif;font-weight:normal;font-size:23px;margin-bottom:9px}
+.trend-growth{display:inline-block;color:#d8c18b;font-size:15px;font-weight:bold;letter-spacing:.3px}
+.trend-growth small{display:block;margin-top:4px;color:var(--silver);font-size:10px;font-weight:normal;letter-spacing:1px}
+.trend-action{display:block;margin-top:17px;color:var(--silver);font-size:10px;letter-spacing:1.6px}
+.market-signals{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px;max-width:950px;margin:28px auto 0}
+.signal{border:1px solid #405345;background:#101713;padding:18px 20px;text-align:center}
+.signal strong{display:block;color:var(--gold);font-family:Georgia,serif;font-size:31px;font-weight:normal}
+.signal span{display:block;color:var(--silver);font-size:11px;line-height:1.6;margin-top:5px}
+.trend-strip{max-width:1050px;margin:24px auto 0;display:flex;gap:9px;justify-content:center;flex-wrap:wrap}
+.trend-pill{border:1px solid #425346;background:#101713;color:#deded7;padding:9px 12px;font-size:11px}
+.trend-pill b{color:var(--gold);margin-left:6px}
+.trend-disclaimer{max-width:980px;margin:22px auto 0;color:#9da8a0;font-size:10px;line-height:1.7;text-align:center}
+.trend-disclaimer a{color:#d7bd80}
+@media(max-width:900px){.trend-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){.trend-grid,.market-signals{grid-template-columns:1fr}.trend-trigger img{height:250px}}
 </style>
 </head>
 <body>
@@ -75,6 +100,7 @@ footer strong{color:var(--gold);letter-spacing:2px}
   <div class="logo">HI<small>HUMAN INTELLIGENCE</small></div>
   <nav>
     <a href="#departments">DEPARTMENTS</a>
+    <a href="#trending">TRENDING NOW</a>
     <a href="#new-arrivals">NEW ARRIVALS</a>
     <a href="#brands">BRANDS</a>
     <a href="#seller">SELL WITH US</a>
@@ -94,6 +120,102 @@ footer strong{color:var(--gold);letter-spacing:2px}
       <a class="button" href="#departments">EXPLORE ALL DEPARTMENTS</a>
     </div>
   </div>
+
+  <section class="trending" id="trending">
+    <div class="section-title">
+      <small>THE GLOBAL STYLE RADAR</small>
+      <h2>Trending Product Inspiration</h2>
+      <p>Explore fashion categories attracting increased shopper attention. These are market signals to guide our first seller collections.</p>
+    </div>
+
+    <div class="trend-grid">
+      <article class="trend-card">
+        <button class="trend-trigger" type="button" data-search="Handbags" aria-label="Explore women's bags">
+          <img src="https://images.pexels.com/photos/21897118/pexels-photo-21897118.jpeg?cs=srgb&dl=pexels-dhanno-21897118.jpg&fm=jpg" alt="Editorial image of a model with a collection of fashion handbags" loading="lazy">
+          <div class="trend-body">
+            <span class="trend-kicker">Rising search interest · January 2026</span>
+            <h3>Women's Bags</h3>
+            <span class="trend-growth">+35.97%<small>YEAR-ON-YEAR SEARCH GROWTH</small></span>
+            <span class="trend-action">EXPLORE BAGS & HANDBAGS →</span>
+          </div>
+        </button>
+      </article>
+
+      <article class="trend-card">
+        <button class="trend-trigger" type="button" data-search="Sneakers" aria-label="Explore sneakers">
+          <img src="https://images.pexels.com/photos/2529148/pexels-photo-2529148.jpeg?cs=srgb&dl=pexels-melvin-buezo-1253763-2529148.jpg&fm=jpg" alt="Studio photograph of modern athletic sneakers" loading="lazy">
+          <div class="trend-body">
+            <span class="trend-kicker">Popular cross-border category · 2026</span>
+            <h3>Sneakers & Footwear</h3>
+            <span class="trend-growth">51%<small>OF SHOPPERS BUY FOOTWEAR FROM INTERNATIONAL MARKETS</small></span>
+            <span class="trend-action">EXPLORE SNEAKERS →</span>
+          </div>
+        </button>
+      </article>
+
+      <article class="trend-card">
+        <button class="trend-trigger" type="button" data-search="Rings" aria-label="Explore rings and jewellery">
+          <img src="https://images.pexels.com/photos/5301351/pexels-photo-5301351.jpeg?cs=srgb&dl=pexels-naresh99-5301351.jpg&fm=jpg" alt="Close-up editorial photograph of rings and gold-toned jewellery" loading="lazy">
+          <div class="trend-body">
+            <span class="trend-kicker">Rising search interest · January 2026</span>
+            <h3>Gold Rings & Jewellery</h3>
+            <span class="trend-growth">+14.95%<small>YEAR-ON-YEAR SEARCH GROWTH FOR GOLD RINGS</small></span>
+            <span class="trend-action">EXPLORE JEWELLERY →</span>
+          </div>
+        </button>
+      </article>
+
+      <article class="trend-card">
+        <button class="trend-trigger" type="button" data-search="Sunglasses" aria-label="Explore sunglasses">
+          <img src="https://images.pexels.com/photos/27353347/pexels-photo-27353347.jpeg?cs=srgb&dl=pexels-glassesshop-gs-1317359316-27353347.jpg&fm=jpg" alt="Studio display of black fashion sunglasses" loading="lazy">
+          <div class="trend-body">
+            <span class="trend-kicker">Rising search interest · January 2026</span>
+            <h3>Sunglasses & Eyewear</h3>
+            <span class="trend-growth">+14.87%<small>YEAR-ON-YEAR SEARCH GROWTH FOR PRESCRIPTION SUNGLASSES</small></span>
+            <span class="trend-action">EXPLORE EYEWEAR →</span>
+          </div>
+        </button>
+      </article>
+
+      <article class="trend-card">
+        <button class="trend-trigger" type="button" data-search="Leggings" aria-label="Explore activewear and gym clothes">
+          <img src="https://images.pexels.com/photos/7894597/pexels-photo-7894597.jpeg?cs=srgb&dl=pexels-mart-production-7894597.jpg&fm=jpg" alt="Editorial image showing a range of black activewear leggings" loading="lazy">
+          <div class="trend-body">
+            <span class="trend-kicker">Rising search interest · January 2026</span>
+            <h3>Gymwear & Activewear</h3>
+            <span class="trend-growth">+19.82%<small>YEAR-ON-YEAR SEARCH GROWTH FOR GYM CLOTHES</small></span>
+            <span class="trend-action">EXPLORE SPORTSWEAR →</span>
+          </div>
+        </button>
+      </article>
+
+      <article class="trend-card">
+        <button class="trend-trigger" type="button" data-search="Travel Organisers" aria-label="Explore travel accessories">
+          <img src="https://images.pexels.com/photos/9185875/pexels-photo-9185875.jpeg?cs=srgb&dl=pexels-timur-weber-9185875.jpg&fm=jpg" alt="Travel organiser pouch with neatly packed personal accessories" loading="lazy">
+          <div class="trend-body">
+            <span class="trend-kicker">Rising search interest · January 2026</span>
+            <h3>Travel Bags & Organisers</h3>
+            <span class="trend-growth">+20.12%<small>YEAR-ON-YEAR SEARCH GROWTH FOR TRAVEL BAGS</small></span>
+            <span class="trend-action">EXPLORE TRAVEL ACCESSORIES →</span>
+          </div>
+        </button>
+      </article>
+    </div>
+
+    <div class="market-signals">
+      <div class="signal"><strong>67%</strong><span>of cross-border shoppers buy clothing from international markets</span></div>
+      <div class="signal"><strong>51%</strong><span>of cross-border shoppers buy footwear from international markets</span></div>
+    </div>
+
+    <div class="trend-strip">
+      <span class="trend-pill">Lace dresses <b>+43.44%</b></span>
+      <span class="trend-pill">Women's work bags <b>+39.93%</b></span>
+      <span class="trend-pill">Waterproof jackets <b>+18.99%</b></span>
+      <span class="trend-pill">Wide-leg trousers <b>+16.63%</b></span>
+    </div>
+
+    <p class="trend-disclaimer">Search-growth figures are year-on-year changes in product search interest reported in MediaVision's January 2026 Fashion Report; they are not sales totals. International purchase figures come from DHL's 2026 E-Commerce Trends Report. Images are Pexels editorial stock photos used for trend inspiration only—not actual seller inventory or product listings. Real catalogue photos will be supplied and authorised by participating sellers. <a href="https://www.pexels.com/license/" target="_blank" rel="noopener">Pexels licence</a>.</p>
+  </section>
 
   <section class="directory" id="departments">
     <div class="section-title">
@@ -328,6 +450,14 @@ function filterDepartments() {
 
 
 searchInput.addEventListener("input", filterDepartments);
+
+document.querySelectorAll(".trend-trigger").forEach(button => {
+  button.addEventListener("click", () => {
+    searchInput.value = button.dataset.search || "";
+    filterDepartments();
+    document.getElementById("departments").scrollIntoView({behavior:"smooth"});
+  });
+});
 
 const sellerForm = document.getElementById("sellerInterestForm");
 sellerForm.addEventListener("submit", function(event) {
