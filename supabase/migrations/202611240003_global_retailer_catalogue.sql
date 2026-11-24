@@ -62,7 +62,7 @@ create or replace function public.set_catalogue_product_search_vector()
 returns trigger
 language plpgsql
 set search_path = public
-as $
+as $function$
 begin
   new.search_vector :=
     setweight(to_tsvector('simple'::regconfig, coalesce(new.title,'')), 'A') ||
@@ -74,7 +74,7 @@ begin
     setweight(to_tsvector('simple'::regconfig, coalesce(new.retailer,'')), 'D');
   return new;
 end;
-$;
+$function$;
 
 drop trigger if exists catalogue_products_search_vector_update on public.catalogue_products;
 create trigger catalogue_products_search_vector_update
