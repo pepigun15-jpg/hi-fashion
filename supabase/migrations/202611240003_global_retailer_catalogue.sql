@@ -48,21 +48,42 @@ create table if not exists public.catalogue_products (
   source_updated_at timestamptz,
   imported_at timestamptz not null default now(),
   is_active boolean not null default true,
-  search_vector tsvector generated always as (
-    setweight(to_tsvector('simple', coalesce(title,'')), 'A') ||
-    setweight(to_tsvector('simple', coalesce(brand,'')), 'A') ||
-    setweight(to_tsvector('simple', coalesce(department,'')), 'B') ||
-    setweight(to_tsvector('simple', coalesce(category,'')), 'B') ||
-    setweight(to_tsvector('simple', coalesce(array_to_string(category_path,' '),'')), 'B') ||
-    setweight(to_tsvector('simple', coalesce(description,'')), 'C') ||
-    setweight(to_tsvector('simple', coalesce(retailer,'')), 'D')
-  ) stored,
+  search_vector tsvector not null default ''::tsvector,
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now(),
   unique(source_code, external_id, retailer_country),
   check (price_minor is null or price_minor >= 0),
   check (sale_price_minor is null or sale_price_minor >= 0)
 );
+
+-- Keep the full-text vector current with a trigger. Some PostgreSQL builds reject
+-- array_to_string() inside stored generated expressions as non-immutable.
+create or replace function public.set_catalogue_product_search_vector()
+returns trigger
+language plpgsql
+set search_path = public
+as $
+begin
+  new.search_vector :=
+    setweight(to_tsvector('simple'::regconfig, coalesce(new.title,'')), 'A') ||
+    setweight(to_tsvector('simple'::regconfig, coalesce(new.brand,'')), 'A') ||
+    setweight(to_tsvector('simple'::regconfig, coalesce(new.department,'')), 'B') ||
+    setweight(to_tsvector('simple'::regconfig, coalesce(new.category,'')), 'B') ||
+    setweight(to_tsvector('simple'::regconfig, coalesce(array_to_string(new.category_path,' '),'')), 'B') ||
+    setweight(to_tsvector('simple'::regconfig, coalesce(new.description,'')), 'C') ||
+    setweight(to_tsvector('simple'::regconfig, coalesce(new.retailer,'')), 'D');
+  return new;
+end;
+$;
+
+drop trigger if exists catalogue_products_search_vector_update on public.catalogue_products;
+create trigger catalogue_products_search_vector_update
+before insert or update of title, brand, department, category, category_path, description, retailer
+on public.catalogue_products
+for each row execute function public.set_catalogue_product_search_vector();
+
+update public.catalogue_products
+set title = title;
 
 create index if not exists catalogue_products_search_gin
   on public.catalogue_products using gin(search_vector);
