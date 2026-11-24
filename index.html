@@ -137,7 +137,7 @@ footer strong{color:var(--gold);letter-spacing:2px}
 .destination-panel{max-width:950px;margin:0 auto 32px;padding:24px;background:#101b15;border:1px solid #58664e}
 .destination-panel h3{font-family:Georgia,serif;font-weight:normal;font-size:25px;color:var(--gold);margin-bottom:9px}
 .destination-panel p{color:var(--silver);font-size:12px;line-height:1.75;margin-bottom:17px}
-.destination-fields{display:grid;grid-template-columns:1.2fr 1fr auto;gap:10px;align-items:end}
+.destination-fields{display:grid;grid-template-columns:1fr 1fr .8fr auto;gap:10px;align-items:end}
 .destination-fields label{display:block;color:#c5c8c6;font-size:11px}
 .destination-fields input,.destination-fields select{display:block;width:100%;margin-top:7px;padding:13px;background:#080d0a;border:1px solid #526253;color:#f5f4ef;font:14px Arial,sans-serif}
 .destination-fields button{border:0;cursor:pointer;white-space:nowrap}
@@ -319,8 +319,11 @@ footer strong{color:var(--gold);letter-spacing:2px}
             <option value="Other">Other country</option>
           </select>
         </label>
-        <label>City or postal code (optional)
-          <input id="deliveryArea" type="text" maxlength="100" placeholder="e.g. Sofia / 1000">
+        <label>City / area
+          <input id="deliveryArea" type="text" maxlength="100" placeholder="e.g. Sofia">
+        </label>
+        <label>Postal code (optional)
+          <input id="deliveryPostalCode" type="text" maxlength="20" placeholder="e.g. 1000">
         </label>
         <button class="button" id="saveDestination" type="button">SAVE DESTINATION</button>
       </div>
@@ -377,7 +380,12 @@ footer strong{color:var(--gold);letter-spacing:2px}
         <a href="https://www.aliexpress.com/" target="_blank" rel="noopener">OFFICIAL ONLINE STORE ↗</a>
       </article>
     </div>
-    <p class="retail-terms">These are independent retailer discovery links, not confirmed HI FASHION partners or imported product listings. We will display products, prices, photos and affiliate links only after the applicable programme or seller authorises their use. Retailer delivery coverage and stock vary by destination.</p>
+    <div class="destination-panel" style="margin-top:26px">
+      <h3>How nearest-stock matching will work</h3>
+      <p>For each product, the live platform will check that stock is available, that the seller ships to the buyer's destination, and where the item can dispatch from. It will then rank eligible offers by distance to the dispatch location and show estimated delivery and shipping cost where supplied. We will not claim an item is nearby unless the seller confirms its stock location and availability.</p>
+      <p style="margin-bottom:0"><strong style="color:#d7bd80">Product-feed route:</strong> <a href="https://www.awin.com/" target="_blank" rel="noopener" style="color:#e2c984">Awin publisher network</a> · <a href="https://success.awin.com/s/article/How-do-I-join-an-advertiser-programme?language=en_US" target="_blank" rel="noopener" style="color:#e2c984">Apply to advertiser programmes</a> · <a href="https://shopify.dev/docs/api/admin-graphql/latest/objects/Location" target="_blank" rel="noopener" style="color:#e2c984">Shopify stock-location API</a></p>
+    </div>
+    <p class="retail-terms">These are independent retailer discovery links, not confirmed HI FASHION partners or imported product listings. Awin product feeds can provide product details, images and prices after approval; seller or retailer inventory-location access requires a separate authorised integration. Affiliate purchases will be completed on the retailer's website, while HI FASHION marketplace seller orders will use a separate checkout. Retailer delivery coverage and stock vary by destination.</p>
   </section>
 
   <section class="trending" id="trending">
@@ -819,21 +827,27 @@ searchInput.addEventListener("input", filterDepartments);
 
 const deliveryCountry = document.getElementById("deliveryCountry");
 const deliveryArea = document.getElementById("deliveryArea");
+const deliveryPostalCode = document.getElementById("deliveryPostalCode");
 const destinationStatus = document.getElementById("destinationStatus");
 const savedDestination = JSON.parse(localStorage.getItem("hiFashionDestination") || "null");
 if (savedDestination) {
   deliveryCountry.value = savedDestination.country || "";
   deliveryArea.value = savedDestination.area || "";
-  destinationStatus.textContent = "Saved destination: " + [savedDestination.area, savedDestination.country].filter(Boolean).join(", ") + ". Nearest-stock matching activates when verified seller inventory and dispatch locations are connected.";
+  deliveryPostalCode.value = savedDestination.postalCode || "";
+  destinationStatus.textContent = "Saved destination: " + [savedDestination.area, savedDestination.postalCode, savedDestination.country].filter(Boolean).join(", ") + ". Actual nearest-stock matching will activate after live retailer or seller inventory locations are connected.";
 }
 document.getElementById("saveDestination").addEventListener("click", () => {
-  const destination = {country: deliveryCountry.value, area: deliveryArea.value.trim()};
+  const destination = {
+    country: deliveryCountry.value,
+    area: deliveryArea.value.trim(),
+    postalCode: deliveryPostalCode.value.trim()
+  };
   if (!destination.country) {
     destinationStatus.textContent = "Please choose your delivery country first.";
     return;
   }
   localStorage.setItem("hiFashionDestination", JSON.stringify(destination));
-  destinationStatus.textContent = "Saved destination: " + [destination.area, destination.country].filter(Boolean).join(", ") + ". This preference is stored in this browser only. Verified nearest-stock matching is awaiting supplier inventory connections.";
+  destinationStatus.textContent = "Saved destination: " + [destination.area, destination.postalCode, destination.country].filter(Boolean).join(", ") + ". Stored in this browser only; nearest-stock sorting is not live until verified stock locations and shipping coverage are connected.";
 });
 
 
