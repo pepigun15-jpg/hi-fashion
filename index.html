@@ -5271,7 +5271,7 @@ applySeason(localStorage.getItem("hiFashionSeason") || "auto", false);
     button.textContent="EXPLORE PRODUCTS →";
     button.addEventListener("click",()=>{
       const heading=card.querySelector("h3")?.textContent||"Fashion";
-      const term=heading.replace(/^\\d+\\.\\s*/,"").trim();
+      const term=heading.replace(/^\d+\.\s*/,"").trim();
       runSearch({query:term,category:term,offset:0});
     });
     content.appendChild(button);
