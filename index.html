@@ -265,6 +265,10 @@ body[data-season] .seasonal-shop{background:linear-gradient(145deg,var(--season-
 .regional-delivery-note span{font-size:11px;line-height:1.7;color:#bfc8c0}
 @media(max-width:1000px){.shipping-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:560px){.shipping-grid{grid-template-columns:1fr}.shipping-card p{min-height:0}}
+
+.shipping-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media(max-width:900px){.shipping-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){.shipping-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -276,6 +280,7 @@ body[data-season] .seasonal-shop{background:linear-gradient(145deg,var(--season-
     <a href="#seasonal-shop">4 SEASONS</a>
     <a href="#future">FUTURE 2027</a>
     <a href="#store-network">STORE NETWORK</a>
+    <a href="#international-shipping-network">INTERNATIONAL DELIVERY</a>
     <a href="#trending">TRENDING NOW</a>
     <a href="#new-arrivals">NEW ARRIVALS</a>
     <a href="#brands">BRANDS</a>
@@ -1453,7 +1458,7 @@ body[data-season] .seasonal-shop{background:linear-gradient(145deg,var(--season-
     </div>
     <div class="destination-panel" id="international-shipping-network" style="margin-top:24px">
       <h3>International delivery retailers</h3>
-      <p>These online retailers publish international delivery coverage. Coverage does not mean every product ships to every destination. The item, seller, dispatch origin, stock, restrictions, duties and estimated delivery must still be confirmed at checkout.</p>
+      <p>These online retailers publish international delivery coverage or eligible-country lists. Their coverage is not universal: each item, seller, destination, dispatch origin, shipping restriction, duty and estimated delivery must be checked at checkout.</p>
       <div class="global-brand-grid shipping-grid">
         <article class="retail-card shipping-card"><span class="shipping-status">GLOBAL DELIVERY · 190+ COUNTRIES</span><div class="brand-wordmark">FARFETCH</div><p>Luxury fashion, shoes, bags, watches and accessories from brands and partner boutiques worldwide. Shipping depends on the item origin and buyer destination.</p><a href="https://www.farfetch.com/" target="_blank" rel="noopener">SHOP FARFETCH ↗</a><a class="shipping-policy-link" href="https://www.farfetch.com/orders-and-shipping/" target="_blank" rel="noopener">DELIVERY POLICY ↗</a></article>
         <article class="retail-card shipping-card"><span class="shipping-status">GLOBAL DELIVERY · 170+ COUNTRIES</span><div class="brand-wordmark">NET-A-PORTER</div><p>Luxury womenswear, designer bags, shoes, jewellery and accessories. Published express worldwide delivery coverage.</p><a href="https://www.net-a-porter.com/" target="_blank" rel="noopener">SHOP NET-A-PORTER ↗</a><a class="shipping-policy-link" href="https://www.net-a-porter.com/en-us/content/help/customer-care/" target="_blank" rel="noopener">DELIVERY POLICY ↗</a></article>
@@ -1461,9 +1466,12 @@ body[data-season] .seasonal-shop{background:linear-gradient(145deg,var(--season-
         <article class="retail-card shipping-card"><span class="shipping-status">GLOBAL DELIVERY · 100+ COUNTRIES</span><div class="brand-wordmark">GILT</div><p>Designer fashion, shoes, bags and accessories. International shipping fees, taxes and duties are calculated at checkout.</p><a href="https://www.gilt.com/" target="_blank" rel="noopener">SHOP GILT ↗</a><a class="shipping-policy-link" href="https://www.gilt.com/about-us" target="_blank" rel="noopener">INTERNATIONAL SHIPPING ↗</a></article>
         <article class="retail-card shipping-card"><span class="shipping-status">INTERNATIONAL · 40+ COUNTRIES</span><div class="brand-wordmark">SSENSE</div><p>Designer fashion, streetwear, bags, shoes and accessories. Duties and taxes are included for eligible destinations; others may be DDU.</p><a href="https://www.ssense.com/" target="_blank" rel="noopener">SHOP SSENSE ↗</a><a class="shipping-policy-link" href="https://www.ssense.com/en-us/customer-service" target="_blank" rel="noopener">DELIVERY & DUTIES ↗</a></article>
         <article class="retail-card shipping-card"><span class="shipping-status">INTERNATIONAL · ITEM ELIGIBILITY</span><div class="brand-wordmark">AMAZON GLOBAL</div><p>Eligible fashion and accessories can ship to listed destinations. Availability, shipping fees and seller participation vary by product and address.</p><a href="https://www.amazon.com/" target="_blank" rel="noopener">SHOP AMAZON ↗</a><a class="shipping-policy-link" href="https://digprjsurvey.amazon.com/csad/help/node/GCBBSZMUXA6U2P8R" target="_blank" rel="noopener">ELIGIBLE DESTINATIONS ↗</a></article>
-        <article class="retail-card shipping-card"><span class="shipping-status">INTERNATIONAL · ITEM RESTRICTIONS</span><div class="brand-wordmark">SHOPBOP</div><p>Fashion, bags, footwear and accessories with international delivery. Some brands and product types have vendor-imposed destination restrictions.</p><a href="https://www.shopbop.com/" target="_blank" rel="noopener">SHOP SHOPBOP ↗</a><a class="shipping-policy-link" href="https://www.shopbop.com/ci/aboutshopbop/customerservice.html" target="_blank" rel="noopener">DELIVERY & RESTRICTIONS ↗</a></article>
-        <article class="retail-card shipping-card"><span class="shipping-status">MULTI-REGION · BEAUTY & PERSONAL CARE</span><div class="brand-wordmark">CULT BEAUTY</div><p>Beauty, skincare, haircare and personal accessories. Published destination-specific delivery fees and product-brand shipping restrictions.</p><a href="https://www.cultbeauty.com/" target="_blank" rel="noopener">SHOP CULT BEAUTY ↗</a><a class="shipping-policy-link" href="https://www.cultbeauty.com/c/info/delivery-information/international-delivery/" target="_blank" rel="noopener">INTERNATIONAL DELIVERY ↗</a></article>
+        <article class="retail-card shipping-card"><span class="shipping-status">INTERNATIONAL · ELIGIBLE DESTINATIONS</span><div class="brand-wordmark">SHOPBOP</div><p>Fashion, bags and footwear with a published eligible-country list. Some jewellery, exotic-skin goods, beauty products and selected brands cannot ship internationally.</p><a href="https://www.shopbop.com/" target="_blank" rel="noopener">SHOP SHOPBOP ↗</a><a class="shipping-policy-link" href="https://www.shopbop.com/ci/v2/international_shipping__terms_and_conditions.html" target="_blank" rel="noopener">ELIGIBLE COUNTRIES & TERMS ↗</a></article>
+        
       </div>
+
+        <article class="retail-card shipping-card"><span class="shipping-status">WORLDWIDE · DHL-SERVICE COUNTRIES</span><div class="brand-wordmark">LUISAVIAROMA</div><p>Designer fashion, shoes, bags, jewellery and accessories. Orders ship from Italy; delivery is available worldwide wherever DHL Express operates.</p><a href="https://www.luisaviaroma.com/" target="_blank" rel="noopener">SHOP LUISAVIAROMA ↗</a><a class="shipping-policy-link" href="https://www.luisaviaroma.com/en/delivery-serices.html" target="_blank" rel="noopener">DELIVERY COUNTRIES & TRACKING ↗</a></article>
+        <article class="retail-card shipping-card"><span class="shipping-status">INTERNATIONAL · COUNTRY EXCLUSIONS</span><div class="brand-wordmark">REVOLVE</div><p>Fashion, shoes, bags and accessories with international shipping. The retailer publishes excluded countries; import duties and taxes may be prepaid at checkout.</p><a href="https://www.revolve.com/" target="_blank" rel="noopener">SHOP REVOLVE ↗</a><a class="shipping-policy-link" href="https://www.revolve.com/shippingdelivery" target="_blank" rel="noopener">SHIPPING & RESTRICTIONS ↗</a></article>
       <p class="shipping-disclaimer">Coverage checked against each retailer's published online delivery information on 24 November 2026. Country coverage can change. The product page and checkout remain the final authority for a particular item, brand, seller and destination.</p>
     </div>
     <div class="regional-delivery-note"><strong>Regional brand stores are still included below</strong><span>Brands such as Nike, Oakley, Zara and many others operate country-specific storefronts. They are useful for local sourcing, but their sites do not necessarily dispatch orders across borders. For example, Nike says orders ship only within the country or region where the order is placed. Always check the local store's shipping policy before showing a product to a customer.</span></div>
