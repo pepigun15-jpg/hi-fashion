@@ -1,7 +1,7 @@
 import { createClient } from "npm:@supabase/supabase-js@2";
 import { corsHeaders } from "../_shared/cors.ts";
 
-type CsvResult = { rows: string[][]; consumed: number };
+type CsvResult = { rows: string[][]; consumed: number; stoppedAtRowLimit: boolean };
 const json = (value: unknown, status = 200) =>
   new Response(JSON.stringify(value), { status, headers: { ...corsHeaders, "Content-Type": "application/json" } });
 
@@ -71,16 +71,16 @@ function parseCsv(bytes: Uint8Array, delimiter: string, finalChunk: boolean, max
     if(byte===10 || byte===13){
       if(byte===13 && bytes[i+1]===10)i++;
       pushRow();rowStart=i+1;
-      if(rows.length>=maxRows)return {rows,consumed:rowStart};
+      if(rows.length>=maxRows)return {rows,consumed:rowStart,stoppedAtRowLimit:true};
       continue;
     }
     field.push(byte);
   }
   if(finalChunk && !quoted && rowStart<bytes.length){
     pushRow();
-    return {rows,consumed:bytes.length};
+    return {rows,consumed:bytes.length,stoppedAtRowLimit:false};
   }
-  return {rows,consumed:rowStart};
+  return {rows,consumed:rowStart,stoppedAtRowLimit:false};
 }
 
 function getValue(record: Record<string,string>, field: string): string {
@@ -276,7 +276,7 @@ Deno.serve(async(req:Request)=>{
       const dataBytes=bytes.slice(headerEnd);
       const parsedData=parseCsv(dataBytes,delimiter,finalChunk,maxRows);
       if(parsedData.consumed===0 && dataBytes.length>0)return json({error:"A CSV record exceeds the configured import chunk size or contains an unterminated quoted field. Increase CATALOGUE_IMPORT_BYTES_PER_RUN or request a feed with shorter product descriptions."},413);
-      if(finalChunk && parsedData.consumed<dataBytes.length)return json({error:"The final CSV chunk ends inside a quoted or incomplete record. The feed cannot be safely completed."},422);
+      if(finalChunk && parsedData.consumed<dataBytes.length && !parsedData.stoppedAtRowLimit)return json({error:"The final CSV chunk ends inside a quoted or incomplete record. The feed cannot be safely completed."},422);
       const processed=await importRows(admin,source,feedId,runId,headers,parsedData.rows,configuredCountry,configuredCurrency);
       const nextOffset=headerEnd+parsedData.consumed;
       const isComplete=finalChunk && nextOffset>=bytes.length;
@@ -284,7 +284,7 @@ Deno.serve(async(req:Request)=>{
     }else{
       const parsed=parseCsv(bytes,delimiter,finalChunk,maxRows);
       if(parsed.consumed===0 && bytes.length>0)return json({error:"A CSV record exceeds the configured import chunk size or contains an unterminated quoted field. Increase CATALOGUE_IMPORT_BYTES_PER_RUN or request a feed with shorter product descriptions."},413);
-      if(finalChunk && parsed.consumed<bytes.length)return json({error:"The final CSV chunk ends inside a quoted or incomplete record. The feed cannot be safely completed."},422);
+      if(finalChunk && parsed.consumed<bytes.length && !parsed.stoppedAtRowLimit)return json({error:"The final CSV chunk ends inside a quoted or incomplete record. The feed cannot be safely completed."},422);
       const processed=await importRows(admin,source,feedId,runId,headers,parsed.rows,configuredCountry,configuredCurrency);
       const nextOffset=offset+parsed.consumed;
       const isComplete=finalChunk && parsed.consumed>=bytes.length;
