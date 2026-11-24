@@ -206,14 +206,18 @@ Deno.serve(async(req:Request)=>{
     const body=await req.json().catch(()=>({}));
     const source=String(body.source_code||"").toLowerCase();
     if(!["awin","cj"].includes(source))return json({error:"Supported feed sources are awin and cj."},400);
+    const feedId=String(body.feed_id||"default").toLowerCase();
+    if(!/^[a-z0-9][a-z0-9_-]{0,59}$/.test(feedId))return json({error:"feed_id must use 1–60 lowercase letters, digits, underscores or hyphens."},400);
     const prefix=source.toUpperCase();
-    const feedUrl=Deno.env.get(`${prefix}_FEED_URL`)||Deno.env.get(`CATALOGUE_FEED_URL_${prefix}`)||"";
-    if(!feedUrl)return json({error:`Add ${prefix}_FEED_URL as a private Supabase Edge Function secret.`,source,configured:false},424);
+    const feedSuffix=feedId.toUpperCase().replace(/[^A-Z0-9]/g,"_");
+    const feedUrl=Deno.env.get(`${prefix}_FEED_${feedSuffix}_URL`)||Deno.env.get(`${prefix}_FEED_URL`)||Deno.env.get(`CATALOGUE_FEED_URL_${prefix}`)||"";
+    if(!feedUrl)return json({error:`Add ${prefix}_FEED_${feedSuffix}_URL (or ${prefix}_FEED_URL) as a private Supabase Edge Function secret.`,source,feedId,configured:false},424);
     const parsedUrl=new URL(feedUrl);
-    if(!["https:"].includes(parsedUrl.protocol))return json({error:"Partner feed URLs must use HTTPS."},400);
+    if(parsedUrl.protocol!=="https:")return json({error:"Partner feed URLs must use HTTPS."},400);
     const feedKeyBytes=await crypto.subtle.digest("SHA-256",new TextEncoder().encode(source+"|"+feedId+"|"+feedUrl));
     const feedKey=[...new Uint8Array(feedKeyBytes)].map(x=>x.toString(16).padStart(2,"0")).join("").slice(0,24);
-    const configuredCountry=iso2(Deno.env.get(`${prefix}_FEED_${feedSuffix}_DEFAULT_COUNTRY`)||Deno.env.get(`${prefix}_DEFAULT_COUNTRY`)||"ZZ");\n    const configuredCurrency=Deno.env.get(`${prefix}_FEED_${feedSuffix}_DEFAULT_CURRENCY`)||Deno.env.get(`${prefix}_DEFAULT_CURRENCY`)||"EUR";
+    const configuredCountry=iso2(Deno.env.get(`${prefix}_FEED_${feedSuffix}_DEFAULT_COUNTRY`)||Deno.env.get(`${prefix}_DEFAULT_COUNTRY`)||"ZZ");
+    const configuredCurrency=Deno.env.get(`${prefix}_FEED_${feedSuffix}_DEFAULT_CURRENCY`)||Deno.env.get(`${prefix}_DEFAULT_CURRENCY`)||"EUR";
     const maxBytes=Math.max(262144,Math.min(Number(Deno.env.get("CATALOGUE_IMPORT_BYTES_PER_RUN")||4194304),8388608));
     const maxRows=Math.max(100,Math.min(Number(Deno.env.get("CATALOGUE_IMPORT_MAX_ROWS_PER_RUN")||15000),25000));
 
@@ -271,16 +275,21 @@ Deno.serve(async(req:Request)=>{
       headers=headerParsed.rows[0].map(x=>x.trim());
       const dataBytes=bytes.slice(headerEnd);
       const parsedData=parseCsv(dataBytes,delimiter,finalChunk, maxRows);
+      const parsedData=parseCsv(dataBytes,delimiter,finalChunk,maxRows);
+      if(parsedData.consumed===0 && dataBytes.length>0)return json({error:"A CSV record exceeds the configured import chunk size or contains an unterminated quoted field. Increase CATALOGUE_IMPORT_BYTES_PER_RUN or request a feed with shorter product descriptions."},413);
+      if(finalChunk && parsedData.consumed<dataBytes.length)return json({error:"The final CSV chunk ends inside a quoted or incomplete record. The feed cannot be safely completed."},422);
       const processed=await importRows(admin,source,feedId,runId,headers,parsedData.rows,configuredCountry,configuredCurrency);
       const nextOffset=headerEnd+parsedData.consumed;
       const isComplete=finalChunk && nextOffset>=bytes.length;
       return await finishBatch(admin,source,feedId,feedKey,runId,nextOffset,totalBytes,headers,delimiter,processed,isComplete);
     }else{
       const parsed=parseCsv(bytes,delimiter,finalChunk,maxRows);
+      if(parsed.consumed===0 && bytes.length>0)return json({error:"A CSV record exceeds the configured import chunk size or contains an unterminated quoted field. Increase CATALOGUE_IMPORT_BYTES_PER_RUN or request a feed with shorter product descriptions."},413);
+      if(finalChunk && parsed.consumed<bytes.length)return json({error:"The final CSV chunk ends inside a quoted or incomplete record. The feed cannot be safely completed."},422);
       const processed=await importRows(admin,source,feedId,runId,headers,parsed.rows,configuredCountry,configuredCurrency);
       const nextOffset=offset+parsed.consumed;
       const isComplete=finalChunk && parsed.consumed>=bytes.length;
-      return await finishBatch(admin,source,feedKey,runId,nextOffset,totalBytes,headers,delimiter,processed,isComplete);
+      return await finishBatch(admin,source,feedId,feedKey,runId,nextOffset,totalBytes,headers,delimiter,processed,isComplete);
     }
   }catch(error){
     return json({error:error instanceof Error?error.message:"Catalogue import failed."},500);
@@ -337,7 +346,7 @@ async function finishBatch(admin:any,source:string,feedId:string,feedKey:string,
       .eq("source_code",source).eq("feed_id",feedId).or(`last_seen_sync_run_id.is.null,last_seen_sync_run_id.neq.${runId}`);
     if(deactivateError)throw new Error(`Could not retire stale feed products: ${deactivateError.message}`);
     await admin.from("catalogue_sources").update({
-      is_enabled:true,last_synced_at:new Date().toISOString(),last_sync_status:counts.failed?"partial":"ok",
+      is_enabled:true,last_synced_at:new Date().toISOString(),last_sync_status:totals.failed_count?"partial":"ok",
       last_sync_message:`Imported ${totals.imported_count} products; skipped ${totals.failed_count} incomplete rows.`,
       updated_at:new Date().toISOString(),
     }).eq("source_code",source);
