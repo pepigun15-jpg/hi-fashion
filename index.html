@@ -4913,10 +4913,13 @@ applySeason(localStorage.getItem("hiFashionSeason") || "auto", false);
       const localRows=localResult.data||[];
       const localTotal=Number(localRows[0]?.total_count||0);
       lastLocalTotal=localTotal;
-      lastEbayTotal=Number(ebayResult.total||0);\n      const cjTotal=Number(cjResult.total||0);
+      lastEbayTotal=Number(ebayResult.total||0);
+      const cjTotal=Number(cjResult.total||0);
       const cards=localRows.map(item=>productCard(item,"local"));
       const ebayRows=ebayResult.items||[];
-      const ebayCards=ebayRows.map(item=>productCard(item,"ebay"));\n      const cjRows=cjResult.items||[];\n      const cjCards=cjRows.map(item=>productCard(item,"cj"));
+      const ebayCards=ebayRows.map(item=>productCard(item,"ebay"));
+      const cjRows=cjResult.items||[];
+      const cjCards=cjRows.map(item=>productCard(item,"cj"));
       if(active.offset===0)grid.replaceChildren();
       const productHtml=cards.concat(ebayCards,cjCards).join("");
       if(productHtml){
@@ -4931,7 +4934,8 @@ applySeason(localStorage.getItem("hiFashionSeason") || "auto", false);
         const detail=[];
         if(!client)detail.push("Supabase is not configured");
         else if(localResult.error)detail.push("Catalogue database: "+localResult.error.message);
-        if(!ebayConfigured)detail.push(ebayResult.error||"eBay API credentials are not configured");\n        if(!cjResult.configured)detail.push(cjResult.error||"CJ API credentials are not configured");
+        if(!ebayConfigured)detail.push(ebayResult.error||"eBay API credentials are not configured");
+        if(!cjResult.configured)detail.push(cjResult.error||"CJ API credentials are not configured");
         setStatus("No connected product feeds returned listings yet. "+detail.join(" · ")+" — approved partner feeds must be connected before live retailer products appear.",0);
       }
       const pageHasMore=localRows.length>=active.limit||active.offset+active.limit<lastEbayTotal||active.offset+active.limit<cjTotal;
