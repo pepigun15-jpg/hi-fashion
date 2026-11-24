@@ -9,5 +9,7 @@ window.HI_FASHION_SUPABASE_CONFIG = {
 // Checkout and seller Connect Edge Function URLs are derived from the Supabase project URL.
 // Real checkout remains disabled server-side until all account, shipping, tax and Stripe checks pass.
 window.HI_FASHION_COMMERCE = {
-  checkoutEndpoint: ""
+  checkoutEndpoint: window.HI_FASHION_SUPABASE_CONFIG.url
+    ? window.HI_FASHION_SUPABASE_CONFIG.url.replace(/\\/$/, "") + "/functions/v1/create-checkout-session"
+    : ""
 };
