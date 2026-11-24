@@ -53,10 +53,18 @@ Deno.serve(async (request: Request) => {
   const query = (url.searchParams.get("q") || "").trim().slice(0, 120);
   if (!query) return Response.json({ error: "Enter a product search query." }, { status: 400, headers: corsHeaders });
 
-  const country = (url.searchParams.get("country") || "US").toUpperCase().slice(0, 2);
+  const country = (url.searchParams.get("country") || "").toUpperCase().slice(0, 2);
+  if (!/^[A-Z]{2}$/.test(country)) {
+    return Response.json({ error: "Choose a valid delivery country before searching eBay.", configured: true, affiliateTrackingActive: false }, { status: 400, headers: corsHeaders });
+  }
+  const campaignId = Deno.env.get("EBAY_AFFILIATE_CAMPAIGN_ID") || "";
+  if (!/^\\d{10}$/.test(campaignId)) {
+    return Response.json({ error: "eBay Partner Network tracking is not configured. Add the approved 10-digit EPN campaign ID before showing eBay offers.", configured: false, affiliateTrackingActive: false, setup: ["EBAY_AFFILIATE_CAMPAIGN_ID"] }, { status: 424, headers: corsHeaders });
+  }
   const marketplace = MARKETPLACE_BY_COUNTRY[country] || "EBAY_DE";
   const limit = Math.max(1, Math.min(Number(url.searchParams.get("limit") || 24), 50));
   const offset = Math.max(0, Math.min(Number(url.searchParams.get("offset") || 0), 9950));
+  const postalCode = (url.searchParams.get("postalCode") || "").trim().slice(0, 20);
   const environment = (Deno.env.get("EBAY_ENVIRONMENT") || "production").toLowerCase();
   const baseUrl = environment === "sandbox" ? "https://api.sandbox.ebay.com" : "https://api.ebay.com";
 
@@ -67,6 +75,8 @@ Deno.serve(async (request: Request) => {
     apiUrl.searchParams.set("limit", String(limit));
     apiUrl.searchParams.set("offset", String(offset));
     apiUrl.searchParams.set("sort", "best_match");
+    // Return only listings that eBay says can be delivered to the selected destination.
+    apiUrl.searchParams.set("filter", `deliveryCountry:${country}`);
 
     const headers: Record<string, string> = {
       "Authorization": `Bearer ${token}`,
@@ -74,13 +84,13 @@ Deno.serve(async (request: Request) => {
       "Accept": "application/json",
     };
     const contextParts: string[] = [];
-    const campaignId = Deno.env.get("EBAY_AFFILIATE_CAMPAIGN_ID") || "";
     const affiliateReference = Deno.env.get("EBAY_AFFILIATE_REFERENCE_ID") || "hifashion";
-    if (campaignId) {
-      contextParts.push(`affiliateCampaignId=${campaignId}`);
-      contextParts.push(`affiliateReferenceId=${affiliateReference.slice(0, 256)}`);
-    }
-    contextParts.push(`contextualLocation=country%3D${country}`);
+    contextParts.push(`affiliateCampaignId=${campaignId}`);
+    contextParts.push(`affiliateReferenceId=${affiliateReference.slice(0, 256)}`);
+    const contextualLocation = postalCode
+      ? `country%3D${country}%2Czip%3D${encodeURIComponent(postalCode)}`
+      : `country%3D${country}`;
+    contextParts.push(`contextualLocation=${contextualLocation}`);
     headers["X-EBAY-C-ENDUSERCTX"] = contextParts.join(",");
 
     const apiResponse = await fetch(apiUrl, { headers });
@@ -118,7 +128,7 @@ Deno.serve(async (request: Request) => {
       total: Number(payload.total || 0),
       offset,
       limit,
-      affiliateTrackingActive: Boolean(campaignId),
+      affiliateTrackingActive: items.length > 0 && items.every((item: any) => /^https:\/\//i.test(item.affiliateUrl)),
       items,
     }, { headers: { ...corsHeaders, "Cache-Control": "public, max-age=45" } });
   } catch (error) {
