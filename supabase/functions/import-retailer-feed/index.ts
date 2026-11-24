@@ -124,14 +124,16 @@ function iso2(value: string, fallback="ZZ"): string {
   const v=value.trim().toUpperCase();
   return /^[A-Z]{2}$/.test(v)?v:fallback;
 }
-function mapRow(headers: string[], values: string[], source: string, countryDefault: string, runId: string) {
+function mapRow(headers: string[], values: string[], source: string, feedId: string, countryDefault: string, currencyDefault: string, runId: string) {
   const record: Record<string,string>={};
   headers.forEach((h,i)=>record[norm(h)]=values[i]||"");
   const externalId=getValue(record,"external_id");
   const title=getValue(record,"title");
   const productUrl=getValue(record,"product_url");
   if(!externalId||!title||!productUrl)return null;
-  const currencyRaw=getValue(record,"currency").trim().toUpperCase();\n  const currency=/^[A-Z]{3}$/.test(currencyRaw)?currencyRaw:"EUR";
+  const currencyRaw=getValue(record,"currency").trim().toUpperCase();
+  const currencyFallback=(Deno.env.get(source.toUpperCase()+"_DEFAULT_CURRENCY")||"").trim().toUpperCase();
+  const currency=/^[A-Z]{3}$/.test(currencyRaw)?currencyRaw:(/^[A-Z]{3}$/.test(currencyFallback)?currencyFallback:"EUR");
   const mainPrice=getValue(record,"price");
   const salePrice=getValue(record,"sale_price");
   const country=iso2(getValue(record,"retailer_country"),countryDefault);
@@ -139,7 +141,7 @@ function mapRow(headers: string[], values: string[], source: string, countryDefa
   const path=getValue(record,"category_path");
   const categoryPath=splitList(path || getValue(record,"category"));
   return {
-    source_code:source,external_id:externalId.slice(0,240),title:title.slice(0,500),
+    source_code:source,feed_id:feedId,external_id:externalId.slice(0,240),title:title.slice(0,500),
     brand:getValue(record,"brand").slice(0,180),
     description:getValue(record,"description").slice(0,5000),
     department:getValue(record,"department").slice(0,180),
@@ -209,29 +211,29 @@ Deno.serve(async(req:Request)=>{
     if(!feedUrl)return json({error:`Add ${prefix}_FEED_URL as a private Supabase Edge Function secret.`,source,configured:false},424);
     const parsedUrl=new URL(feedUrl);
     if(!["https:"].includes(parsedUrl.protocol))return json({error:"Partner feed URLs must use HTTPS."},400);
-    const feedKeyBytes=await crypto.subtle.digest("SHA-256",new TextEncoder().encode(feedUrl));
+    const feedKeyBytes=await crypto.subtle.digest("SHA-256",new TextEncoder().encode(source+"|"+feedId+"|"+feedUrl));
     const feedKey=[...new Uint8Array(feedKeyBytes)].map(x=>x.toString(16).padStart(2,"0")).join("").slice(0,24);
-    const configuredCountry=iso2(Deno.env.get(`${prefix}_DEFAULT_COUNTRY`)||"ZZ");
+    const configuredCountry=iso2(Deno.env.get(`${prefix}_FEED_${feedSuffix}_DEFAULT_COUNTRY`)||Deno.env.get(`${prefix}_DEFAULT_COUNTRY`)||"ZZ");\n    const configuredCurrency=Deno.env.get(`${prefix}_FEED_${feedSuffix}_DEFAULT_CURRENCY`)||Deno.env.get(`${prefix}_DEFAULT_CURRENCY`)||"EUR";
     const maxBytes=Math.max(262144,Math.min(Number(Deno.env.get("CATALOGUE_IMPORT_BYTES_PER_RUN")||4194304),8388608));
     const maxRows=Math.max(100,Math.min(Number(Deno.env.get("CATALOGUE_IMPORT_MAX_ROWS_PER_RUN")||15000),25000));
 
     const {data:sourceRow,error:sourceError}=await admin.from("catalogue_sources").select("source_code").eq("source_code",source).maybeSingle();
     if(sourceError||!sourceRow)return json({error:"Catalogue source is missing. Apply the catalogue migrations first."},424);
 
-    const {data:cursor}=await admin.from("catalogue_feed_cursors").select("*").eq("source_code",source).maybeSingle();
+    const {data:cursor}=await admin.from("catalogue_feed_cursors").select("*").eq("source_code",source).eq("feed_id",feedId).maybeSingle();
     let runId=cursor?.feed_key===feedKey?cursor?.current_sync_run_id:null;
     let offset=cursor?.feed_key===feedKey?Number(cursor?.last_byte_offset||0):0;
     let headers:Array<string>=cursor?.feed_key===feedKey?(cursor.header_columns||[]):[];
     let delimiter=cursor?.feed_key===feedKey?(cursor.delimiter||","):",";
     if(!runId){
-      const {data:run,error}=await admin.from("catalogue_sync_runs").insert({source_code:source,status:"running",message:"Partner feed import started."}).select("id").single();
+      const {data:run,error}=await admin.from("catalogue_sync_runs").insert({source_code:source,feed_id:feedId,status:"running",message:"Partner feed import started."}).select("id").single();
       if(error||!run)return json({error:"Could not create feed sync record."},500);
       runId=run.id;offset=0;headers=[];delimiter=",";
     }
 
     const end=offset+maxBytes-1;
     const requestHeaders:Record<string,string>={Range:`bytes=${offset}-${end}`,Accept:"text/csv,text/tab-separated-values,text/plain,*/*"};
-    const bearer=Deno.env.get(`${prefix}_FEED_BEARER_TOKEN`);
+    const bearer=Deno.env.get(`${prefix}_FEED_${feedSuffix}_BEARER_TOKEN`)||Deno.env.get(`${prefix}_FEED_BEARER_TOKEN`);
     if(bearer)requestHeaders.Authorization=`Bearer ${bearer}`;
     const feedResponse=await fetch(feedUrl,{headers:requestHeaders,redirect:"follow"});
     if(!feedResponse.ok)return json({error:`Partner feed returned HTTP ${feedResponse.status}.`,source},502);
@@ -269,13 +271,13 @@ Deno.serve(async(req:Request)=>{
       headers=headerParsed.rows[0].map(x=>x.trim());
       const dataBytes=bytes.slice(headerEnd);
       const parsedData=parseCsv(dataBytes,delimiter,finalChunk, maxRows);
-      const processed=await importRows(admin,source,runId,headers,parsedData.rows,configuredCountry);
+      const processed=await importRows(admin,source,feedId,runId,headers,parsedData.rows,configuredCountry,configuredCurrency);
       const nextOffset=headerEnd+parsedData.consumed;
       const isComplete=finalChunk && nextOffset>=bytes.length;
-      return await finishBatch(admin,source,feedKey,runId,nextOffset,totalBytes,headers,delimiter,processed,isComplete);
+      return await finishBatch(admin,source,feedId,feedKey,runId,nextOffset,totalBytes,headers,delimiter,processed,isComplete);
     }else{
       const parsed=parseCsv(bytes,delimiter,finalChunk,maxRows);
-      const processed=await importRows(admin,source,runId,headers,parsed.rows,configuredCountry);
+      const processed=await importRows(admin,source,feedId,runId,headers,parsed.rows,configuredCountry,configuredCurrency);
       const nextOffset=offset+parsed.consumed;
       const isComplete=finalChunk && parsed.consumed>=bytes.length;
       return await finishBatch(admin,source,feedKey,runId,nextOffset,totalBytes,headers,delimiter,processed,isComplete);
@@ -299,30 +301,30 @@ function findFirstCsvRecordEnd(bytes:Uint8Array):number{
   return bytes.length;
 }
 
-async function importRows(admin:any,source:string,runId:string,headers:string[],values:string[][],countryDefault:string){
+async function importRows(admin:any,source:string,feedId:string,runId:string,headers:string[],values:string[][],countryDefault:string,currencyDefault:string){
   const rows:any[]=[];
   let failed=0,received=0;
   for(const valuesRow of values){
     received++;
-    const row=mapRow(headers,valuesRow,source,countryDefault,runId);
+    const row=mapRow(headers,valuesRow,source,feedId,countryDefault,currencyDefault,runId);
     if(row)rows.push(row);else failed++;
   }
   let imported=0;
   for(let i=0;i<rows.length;i+=500){
     const batch=rows.slice(i,i+500);
-    const {error}=await admin.from("catalogue_products").upsert(batch,{onConflict:"source_code,external_id,retailer_country"});
+    const {error}=await admin.from("catalogue_products").upsert(batch,{onConflict:"source_code,feed_id,external_id,retailer,retailer_country"});
     if(error)throw new Error(`Product batch write failed: ${error.message}`);
     imported+=batch.length;
   }
   return {received,imported,failed};
 }
 
-async function finishBatch(admin:any,source:string,feedKey:string,runId:string,nextOffset:number,totalBytes:number|null,headers:string[],delimiter:string,counts:{received:number;imported:number;failed:number},complete:boolean){
+async function finishBatch(admin:any,source:string,feedId:string,feedKey:string,runId:string,nextOffset:number,totalBytes:number|null,headers:string[],delimiter:string,counts:{received:number;imported:number;failed:number},complete:boolean){
   const {data:cursor,error:cursorError}=await admin.from("catalogue_feed_cursors").upsert({
-    source_code:source,feed_key:feedKey,last_row_number:0,last_byte_offset:nextOffset,
+    source_code:source,feed_id:feedId,feed_key:feedKey,last_row_number:0,last_byte_offset:nextOffset,
     header_columns:headers,delimiter,total_bytes:totalBytes,current_sync_run_id:runId,
     updated_at:new Date().toISOString(),
-  },{onConflict:"source_code"}).select("source_code").single();
+  },{onConflict:"source_code,feed_id"}).select("source_code").single();
   if(cursorError)throw new Error(`Could not save feed checkpoint: ${cursorError.message}`);
   const {data:run}=await admin.from("catalogue_sync_runs").select("received_count,imported_count,failed_count").eq("id",runId).single();
   const totals={
@@ -332,7 +334,7 @@ async function finishBatch(admin:any,source:string,feedKey:string,runId:string,n
   };
   if(complete){
     const {error:deactivateError}=await admin.from("catalogue_products").update({is_active:false,updated_at:new Date().toISOString()})
-      .eq("source_code",source).or(`last_seen_sync_run_id.is.null,last_seen_sync_run_id.neq.${runId}`);
+      .eq("source_code",source).eq("feed_id",feedId).or(`last_seen_sync_run_id.is.null,last_seen_sync_run_id.neq.${runId}`);
     if(deactivateError)throw new Error(`Could not retire stale feed products: ${deactivateError.message}`);
     await admin.from("catalogue_sources").update({
       is_enabled:true,last_synced_at:new Date().toISOString(),last_sync_status:counts.failed?"partial":"ok",
@@ -344,9 +346,9 @@ async function finishBatch(admin:any,source:string,feedKey:string,runId:string,n
       message:`Feed import complete. ${totals.imported_count} products imported; ${totals.failed_count} rows skipped.`,
       finished_at:new Date().toISOString(),
     }).eq("id",runId);
-    await admin.from("catalogue_feed_cursors").delete().eq("source_code",source);
-    return json({success:true,complete:true,source,runId,...totals,totalBytes,sourceEnabled:true});
+    await admin.from("catalogue_feed_cursors").delete().eq("source_code",source).eq("feed_id",feedId);
+    return json({success:true,complete:true,source,feedId,runId,...totals,totalBytes,sourceEnabled:true});
   }
   await admin.from("catalogue_sync_runs").update({...totals,status:"running",message:`Imported ${totals.imported_count} products so far; feed checkpoint at byte ${nextOffset}.`}).eq("id",runId);
-  return json({success:true,complete:false,source,runId,...totals,nextByteOffset:nextOffset,totalBytes,sourceEnabled:false});
+  return json({success:true,complete:false,source,feedId,runId,...totals,nextByteOffset:nextOffset,totalBytes,sourceEnabled:false});
 }
