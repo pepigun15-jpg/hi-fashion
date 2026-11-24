@@ -16,7 +16,7 @@ const FIELD_ALIASES: Record<string, string[]> = {
   gender: ["gender", "target_gender", "target_audience"],
   image_url: ["merchant_image_url", "aw_image_url", "image_url", "image-url", "imageurl", "image", "image_link", "large_image"],
   product_url: ["aw_deep_link", "buy-url", "buy_url", "buyurl", "product_url", "link", "url", "deeplink"],
-  affiliate_url: ["aw_deep_link", "buy-url", "buy_url", "buyurl", "affiliate_url", "tracking_url", "product_url"],
+  affiliate_url: ["aw_deep_link", "buy-url", "buy_url", "buyurl", "affiliate_url", "tracking_url"],
   price: ["search_price", "price", "retail-price", "retail_price", "standard_price", "sale-price", "sale_price"],
   sale_price: ["sale-price", "sale_price", "discount_price", "search_price"],
   currency: ["currency", "currency_code", "currency-code"],
@@ -130,6 +130,8 @@ function mapRow(headers: string[], values: string[], source: string, feedId: str
   const externalId=getValue(record,"external_id");
   const title=getValue(record,"title");
   const productUrl=getValue(record,"product_url");
+  const affiliateCandidate=getValue(record,"affiliate_url");
+  const affiliateUrl=/^https:\/\//i.test(affiliateCandidate)?affiliateCandidate:"";
   if(!externalId||!title||!productUrl)return null;
   const currencyRaw=getValue(record,"currency").trim().toUpperCase();
   const currencyFallback=(currencyDefault||Deno.env.get(source.toUpperCase()+"_DEFAULT_CURRENCY")||"EUR").trim().toUpperCase();
@@ -150,7 +152,7 @@ function mapRow(headers: string[], values: string[], source: string, feedId: str
     gender:getValue(record,"gender").slice(0,40),
     image_url:getValue(record,"image_url").slice(0,2000)||null,
     product_url:productUrl.slice(0,3000),
-    affiliate_url:getValue(record,"affiliate_url").slice(0,3000)||null,
+    affiliate_url:affiliateUrl.slice(0,3000)||null,
     price_minor:parseMoney(mainPrice),
     sale_price_minor:parseMoney(salePrice),
     currency:/^[A-Z]{3}$/.test(currency)?currency:"EUR",
