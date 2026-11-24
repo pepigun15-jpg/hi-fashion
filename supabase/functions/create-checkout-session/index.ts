@@ -177,7 +177,7 @@ Deno.serve(async (req) => {
       reserved = true;
     }
 
-    const appFeeBps = hasProducts ? Number(env("PLATFORM_COMMISSION_BPS")) : 0;
+    const appFeeBps = hasProducts ? Number(Deno.env.get("PLATFORM_COMMISSION_BPS") ?? "1000") : 0; // Approved 10% platform commission by default.
     if (!Number.isInteger(appFeeBps) || appFeeBps < 0 || appFeeBps > 3000) throw new Error("Platform commission must be set to 0–3000 basis points.");
     const sessionParams: Stripe.Checkout.SessionCreateParams = {
       mode: "payment",
