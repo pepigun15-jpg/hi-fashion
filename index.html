@@ -116,6 +116,21 @@ footer strong{color:var(--gold);letter-spacing:2px}
 .forecast-note a{color:#d7bd80}
 @media(max-width:900px){.future-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:580px){.future-grid{grid-template-columns:1fr}.future-card img{height:270px}.future-copy p{min-height:0}}
+
+/* Full-image editorial tiles for all 25 departments */
+.departments{grid-template-columns:repeat(3,minmax(0,1fr));gap:17px}
+.department{position:relative;isolation:isolate;display:flex;align-items:stretch;min-height:365px;padding:0;overflow:hidden;background:#0b100d;border:1px solid #405345}
+.department-photo{position:absolute;z-index:-2;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;filter:brightness(.77) saturate(.88);transition:transform .65s ease,filter .65s ease}
+.department::after{content:"";position:absolute;z-index:-1;inset:0;background:linear-gradient(180deg,rgba(4,8,6,.06) 0%,rgba(4,8,6,.08) 28%,rgba(4,8,6,.54) 59%,rgba(4,8,6,.96) 100%)}
+.department:hover .department-photo{transform:scale(1.055);filter:brightness(.88) saturate(1)}
+.department-content{display:flex;flex-direction:column;justify-content:flex-end;width:100%;min-height:365px;padding:22px}
+.department h3{font-family:Georgia,serif;color:#f5f4ef;font-size:23px;line-height:1.2;font-weight:normal;margin:0 0 14px;text-shadow:0 2px 12px rgba(0,0,0,.75)}
+.department .tags{gap:7px}
+.department .tag{background:rgba(7,13,9,.76);border-color:rgba(225,215,184,.46);color:#f1eee4;backdrop-filter:blur(4px);font-size:10px}
+.department .tag:hover{background:rgba(198,164,90,.94);border-color:var(--gold);color:#111}
+.photo-credit{position:absolute;top:11px;right:11px;max-width:70%;padding:6px 8px;background:rgba(7,10,8,.7);color:#e6e1d3;font-size:9px;letter-spacing:.3px;z-index:1}
+@media(max-width:900px){.departments{grid-template-columns:repeat(2,minmax(0,1fr))}.department,.department-content{min-height:350px}}
+@media(max-width:650px){.departments{grid-template-columns:1fr}.department,.department-content{min-height:390px}.department-content{padding:22px}.department h3{font-size:25px}}
 </style>
 </head>
 <body>
@@ -362,133 +377,234 @@ footer strong{color:var(--gold);letter-spacing:2px}
     <div class="search-wrap" id="search">
       <input id="departmentSearch" type="search" placeholder="Search products, accessories or departments..." aria-label="Search departments">
     </div>
+    <p class="photo-note" style="text-align:center;color:#c5c8c6;font-size:11px;margin:-15px 0 24px">Editorial model photography from Pexels · Images illustrate department style and are not product listings.</p>
     <div class="results-note" id="resultsNote">25 departments · Select any subcategory to explore</div>
 
     <div class="departments" id="departmentGrid">
 
       <article class="department">
-        <h3>01. Women's Fashion</h3>
-        <div class="tags"><button class="tag">Dresses</button><button class="tag">Tops</button><button class="tag">Blouses</button><button class="tag">Jeans</button><button class="tag">Trousers</button><button class="tag">Skirts</button><button class="tag">Coats</button><button class="tag">Jackets</button><button class="tag">Knitwear</button><button class="tag">Suits</button><button class="tag">Activewear</button><button class="tag">Loungewear</button></div>
+        <img class="department-photo" src="https://images.pexels.com/photos/27946749/pexels-photo-27946749.jpeg?cs=srgb&dl=pexels-429124762-27946749.jpg&fm=jpg" alt="Studio fashion model in a patterned outfit" loading="lazy">
+        <span class="photo-credit">Pexels · Alexander Slesarev</span>
+        <div class="department-content">
+          <h3>01. Women's Fashion</h3>
+          <div class="tags"><button class="tag">Dresses</button><button class="tag">Tops</button><button class="tag">Blouses</button><button class="tag">Jeans</button><button class="tag">Trousers</button><button class="tag">Skirts</button><button class="tag">Coats</button><button class="tag">Jackets</button><button class="tag">Knitwear</button><button class="tag">Suits</button><button class="tag">Activewear</button><button class="tag">Loungewear</button></div>
+        </div>
       </article>
 
       <article class="department">
-        <h3>02. Men's Fashion</h3>
-        <div class="tags"><button class="tag">Shirts</button><button class="tag">T-Shirts</button><button class="tag">Polo Shirts</button><button class="tag">Jeans</button><button class="tag">Trousers</button><button class="tag">Suits</button><button class="tag">Blazers</button><button class="tag">Jackets</button><button class="tag">Coats</button><button class="tag">Knitwear</button><button class="tag">Sportswear</button><button class="tag">Loungewear</button></div>
+        <img class="department-photo" src="https://images.pexels.com/photos/28497480/pexels-photo-28497480.jpeg?cs=srgb&dl=pexels-pietro-henricky-1289770821-28497480.jpg&fm=jpg" alt="Male fashion model in a brown studio outfit" loading="lazy">
+        <span class="photo-credit">Pexels · Pietro Henricky</span>
+        <div class="department-content">
+          <h3>02. Men's Fashion</h3>
+          <div class="tags"><button class="tag">Shirts</button><button class="tag">T-Shirts</button><button class="tag">Polo Shirts</button><button class="tag">Jeans</button><button class="tag">Trousers</button><button class="tag">Suits</button><button class="tag">Blazers</button><button class="tag">Jackets</button><button class="tag">Coats</button><button class="tag">Knitwear</button><button class="tag">Sportswear</button><button class="tag">Loungewear</button></div>
+        </div>
       </article>
 
       <article class="department">
-        <h3>03. Kids & Baby</h3>
-        <div class="tags"><button class="tag">Baby Clothes</button><button class="tag">Girls' Clothing</button><button class="tag">Boys' Clothing</button><button class="tag">Schoolwear</button><button class="tag">Kids' Shoes</button><button class="tag">Baby Accessories</button><button class="tag">Outerwear</button></div>
+        <img class="department-photo" src="https://images.pexels.com/photos/5893853/pexels-photo-5893853.jpeg?cs=srgb&dl=pexels-ai25studioai-5893853.jpg&fm=jpg" alt="Children wearing contemporary fashion in a studio" loading="lazy">
+        <span class="photo-credit">Pexels · AI25 Studio</span>
+        <div class="department-content">
+          <h3>03. Kids & Baby</h3>
+          <div class="tags"><button class="tag">Baby Clothes</button><button class="tag">Girls' Clothing</button><button class="tag">Boys' Clothing</button><button class="tag">Schoolwear</button><button class="tag">Kids' Shoes</button><button class="tag">Baby Accessories</button><button class="tag">Outerwear</button></div>
+        </div>
       </article>
 
       <article class="department">
-        <h3>04. Luxury & Designer</h3>
-        <div class="tags"><button class="tag">Designer Clothing</button><button class="tag">Luxury Bags</button><button class="tag">Designer Shoes</button><button class="tag">Luxury Accessories</button><button class="tag">Premium Collections</button></div>
+        <img class="department-photo" src="https://images.pexels.com/photos/28593649/pexels-photo-28593649.jpeg?cs=srgb&dl=pexels-sie7e-28593649.jpg&fm=jpg" alt="Modern high-fashion studio editorial model" loading="lazy">
+        <span class="photo-credit">Pexels · David Mosquera</span>
+        <div class="department-content">
+          <h3>04. Luxury & Designer</h3>
+          <div class="tags"><button class="tag">Designer Clothing</button><button class="tag">Luxury Bags</button><button class="tag">Designer Shoes</button><button class="tag">Luxury Accessories</button><button class="tag">Premium Collections</button></div>
+        </div>
       </article>
 
       <article class="department">
-        <h3>05. Sneakers</h3>
-        <div class="tags"><button class="tag">Lifestyle Sneakers</button><button class="tag">Running Sneakers</button><button class="tag">High Tops</button><button class="tag">Low Tops</button><button class="tag">Classic Sneakers</button><button class="tag">Limited Collections</button></div>
+        <img class="department-photo" src="https://images.pexels.com/photos/25643222/pexels-photo-25643222.jpeg?cs=srgb&dl=pexels-victor-velasco-636253646-25643222.jpg&fm=jpg" alt="Model wearing statement sneakers in a studio" loading="lazy">
+        <span class="photo-credit">Pexels · Victor Velasco</span>
+        <div class="department-content">
+          <h3>05. Sneakers</h3>
+          <div class="tags"><button class="tag">Lifestyle Sneakers</button><button class="tag">Running Sneakers</button><button class="tag">High Tops</button><button class="tag">Low Tops</button><button class="tag">Classic Sneakers</button><button class="tag">Limited Collections</button></div>
+        </div>
       </article>
 
       <article class="department">
-        <h3>06. Shoes & Boots</h3>
-        <div class="tags"><button class="tag">Heels</button><button class="tag">Flats</button><button class="tag">Loafers</button><button class="tag">Boots</button><button class="tag">Ankle Boots</button><button class="tag">Sandals</button><button class="tag">Slippers</button><button class="tag">Formal Shoes</button></div>
+        <img class="department-photo" src="https://images.pexels.com/photos/28593647/pexels-photo-28593647.jpeg?cs=srgb&dl=pexels-sie7e-28593647.jpg&fm=jpg" alt="Fashion model in a dramatic outfit and heels" loading="lazy">
+        <span class="photo-credit">Pexels · David Mosquera</span>
+        <div class="department-content">
+          <h3>06. Shoes & Boots</h3>
+          <div class="tags"><button class="tag">Heels</button><button class="tag">Flats</button><button class="tag">Loafers</button><button class="tag">Boots</button><button class="tag">Ankle Boots</button><button class="tag">Sandals</button><button class="tag">Slippers</button><button class="tag">Formal Shoes</button></div>
+        </div>
       </article>
 
       <article class="department">
-        <h3>07. Sports & Performance Footwear</h3>
-        <div class="tags"><button class="tag">Running Shoes</button><button class="tag">Training Shoes</button><button class="tag">Hiking Shoes</button><button class="tag">Football Boots</button><button class="tag">Basketball Shoes</button><button class="tag">Walking Shoes</button></div>
+        <img class="department-photo" src="https://images.pexels.com/photos/2529148/pexels-photo-2529148.jpeg?cs=srgb&dl=pexels-melvin-buezo-1253763-2529148.jpg&fm=jpg" alt="Athletic sneaker editorial photograph" loading="lazy">
+        <span class="photo-credit">Pexels · Melvin Buezo</span>
+        <div class="department-content">
+          <h3>07. Sports & Performance Footwear</h3>
+          <div class="tags"><button class="tag">Running Shoes</button><button class="tag">Training Shoes</button><button class="tag">Hiking Shoes</button><button class="tag">Football Boots</button><button class="tag">Basketball Shoes</button><button class="tag">Walking Shoes</button></div>
+        </div>
       </article>
 
       <article class="department">
-        <h3>08. Bags & Handbags</h3>
-        <div class="tags"><button class="tag">Handbags</button><button class="tag">Shoulder Bags</button><button class="tag">Crossbody Bags</button><button class="tag">Tote Bags</button><button class="tag">Clutches</button><button class="tag">Backpacks</button><button class="tag">Mini Bags</button><button class="tag">Evening Bags</button><button class="tag">Laptop Bags</button><button class="tag">Wallets</button><button class="tag">Card Holders</button></div>
+        <img class="department-photo" src="https://images.pexels.com/photos/28168166/pexels-photo-28168166.jpeg?cs=srgb&dl=pexels-pedrofurtadoo-28168166.jpg&fm=jpg" alt="Model styling a black handbag" loading="lazy">
+        <span class="photo-credit">Pexels · Pedro Furtado</span>
+        <div class="department-content">
+          <h3>08. Bags & Handbags</h3>
+          <div class="tags"><button class="tag">Handbags</button><button class="tag">Shoulder Bags</button><button class="tag">Crossbody Bags</button><button class="tag">Tote Bags</button><button class="tag">Clutches</button><button class="tag">Backpacks</button><button class="tag">Mini Bags</button><button class="tag">Evening Bags</button><button class="tag">Laptop Bags</button><button class="tag">Wallets</button><button class="tag">Card Holders</button></div>
+        </div>
       </article>
 
       <article class="department">
-        <h3>09. Jewellery</h3>
-        <div class="tags"><button class="tag">Necklaces</button><button class="tag">Earrings</button><button class="tag">Rings</button><button class="tag">Bracelets</button><button class="tag">Bangles</button><button class="tag">Anklets</button><button class="tag">Pendants</button><button class="tag">Brooches</button><button class="tag">Men's Jewellery</button><button class="tag">Jewellery Sets</button></div>
+        <img class="department-photo" src="https://images.pexels.com/photos/10050220/pexels-photo-10050220.jpeg?cs=srgb&dl=pexels-pexels-user-127740499-10050220.jpg&fm=jpg" alt="Model wearing rings and a necklace" loading="lazy">
+        <span class="photo-credit">Pexels · Pexels User</span>
+        <div class="department-content">
+          <h3>09. Jewellery</h3>
+          <div class="tags"><button class="tag">Necklaces</button><button class="tag">Earrings</button><button class="tag">Rings</button><button class="tag">Bracelets</button><button class="tag">Bangles</button><button class="tag">Anklets</button><button class="tag">Pendants</button><button class="tag">Brooches</button><button class="tag">Men's Jewellery</button><button class="tag">Jewellery Sets</button></div>
+        </div>
       </article>
 
       <article class="department">
-        <h3>10. Watches</h3>
-        <div class="tags"><button class="tag">Men's Watches</button><button class="tag">Women's Watches</button><button class="tag">Smartwatches</button><button class="tag">Sports Watches</button><button class="tag">Luxury Watches</button><button class="tag">Watch Straps</button><button class="tag">Watch Boxes</button></div>
+        <img class="department-photo" src="https://images.pexels.com/photos/18641682/pexels-photo-18641682.jpeg?cs=srgb&dl=pexels-immortelleana-18641682.jpg&fm=jpg" alt="Woman styling a wristwatch" loading="lazy">
+        <span class="photo-credit">Pexels · Anastasia Lashkevich</span>
+        <div class="department-content">
+          <h3>10. Watches</h3>
+          <div class="tags"><button class="tag">Men's Watches</button><button class="tag">Women's Watches</button><button class="tag">Smartwatches</button><button class="tag">Sports Watches</button><button class="tag">Luxury Watches</button><button class="tag">Watch Straps</button><button class="tag">Watch Boxes</button></div>
+        </div>
       </article>
 
       <article class="department">
-        <h3>11. Eyewear</h3>
-        <div class="tags"><button class="tag">Sunglasses</button><button class="tag">Optical Frames</button><button class="tag">Reading Glasses</button><button class="tag">Blue Light Glasses</button><button class="tag">Eyewear Cases</button><button class="tag">Glasses Chains</button></div>
+        <img class="department-photo" src="https://images.pexels.com/photos/1694858/pexels-photo-1694858.jpeg?cs=srgb&dl=pexels-mwabonje-1694858.jpg&fm=jpg" alt="Fashion model wearing sunglasses outdoors" loading="lazy">
+        <span class="photo-credit">Pexels · Mwabonje Ringa</span>
+        <div class="department-content">
+          <h3>11. Eyewear</h3>
+          <div class="tags"><button class="tag">Sunglasses</button><button class="tag">Optical Frames</button><button class="tag">Reading Glasses</button><button class="tag">Blue Light Glasses</button><button class="tag">Eyewear Cases</button><button class="tag">Glasses Chains</button></div>
+        </div>
       </article>
 
       <article class="department">
-        <h3>12. Belts & Leather Goods</h3>
-        <div class="tags"><button class="tag">Leather Belts</button><button class="tag">Fashion Belts</button><button class="tag">Chain Belts</button><button class="tag">Suspenders</button><button class="tag">Leather Wallets</button><button class="tag">Card Holders</button><button class="tag">Key Holders</button></div>
+        <img class="department-photo" src="https://images.pexels.com/photos/29504484/pexels-photo-29504484.jpeg?cs=srgb&dl=pexels-dhanno-29504484.jpg&fm=jpg" alt="Male model in urban fashion and sunglasses" loading="lazy">
+        <span class="photo-credit">Pexels · Muneeb Malhotra</span>
+        <div class="department-content">
+          <h3>12. Belts & Leather Goods</h3>
+          <div class="tags"><button class="tag">Leather Belts</button><button class="tag">Fashion Belts</button><button class="tag">Chain Belts</button><button class="tag">Suspenders</button><button class="tag">Leather Wallets</button><button class="tag">Card Holders</button><button class="tag">Key Holders</button></div>
+        </div>
       </article>
 
       <article class="department">
-        <h3>13. Hats & Headwear</h3>
-        <div class="tags"><button class="tag">Baseball Caps</button><button class="tag">Beanies</button><button class="tag">Bucket Hats</button><button class="tag">Fedora Hats</button><button class="tag">Berets</button><button class="tag">Sun Hats</button><button class="tag">Visors</button></div>
+        <img class="department-photo" src="https://images.pexels.com/photos/40883707/pexels-photo-40883707.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="Fashion model wearing a hat and patterned scarf" loading="lazy">
+        <span class="photo-credit">Pexels · Elkayslense</span>
+        <div class="department-content">
+          <h3>13. Hats & Headwear</h3>
+          <div class="tags"><button class="tag">Baseball Caps</button><button class="tag">Beanies</button><button class="tag">Bucket Hats</button><button class="tag">Fedora Hats</button><button class="tag">Berets</button><button class="tag">Sun Hats</button><button class="tag">Visors</button></div>
+        </div>
       </article>
 
       <article class="department">
-        <h3>14. Scarves & Wraps</h3>
-        <div class="tags"><button class="tag">Silk Scarves</button><button class="tag">Wool Scarves</button><button class="tag">Shawls</button><button class="tag">Pashminas</button><button class="tag">Wraps</button><button class="tag">Bandanas</button><button class="tag">Neckerchiefs</button></div>
+        <img class="department-photo" src="https://images.pexels.com/photos/4320/fashion-person-woman-girl.jpg?cs=srgb&dl=pexels-jeshoots-4320.jpg&fm=jpg" alt="Woman in layered scarf and seasonal styling" loading="lazy">
+        <span class="photo-credit">Pexels · JÉSHOOTS</span>
+        <div class="department-content">
+          <h3>14. Scarves & Wraps</h3>
+          <div class="tags"><button class="tag">Silk Scarves</button><button class="tag">Wool Scarves</button><button class="tag">Shawls</button><button class="tag">Pashminas</button><button class="tag">Wraps</button><button class="tag">Bandanas</button><button class="tag">Neckerchiefs</button></div>
+        </div>
       </article>
 
       <article class="department">
-        <h3>15. Hair Accessories</h3>
-        <div class="tags"><button class="tag">Hair Clips</button><button class="tag">Claw Clips</button><button class="tag">Headbands</button><button class="tag">Scrunchies</button><button class="tag">Hair Pins</button><button class="tag">Hair Bands</button><button class="tag">Hair Bows</button></div>
+        <img class="department-photo" src="https://images.pexels.com/photos/31045887/pexels-photo-31045887.jpeg?cs=srgb&dl=pexels-ailin-esther-policano-2150264477-31045887.jpg&fm=jpg" alt="Beauty editorial portrait with hair accessories" loading="lazy">
+        <span class="photo-credit">Pexels · Ailín Policano</span>
+        <div class="department-content">
+          <h3>15. Hair Accessories</h3>
+          <div class="tags"><button class="tag">Hair Clips</button><button class="tag">Claw Clips</button><button class="tag">Headbands</button><button class="tag">Scrunchies</button><button class="tag">Hair Pins</button><button class="tag">Hair Bands</button><button class="tag">Hair Bows</button></div>
+        </div>
       </article>
 
       <article class="department">
-        <h3>16. Gloves & Cold Weather</h3>
-        <div class="tags"><button class="tag">Leather Gloves</button><button class="tag">Winter Gloves</button><button class="tag">Touchscreen Gloves</button><button class="tag">Mittens</button><button class="tag">Thermal Accessories</button></div>
+        <img class="department-photo" src="https://images.pexels.com/photos/30076368/pexels-photo-30076368.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="Autumn model styling scarf and cap" loading="lazy">
+        <span class="photo-credit">Pexels · Sara Kazemi</span>
+        <div class="department-content">
+          <h3>16. Gloves & Cold Weather</h3>
+          <div class="tags"><button class="tag">Leather Gloves</button><button class="tag">Winter Gloves</button><button class="tag">Touchscreen Gloves</button><button class="tag">Mittens</button><button class="tag">Thermal Accessories</button></div>
+        </div>
       </article>
 
       <article class="department">
-        <h3>17. Formal Accessories</h3>
-        <div class="tags"><button class="tag">Ties</button><button class="tag">Bow Ties</button><button class="tag">Cufflinks</button><button class="tag">Pocket Squares</button><button class="tag">Tie Clips</button><button class="tag">Lapel Pins</button></div>
+        <img class="department-photo" src="https://images.pexels.com/photos/6011277/pexels-photo-6011277.jpeg?cs=srgb&dl=pexels-kr8t-6011277.jpg&fm=jpg" alt="Formal menswear details with wristwatch and tie" loading="lazy">
+        <span class="photo-credit">Pexels · Bruchin Noeka</span>
+        <div class="department-content">
+          <h3>17. Formal Accessories</h3>
+          <div class="tags"><button class="tag">Ties</button><button class="tag">Bow Ties</button><button class="tag">Cufflinks</button><button class="tag">Pocket Squares</button><button class="tag">Tie Clips</button><button class="tag">Lapel Pins</button></div>
+        </div>
       </article>
 
       <article class="department">
-        <h3>18. Sportswear & Fitness</h3>
-        <div class="tags"><button class="tag">Leggings</button><button class="tag">Sports Bras</button><button class="tag">Gym Tops</button><button class="tag">Training Shorts</button><button class="tag">Tracksuits</button><button class="tag">Yoga Clothing</button><button class="tag">Sports Accessories</button></div>
+        <img class="department-photo" src="https://images.pexels.com/photos/4943899/pexels-photo-4943899.jpeg?cs=srgb&dl=pexels-anastasia-shuraeva-4943899.jpg&fm=jpg" alt="Athlete in activewear training in a gym" loading="lazy">
+        <span class="photo-credit">Pexels · Anastasia Shuraeva</span>
+        <div class="department-content">
+          <h3>18. Sportswear & Fitness</h3>
+          <div class="tags"><button class="tag">Leggings</button><button class="tag">Sports Bras</button><button class="tag">Gym Tops</button><button class="tag">Training Shorts</button><button class="tag">Tracksuits</button><button class="tag">Yoga Clothing</button><button class="tag">Sports Accessories</button></div>
+        </div>
       </article>
 
       <article class="department">
-        <h3>19. Travel & Luggage</h3>
-        <div class="tags"><button class="tag">Suitcases</button><button class="tag">Travel Bags</button><button class="tag">Duffel Bags</button><button class="tag">Passport Covers</button><button class="tag">Luggage Tags</button><button class="tag">Packing Cubes</button><button class="tag">Travel Organisers</button></div>
+        <img class="department-photo" src="https://images.pexels.com/photos/9664937/pexels-photo-9664937.jpeg?cs=srgb&dl=pexels-marcus-queiroga-silva-86421404-9664937.jpg&fm=jpg" alt="Woman posing with a vintage travel suitcase" loading="lazy">
+        <span class="photo-credit">Pexels · Marcus Queiroga Silva</span>
+        <div class="department-content">
+          <h3>19. Travel & Luggage</h3>
+          <div class="tags"><button class="tag">Suitcases</button><button class="tag">Travel Bags</button><button class="tag">Duffel Bags</button><button class="tag">Passport Covers</button><button class="tag">Luggage Tags</button><button class="tag">Packing Cubes</button><button class="tag">Travel Organisers</button></div>
+        </div>
       </article>
 
       <article class="department">
-        <h3>20. Beauty & Personal Accessories</h3>
-        <div class="tags"><button class="tag">Makeup Bags</button><button class="tag">Cosmetic Cases</button><button class="tag">Makeup Brushes</button><button class="tag">Mirrors</button><button class="tag">Beauty Organisers</button><button class="tag">Manicure Accessories</button></div>
+        <img class="department-photo" src="https://images.pexels.com/photos/4633803/pexels-photo-4633803.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="Creative beauty portrait with colorful hair styling" loading="lazy">
+        <span class="photo-credit">Pexels · Darya Sannikova</span>
+        <div class="department-content">
+          <h3>20. Beauty & Personal Accessories</h3>
+          <div class="tags"><button class="tag">Makeup Bags</button><button class="tag">Cosmetic Cases</button><button class="tag">Makeup Brushes</button><button class="tag">Mirrors</button><button class="tag">Beauty Organisers</button><button class="tag">Manicure Accessories</button></div>
+        </div>
       </article>
 
       <article class="department">
-        <h3>21. Tech Fashion Accessories</h3>
-        <div class="tags"><button class="tag">Phone Cases</button><button class="tag">Phone Straps</button><button class="tag">Smartwatch Straps</button><button class="tag">Laptop Sleeves</button><button class="tag">Earbud Cases</button><button class="tag">Tech Pouches</button></div>
+        <img class="department-photo" src="https://images.pexels.com/photos/11814565/pexels-photo-11814565.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="Person using a smartphone to photograph a wristwatch" loading="lazy">
+        <span class="photo-credit">Pexels · Yuliia Tretynychenko</span>
+        <div class="department-content">
+          <h3>21. Tech Fashion Accessories</h3>
+          <div class="tags"><button class="tag">Phone Cases</button><button class="tag">Phone Straps</button><button class="tag">Smartwatch Straps</button><button class="tag">Laptop Sleeves</button><button class="tag">Earbud Cases</button><button class="tag">Tech Pouches</button></div>
+        </div>
       </article>
 
       <article class="department">
-        <h3>22. Wedding & Special Occasions</h3>
-        <div class="tags"><button class="tag">Bridal Accessories</button><button class="tag">Wedding Shoes</button><button class="tag">Veils</button><button class="tag">Fascinators</button><button class="tag">Evening Bags</button><button class="tag">Formal Jewellery</button></div>
+        <img class="department-photo" src="https://images.pexels.com/photos/19432652/pexels-photo-19432652.jpeg?cs=srgb&dl=pexels-konrads-photo-19432652.jpg&fm=jpg" alt="Bridal model wearing an elegant wedding dress and gloves" loading="lazy">
+        <span class="photo-credit">Pexels · Daniil Kondrashin</span>
+        <div class="department-content">
+          <h3>22. Wedding & Special Occasions</h3>
+          <div class="tags"><button class="tag">Bridal Accessories</button><button class="tag">Wedding Shoes</button><button class="tag">Veils</button><button class="tag">Fascinators</button><button class="tag">Evening Bags</button><button class="tag">Formal Jewellery</button></div>
+        </div>
       </article>
 
       <article class="department">
-        <h3>23. Underwear & Hosiery</h3>
-        <div class="tags"><button class="tag">Underwear</button><button class="tag">Bras</button><button class="tag">Lingerie</button><button class="tag">Socks</button><button class="tag">Tights</button><button class="tag">Stockings</button><button class="tag">Thermal Wear</button></div>
+        <img class="department-photo" src="https://images.pexels.com/photos/16470263/pexels-photo-16470263.jpeg?cs=srgb&dl=pexels-caio-mantovani-97605853-16470263.jpg&fm=jpg" alt="Adult fashion model in black statement styling" loading="lazy">
+        <span class="photo-credit">Pexels · Caio Mantovani</span>
+        <div class="department-content">
+          <h3>23. Underwear & Hosiery</h3>
+          <div class="tags"><button class="tag">Underwear</button><button class="tag">Bras</button><button class="tag">Lingerie</button><button class="tag">Socks</button><button class="tag">Tights</button><button class="tag">Stockings</button><button class="tag">Thermal Wear</button></div>
+        </div>
       </article>
 
       <article class="department">
-        <h3>24. Pet Fashion</h3>
-        <div class="tags"><button class="tag">Pet Coats</button><button class="tag">Pet Bandanas</button><button class="tag">Collars</button><button class="tag">Leashes</button><button class="tag">Harnesses</button><button class="tag">Pet Accessories</button></div>
+        <img class="department-photo" src="https://images.pexels.com/photos/16614997/pexels-photo-16614997.jpeg?cs=srgb&dl=pexels-miyatavictor-16614997.jpg&fm=jpg" alt="Dog wearing a fashionable outfit outdoors" loading="lazy">
+        <span class="photo-credit">Pexels · Victor Miyata</span>
+        <div class="department-content">
+          <h3>24. Pet Fashion</h3>
+          <div class="tags"><button class="tag">Pet Coats</button><button class="tag">Pet Bandanas</button><button class="tag">Collars</button><button class="tag">Leashes</button><button class="tag">Harnesses</button><button class="tag">Pet Accessories</button></div>
+        </div>
       </article>
 
       <article class="department">
-        <h3>25. Fashion Gifts & Seasonal</h3>
-        <div class="tags"><button class="tag">Gift Sets</button><button class="tag">Fashion Gifts</button><button class="tag">Accessory Sets</button><button class="tag">Summer Collections</button><button class="tag">Winter Collections</button><button class="tag">Holiday Collections</button><button class="tag">Limited Editions</button></div>
+        <img class="department-photo" src="https://images.pexels.com/photos/12418877/pexels-photo-12418877.jpeg?cs=srgb&dl=pexels-aldairwow-12418877.jpg&fm=jpg" alt="Colorful fashion editorial for seasonal style inspiration" loading="lazy">
+        <span class="photo-credit">Pexels · Aldair Nuñez</span>
+        <div class="department-content">
+          <h3>25. Fashion Gifts & Seasonal</h3>
+          <div class="tags"><button class="tag">Gift Sets</button><button class="tag">Fashion Gifts</button><button class="tag">Accessory Sets</button><button class="tag">Summer Collections</button><button class="tag">Winter Collections</button><button class="tag">Holiday Collections</button><button class="tag">Limited Editions</button></div>
+        </div>
       </article>
 
     </div>
