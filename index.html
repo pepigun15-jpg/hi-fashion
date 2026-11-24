@@ -2819,6 +2819,10 @@ function hfApplyLanguage(code, save=true) {
   document.documentElement.dir=lang==="ar"?"rtl":"ltr";
   document.body.dataset.language=lang;
   hfTranslatePageText(lang);
+  document.querySelectorAll("[data-hf-i18n]").forEach(node => {
+    const key=node.dataset.hfI18n;
+    if(copy[key]) node.textContent=copy[key];
+  });
 
   const search=document.getElementById("departmentSearch");
   if(search){
@@ -2844,10 +2848,6 @@ function hfApplyLanguage(code, save=true) {
   hfTranslateCountryOptions(lang);
   if(save){try{localStorage.setItem("hiFashionLanguage",lang);}catch(error){}}
   if(typeof filterDepartments==="function" && search?.value.trim()) filterDepartments();
-  if(typeof applySeason==="function"){
-    const mode=localStorage.getItem("hiFashionSeason")||"auto";
-    applySeason(mode,false);
-  }
 }
 function hfOpenLanguageChooser() {
   hfLanguageModal.hidden = false;
@@ -3076,7 +3076,8 @@ document.getElementById("saveDestination").addEventListener("click", () => {
 
 document.querySelectorAll(".trend-trigger").forEach(button => {
   button.addEventListener("click", () => {
-    searchInput.value = button.dataset.search || "";
+    const searchTerm = button.dataset.search || "";
+    searchInput.value = hfPageTranslations[hfActiveLanguage]?.[searchTerm] || searchTerm;
     filterDepartments();
     document.getElementById("departments").scrollIntoView({behavior:"smooth"});
   });
@@ -3111,6 +3112,9 @@ document.querySelectorAll(".tag").forEach(tag => {
     document.getElementById("departments").scrollIntoView({behavior:"smooth"});
   });
 });
+
+// Initialise seasonal display only after season controls have been defined.
+applySeason(localStorage.getItem("hiFashionSeason") || "auto", false);
 </script>
 </body>
 </html>
