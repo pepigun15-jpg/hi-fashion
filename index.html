@@ -93,7 +93,18 @@ footer strong{color:var(--gold);letter-spacing:2px}
   <a href="#seller">SELL WITH US</a>
  </div>
 </header>
-
+<div style="display:flex;align-items:center;gap:8px;margin-left:15px">
+  <select id="marketSelect"
+    onchange="document.getElementById('marketLabel').textContent=this.options[this.selectedIndex].text"
+    style="background:#10291f;color:#c6a45a;border:1px solid #c6a45a;padding:10px;font-size:11px;max-width:180px">
+    <option>🌍 Select Market</option>
+    <option>🇺🇸 United States — USD $</option>
+    <option>🇬🇧 Great Britain — GBP £</option>
+    <option>🇨🇦 Canada — CAD $</option>
+    <option>🇪🇺 Europe — EUR €</option>
+    <option>🌍 Rest of World</option>
+  </select>
+</div>
 <main>
  <div class="hero">
   <div class="hero-content">
