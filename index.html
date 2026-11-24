@@ -138,6 +138,15 @@ footer strong{color:var(--gold);letter-spacing:2px}
 .destination-panel h3{font-family:Georgia,serif;font-weight:normal;font-size:25px;color:var(--gold);margin-bottom:9px}
 .destination-panel p{color:var(--silver);font-size:12px;line-height:1.75;margin-bottom:17px}
 .destination-fields{display:grid;grid-template-columns:1fr 1fr .8fr auto;gap:10px;align-items:end}
+.destination-location-actions{grid-column:1/-1;display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:4px}
+.destination-location-actions button{min-height:38px;padding:0 16px;background:#18231d;border:1px solid #9b8452;color:#f3e7c8;font-size:10px;font-weight:700;letter-spacing:1px;cursor:pointer}
+.destination-location-actions button:hover{background:#26382d;border-color:#d7bd7e}
+.destination-location-actions button:disabled{opacity:.55;cursor:wait}
+.destination-location-actions .location-clear{background:transparent;border-color:#758078;color:#dce2dc}
+.destination-location-actions .location-clear[hidden]{display:none}
+.destination-location-note{flex:1;min-width:220px;color:#aeb9b0;font-size:10px;line-height:1.6}
+.destination-status.location-status{margin-top:5px!important;font-size:11px;line-height:1.6}
+@media(max-width:560px){.destination-location-actions{align-items:stretch}.destination-location-actions button{width:100%}.destination-location-note{min-width:100%}}
 .destination-fields label{display:block;color:#c5c8c6;font-size:11px}
 .destination-fields input,.destination-fields select{display:block;width:100%;margin-top:7px;padding:13px;background:#080d0a;border:1px solid #526253;color:#f5f4ef;font:14px Arial,sans-serif}
 .destination-fields button{border:0;cursor:pointer;white-space:nowrap}
@@ -2322,8 +2331,14 @@ body[data-season] .hero{
           <input id="deliveryPostalCode" type="text" maxlength="20" placeholder="e.g. 1000">
         </label>
         <button class="button" id="saveDestination" type="button">SAVE DESTINATION</button>
+        <div class="destination-location-actions">
+          <button type="button" id="useMyLocation">USE MY CURRENT LOCATION</button>
+          <button type="button" id="clearMyLocation" class="location-clear" hidden>REMOVE LOCATION</button>
+          <span class="destination-location-note">Your browser will ask for permission. Coordinates are used only during this visit for nearby-stock matching; they are not saved to your account or browser storage.</span>
+        </div>
       </div>
       <p class="destination-status" id="destinationStatus" role="status">No delivery destination saved yet.</p>
+      <p class="destination-status location-status" id="locationStatus" role="status" aria-live="polite">Nearby dispatch matching requires a delivery country and verified stock-location data from retailers.</p>
     </div>
 
     <div class="market-note">
@@ -4566,6 +4581,7 @@ document.querySelectorAll(".season-chip").forEach(button => {
 });
 
 
+let hiFashionBuyerLocation = null;
 const deliveryCountry = document.getElementById("deliveryCountry");
 const allWorldMarkets = [
 "Afghanistan","Albania","Algeria","Andorra","Angola","Antigua and Barbuda","Argentina","Armenia","Australia","Austria","Azerbaijan",
@@ -4602,8 +4618,64 @@ if (savedDestination) {
   deliveryCountry.value = savedDestination.country || "";
   deliveryArea.value = savedDestination.area || "";
   deliveryPostalCode.value = savedDestination.postalCode || "";
-  destinationStatus.textContent = "Saved destination: " + [savedDestination.area, savedDestination.postalCode, savedDestination.country].filter(Boolean).join(", ") + ". Actual nearest-stock matching will activate after live retailer or seller inventory locations are connected.";
+  destinationStatus.textContent = "Saved destination: " + [savedDestination.area, savedDestination.postalCode, savedDestination.country].filter(Boolean).join(", ") + ". Saved address details are used for delivery filtering; precise GPS is requested separately and is never stored.";
 }
+const useMyLocationButton = document.getElementById("useMyLocation");
+const clearMyLocationButton = document.getElementById("clearMyLocation");
+const locationStatus = document.getElementById("locationStatus");
+useMyLocationButton.addEventListener("click", () => {
+  if (!("geolocation" in navigator)) {
+    locationStatus.textContent = "This browser does not support location detection. Please enter your country, city and postal code manually.";
+    return;
+  }
+  useMyLocationButton.disabled = true;
+  useMyLocationButton.textContent = "REQUESTING LOCATION…";
+  locationStatus.textContent = "Waiting for your browser's location permission. Your coordinates will stay in memory only.";
+  navigator.geolocation.getCurrentPosition(position => {
+    const latitude = Number(position.coords.latitude);
+    const longitude = Number(position.coords.longitude);
+    const accuracy = Number(position.coords.accuracy || 0);
+    if (!Number.isFinite(latitude) || !Number.isFinite(longitude) ||
+        latitude < -90 || latitude > 90 || longitude < -180 || longitude > 180) {
+      locationStatus.textContent = "The browser returned an invalid location. Please enter your destination manually.";
+      useMyLocationButton.disabled = false;
+      useMyLocationButton.textContent = "TRY LOCATION AGAIN";
+      return;
+    }
+    hiFashionBuyerLocation = { latitude, longitude, accuracy, capturedAt: Date.now() };
+    clearMyLocationButton.hidden = false;
+    useMyLocationButton.disabled = false;
+    useMyLocationButton.textContent = "UPDATE MY LOCATION";
+    const accuracyText = accuracy > 0 ? " (approx. " + Math.round(accuracy) + " m accuracy)" : "";
+    if (!deliveryCountry.value) {
+      locationStatus.textContent = "Location detected" + accuracyText + ". Now choose your delivery country and save the destination. The coordinates remain in memory only.";
+    } else {
+      locationStatus.textContent = "Location detected" + accuracyText + ". Nearby search is ready for " + deliveryCountry.value + ", subject to verified stock-location data.";
+    }
+  }, error => {
+    hiFashionBuyerLocation = null;
+    const message = error.code === 1
+      ? "Location permission was denied. You can still choose your country, city and postal code manually."
+      : error.code === 2
+        ? "Your location could not be determined. Check device location services or enter your destination manually."
+        : "Location request timed out. Please try again or enter your destination manually.";
+    locationStatus.textContent = message;
+    useMyLocationButton.disabled = false;
+    useMyLocationButton.textContent = "TRY LOCATION AGAIN";
+    clearMyLocationButton.hidden = true;
+  }, { enableHighAccuracy: false, timeout: 12000, maximumAge: 300000 });
+});
+clearMyLocationButton.addEventListener("click", () => {
+  hiFashionBuyerLocation = null;
+  clearMyLocationButton.hidden = true;
+  useMyLocationButton.textContent = "USE MY CURRENT LOCATION";
+  locationStatus.textContent = "Precise location cleared from this page. Country, city and postal code remain available for delivery filtering.";
+});
+deliveryCountry.addEventListener("change", () => {
+  if (hiFashionBuyerLocation) {
+    locationStatus.textContent = "Location is available for this visit. Nearby results will be checked for " + deliveryCountry.value + " only.";
+  }
+});
 document.getElementById("saveDestination").addEventListener("click", () => {
   const destination = {
     country: deliveryCountry.value,
@@ -5107,19 +5179,34 @@ applySeason(localStorage.getItem("hiFashionSeason") || "auto", false);
     const currency=kind==="ebay"?product.currency:product.currency;
     const sizes=Array.isArray(product.sizes)?product.sizes:[];
     const availability=safeText(product.availability||"");
-    const href=safeText(product.affiliate_url||product.affiliateUrl||product.product_url||product.productUrl||"");
+    const href=safeText(product.affiliate_url||product.affiliateUrl||"");
     const cta=href&&/^https:\/\//i.test(href)?href:"";
     const brandMarkup=brand?'<span class="catalogue-product-brand">'+escapeHtml(brand)+'</span>':'<span class="catalogue-product-brand">'+escapeHtml(retailer)+'</span>';
     const imgMarkup=image&&/^https:\/\//i.test(image)?'<img class="catalogue-product-image" src="'+escapeHtml(image)+'" alt="'+escapeHtml(name)+'" loading="lazy" referrerpolicy="no-referrer">':'<div class="catalogue-product-placeholder" aria-hidden="true">HI</div>';
     const sizeMarkup=sizes.length?'<div class="catalogue-product-meta">Sizes: '+escapeHtml(sizes.slice(0,8).join(", "))+'</div>':'';
     const meta=[retailer,country].filter(Boolean).join(" · ");
     const availabilityText=availability==="in_stock"?"In stock":availability==="out_of_stock"?"Out of stock":availability==="preorder"?"Pre-order":"Availability at retailer";
-    const link=cta?'<a class="catalogue-product-cta" href="'+escapeHtml(cta)+'" target="_blank" rel="noopener noreferrer sponsored">SHOP AT '+escapeHtml(retailer.toUpperCase())+' ↗</a>':'<span class="catalogue-product-cta">RETAILER LINK NOT AVAILABLE</span>';
-    return '<article class="catalogue-product-card">'+imgMarkup+'<div class="catalogue-product-copy">'+brandMarkup+'<h3 class="catalogue-product-title">'+escapeHtml(name)+'</h3><div class="catalogue-product-meta">'+escapeHtml(meta)+'<br>'+escapeHtml(availabilityText)+'</div>'+sizeMarkup+'<div class="catalogue-product-price">'+escapeHtml(formatPrice(price,currency))+'</div><span class="catalogue-product-source">'+(kind==="ebay"?"Live eBay search":"Imported retailer feed")+'</span>'+link+'</div></article>';
+    const dispatchCity=safeText(product.dispatch_city||"");
+    const dispatchRegion=safeText(product.dispatch_region||"");
+    const distance=Number(product.distance_km);
+    const deliveryDays=Number(product.estimated_delivery_days);
+    const dispatchMeta=kind==="nearby"&&dispatchCity
+      ? '<div class="catalogue-product-meta">Dispatch: '+escapeHtml([dispatchCity,dispatchRegion].filter(Boolean).join(", "))+(Number.isFinite(distance)?' · '+escapeHtml(distance.toFixed(1))+' km away':'')+(Number.isFinite(deliveryDays)?' · approx. '+escapeHtml(String(deliveryDays))+' days':'')+'</div>'
+      : '';
+    const link=cta?'<a class="catalogue-product-cta" href="'+escapeHtml(cta)+'" target="_blank" rel="noopener noreferrer sponsored">SHOP AT '+escapeHtml(retailer.toUpperCase())+' ↗</a>':'';
+    if(!cta)return "";
+    return '<article class="catalogue-product-card">'+imgMarkup+'<div class="catalogue-product-copy">'+brandMarkup+'<h3 class="catalogue-product-title">'+escapeHtml(name)+'</h3><div class="catalogue-product-meta">'+escapeHtml(meta)+'<br>'+escapeHtml(availabilityText)+'</div>'+dispatchMeta+sizeMarkup+'<div class="catalogue-product-price">'+escapeHtml(formatPrice(price,currency))+'</div><span class="catalogue-product-source">'+(kind==="nearby"?"Verified nearby stock":"Approved affiliate offer")+'</span>'+link+'</div></article>';
   }
   function destinationIso(){
     const name=byId("deliveryCountry")?.value||"";
-    const map={Bulgaria:"BG",Germany:"DE","United Kingdom":"GB","United States":"US",France:"FR",Italy:"IT",Spain:"ES",Netherlands:"NL",Belgium:"BE",Austria:"AT",Switzerland:"CH",Poland:"PL",Romania:"RO",Greece:"GR",Turkey:"TR",Türkiye:"TR",Canada:"CA",Australia:"AU",Japan:"JP",China:"CN",India:"IN",Ireland:"IE",Portugal:"PT",Sweden:"SE",Norway:"NO",Denmark:"DK",Finland:"FI",Czechia:"CZ",Slovakia:"SK",Hungary:"HU",Croatia:"HR",Slovenia:"SI",Serbia:"RS","North Macedonia":"MK",Ukraine:"UA"};
+    const map={
+      Afghanistan:"AF",Albania:"AL",Algeria:"DZ",Andorra:"AD",Angola:"AO","Antigua and Barbuda":"AG",Argentina:"AR",Armenia:"AM",Australia:"AU",Austria:"AT",Azerbaijan:"AZ",
+      Bahamas:"BS",Bahrain:"BH",Bangladesh:"BD",Barbados:"BB",Belarus:"BY",Belgium:"BE",Belize:"BZ",Benin:"BJ",Bhutan:"BT",Bolivia:"BO","Bosnia and Herzegovina":"BA",Botswana:"BW",Brazil:"BR",Brunei:"BN",Bulgaria:"BG","Burkina Faso":"BF",Burundi:"BI","Cabo Verde":"CV",Cambodia:"KH",Cameroon:"CM",Canada:"CA","Central African Republic":"CF",Chad:"TD",Chile:"CL",China:"CN",Colombia:"CO",Comoros:"KM",Congo:"CG","Costa Rica":"CR","Côte d'Ivoire":"CI",Croatia:"HR",Cuba:"CU",Cyprus:"CY",Czechia:"CZ","Democratic Republic of the Congo":"CD",Denmark:"DK",Djibouti:"DJ",Dominica:"DM","Dominican Republic":"DO",Ecuador:"EC",Egypt:"EG","El Salvador":"SV","Equatorial Guinea":"GQ",Eritrea:"ER",Estonia:"EE",Eswatini:"SZ",Ethiopia:"ET",
+      Fiji:"FJ",Finland:"FI",France:"FR",Gabon:"GA",Gambia:"GM",Georgia:"GE",Germany:"DE",Ghana:"GH",Greece:"GR",Grenada:"GD",Guatemala:"GT",Guinea:"GN","Guinea-Bissau":"GW",Guyana:"GY",
+      Haiti:"HT",Honduras:"HN",Hungary:"HU",Iceland:"IS",India:"IN",Indonesia:"ID",Iran:"IR",Iraq:"IQ",Ireland:"IE",Israel:"IL",Italy:"IT",Jamaica:"JM",Japan:"JP",Jordan:"JO",Kazakhstan:"KZ",Kenya:"KE",Kiribati:"KI",Kosovo:"XK",Kuwait:"KW",Kyrgyzstan:"KG",Laos:"LA",Latvia:"LV",Lebanon:"LB",Lesotho:"LS",Liberia:"LR",Libya:"LY",Liechtenstein:"LI",Lithuania:"LT",Luxembourg:"LU",Madagascar:"MG",Malawi:"MW",Malaysia:"MY",Maldives:"MV",Mali:"ML",Malta:"MT","Marshall Islands":"MH",Mauritania:"MR",Mauritius:"MU",Mexico:"MX",Micronesia:"FM",Moldova:"MD",Monaco:"MC",Mongolia:"MN",Montenegro:"ME",Morocco:"MA",Mozambique:"MZ",Myanmar:"MM",Namibia:"NA",Nauru:"NR",Nepal:"NP",Netherlands:"NL","New Zealand":"NZ",Nicaragua:"NI",Niger:"NE",Nigeria:"NG","North Korea":"KP","North Macedonia":"MK",Norway:"NO",Oman:"OM",Pakistan:"PK",Palau:"PW",Palestine:"PS",Panama:"PA","Papua New Guinea":"PG",Paraguay:"PY",Peru:"PE",Philippines:"PH",Poland:"PL",Portugal:"PT",Qatar:"QA",Romania:"RO",Russia:"RU",Rwanda:"RW",
+      "Saint Kitts and Nevis":"KN","Saint Lucia":"LC","Saint Vincent and the Grenadines":"VC",Samoa:"WS","San Marino":"SM","São Tomé and Príncipe":"ST","Saudi Arabia":"SA",Senegal:"SN",Serbia:"RS",Seychelles:"SC","Sierra Leone":"SL",Singapore:"SG",Slovakia:"SK",Slovenia:"SI","Solomon Islands":"SB",Somalia:"SO","South Africa":"ZA","South Korea":"KR","South Sudan":"SS",Spain:"ES","Sri Lanka":"LK",Sudan:"SD",Suriname:"SR",Sweden:"SE",Switzerland:"CH",Syria:"SY",Taiwan:"TW",Tajikistan:"TJ",Tanzania:"TZ",Thailand:"TH","Timor-Leste":"TL",Togo:"TG",Tonga:"TO","Trinidad and Tobago":"TT",Tunisia:"TN",Türkiye:"TR",Turkey:"TR",Turkmenistan:"TM",Tuvalu:"TV",Uganda:"UG",Ukraine:"UA","United Arab Emirates":"AE","United Kingdom":"GB","United States":"US",Uruguay:"UY",Uzbekistan:"UZ",Vanuatu:"VU","Vatican City":"VA",Venezuela:"VE",Vietnam:"VN",Yemen:"YE",Zambia:"ZM",Zimbabwe:"ZW",
+      "Hong Kong":"HK",Macao:"MO","Puerto Rico":"PR",Greenland:"GL","Faroe Islands":"FO",Guam:"GU",Aruba:"AW","Curaçao":"CW",Bermuda:"BM","Cayman Islands":"KY","British Virgin Islands":"VG","U.S. Virgin Islands":"VI","French Polynesia":"PF","New Caledonia":"NC","Isle of Man":"IM",Jersey:"JE",Guernsey:"GG",Gibraltar:"GI"
+    };
     return map[name]||null;
   }
   function setStatus(message,total){
@@ -5144,6 +5231,27 @@ applySeason(localStorage.getItem("hiFashionSeason") || "auto", false);
       p_size:filters.size||null,
       p_color:filters.color||null,
       p_sort:filters.sort||"relevance",
+      p_limit:active.limit,
+      p_offset:offset
+    });
+  }
+  async function getNearbyProducts(query,category,offset,filters){
+    if(!client||!hiFashionBuyerLocation||!destinationIso())return {data:[],error:new Error("Choose a delivery country and allow location access first.")};
+    const min=filters.minPrice===""?null:Math.round(Number(filters.minPrice)*100);
+    const max=filters.maxPrice===""?null:Math.round(Number(filters.maxPrice)*100);
+    return await client.rpc("search_catalogue_products_nearby",{
+      p_query:query||"",
+      p_category:category||null,
+      p_country:destinationIso(),
+      p_lat:hiFashionBuyerLocation.latitude,
+      p_lon:hiFashionBuyerLocation.longitude,
+      p_brand:filters.brand||null,
+      p_currency:filters.currency||null,
+      p_min_price_minor:Number.isFinite(min)?min:null,
+      p_max_price_minor:Number.isFinite(max)?max:null,
+      p_in_stock_only:true,
+      p_size:filters.size||null,
+      p_color:filters.color||null,
       p_limit:active.limit,
       p_offset:offset
     });
@@ -5214,40 +5322,65 @@ applySeason(localStorage.getItem("hiFashionSeason") || "auto", false);
     renderMarketLinks(query||category);
     try{
       const searchText=query||category;
-      const [localResult,ebayResult,cjResult]=await Promise.all([
-        getLocalProducts(query,category,active.offset,filters()),
-        getEbayProducts(searchText,active.offset).catch(error=>({items:[],total:0,configured:false,error:error.message})),
-        getCjProducts(searchText,active.offset).catch(error=>({items:[],total:0,configured:false,error:error.message}))
-      ]);
+      const hasNearbyLocation=Boolean(hiFashionBuyerLocation&&destinationIso());
+      let nearbyMode=false;
+      let localResult;
+      let ebayResult={items:[],total:0,configured:false};
+      let cjResult={items:[],total:0,configured:false};
+      if(hasNearbyLocation){
+        const nearbyResult=await getNearbyProducts(query,category,active.offset,filters());
+        const nearbyRows=nearbyResult.data||[];
+        if(nearbyRows.length){
+          localResult={data:nearbyRows,error:nearbyResult.error||null};
+          nearbyMode=true;
+        }else{
+          // No verified partner stock locations have been supplied yet; do not claim
+          // a nearest warehouse. Fall back to destination-country catalogue matches.
+          localResult=await getLocalProducts(query,category,active.offset,filters());
+        }
+      }else{
+        [localResult,ebayResult,cjResult]=await Promise.all([
+          getLocalProducts(query,category,active.offset,filters()),
+          getEbayProducts(searchText,active.offset).catch(error=>({items:[],total:0,configured:false,error:error.message})),
+          getCjProducts(searchText,active.offset).catch(error=>({items:[],total:0,configured:false,error:error.message}))
+        ]);
+      }
       const localRows=localResult.data||[];
       const localTotal=Number(localRows[0]?.total_count||0);
       lastLocalTotal=localTotal;
       lastEbayTotal=Number(ebayResult.total||0);
       const cjTotal=Number(cjResult.total||0);
-      const cards=localRows.map(item=>productCard(item,"local"));
+      const cards=localRows.map(item=>productCard(item,nearbyMode?"nearby":"local")).filter(Boolean);
       const ebayRows=ebayResult.items||[];
-      const ebayCards=ebayRows.map(item=>productCard(item,"ebay"));
+      const ebayCards=ebayRows.map(item=>productCard(item,"ebay")).filter(Boolean);
       const cjRows=cjResult.items||[];
-      const cjCards=cjRows.map(item=>productCard(item,"cj"));
+      const cjCards=cjRows.map(item=>productCard(item,"cj")).filter(Boolean);
       if(active.offset===0)grid.replaceChildren();
       const productHtml=cards.concat(ebayCards,cjCards).join("");
       if(productHtml){
         const wrap=document.createElement("div");wrap.style.display="contents";wrap.innerHTML=productHtml;grid.append(...wrap.childNodes);
       }
-      const sum=localTotal+lastEbayTotal+cjTotal;
+      const sum=nearbyMode?localTotal:localTotal+lastEbayTotal+cjTotal;
       const feedConfigured=localRows.length>0;
       const ebayConfigured=ebayResult.configured;
       if(sum>0){
-        setStatus("Showing "+(active.offset+1)+"–"+Math.min(active.offset+localRows.length+ebayRows.length+cjRows.length,sum)+" of about "+sum.toLocaleString()+" results across the HI FASHION catalogue, eBay and CJ Affiliate.",sum);
+        const statusMessage=nearbyMode
+          ? "Showing verified in-stock offers ranked by distance from your approximate location. Dispatch points and stock were recently verified; final delivery availability is confirmed by the retailer."
+          : hasNearbyLocation
+            ? "No verified nearby dispatch points are connected for this search yet. Showing general catalogue matches for your selected destination; nearest-stock ranking will activate when authorised partners provide stock locations."
+            : "Showing destination catalogue matches. Allow location access to rank products from verified nearby dispatch points when partner stock-location data is available.";
+        setStatus(statusMessage,sum);
       }else{
         const detail=[];
         if(!client)detail.push("Supabase is not configured");
         else if(localResult.error)detail.push("Catalogue database: "+localResult.error.message);
         if(!ebayConfigured)detail.push(ebayResult.error||"eBay API credentials are not configured");
         if(!cjResult.configured)detail.push(cjResult.error||"CJ API credentials are not configured");
-        setStatus("No connected product feeds returned listings yet. "+detail.join(" · ")+" — approved partner feeds must be connected before live retailer products appear.",0);
+        setStatus((hasNearbyLocation
+          ? "No verified dispatch location or destination offer is available for this search yet. "
+          : "No connected product feeds returned listings yet. ")+detail.join(" · ")+" — approved partner feeds and verified stock-location feeds must be connected before live offers appear.",0);
       }
-      const pageHasMore=localRows.length>=active.limit||active.offset+active.limit<lastEbayTotal||active.offset+active.limit<cjTotal;
+      const pageHasMore=localRows.length>=active.limit||(!nearbyMode&&(active.offset+active.limit<lastEbayTotal||active.offset+active.limit<cjTotal));
       more.hidden=!pageHasMore;
       more.textContent="LOAD MORE PRODUCTS";
     }catch(error){
