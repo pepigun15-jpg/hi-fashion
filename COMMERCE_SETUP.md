@@ -96,6 +96,65 @@ Never put Revolut account numbers, IBANs, login credentials, card details, Strip
 
 Live checkout must remain disabled until the Stripe platform account, EUR Revolut payout account, seller Connect onboarding, tax, shipping, test transactions and required legal/operational checks are completed.
 
+## 3A. Global retailer catalogue and authorised partner feeds
+
+The catalogue migrations create the database structures only. They do **not** automatically grant access to retailer inventory or insert products. Real product listings require publisher/advertiser approval, licensed feed or API access, and the relevant private credentials.
+
+### Apply the final feed-cursor migration
+
+After migrations 001–009, run `supabase/migrations/202611240010_catalogue_feed_cursor_metadata.sql` in Supabase SQL Editor. It adds the saved CSV/TSV header, delimiter and total-byte fields needed by the resumable feed importer.
+
+### Deploy the catalogue Edge Functions
+
+A manual workflow is available at **GitHub → Actions → Deploy HI FASHION catalogue functions → Run workflow**. It deploys:
+- `import-retailer-feed` — administrator-only Awin/CJ CSV or TSV importer.
+- `search-cj-catalogue` — live CJ product search.
+- `search-ebay-catalogue` — live eBay Browse search.
+
+Before starting the workflow, add a GitHub repository Actions secret named `SUPABASE_ACCESS_TOKEN`. Create this token in Supabase account **Access Tokens**. The workflow targets project `nbluqcydijvjwcjzvank`. Never put this token in website JavaScript, source code, commits or public issues.
+
+### Configure private Supabase Edge Function secrets
+
+In Supabase → **Project Settings → Edge Functions → Secrets** (dashboard wording may vary), add credentials only for providers for which HI FASHION has been approved. Never put these values in `site-config.js`, `index.html`, GitHub commits or public documentation.
+
+For the protected feed importer:
+- `SUPABASE_URL` — the project's HTTPS URL.
+- `SUPABASE_SERVICE_ROLE_KEY` — the private service-role key.
+- `ADMIN_USER_IDS` — comma-separated Supabase Auth user UUIDs authorised to run imports.
+
+For authorised Awin product feeds:
+- `AWIN_FEED_URL` or a feed-specific `AWIN_FEED_<FEED_SUFFIX>_URL`.
+- Optional `AWIN_FEED_BEARER_TOKEN`, `AWIN_DEFAULT_COUNTRY`, `AWIN_DEFAULT_CURRENCY`.
+
+For authorised CJ CSV/TSV feeds:
+- `CJ_FEED_URL` or a feed-specific `CJ_FEED_<FEED_SUFFIX>_URL`.
+- Optional `CJ_FEED_BEARER_TOKEN`, `CJ_DEFAULT_COUNTRY`, `CJ_DEFAULT_CURRENCY`.
+
+For live CJ product search:
+- `CJ_PERSONAL_ACCESS_TOKEN`
+- `CJ_COMPANY_ID`
+- `CJ_PUBLISHER_ID`
+
+For live eBay Browse API search:
+- `EBAY_CLIENT_ID`
+- `EBAY_CLIENT_SECRET`
+- Optional `EBAY_AFFILIATE_CAMPAIGN_ID` and `EBAY_AFFILIATE_REFERENCE_ID` for eligible affiliate tracking.
+
+### Start an authorised feed import
+
+The importer accepts POST requests with an administrator's Supabase Auth access token. Example body:
+
+```json
+{
+  "source_code": "awin",
+  "feed_id": "fashion-eu"
+}
+```
+
+Use `source_code` `awin` or `cj`; `feed_id` identifies a feed inside that network. A large feed may return `complete: false` while batches are processed. Call it again with the same source and feed ID until it returns `complete: true`.
+
+The storefront already queries the local catalogue and can request live CJ/eBay results once provider secrets are configured. Awin listings appear after an approved Awin feed is imported. Import and display only product data permitted under each partner agreement. API access or a feed download does not by itself grant permission to advertise every retailer or brand.
+
 ## 3. Deploy Supabase Edge Functions
 
 From the repository root:
