@@ -4,558 +4,246 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="HI FASHION — Discover fashion from brands, boutiques and designers around the world.">
 <title>HI FASHION | Global Fashion Marketplace</title>
-
 <style>
-:root {
-  --black:#090b0a;
-  --panel:#111713;
-  --green:#123b2d;
-  --green2:#1d4b39;
-  --gold:#c6a45a;
-  --silver:#c5c8c6;
-  --white:#f5f4ef;
-}
-* {box-sizing:border-box;margin:0;padding:0}
-html {scroll-behavior:smooth}
-body {
-  background:var(--black);
-  color:var(--white);
-  font-family:Arial,sans-serif;
-}
-button,select,input {font:inherit}
-header {
-  min-height:82px;
-  padding:15px 5%;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:20px;
-  border-bottom:1px solid #343c36;
-  background:#090b0a;
-  position:sticky;
-  top:0;
-  z-index:20;
-}
-.logo {
-  color:var(--gold);
-  font-size:29px;
-  font-weight:bold;
-  letter-spacing:5px;
-  white-space:nowrap;
-}
-.logo small {
-  display:block;
-  color:var(--silver);
-  font-size:9px;
-  letter-spacing:3px;
-  margin-top:5px;
-}
-nav {
-  display:flex;
-  align-items:center;
-  gap:20px;
-}
-nav a,.header-actions a {
-  color:var(--silver);
-  text-decoration:none;
-  font-size:10px;
-  letter-spacing:1px;
-}
-nav a:hover,.header-actions a:hover {color:var(--gold)}
-.header-actions {
-  display:flex;
-  align-items:center;
-  gap:14px;
-}
-.market-select {
-  background:#10291f;
-  color:var(--gold);
-  border:1px solid var(--gold);
-  padding:10px;
-  max-width:175px;
-  font-size:11px;
-  cursor:pointer;
-}
-.hero {
-  min-height:570px;
-  display:flex;
-  align-items:center;
-  padding:80px 9%;
-  background:
-    radial-gradient(ellipse at 80% 50%,#28523d 0%,transparent 40%),
-    linear-gradient(110deg,#080b09 15%,#10291f 65%,#080b09);
-}
-.hero-content {max-width:680px}
-.eyebrow {
-  color:var(--gold);
-  letter-spacing:5px;
-  font-size:11px;
-  margin-bottom:25px;
-}
-h1 {
-  font-family:Georgia,serif;
-  font-weight:normal;
-  font-size:clamp(52px,8vw,100px);
-  line-height:.96;
-  letter-spacing:-3px;
-}
-h1 span {color:var(--gold)}
-.hero p {
-  color:var(--silver);
-  line-height:1.8;
-  font-size:15px;
-  max-width:520px;
-  margin:28px 0;
-}
-.button {
-  display:inline-block;
-  padding:16px 27px;
-  background:var(--gold);
-  color:#111;
-  border:0;
-  text-decoration:none;
-  font-size:11px;
-  font-weight:bold;
-  letter-spacing:2px;
-  cursor:pointer;
-}
-.button:hover {background:#e2c77e}
-section {padding:75px 7%}
-.section-title {
-  text-align:center;
-  margin-bottom:38px;
-}
-.section-title small {
-  color:var(--gold);
-  letter-spacing:4px;
-  font-size:10px;
-}
-.section-title h2 {
-  font-family:Georgia,serif;
-  font-size:38px;
-  font-weight:normal;
-  margin-top:12px;
-}
-.section-title p {
-  color:var(--silver);
-  font-size:13px;
-  margin-top:12px;
-}
-.categories {
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:15px;
-}
-.category {
-  min-height:180px;
-  display:flex;
-  align-items:end;
-  padding:22px;
-  background:linear-gradient(145deg,#28513d,#101713);
-  border:1px solid #52634f;
-  color:var(--gold);
-  font-family:Georgia,serif;
-  font-size:23px;
-  text-decoration:none;
-  transition:.2s;
-}
-.category:nth-child(even) {
-  background:linear-gradient(145deg,#454a46,#111713);
-}
-.category:hover {
-  border-color:var(--gold);
-  transform:translateY(-3px);
-}
-.catalogue {background:#0e1712}
-.catalogue-tools {
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:15px;
-  flex-wrap:wrap;
-  margin-bottom:28px;
-}
-.search {
-  flex:1;
-  min-width:220px;
-  max-width:420px;
-  padding:13px 15px;
-  color:white;
-  background:#171e19;
-  border:1px solid #596358;
-  outline:none;
-}
-.search:focus {border-color:var(--gold)}
-.filters {
-  display:flex;
-  flex-wrap:wrap;
-  gap:8px;
-}
-.filter {
-  background:transparent;
-  color:var(--silver);
-  border:1px solid #596358;
-  padding:10px 13px;
-  cursor:pointer;
-  font-size:11px;
-}
-.filter.active,.filter:hover {
-  background:var(--gold);
-  color:#111;
-  border-color:var(--gold);
-}
-.products {
-  display:grid;
-  grid-template-columns:repeat(4,minmax(0,1fr));
-  gap:18px;
-}
-.product {
-  background:#151b17;
-  border:1px solid #303b33;
-  overflow:hidden;
-}
-.product-art {
-  height:210px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  padding:15px;
-  background:linear-gradient(145deg,#274534,#101713);
-  color:var(--gold);
-  font-family:Georgia,serif;
-  font-size:23px;
-}
-.product:nth-child(2n) .product-art {
-  background:linear-gradient(145deg,#4a4d49,#161a17);
-}
-.product:nth-child(3n) .product-art {
-  background:linear-gradient(145deg,#274b45,#111816);
-}
-.product-info {padding:17px}
-.product-info small {
-  color:var(--gold);
-  font-size:9px;
-  letter-spacing:2px;
-}
-.product-info h3 {
-  font-family:Georgia,serif;
-  font-weight:normal;
-  font-size:18px;
-  margin:9px 0;
-}
-.product-info p {
-  color:var(--silver);
-  font-size:12px;
-  line-height:1.6;
-}
-.product-bottom {
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:8px;
-  margin-top:15px;
-}
-.price {
-  color:var(--gold);
-  font-weight:bold;
-}
-.add-button {
-  background:transparent;
-  border:1px solid var(--gold);
-  color:var(--gold);
-  padding:9px 10px;
-  font-size:10px;
-  cursor:pointer;
-}
-.add-button:hover {
-  background:var(--gold);
-  color:#111;
-}
-.demo-note {
-  color:#aeb5ae;
-  font-size:11px;
-  text-align:center;
-  margin-top:25px;
-  line-height:1.6;
-}
-.no-results {
-  grid-column:1/-1;
-  padding:35px;
-  color:var(--silver);
-  text-align:center;
-}
-.seller {
-  background:#171d18;
-  text-align:center;
-}
-.seller h2 {
-  font-family:Georgia,serif;
-  font-size:42px;
-  font-weight:normal;
-}
-.seller p {
-  color:var(--silver);
-  max-width:600px;
-  margin:20px auto 28px;
-  line-height:1.8;
-  font-size:14px;
-}
-footer {
-  padding:35px 7%;
-  border-top:1px solid #353b37;
-  display:flex;
-  justify-content:space-between;
-  gap:20px;
-  flex-wrap:wrap;
-  color:var(--silver);
-  font-size:11px;
-}
-footer strong {color:var(--gold);letter-spacing:2px}
-.status {
-  position:fixed;
-  bottom:18px;
-  right:18px;
-  background:#173b2b;
-  border:1px solid var(--gold);
-  color:white;
-  padding:12px 18px;
-  font-size:12px;
-  z-index:30;
-  display:none;
-}
-@media(max-width:1050px) {
-  nav {gap:10px}
-  .products {grid-template-columns:repeat(2,minmax(0,1fr))}
-}
-@media(max-width:760px) {
-  header {flex-wrap:wrap;padding:15px 5%}
-  nav {order:3;width:100%;justify-content:center}
-  .header-actions {margin-left:auto}
-  .categories {grid-template-columns:repeat(2,1fr)}
-  .hero {min-height:480px;padding:65px 7%}
-  section {padding:55px 6%}
-}
-@media(max-width:460px) {
-  .products {grid-template-columns:1fr}
-  .market-select {max-width:145px}
-  .logo {font-size:24px}
-  .category {min-height:145px;font-size:19px}
-  .hero h1 {font-size:54px}
-}
+:root{--black:#090b0a;--green:#123b2d;--gold:#c6a45a;--silver:#c5c8c6;--white:#f5f4ef}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--black);color:var(--white);font-family:Arial,sans-serif}
+header{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;padding:20px 6%;border-bottom:1px solid #353b37;position:sticky;top:0;background:rgba(9,11,10,.98);z-index:10}
+.logo{color:var(--gold);font-size:27px;font-weight:bold;letter-spacing:4px}
+.logo small{display:block;color:var(--silver);font-size:9px;letter-spacing:3px;margin-top:5px}
+nav{display:flex;gap:20px;flex-wrap:wrap}
+nav a,.right a{color:var(--silver);text-decoration:none;font-size:11px;letter-spacing:1px}
+nav a:hover,.right a:hover{color:var(--gold)}
+.right{display:flex;gap:16px}
+.hero{min-height:510px;display:flex;align-items:center;padding:75px 9%;background:linear-gradient(90deg,rgba(5,9,7,.96),rgba(5,9,7,.35)),linear-gradient(135deg,#123b2d,#080b09 75%)}
+.hero-content{max-width:700px}
+.eyebrow{color:var(--gold);letter-spacing:5px;font-size:11px;margin-bottom:25px}
+h1{font-family:Georgia,serif;font-weight:normal;font-size:clamp(48px,8vw,94px);line-height:.98;letter-spacing:-3px}
+h1 span{color:var(--gold)}
+.hero p{color:var(--silver);line-height:1.8;font-size:15px;max-width:560px;margin:25px 0}
+.button{display:inline-block;padding:15px 25px;background:var(--gold);color:#111;text-decoration:none;font-size:11px;font-weight:bold;letter-spacing:2px}
+section{padding:65px 7%}
+.section-title{text-align:center;margin-bottom:35px}
+.section-title small{color:var(--gold);letter-spacing:4px;font-size:10px}
+.section-title h2{font-family:Georgia,serif;font-size:38px;font-weight:normal;margin-top:12px}
+.section-title p{color:var(--silver);font-size:13px;margin-top:12px;line-height:1.7}
+.directory{background:#10291f}
+.search-wrap{max-width:760px;margin:0 auto 30px}
+.search-wrap input{width:100%;padding:16px;background:#090f0c;border:1px solid #667568;color:white;font-size:15px;outline:none}
+.search-wrap input:focus{border-color:var(--gold)}
+.results-note{text-align:center;color:var(--silver);font-size:12px;margin:0 0 22px}
+.departments{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.department{background:#0b100d;border:1px solid #34453a;padding:22px;min-height:190px}
+.department h3{font-family:Georgia,serif;color:var(--gold);font-size:21px;font-weight:normal;margin-bottom:14px}
+.tags{display:flex;flex-wrap:wrap;gap:7px}
+.tag{background:#17251d;border:1px solid #405345;color:var(--silver);padding:7px 9px;font-size:11px;cursor:pointer}
+.tag:hover{border-color:var(--gold);color:var(--gold)}
+.department[hidden]{display:none}
+.no-results{display:none;text-align:center;color:var(--silver);padding:30px}
+.info{background:#0b100d}
+.info-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.info-card{padding:25px;border:1px solid #34453a;background:#101713}
+.info-card h3{font-family:Georgia,serif;color:var(--gold);font-size:21px;font-weight:normal;margin-bottom:12px}
+.info-card p{font-size:13px;line-height:1.8;color:var(--silver)}
+.seller{background:#171b18;text-align:center}
+.seller h2{font-family:Georgia,serif;font-size:40px;font-weight:normal}
+.seller p{color:var(--silver);max-width:650px;margin:20px auto 25px;line-height:1.8;font-size:14px}
+footer{padding:30px 7%;border-top:1px solid #353b37;display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap;color:var(--silver);font-size:11px}
+footer strong{color:var(--gold);letter-spacing:2px}
+@media(max-width:900px){.departments{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:650px){header{padding:16px 5%}nav{gap:12px}.departments,.info-grid{grid-template-columns:1fr}.hero{min-height:440px;padding:55px 7%}section{padding:48px 5%}.section-title h2{font-size:32px}}
 </style>
 </head>
-
 <body>
 
 <header>
-  <a href="#" style="text-decoration:none">
-    <div class="logo">HI
-      <small>HUMAN INTELLIGENCE</small>
-    </div>
-  </a>
-
+  <div class="logo">HI<small>HUMAN INTELLIGENCE</small></div>
   <nav>
-    <a href="#categories">CATEGORIES</a>
-    <a href="#catalogue">SHOP</a>
+    <a href="#departments">DEPARTMENTS</a>
+    <a href="#new-arrivals">NEW ARRIVALS</a>
+    <a href="#brands">BRANDS</a>
     <a href="#seller">SELL WITH US</a>
   </nav>
-
-  <div class="header-actions">
-    <select class="market-select" id="marketSelect"
-      aria-label="Choose shopping market">
-      <option value="EUR">🇪🇺 EUROPE · EUR €</option>
-      <option value="USD">🇺🇸 USA · USD $</option>
-      <option value="GBP">🇬🇧 GREAT BRITAIN · GBP £</option>
-      <option value="CAD">🇨🇦 CANADA · CAD $</option>
-      <option value="EUR">🌍 REST OF WORLD · EUR €</option>
-    </select>
-    <a href="#catalogue">BAG (<span id="bagCount">0</span>)</a>
+  <div class="right">
+    <a href="#search">SEARCH</a>
+    <a href="#seller">SELLER AREA</a>
   </div>
 </header>
 
 <main>
-
   <div class="hero">
     <div class="hero-content">
       <div class="eyebrow">HI HUMAN INTELLIGENCE PRESENTS</div>
       <h1>FASHION<br><span>WITHOUT</span><br>BORDERS.</h1>
-      <p>
-        Discover fashion from around the world.
-        Explore global brands, independent designers,
-        new collections and exceptional styles.
-      </p>
-      <a class="button" href="#catalogue">DISCOVER THE COLLECTION</a>
+      <p>One global destination for clothing, shoes, accessories and exceptional products from brands, boutiques and independent designers around the world.</p>
+      <a class="button" href="#departments">EXPLORE ALL DEPARTMENTS</a>
     </div>
   </div>
 
-  <section id="categories">
+  <section class="directory" id="departments">
     <div class="section-title">
-      <small>EXPLORE THE WORLD</small>
-      <h2>Find Your Style</h2>
-      <p>Fashion from every corner of the world.</p>
+      <small>THE WORLD OF HI FASHION</small>
+      <h2>Explore 25 Departments</h2>
+      <p>Discover new fashion, accessories and lifestyle collections from around the world.</p>
     </div>
 
-    <div class="categories">
-      <a class="category" href="#catalogue" data-category="Women">WOMEN</a>
-      <a class="category" href="#catalogue" data-category="Men">MEN</a>
-      <a class="category" href="#catalogue" data-category="Shoes">SHOES</a>
-      <a class="category" href="#catalogue" data-category="Accessories">BAGS & ACCESSORIES</a>
+    <div class="search-wrap" id="search">
+      <input id="departmentSearch" type="search" placeholder="Search products, accessories or departments..." aria-label="Search departments">
     </div>
+    <div class="results-note" id="resultsNote">25 departments · Select any subcategory to explore</div>
+
+    <div class="departments" id="departmentGrid">
+
+      <article class="department">
+        <h3>01. Women's Fashion</h3>
+        <div class="tags"><button class="tag">Dresses</button><button class="tag">Tops</button><button class="tag">Blouses</button><button class="tag">Jeans</button><button class="tag">Trousers</button><button class="tag">Skirts</button><button class="tag">Coats</button><button class="tag">Jackets</button><button class="tag">Knitwear</button><button class="tag">Suits</button><button class="tag">Activewear</button><button class="tag">Loungewear</button></div>
+      </article>
+
+      <article class="department">
+        <h3>02. Men's Fashion</h3>
+        <div class="tags"><button class="tag">Shirts</button><button class="tag">T-Shirts</button><button class="tag">Polo Shirts</button><button class="tag">Jeans</button><button class="tag">Trousers</button><button class="tag">Suits</button><button class="tag">Blazers</button><button class="tag">Jackets</button><button class="tag">Coats</button><button class="tag">Knitwear</button><button class="tag">Sportswear</button><button class="tag">Loungewear</button></div>
+      </article>
+
+      <article class="department">
+        <h3>03. Kids & Baby</h3>
+        <div class="tags"><button class="tag">Baby Clothes</button><button class="tag">Girls' Clothing</button><button class="tag">Boys' Clothing</button><button class="tag">Schoolwear</button><button class="tag">Kids' Shoes</button><button class="tag">Baby Accessories</button><button class="tag">Outerwear</button></div>
+      </article>
+
+      <article class="department">
+        <h3>04. Luxury & Designer</h3>
+        <div class="tags"><button class="tag">Designer Clothing</button><button class="tag">Luxury Bags</button><button class="tag">Designer Shoes</button><button class="tag">Luxury Accessories</button><button class="tag">Premium Collections</button></div>
+      </article>
+
+      <article class="department">
+        <h3>05. Sneakers</h3>
+        <div class="tags"><button class="tag">Lifestyle Sneakers</button><button class="tag">Running Sneakers</button><button class="tag">High Tops</button><button class="tag">Low Tops</button><button class="tag">Classic Sneakers</button><button class="tag">Limited Collections</button></div>
+      </article>
+
+      <article class="department">
+        <h3>06. Shoes & Boots</h3>
+        <div class="tags"><button class="tag">Heels</button><button class="tag">Flats</button><button class="tag">Loafers</button><button class="tag">Boots</button><button class="tag">Ankle Boots</button><button class="tag">Sandals</button><button class="tag">Slippers</button><button class="tag">Formal Shoes</button></div>
+      </article>
+
+      <article class="department">
+        <h3>07. Sports & Performance Footwear</h3>
+        <div class="tags"><button class="tag">Running Shoes</button><button class="tag">Training Shoes</button><button class="tag">Hiking Shoes</button><button class="tag">Football Boots</button><button class="tag">Basketball Shoes</button><button class="tag">Walking Shoes</button></div>
+      </article>
+
+      <article class="department">
+        <h3>08. Bags & Handbags</h3>
+        <div class="tags"><button class="tag">Handbags</button><button class="tag">Shoulder Bags</button><button class="tag">Crossbody Bags</button><button class="tag">Tote Bags</button><button class="tag">Clutches</button><button class="tag">Backpacks</button><button class="tag">Mini Bags</button><button class="tag">Evening Bags</button><button class="tag">Laptop Bags</button><button class="tag">Wallets</button><button class="tag">Card Holders</button></div>
+      </article>
+
+      <article class="department">
+        <h3>09. Jewellery</h3>
+        <div class="tags"><button class="tag">Necklaces</button><button class="tag">Earrings</button><button class="tag">Rings</button><button class="tag">Bracelets</button><button class="tag">Bangles</button><button class="tag">Anklets</button><button class="tag">Pendants</button><button class="tag">Brooches</button><button class="tag">Men's Jewellery</button><button class="tag">Jewellery Sets</button></div>
+      </article>
+
+      <article class="department">
+        <h3>10. Watches</h3>
+        <div class="tags"><button class="tag">Men's Watches</button><button class="tag">Women's Watches</button><button class="tag">Smartwatches</button><button class="tag">Sports Watches</button><button class="tag">Luxury Watches</button><button class="tag">Watch Straps</button><button class="tag">Watch Boxes</button></div>
+      </article>
+
+      <article class="department">
+        <h3>11. Eyewear</h3>
+        <div class="tags"><button class="tag">Sunglasses</button><button class="tag">Optical Frames</button><button class="tag">Reading Glasses</button><button class="tag">Blue Light Glasses</button><button class="tag">Eyewear Cases</button><button class="tag">Glasses Chains</button></div>
+      </article>
+
+      <article class="department">
+        <h3>12. Belts & Leather Goods</h3>
+        <div class="tags"><button class="tag">Leather Belts</button><button class="tag">Fashion Belts</button><button class="tag">Chain Belts</button><button class="tag">Suspenders</button><button class="tag">Leather Wallets</button><button class="tag">Card Holders</button><button class="tag">Key Holders</button></div>
+      </article>
+
+      <article class="department">
+        <h3>13. Hats & Headwear</h3>
+        <div class="tags"><button class="tag">Baseball Caps</button><button class="tag">Beanies</button><button class="tag">Bucket Hats</button><button class="tag">Fedora Hats</button><button class="tag">Berets</button><button class="tag">Sun Hats</button><button class="tag">Visors</button></div>
+      </article>
+
+      <article class="department">
+        <h3>14. Scarves & Wraps</h3>
+        <div class="tags"><button class="tag">Silk Scarves</button><button class="tag">Wool Scarves</button><button class="tag">Shawls</button><button class="tag">Pashminas</button><button class="tag">Wraps</button><button class="tag">Bandanas</button><button class="tag">Neckerchiefs</button></div>
+      </article>
+
+      <article class="department">
+        <h3>15. Hair Accessories</h3>
+        <div class="tags"><button class="tag">Hair Clips</button><button class="tag">Claw Clips</button><button class="tag">Headbands</button><button class="tag">Scrunchies</button><button class="tag">Hair Pins</button><button class="tag">Hair Bands</button><button class="tag">Hair Bows</button></div>
+      </article>
+
+      <article class="department">
+        <h3>16. Gloves & Cold Weather</h3>
+        <div class="tags"><button class="tag">Leather Gloves</button><button class="tag">Winter Gloves</button><button class="tag">Touchscreen Gloves</button><button class="tag">Mittens</button><button class="tag">Thermal Accessories</button></div>
+      </article>
+
+      <article class="department">
+        <h3>17. Formal Accessories</h3>
+        <div class="tags"><button class="tag">Ties</button><button class="tag">Bow Ties</button><button class="tag">Cufflinks</button><button class="tag">Pocket Squares</button><button class="tag">Tie Clips</button><button class="tag">Lapel Pins</button></div>
+      </article>
+
+      <article class="department">
+        <h3>18. Sportswear & Fitness</h3>
+        <div class="tags"><button class="tag">Leggings</button><button class="tag">Sports Bras</button><button class="tag">Gym Tops</button><button class="tag">Training Shorts</button><button class="tag">Tracksuits</button><button class="tag">Yoga Clothing</button><button class="tag">Sports Accessories</button></div>
+      </article>
+
+      <article class="department">
+        <h3>19. Travel & Luggage</h3>
+        <div class="tags"><button class="tag">Suitcases</button><button class="tag">Travel Bags</button><button class="tag">Duffel Bags</button><button class="tag">Passport Covers</button><button class="tag">Luggage Tags</button><button class="tag">Packing Cubes</button><button class="tag">Travel Organisers</button></div>
+      </article>
+
+      <article class="department">
+        <h3>20. Beauty & Personal Accessories</h3>
+        <div class="tags"><button class="tag">Makeup Bags</button><button class="tag">Cosmetic Cases</button><button class="tag">Makeup Brushes</button><button class="tag">Mirrors</button><button class="tag">Beauty Organisers</button><button class="tag">Manicure Accessories</button></div>
+      </article>
+
+      <article class="department">
+        <h3>21. Tech Fashion Accessories</h3>
+        <div class="tags"><button class="tag">Phone Cases</button><button class="tag">Phone Straps</button><button class="tag">Smartwatch Straps</button><button class="tag">Laptop Sleeves</button><button class="tag">Earbud Cases</button><button class="tag">Tech Pouches</button></div>
+      </article>
+
+      <article class="department">
+        <h3>22. Wedding & Special Occasions</h3>
+        <div class="tags"><button class="tag">Bridal Accessories</button><button class="tag">Wedding Shoes</button><button class="tag">Veils</button><button class="tag">Fascinators</button><button class="tag">Evening Bags</button><button class="tag">Formal Jewellery</button></div>
+      </article>
+
+      <article class="department">
+        <h3>23. Underwear & Hosiery</h3>
+        <div class="tags"><button class="tag">Underwear</button><button class="tag">Bras</button><button class="tag">Lingerie</button><button class="tag">Socks</button><button class="tag">Tights</button><button class="tag">Stockings</button><button class="tag">Thermal Wear</button></div>
+      </article>
+
+      <article class="department">
+        <h3>24. Pet Fashion</h3>
+        <div class="tags"><button class="tag">Pet Coats</button><button class="tag">Pet Bandanas</button><button class="tag">Collars</button><button class="tag">Leashes</button><button class="tag">Harnesses</button><button class="tag">Pet Accessories</button></div>
+      </article>
+
+      <article class="department">
+        <h3>25. Fashion Gifts & Seasonal</h3>
+        <div class="tags"><button class="tag">Gift Sets</button><button class="tag">Fashion Gifts</button><button class="tag">Accessory Sets</button><button class="tag">Summer Collections</button><button class="tag">Winter Collections</button><button class="tag">Holiday Collections</button><button class="tag">Limited Editions</button></div>
+      </article>
+
+    </div>
+    <div class="no-results" id="noResults">No matching department or product category found.</div>
   </section>
 
-  <section class="catalogue" id="catalogue">
+  <section class="info" id="new-arrivals">
     <div class="section-title">
-      <small>THE HI FASHION EDIT</small>
-      <h2>Discover the Collection</h2>
-      <p>New fashion. Global style. Endless possibilities.</p>
+      <small>WHAT'S NEW</small>
+      <h2>New Arrivals</h2>
+      <p>Fresh collections and new products from independent sellers and established brands.</p>
     </div>
-
-    <div class="catalogue-tools">
-      <input class="search" id="searchInput"
-        type="search" placeholder="Search fashion products..."
-        aria-label="Search products">
-
-      <div class="filters">
-        <button class="filter active" data-filter="All">ALL</button>
-        <button class="filter" data-filter="Women">WOMEN</button>
-        <button class="filter" data-filter="Men">MEN</button>
-        <button class="filter" data-filter="Shoes">SHOES</button>
-        <button class="filter" data-filter="Accessories">ACCESSORIES</button>
-      </div>
+    <div class="info-grid">
+      <div class="info-card"><h3>New Collections</h3><p>Discover the latest clothing, footwear, bags and accessories.</p></div>
+      <div class="info-card" id="brands"><h3>Global Brands</h3><p>Explore products from participating brands, boutiques and authorised retailers.</p></div>
+      <div class="info-card"><h3>Independent Designers</h3><p>Find original products and new creative businesses from around the world.</p></div>
     </div>
-
-    <div class="products" id="productGrid">
-
-      <article class="product" data-category="Women" data-name="premium t shirt">
-        <div class="product-art">ESSENTIAL<br>COLLECTION</div>
-        <div class="product-info">
-          <small>WOMEN · NEW</small>
-          <h3>Premium T-Shirt</h3>
-          <p>Minimalist everyday fashion.</p>
-          <div class="product-bottom">
-            <span class="price" data-eur="35">€35.00</span>
-            <button class="add-button">ADD TO BAG</button>
-          </div>
-        </div>
-      </article>
-
-      <article class="product" data-category="Shoes" data-name="classic sneakers">
-        <div class="product-art">URBAN<br>MOVEMENT</div>
-        <div class="product-info">
-          <small>FOOTWEAR · NEW</small>
-          <h3>Classic Sneakers</h3>
-          <p>Everyday casual footwear.</p>
-          <div class="product-bottom">
-            <span class="price" data-eur="89">€89.00</span>
-            <button class="add-button">ADD TO BAG</button>
-          </div>
-        </div>
-      </article>
-
-      <article class="product" data-category="Accessories" data-name="shoulder handbag">
-        <div class="product-art">TIMELESS<br>ACCESSORIES</div>
-        <div class="product-info">
-          <small>ACCESSORIES · NEW</small>
-          <h3>Shoulder Handbag</h3>
-          <p>Modern everyday elegance.</p>
-          <div class="product-bottom">
-            <span class="price" data-eur="95">€95.00</span>
-            <button class="add-button">ADD TO BAG</button>
-          </div>
-        </div>
-      </article>
-
-      <article class="product" data-category="Women" data-name="activewear set">
-        <div class="product-art">ACTIVE<br>COLLECTION</div>
-        <div class="product-info">
-          <small>SPORT · NEW</small>
-          <h3>Activewear Set</h3>
-          <p>Comfort and movement.</p>
-          <div class="product-bottom">
-            <span class="price" data-eur="59">€59.00</span>
-            <button class="add-button">ADD TO BAG</button>
-          </div>
-        </div>
-      </article>
-
-      <article class="product" data-category="Men" data-name="modern polo shirt">
-        <div class="product-art">MODERN<br>ESSENTIALS</div>
-        <div class="product-info">
-          <small>MEN · NEW</small>
-          <h3>Modern Polo Shirt</h3>
-          <p>Contemporary everyday style.</p>
-          <div class="product-bottom">
-            <span class="price" data-eur="45">€45.00</span>
-            <button class="add-button">ADD TO BAG</button>
-          </div>
-        </div>
-      </article>
-
-      <article class="product" data-category="Men" data-name="premium hoodie">
-        <div class="product-art">URBAN<br>STYLE</div>
-        <div class="product-info">
-          <small>MEN · NEW</small>
-          <h3>Premium Hoodie</h3>
-          <p>Comfortable modern streetwear.</p>
-          <div class="product-bottom">
-            <span class="price" data-eur="69">€69.00</span>
-            <button class="add-button">ADD TO BAG</button>
-          </div>
-        </div>
-      </article>
-
-      <article class="product" data-category="Women" data-name="elegant dress">
-        <div class="product-art">ELEGANCE<br>COLLECTION</div>
-        <div class="product-info">
-          <small>WOMEN · NEW</small>
-          <h3>Elegant Dress</h3>
-          <p>Contemporary occasion wear.</p>
-          <div class="product-bottom">
-            <span class="price" data-eur="119">€119.00</span>
-            <button class="add-button">ADD TO BAG</button>
-          </div>
-        </div>
-      </article>
-
-      <article class="product" data-category="Accessories" data-name="leather belt">
-        <div class="product-art">REFINED<br>DETAILS</div>
-        <div class="product-info">
-          <small>ACCESSORIES · NEW</small>
-          <h3>Leather Belt</h3>
-          <p>A timeless wardrobe accessory.</p>
-          <div class="product-bottom">
-            <span class="price" data-eur="39">€39.00</span>
-            <button class="add-button">ADD TO BAG</button>
-          </div>
-        </div>
-      </article>
-
-    </div>
-
-    <p class="demo-note">
-      Demonstration catalogue only. These sample products and prices
-      are not actual offers or confirmed seller inventory.
-    </p>
   </section>
 
   <section class="seller" id="seller">
-    <small style="color:#c6a45a;letter-spacing:4px">
-      BECOME PART OF HI FASHION
-    </small>
+    <small style="color:#c6a45a;letter-spacing:4px">BECOME PART OF HI FASHION</small>
     <h2>Sell With Us</h2>
-    <p>
-      Are you a fashion brand, boutique, independent designer
-      or manufacturer? Bring your collection to our global
-      fashion community.
-    </p>
-    <a class="button" href="mailto:YOUR-EMAIL@example.com?subject=HI%20FASHION%20Seller%20Enquiry">
-      BECOME A SELLER
-    </a>
+    <p>Are you a fashion brand, manufacturer, boutique, independent designer or authorised retailer? We are preparing a global seller community for new fashion and accessories.</p>
+    <p><strong style="color:#c6a45a">Seller registration is coming soon.</strong></p>
   </section>
-
 </main>
 
 <footer>
@@ -564,131 +252,38 @@ footer strong {color:var(--gold);letter-spacing:2px}
   <div>© 2026 HI HUMAN INTELLIGENCE</div>
 </footer>
 
-<div class="status" id="statusMessage"></div>
-
 <script>
-// Demonstration exchange rates only.
-// Replace with a live exchange-rate service before commercial launch.
-const rates = {
-  EUR:1,
-  USD:1.08,
-  GBP:0.84,
-  CAD:1.48
-};
+const searchInput = document.getElementById("departmentSearch");
+const departments = [...document.querySelectorAll(".department")];
+const resultsNote = document.getElementById("resultsNote");
+const noResults = document.getElementById("noResults");
 
-const symbols = {
-  EUR:"€",
-  USD:"$",
-  GBP:"£",
-  CAD:"CA$"
-};
-
-const marketSelect = document.getElementById("marketSelect");
-const bagCount = document.getElementById("bagCount");
-const statusMessage = document.getElementById("statusMessage");
-
-let bagItems = 0;
-let activeCategory = "All";
-
-function updatePrices() {
-  const currency = marketSelect.value;
-  const rate = rates[currency];
-
-  document.querySelectorAll(".price").forEach(price => {
-    const euroPrice = Number(price.dataset.eur);
-    const converted = euroPrice * rate;
-
-    price.textContent =
-      symbols[currency] + converted.toFixed(2);
-  });
-}
-
-marketSelect.addEventListener("change", updatePrices);
-
-document.querySelectorAll(".add-button").forEach(button => {
-  button.addEventListener("click", () => {
-    bagItems++;
-    bagCount.textContent = bagItems;
-
-    statusMessage.textContent =
-      "Demonstration: item added to shopping bag.";
-
-    statusMessage.style.display = "block";
-
-    setTimeout(() => {
-      statusMessage.style.display = "none";
-    }, 2500);
-  });
-});
-
-function filterProducts() {
-  const search = document.getElementById("searchInput")
-    .value.toLowerCase();
-
+function filterDepartments() {
+  const query = searchInput.value.trim().toLowerCase();
   let visible = 0;
 
-  document.querySelectorAll(".product").forEach(product => {
-    const category = product.dataset.category;
-    const name = product.dataset.name;
-
-    const categoryMatch =
-      activeCategory === "All" || category === activeCategory;
-
-    const searchMatch = name.includes(search);
-
-    const show = categoryMatch && searchMatch;
-
-    product.style.display = show ? "" : "none";
-
-    if (show) visible++;
+  departments.forEach(department => {
+    const matches = department.textContent.toLowerCase().includes(query);
+    department.hidden = !matches;
+    if (matches) visible++;
   });
 
-  let noResults = document.getElementById("noResults");
+  resultsNote.textContent = query
+    ? `${visible} matching department${visible === 1 ? "" : "s"} found`
+    : "25 departments · Select any subcategory to explore";
 
-  if (!visible && !noResults) {
-    noResults = document.createElement("div");
-    noResults.id = "noResults";
-    noResults.className = "no-results";
-    noResults.textContent = "No matching products found.";
-    document.getElementById("productGrid").appendChild(noResults);
-  } else if (visible && noResults) {
-    noResults.remove();
-  }
+  noResults.style.display = visible === 0 ? "block" : "none";
 }
 
-document.querySelectorAll(".filter").forEach(button => {
-  button.addEventListener("click", () => {
-    document.querySelectorAll(".filter").forEach(item =>
-      item.classList.remove("active")
-    );
+searchInput.addEventListener("input", filterDepartments);
 
-    button.classList.add("active");
-    activeCategory = button.dataset.filter;
-    filterProducts();
+document.querySelectorAll(".tag").forEach(tag => {
+  tag.addEventListener("click", () => {
+    searchInput.value = tag.textContent;
+    filterDepartments();
+    document.getElementById("departments").scrollIntoView({behavior:"smooth"});
   });
 });
-
-document.getElementById("searchInput")
-  .addEventListener("input", filterProducts);
-
-document.querySelectorAll(".category[data-category]")
-  .forEach(link => {
-    link.addEventListener("click", () => {
-      activeCategory = link.dataset.category;
-
-      document.querySelectorAll(".filter").forEach(button => {
-        button.classList.toggle(
-          "active",
-          button.dataset.filter === activeCategory
-        );
-      });
-
-      filterProducts();
-    });
-  });
-
-updatePrices();
 </script>
-
 </body>
 </html>
