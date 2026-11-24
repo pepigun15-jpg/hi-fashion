@@ -1,15 +1,13 @@
-// Public browser configuration only. The Supabase publishable/anon key is designed for browser use
-// when Row Level Security is enabled. NEVER put service_role, Supabase secret, Stripe secret,
-// Stripe webhook secret, Resend API key, or gift-card encryption key in this file.
+// Public browser configuration only. Never place service_role, Stripe secret,
+// webhook secret, Resend API key or gift-card encryption key in this file.
 window.HI_FASHION_SUPABASE_CONFIG = {
   url: "",
   anonKey: ""
 };
 
-// Checkout and seller Connect Edge Function URLs are derived from the Supabase project URL.
-// Real checkout remains disabled server-side until all account, shipping, tax and Stripe checks pass.
+const hiFashionSupabaseUrl = String(window.HI_FASHION_SUPABASE_CONFIG.url || "").replace(/\/+$/, "");
 window.HI_FASHION_COMMERCE = {
-  checkoutEndpoint: window.HI_FASHION_SUPABASE_CONFIG.url
-    ? window.HI_FASHION_SUPABASE_CONFIG.url.replace(/\\/$/, "") + "/functions/v1/create-checkout-session"
+  checkoutEndpoint: hiFashionSupabaseUrl
+    ? hiFashionSupabaseUrl + "/functions/v1/create-checkout-session"
     : ""
 };
