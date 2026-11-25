@@ -25,7 +25,7 @@
         "individual advertiser programme approval",
         "feed access"
       ],
-      "adapter_status": "Existing HI FASHION feed importer / API search code; credentials and approvals not connected"
+      "adapter_status": "Existing HI FASHION authorised CSV/TSV feed importer; credentials and advertiser approvals not connected"
     },
     {
       "id": "cj",
@@ -47,7 +47,7 @@
         "advertiser relationship",
         "API credentials/feed access"
       ],
-      "adapter_status": "Network-specific API/feed adapter or approved tracking-link implementation required; not connected"
+      "adapter_status": "Existing HI FASHION CJ Product Feed API search and CSV/TSV importer; credentials and advertiser approvals not connected"
     },
     {
       "id": "ebay",
@@ -70,7 +70,7 @@
         "production Browse API access",
         "campaign ID"
       ],
-      "adapter_status": "Network-specific API/feed adapter or approved tracking-link implementation required; not connected"
+      "adapter_status": "Existing HI FASHION Browse API adapter; production credentials and approved EPN campaign not connected"
     },
     {
       "id": "rakuten",
@@ -92,7 +92,7 @@
         "advertiser partnership",
         "product catalog access"
       ],
-      "adapter_status": "Network-specific API/feed adapter or approved tracking-link implementation required; not connected"
+      "adapter_status": "Generic HTTPS CSV/TSV importer added; use only if the approved network/advertiser supplies a compatible feed; not connected"
     },
     {
       "id": "impact",
@@ -274,7 +274,7 @@
         "API eligibility",
         "country-specific compliance"
       ],
-      "adapter_status": "Network-specific API/feed adapter or approved tracking-link implementation required; not connected"
+      "adapter_status": "Dedicated Creators API adapter required; not connected"
     },
     {
       "id": "direct-merchant",
