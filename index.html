@@ -3247,8 +3247,8 @@ main{display:block!important;width:100%!important}
   </div>
 </div>
 
-<header class="hf-premium-header">
-  <a class="logo" href="#" aria-label="HI FASHION home">
+<header class="hf-premium-header" id="top">
+  <a class="logo" href="#top" aria-label="HI FASHION home">
     <svg class="hf-diamond-mark" viewBox="0 0 64 48" aria-hidden="true"><path d="M8 10 18 3h28l10 7-24 34L8 10Z"/><path d="M8 10h48M18 3l8 7 6 34 6-34 8-7M18 3l8 7M46 3l-8 7" /></svg>
     <span class="logo-title">HI FASHION</span>
     <small>GLOBAL STYLE MARKETPLACE</small>
@@ -6535,11 +6535,7 @@ document.querySelectorAll(".season-card [data-season-choice]").forEach(button =>
   });
 });
 document.querySelectorAll(".season-chip").forEach(button => {
-  button.addEventListener("click", () => {
-    searchInput.value = button.dataset.search || button.textContent.trim();
-    filterDepartments();
-    document.getElementById("departments").scrollIntoView({behavior:"smooth"});
-  });
+  button.addEventListener("click", () => launchGlobalProductSearch(button.dataset.search || button.textContent.trim()));
 });
 
 
@@ -6654,13 +6650,23 @@ document.getElementById("saveDestination").addEventListener("click", () => {
 });
 
 
+function launchGlobalProductSearch(term) {
+  const query = String(term || "").trim();
+  if (!query) return;
+  searchInput.value = hfPageTranslations[hfActiveLanguage]?.[query] || query;
+  filterDepartments();
+  const results = document.getElementById("multiMarketSearchResults");
+  if (results && !results.hidden) {
+    results.scrollIntoView({behavior:"smooth", block:"start"});
+  } else {
+    document.getElementById("departments").scrollIntoView({behavior:"smooth", block:"start"});
+  }
+}
 document.querySelectorAll(".trend-trigger").forEach(button => {
-  button.addEventListener("click", () => {
-    const searchTerm = button.dataset.search || "";
-    searchInput.value = hfPageTranslations[hfActiveLanguage]?.[searchTerm] || searchTerm;
-    filterDepartments();
-    document.getElementById("departments").scrollIntoView({behavior:"smooth"});
-  });
+  button.addEventListener("click", () => launchGlobalProductSearch(button.dataset.search || ""));
+});
+document.querySelectorAll(".hf-category-card").forEach(button => {
+  button.addEventListener("click", () => launchGlobalProductSearch(button.dataset.hfQuickQuery || button.textContent.trim()));
 });
 
 const sellerForm = document.getElementById("sellerInterestForm");
@@ -6686,11 +6692,7 @@ sellerForm.addEventListener("submit", function(event) {
 
 
 document.querySelectorAll(".tag").forEach(tag => {
-  tag.addEventListener("click", () => {
-    searchInput.value = tag.textContent;
-    filterDepartments();
-    document.getElementById("departments").scrollIntoView({behavior:"smooth"});
-  });
+  tag.addEventListener("click", () => launchGlobalProductSearch(tag.textContent.trim()));
 });
 
 // Initialise seasonal display only after season controls have been defined.
