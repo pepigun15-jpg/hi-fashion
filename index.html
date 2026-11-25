@@ -185,7 +185,7 @@ var HF_LANG_CODES=['en','bg','de','fr','it','es'];
 function setLang(i){document.querySelectorAll('[data-i]').forEach(function(e){var v=T[e.dataset.i];if(v)e.textContent=v[i]});document.documentElement.lang=HF_LANG_CODES[Number(i)]||'en';document.getElementById('lang').value=i}
 function saveLang(i){setLang(i);try{localStorage.setItem('hf_lang',String(i));localStorage.setItem('hiFashionLanguage',HF_LANG_CODES[Number(i)]||'en')}catch(e){}}
 document.getElementById('lang').addEventListener('change',function(){saveLang(this.value)});
-try{var savedCode=localStorage.getItem('hiFashionLanguage');var codeIndex=HF_LANG_CODES.indexOf(savedCode);var sl=localStorage.getItem('hf_lang');if(codeIndex>=0)setLang(codeIndex);else if(sl)saveLang(sl)}catch(e){}
+try{var savedCode=localStorage.getItem('hiFashionLanguage');var codeIndex=HF_LANG_CODES.indexOf(savedCode);var savedLangIndex=localStorage.getItem('hf_lang');if(codeIndex>=0)setLang(codeIndex);else if(savedLangIndex)saveLang(savedLangIndex)}catch(e){}
 // Brand marks retain their direct live-catalogue search destinations.
 var SE={spring:['Spring','sp','Light layers, florals and fresh colour.'],summer:['Summer','su','Sun, beachwear and warm-weather essentials.'],autumn:['Autumn','au','Knitwear, tailoring and earthy tones.'],winter:['Winter','wi','Coats, boots and cold-weather essentials.']};
 var SC=['Women','Men','Baby','Kids','Pets','Shoes','Bags and Accessories','Jewellery','Outdoor Clothing'];
