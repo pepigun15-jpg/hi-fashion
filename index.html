@@ -176,7 +176,7 @@ document.body.classList.add("cp");
 document.getElementById("cpin").innerHTML='<div class="crumbs"><a href="#">Home</a> / '+c[0]+'</div><h1>'+c[0]+'</h1><div class="rule"><svg viewBox="0 0 26 20"><path d="M7 2h12l6 6-12 11L1 8z"/><path d="M1 8h24"/></svg></div><p class="sub">'+c[1]+'</p>'+
 '<div class="lbl">Shop by type</div><div class="chips">'+chips(["All"].concat(c[2]),1)+'</div>'+
 '<div class="lbl">Market of origin</div><div class="chips">'+chips(M,1)+'</div>'+
-'<div class="empty"><h2>Search real products and current prices</h2><p>Open the live catalogue to search connected HI FASHION listings, approved retailer feeds, CJ Affiliate and eBay offers. Results appear only when a source returns real product data.</p><a class="cta" href="marketplace.html?search='+encodeURIComponent(c[0])+'#global-catalogue">SEARCH LIVE PRODUCTS & PRICES<i class="ch"></i></a><a class="cta" href="marketplace.html#seller">Sell with us<i class="ch"></i></a></div>''+
+'<div class="empty"><h2>Search real products and current prices</h2><p>Open the live catalogue to search connected HI FASHION listings, approved retailer feeds, CJ Affiliate and eBay offers. Results appear only when a source returns real product data.</p><a class="cta" href="marketplace.html?search='+encodeURIComponent(c[0])+'#global-catalogue">SEARCH LIVE PRODUCTS & PRICES<i class="ch"></i></a><a class="cta" href="marketplace.html#seller">Sell with us<i class="ch"></i></a></div>'+
 '<div class="lbl">More collections</div><div class="chips">'+K.filter(function(x){return x!=k}).map(function(x){return '<a class="tab sm" href="#'+x+'">'+C[x][0]+'</a>'}).join("")+'</div>';
 window.scrollTo(0,0)}
 document.addEventListener("click",function(e){var t=e.target.closest("#cpin button.tab");if(!t)return;t.parentNode.querySelectorAll(".tab").forEach(function(x){x.classList.remove("on")});t.classList.add("on")});
@@ -243,15 +243,35 @@ document.querySelectorAll('.tab').forEach(function(t){t.addEventListener('click'
     if(!q)return;
     window.location.href="marketplace.html?search="+encodeURIComponent(q)+"#global-catalogue";
   }
+  function goToSection(hash){
+    var routes={
+      "#sell-with-us":"marketplace.html#seller",
+      "#seller":"marketplace.html#seller",
+      "#delivery-location":"marketplace.html#store-network",
+      "#store-network":"marketplace.html#store-network",
+      "#global-catalogue":"marketplace.html#global-catalogue",
+      "#catalogue":"marketplace.html#global-catalogue",
+      "#global-brands":"marketplace.html#brands",
+      "#brands":"marketplace.html#brands",
+      "#new-arrivals":"marketplace.html#new-arrivals",
+      "#gift-cards":"marketplace.html#gift-cards",
+      "#seasons":"marketplace.html#seasonal-shop",
+      "#seasonal-shop":"marketplace.html#seasonal-shop",
+      "#all-categories":"marketplace.html#departments"
+    };
+    return routes[hash]||null;
+  }
   document.addEventListener("click",function(event){
     var link=event.target.closest("a[href^='#']");
     if(link){
       var hash=link.getAttribute("href")||"";
+      if(hash==="#"||hash==="#top"||hash==="#home")return;
+      var section=goToSection(hash);
+      if(section){event.preventDefault();window.location.href=section;return;}
       if(hash.length>1){
         event.preventDefault();
         var label=(link.getAttribute("data-search")||link.textContent||hash.slice(1)).replace(/\s+/g," ").trim();
-        if(/^home$/i.test(label))return;
-        goToCatalogue(label);
+        if(label)goToCatalogue(label);
       }
       return;
     }
