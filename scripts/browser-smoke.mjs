@@ -9,6 +9,8 @@ page.on("pageerror", error => pageErrors.push(error.message));
 async function openHome() {
   await page.goto(base + "/index.html", { waitUntil: "domcontentloaded" });
   await page.waitForTimeout(150);
+  const chooser = page.locator("#languageModal");
+  if (await chooser.isVisible()) await page.locator('button[data-language-choice="en"]').click();
 }
 async function clickAndCheck(selector, expected) {
   await openHome();
