@@ -293,6 +293,164 @@
         "credentials"
       ],
       "adapter_status": "Generic Awin/CJ CSV importer cannot be assumed compatible with every provider"
+    },
+    {
+      "id": "commission-factory",
+      "name": "Commission Factory",
+      "url": "https://www.commissionfactory.com/",
+      "coverage": "Australia / APAC",
+      "verticals": [
+        "fashion",
+        "beauty",
+        "lifestyle",
+        "retail"
+      ],
+      "product_data": "Advertiser-dependent product feed/API; confirm access per programme",
+      "integration_status": "prospect_not_connected",
+      "approval_required": [
+        "publisher approval",
+        "advertiser approval",
+        "feed/API access"
+      ],
+      "adapter_status": "No HI FASHION adapter confirmed"
+    },
+    {
+      "id": "flexoffers",
+      "name": "FlexOffers",
+      "url": "https://www.flexoffers.com/",
+      "coverage": "US / international advertiser-dependent",
+      "verticals": [
+        "fashion",
+        "retail",
+        "lifestyle"
+      ],
+      "product_data": "Advertiser-dependent product data and links; confirm feed access",
+      "integration_status": "prospect_not_connected",
+      "approval_required": [
+        "publisher approval",
+        "advertiser approval",
+        "product data access"
+      ],
+      "adapter_status": "No HI FASHION adapter confirmed"
+    },
+    {
+      "id": "webgains",
+      "name": "Webgains",
+      "url": "https://www.webgains.com/",
+      "coverage": "Europe / international",
+      "verticals": [
+        "fashion",
+        "beauty",
+        "retail",
+        "lifestyle"
+      ],
+      "product_data": "Advertiser-dependent feeds and tracking links",
+      "integration_status": "prospect_not_connected",
+      "approval_required": [
+        "publisher approval",
+        "advertiser approval",
+        "feed access"
+      ],
+      "adapter_status": "No HI FASHION adapter confirmed"
+    },
+    {
+      "id": "adtraction",
+      "name": "Adtraction",
+      "url": "https://adtraction.com/",
+      "coverage": "Europe / Nordic markets",
+      "verticals": [
+        "fashion",
+        "beauty",
+        "retail",
+        "lifestyle"
+      ],
+      "product_data": "Advertiser-dependent product data and tracking links",
+      "integration_status": "prospect_not_connected",
+      "approval_required": [
+        "publisher approval",
+        "advertiser approval",
+        "feed access"
+      ],
+      "adapter_status": "No HI FASHION adapter confirmed"
+    },
+    {
+      "id": "linkconnector",
+      "name": "LinkConnector",
+      "url": "https://www.linkconnector.com/",
+      "coverage": "US / advertiser-dependent",
+      "verticals": [
+        "fashion",
+        "retail",
+        "lifestyle"
+      ],
+      "product_data": "Advertiser-dependent product feeds and deep links",
+      "integration_status": "prospect_not_connected",
+      "approval_required": [
+        "publisher approval",
+        "advertiser approval",
+        "feed access"
+      ],
+      "adapter_status": "No HI FASHION adapter confirmed"
+    },
+    {
+      "id": "shareasale",
+      "name": "ShareASale",
+      "url": "https://www.shareasale.com/",
+      "coverage": "US / international advertiser-dependent",
+      "verticals": [
+        "fashion",
+        "retail",
+        "home",
+        "lifestyle"
+      ],
+      "product_data": "Advertiser-dependent product data feeds and links",
+      "integration_status": "prospect_not_connected",
+      "approval_required": [
+        "publisher approval",
+        "advertiser approval",
+        "feed access"
+      ],
+      "adapter_status": "No HI FASHION adapter confirmed"
+    },
+    {
+      "id": "cpx-affiliate",
+      "name": "CPX Affiliate",
+      "url": "https://www.cpxaffiliate.com/en/affiliates",
+      "coverage": "GCC / Middle East advertiser-dependent",
+      "verticals": [
+        "fashion",
+        "beauty",
+        "retail",
+        "baby"
+      ],
+      "product_data": "Public advertiser discovery; verify product feed/API rights per programme",
+      "integration_status": "prospect_not_connected",
+      "approval_required": [
+        "publisher approval",
+        "individual programme approval",
+        "product data access"
+      ],
+      "adapter_status": "No HI FASHION adapter confirmed"
+    },
+    {
+      "id": "affiliate-com",
+      "name": "Affiliate.com",
+      "url": "https://affiliate.com/networks",
+      "coverage": "Multi-network aggregation, advertiser-dependent",
+      "verticals": [
+        "fashion",
+        "retail",
+        "lifestyle"
+      ],
+      "product_data": "Unified product-data aggregation for merchants that have approved the publisher",
+      "integration_status": "prospect_not_connected",
+      "approval_required": [
+        "publisher approval",
+        "underlying merchant approval",
+        "product data rights"
+      ],
+      "adapter_status": "No HI FASHION adapter confirmed"
     }
-  ]
+  ],
+  "expansion_note": "Expanded prospect coverage includes regional GCC discovery and additional US/EU/APAC affiliate networks. These are prospects only until approved and feed/API access is verified."
 }
