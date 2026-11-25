@@ -25,7 +25,7 @@ The catalogue should show live product offers only when the source provides a va
 | Awin advertisers | https://www.awin.com/ | Approved Awin publisher account, advertiser programme approval, product feed download URL/API access |
 | CJ Affiliate advertisers | https://www.cj.com/ and https://developers.cj.com/ | Active publisher account, advertiser approval where required, CJ Personal Access Token, Company ID, Publisher ID; product-feed API or authorised CSV feed |
 | eBay | https://partnernetwork.ebay.com/ and https://developer.ebay.com/api-docs/buy/browse/overview.html | eBay developer application credentials, production Browse API access, approved EPN campaign ID |
-| Amazon | https://affiliate-program.amazon.com/creatorsapi/docs/ | Associates approval for each target marketplace, qualifying sales/API eligibility, registered API credentials and compliant tracking |
+| Amazon | https://affiliate-program.amazon.com/creatorsapi/docs/ | Use the Creators API (PA-API 5 is deprecated). Register as an Associate for each target marketplace and obtain the matching marketplace Partner Tag plus Creators API credentials; country programmes are separate. |
 | FARFETCH | https://www.farfetch.com/pag1987.aspx | Affiliate application to affiliates@farfetch.com; approval and access to its daily product feeds |
 | MYTHERESA | https://www.mytheresa.com/gb/en/affiliates | Apply through CJ or Rakuten; approval and product-feed access |
 | NET-A-PORTER | https://www.net-a-porter.com/en-at/content/affiliates/ | Invitation-only affiliate approval and product feed access |
@@ -130,6 +130,14 @@ Priority network onboarding queue:
 | TradeDoubler | European and international advertisers | Candidate network; account, programme approval and feeds required |
 | TradeTracker | Regional European and international advertisers | Candidate network; account, advertiser approval and feeds required |
 | AvantLink | Outdoor, adventure, apparel and equipment retailers | Candidate network; advertiser approval and feeds required |
+| Commission Factory | Australia / APAC retail and fashion advertisers | Candidate network; merchant approval and feed/API access required |
+| FlexOffers | Broad US and international retail advertisers | Candidate network; merchant approval and product data access required |
+| Webgains | European and international retail advertisers | Candidate network; advertiser approval and feeds required |
+| Adtraction | European retail and fashion advertisers | Candidate network; advertiser approval and feeds required |
+| LinkConnector | US retail advertisers | Candidate network; advertiser approval and feed access required |
+| ShareASale | US retail and lifestyle advertisers | Candidate network; advertiser approval and product feed access required |
+| CPX Affiliate | GCC regional programmes; public directory currently lists 6thStreet, Namshi, Ounass and other advertisers | Candidate route for GCC merchant applications; verify programme eligibility, product-feed access and country restrictions |
+| Affiliate.com | Aggregation layer across multiple affiliate networks | Candidate product-data aggregation provider; each underlying advertiser must still approve the publisher and expose product data |
 | Sovrn Commerce / Skimlinks | Monetisation and merchant-link discovery where supported | Candidate route; confirm product-level data, terms, tracking and country coverage before treating as a catalogue feed |
 | Direct retailer APIs / partner portals | Merchants not available through networks | Individual written permission, API/feed documentation and access credentials required |
 
@@ -144,8 +152,16 @@ Research references for network onboarding:
 - TradeTracker: https://tradetracker.com/
 - AvantLink: https://www.avantlink.com/
 - eBay Partner Network: https://partnernetwork.ebay.com/
+- Commission Factory: https://www.commissionfactory.com/
+- FlexOffers: https://www.flexoffers.com/
+- Webgains: https://www.webgains.com/
+- Adtraction: https://adtraction.com/
+- LinkConnector: https://www.linkconnector.com/
+- ShareASale: https://www.shareasale.com/
+- CPX Affiliate: https://www.cpxaffiliate.com/en/affiliates
+- Affiliate.com product-data aggregation: https://affiliate.com/networks
 
-These network scale figures and public directories describe potential advertiser reach, not confirmed HI FASHION access.
+These network scale figures and public directories describe potential advertiser reach, not confirmed HI FASHION access. A network may offer product feeds, APIs, tracking links, or only reporting/monetisation tools depending on the programme; confirm product-level data availability before building a catalogue connector.
 
 ## Product verticals to include in the global catalogue
 
