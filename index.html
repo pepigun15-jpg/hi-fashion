@@ -262,16 +262,35 @@ document.querySelectorAll('.tab').forEach(function(t){t.addEventListener('click'
     return routes[hash]||null;
   }
   document.addEventListener("click",function(event){
-    var link=event.target.closest("a[href^='#']");
+    var link=event.target.closest("a[href]");
     if(link){
-      var hash=link.getAttribute("href")||"";
-      if(hash==="#"||hash==="#top"||hash==="#home")return;
-      var section=goToSection(hash);
-      if(section){event.preventDefault();window.location.href=section;return;}
-      if(hash.length>1){
+      var href=link.getAttribute("href")||"";
+      if(href==="#"||href==="#top"||href==="#home"){
+        if(link.classList.contains("logo")||link.getAttribute("data-i")==="home"||/^home$/i.test(link.textContent.trim()))return;
         event.preventDefault();
-        var label=(link.getAttribute("data-search")||link.textContent||hash.slice(1)).replace(/\s+/g," ").trim();
-        if(label)goToCatalogue(label);
+        if(link.classList.contains("go")){
+          var card=link.closest(".hf-reference-product");
+          var brand=card?.querySelector("small")?.textContent||"";
+          var product=card?.querySelector("h3")?.textContent||"";
+          goToCatalogue((brand+" "+product).trim());
+          return;
+        }
+        goToCatalogue(link.getAttribute("data-search")||link.textContent);
+        return;
+      }
+      if(href.startsWith("#")){
+        var section=goToSection(href);
+        if(section){event.preventDefault();window.location.href=section;return;}
+        if(href.startsWith("#season-")){
+          event.preventDefault();
+          goToCatalogue(href.slice("#season-".length));
+          return;
+        }
+        if(href.length>1){
+          event.preventDefault();
+          var label=(link.getAttribute("data-search")||link.textContent||href.slice(1)).replace(/\s+/g," ").trim();
+          if(label)goToCatalogue(label);
+        }
       }
       return;
     }
