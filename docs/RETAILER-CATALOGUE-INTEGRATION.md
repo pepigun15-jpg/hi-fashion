@@ -321,3 +321,16 @@ The following are product-data capabilities documented by the networks themselve
 ## Current live-data gate
 
 The storefront must not render a product offer unless it has a valid HTTPS affiliate destination, a numeric price and an explicit currency. Missing image data may use a neutral placeholder, but a missing price must never be replaced with an invented amount. This is especially relevant to CJ search: its documented Product Feed response fields do not guarantee a product image field in every feed/query. The current UI therefore uses a neutral placeholder when the partner does not supply an image.
+
+
+## Central retailer directory database
+
+Migration `202611250014_retailer_registry_seed.sql` creates `public.retailer_registry` and seeds the 174 unique retailer records from `data/retailer-registry.seed.json`. These records are deliberately marked `directory_only`, `not_applied_or_not_verified` and `not_connected`; they are discovery/relationship-management records, not product listings or confirmed affiliate partners.
+
+The catalogue database has separate responsibilities:
+- `retailer_registry`: retailer directory and relationship status.
+- `catalogue_sources`: approved feed/API source enablement and last-sync status.
+- `catalogue_products`: real product offers imported from active, permitted sources.
+- `catalogue_sync_runs` and `catalogue_feed_cursors`: private sync history and resumable feed checkpoints.
+
+The new migration `202611250013_additional_affiliate_feed_sources.sql` adds inactive source records for 13 additional affiliate networks. Both migrations must be applied to the Supabase project before these records become available through its database API.
