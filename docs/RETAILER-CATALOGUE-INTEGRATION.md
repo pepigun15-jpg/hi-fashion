@@ -296,3 +296,19 @@ All published scale figures are network claims and do not equal the number of pr
 ## Code-level corrections recorded 25 November 2026
 
 The four product-source functions `getLocalProducts`, `getNearbyProducts`, `getEbayProducts` and `getCjProducts` were declared async because they await Supabase/API operations. The homepage's category and season links now delegate to a live-catalogue search URL; the marketplace reads the `search` query parameter and starts a catalogue search. This is a source-code verification only; browser interaction tests remain outstanding.
+
+
+## Verified network capabilities (official documentation checked 25 November 2026)
+
+The following are product-data capabilities documented by the networks themselves. They do not remove the requirement to join the network and obtain each advertiser's approval:
+
+- **Awin:** its publisher Create-a-Feed tool describes access to around 200 million products in 20+ languages, with advertiser/category selection and unique feed URLs. Awin also documents a publisher API covering product feeds and programme data. Sources: https://www.awin.com/us/publishers/tools and https://www.awin.com/us/faqs
+- **CJ Affiliate:** its Product Feed API supports GraphQL product search, with product fields such as title, description, price/currency and publisher tracking link. CJ documents a Product Feed API and full-feed subscription queries. Sources: https://docs.cj.com/docs/productfeed-api-search and https://docs.cj.com/docs/productfeed-api-subscription-reference
+- **Rakuten Advertising:** the Publisher Developer Portal lists Product Search, Offers, Deep Links and other APIs. Product Catalog feeds are available for advertisers that offer the feature; publisher access and advertiser-level feed approval are required. Sources: https://pubhelp.rakutenadvertising.com/hc/en-us/articles/5949692220813-Developer-Portal-Overview and https://pubhelp.rakutenadvertising.com/hc/en-us/articles/4412243602189-Product-Catalog-Overview
+- **Impact.com:** partner product catalogs can be downloaded via FTP or API, but only for brands the publisher has joined and that provide catalogs. Sources: https://help.impact.com/partner/what-would-you-like-to-learn-about/platform-features/marketing-content/product-marketplace-and-catalogs/download-product-catalogs-as-a-partner and https://impact.com/Partners/
+- **Admitad:** its publisher tools include XML product feeds; advertiser/programme terms and feed availability still apply. Source: https://www.admitad.com/affiliates/
+- **eBay:** Browse API supports affiliate campaign identifiers in the X-EBAY-C-ENDUSERCTX header and contextual location to improve delivery estimates. Production API and EPN access are still required. Source: https://developer.ebay.com/api-docs/buy/static/api-browse.html
+
+## Current live-data gate
+
+The storefront must not render a product offer unless it has a valid HTTPS affiliate destination, a numeric price and an explicit currency. Missing image data may use a neutral placeholder, but a missing price must never be replaced with an invented amount. This is especially relevant to CJ search: its documented Product Feed response fields do not guarantee a product image field in every feed/query. The current UI therefore uses a neutral placeholder when the partner does not supply an image.
