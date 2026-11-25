@@ -7437,6 +7437,9 @@ applySeason(localStorage.getItem("hiFashionSeason") || "auto", false);
   byId("closeCart")?.addEventListener("click",function(){close(cartPanel,cartShade);});
   accountShade?.addEventListener("click",function(){close(accountPanel,accountShade);});
   cartShade?.addEventListener("click",function(){close(cartPanel,cartShade);});
+  const requestedPanel=new URLSearchParams(window.location.search).get("open");
+  if(requestedPanel==="account"&&accountButton)accountButton.click();
+  if(requestedPanel==="cart"&&cartButton)cartButton.click();
   document.addEventListener("keydown",function(event){
     if(event.key==="Escape"){close(accountPanel,accountShade);close(cartPanel,cartShade);}
   });
