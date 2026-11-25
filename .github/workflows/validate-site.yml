@@ -1,0 +1,23 @@
+name: Validate HI FASHION
+on:
+  push:
+    branches:
+      - feature/global-categories-location-seasons
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Validate site scripts, navigation, product price gates and partner registries
+        run: node scripts/validate-site.mjs
