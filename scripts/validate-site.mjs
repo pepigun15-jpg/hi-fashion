@@ -51,6 +51,8 @@ for (const route of ['"#sell-with-us":"marketplace.html#seller"', '"#delivery-lo
   if (!home.includes(route)) fail("homepage route missing: " + route);
 }
 if (!home.includes("SEARCH LIVE PRODUCTS & PRICES")) fail("homepage category route does not expose live product search");
+for (const fakePrice of ["€119.00", "€149.00", "€189.00", "€229.00"]) if (home.includes(fakePrice)) fail("illustrative homepage price remains: " + fakePrice);
+if (!home.includes("CHECK LIVE PRICE") || !home.includes('link.closest(".hf-reference-product")||link.closest(".card")')) fail("featured homepage offer cards are not routed to live catalogue search");
 
 const registry = JSON.parse(fs.readFileSync(path.join(root, "data/affiliate-network-registry.json"), "utf8"));
 if (!Array.isArray(registry.networks) || registry.networks.length < 10) fail("partner network prospect registry is incomplete");
