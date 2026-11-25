@@ -176,7 +176,7 @@ document.body.classList.add("cp");
 document.getElementById("cpin").innerHTML='<div class="crumbs"><a href="#">Home</a> / '+c[0]+'</div><h1>'+c[0]+'</h1><div class="rule"><svg viewBox="0 0 26 20"><path d="M7 2h12l6 6-12 11L1 8z"/><path d="M1 8h24"/></svg></div><p class="sub">'+c[1]+'</p>'+
 '<div class="lbl">Shop by type</div><div class="chips">'+chips(["All"].concat(c[2]),1)+'</div>'+
 '<div class="lbl">Market of origin</div><div class="chips">'+chips(M,1)+'</div>'+
-'<div class="empty"><h2>Verified listings will appear here</h2><p>HI FASHION only shows products, prices and delivery details that come from authorised retailer feeds, affiliate programmes or approved sellers. No sources are connected to this collection yet.</p><a class="cta" href="marketplace.html#seller">Sell with us<i class="ch"></i></a></div>'+
+'<div class="empty"><h2>Search real products and current prices</h2><p>Open the live catalogue to search connected HI FASHION listings, approved retailer feeds, CJ Affiliate and eBay offers. Results appear only when a source returns real product data.</p><a class="cta" href="marketplace.html?search='+encodeURIComponent(c[0])+'#global-catalogue">SEARCH LIVE PRODUCTS & PRICES<i class="ch"></i></a><a class="cta" href="marketplace.html#seller">Sell with us<i class="ch"></i></a></div>''+
 '<div class="lbl">More collections</div><div class="chips">'+K.filter(function(x){return x!=k}).map(function(x){return '<a class="tab sm" href="#'+x+'">'+C[x][0]+'</a>'}).join("")+'</div>';
 window.scrollTo(0,0)}
 document.addEventListener("click",function(e){var t=e.target.closest("#cpin button.tab");if(!t)return;t.parentNode.querySelectorAll(".tab").forEach(function(x){x.classList.remove("on")});t.classList.add("on")});
