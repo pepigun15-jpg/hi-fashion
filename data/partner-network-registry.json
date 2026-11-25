@@ -1,0 +1,209 @@
+{
+  "version": 1,
+  "updated": "2026-11-25",
+  "statusDefinitions": {
+    "prospect": "Research/application candidate; not connected",
+    "applied": "Application submitted; approval pending",
+    "approved": "Network or merchant approval confirmed; credentials/feed may still be pending",
+    "connected": "Credentials configured and successful product sync verified",
+    "paused": "Integration disabled or failing"
+  },
+  "networks": [
+    {
+      "name": "Awin",
+      "url": "https://www.awin.com/",
+      "status": "prospect",
+      "requirements": "Product feeds, publisher API; advertiser-specific approval"
+    },
+    {
+      "name": "CJ Affiliate",
+      "url": "https://www.cj.com/",
+      "status": "prospect",
+      "requirements": "Product Feed API/GraphQL, advertiser lookup and link APIs; publisher and advertiser approvals"
+    },
+    {
+      "name": "eBay Partner Network",
+      "url": "https://partnernetwork.ebay.com/",
+      "status": "prospect",
+      "requirements": "Browse/Feed/Marketing APIs; production access and campaign ID"
+    },
+    {
+      "name": "Amazon Associates / Creators API",
+      "url": "https://affiliate-program.amazon.com/creatorsapi/docs/",
+      "status": "prospect",
+      "requirements": "Separate Associates approval and Partner Tag for each marketplace; Creators API credentials"
+    },
+    {
+      "name": "Rakuten Advertising",
+      "url": "https://rakutenadvertising.com/",
+      "status": "prospect",
+      "requirements": "Advertiser approval and product-feed/API access"
+    },
+    {
+      "name": "Impact.com",
+      "url": "https://impact.com/",
+      "status": "prospect",
+      "requirements": "Advertiser approval; feed/API availability varies by programme"
+    },
+    {
+      "name": "Partnerize",
+      "url": "https://partnerize.com/",
+      "status": "prospect",
+      "requirements": "Advertiser approval and feed/API availability"
+    },
+    {
+      "name": "Admitad",
+      "url": "https://www.admitad.com/",
+      "status": "prospect",
+      "requirements": "Programme approval and feed/API availability"
+    },
+    {
+      "name": "TradeDoubler",
+      "url": "https://www.tradedoubler.com/",
+      "status": "prospect",
+      "requirements": "Advertiser approval and feed access"
+    },
+    {
+      "name": "TradeTracker",
+      "url": "https://tradetracker.com/",
+      "status": "prospect",
+      "requirements": "Advertiser approval and feed access"
+    },
+    {
+      "name": "AvantLink",
+      "url": "https://www.avantlink.com/",
+      "status": "prospect",
+      "requirements": "Outdoor/sport advertisers; programme approval and feeds"
+    },
+    {
+      "name": "Commission Factory",
+      "url": "https://www.commissionfactory.com/",
+      "status": "prospect",
+      "requirements": "APAC advertisers; programme approval and feeds"
+    },
+    {
+      "name": "FlexOffers",
+      "url": "https://www.flexoffers.com/",
+      "status": "prospect",
+      "requirements": "Retail advertisers; programme approval and product-data access"
+    },
+    {
+      "name": "Webgains",
+      "url": "https://www.webgains.com/",
+      "status": "prospect",
+      "requirements": "European advertisers; programme approval and feeds"
+    },
+    {
+      "name": "Adtraction",
+      "url": "https://adtraction.com/",
+      "status": "prospect",
+      "requirements": "European advertisers; programme approval and feeds"
+    },
+    {
+      "name": "LinkConnector",
+      "url": "https://www.linkconnector.com/",
+      "status": "prospect",
+      "requirements": "Advertiser approval and product feed access"
+    },
+    {
+      "name": "ShareASale",
+      "url": "https://www.shareasale.com/",
+      "status": "prospect",
+      "requirements": "Advertiser approval and product feed access"
+    },
+    {
+      "name": "CPX Affiliate",
+      "url": "https://www.cpxaffiliate.com/en/affiliates",
+      "status": "prospect",
+      "requirements": "GCC programme discovery; confirm product feed/API and country permissions"
+    },
+    {
+      "name": "Affiliate.com",
+      "url": "https://affiliate.com/networks",
+      "status": "prospect",
+      "requirements": "Possible multi-network product-data aggregation; underlying merchant approvals remain required"
+    },
+    {
+      "name": "Sovrn Commerce / Skimlinks",
+      "url": "https://www.sovrn.com/commerce/",
+      "status": "prospect",
+      "requirements": "Monetisation/link platform; verify whether product-level catalogue feeds are included"
+    }
+  ],
+  "regionalMerchantProspects": [
+    {
+      "region": "India / South Asia",
+      "merchants": [
+        "Myntra",
+        "AJIO",
+        "Tata CLiQ",
+        "Nykaa Fashion",
+        "Tanishq",
+        "CaratLane",
+        "BlueStone",
+        "Kalyan Jewellers",
+        "Malabar Gold & Diamonds",
+        "Sabyasachi",
+        "Fabindia"
+      ]
+    },
+    {
+      "region": "Gulf / Middle East",
+      "merchants": [
+        "Ounass",
+        "Namshi",
+        "6thStreet",
+        "Sivvi",
+        "Level Shoes",
+        "Tryano",
+        "Mumzworld"
+      ]
+    },
+    {
+      "region": "Outdoor / Tactical apparel",
+      "merchants": [
+        "5.11 Tactical",
+        "Helikon-Tex",
+        "UF PRO",
+        "Decathlon",
+        "Sportsman's Warehouse",
+        "Cabela's",
+        "Bass Pro Shops",
+        "REI",
+        "Backcountry",
+        "Sports Direct"
+      ]
+    },
+    {
+      "region": "Baby / Kids",
+      "merchants": [
+        "Carter's",
+        "Mothercare",
+        "JoJo Maman Bébé",
+        "Next",
+        "H&M Kids",
+        "Zara Kids",
+        "The Children's Place",
+        "Vertbaudet"
+      ]
+    },
+    {
+      "region": "Pets",
+      "merchants": [
+        "Zooplus",
+        "Fressnapf",
+        "Petco",
+        "Pets at Home",
+        "Chewy",
+        "PetSmart"
+      ]
+    }
+  ],
+  "rules": [
+    "Prospect entries are not approved partnerships or connected catalogues.",
+    "Do not display product prices, stock, images or delivery promises until received from a permitted live source.",
+    "Never store network secrets, API tokens, feed bearer tokens or merchant credentials in this public registry.",
+    "A retailer directory link is not a product feed integration.",
+    "Affiliate orders are completed by the retailer; HI FASHION first-party seller checkout is separate."
+  ]
+}
