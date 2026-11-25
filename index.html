@@ -7289,23 +7289,26 @@ applySeason(localStorage.getItem("hiFashionSeason") || "auto", false);
       let localResult;
       let ebayResult={items:[],total:0,configured:false};
       let cjResult={items:[],total:0,configured:false};
-      if(hasNearbyLocation){
-        const nearbyResult=await getNearbyProducts(query,category,active.offset,filters());
-        const nearbyRows=nearbyResult.data||[];
-        if(nearbyRows.length){
-          localResult={data:nearbyRows,error:nearbyResult.error||null};
-          nearbyMode=true;
-        }else{
-          // No verified partner stock locations have been supplied yet; do not claim
-          // a nearest warehouse. Fall back to destination-country catalogue matches.
-          localResult=await getLocalProducts(query,category,active.offset,filters());
-        }
+      // Search every connected marketplace on every request. Location-aware
+      // inventory is an additional ranked source, never a reason to hide global offers.
+      const [destinationResult, ebayResponse, cjResponse] = await Promise.all([
+        hasNearbyLocation
+          ? getNearbyProducts(query,category,active.offset,filters()).catch(error=>({data:[],error}))
+          : getLocalProducts(query,category,active.offset,filters()),
+        getEbayProducts(searchText,active.offset).catch(error=>({items:[],total:0,configured:false,error:error.message})),
+        getCjProducts(searchText,active.offset).catch(error=>({items:[],total:0,configured:false,error:error.message}))
+      ]);
+      ebayResult=ebayResponse;
+      cjResult=cjResponse;
+      const destinationRows=destinationResult.data||[];
+      if(hasNearbyLocation && destinationRows.length){
+        localResult={data:destinationRows,error:destinationResult.error||null};
+        nearbyMode=true;
       }else{
-        [localResult,ebayResult,cjResult]=await Promise.all([
-          getLocalProducts(query,category,active.offset,filters()),
-          getEbayProducts(searchText,active.offset).catch(error=>({items:[],total:0,configured:false,error:error.message})),
-          getCjProducts(searchText,active.offset).catch(error=>({items:[],total:0,configured:false,error:error.message}))
-        ]);
+        // No verified nearby stock points: retain country-filtered catalogue results.
+        localResult=hasNearbyLocation
+          ? await getLocalProducts(query,category,active.offset,filters())
+          : destinationResult;
       }
       const localRows=localResult.data||[];
       const localTotal=Number(localRows[0]?.total_count||0);
@@ -7322,15 +7325,15 @@ applySeason(localStorage.getItem("hiFashionSeason") || "auto", false);
       if(productHtml){
         const wrap=document.createElement("div");wrap.style.display="contents";wrap.innerHTML=productHtml;grid.append(...wrap.childNodes);
       }
-      const sum=nearbyMode?localTotal:localTotal+lastEbayTotal+cjTotal;
+      const sum=localTotal+lastEbayTotal+cjTotal;
       const feedConfigured=localRows.length>0;
       const ebayConfigured=ebayResult.configured;
       if(sum>0){
         const statusMessage=nearbyMode
-          ? "Showing verified in-stock offers ranked by distance from your approximate location. Dispatch points and stock were recently verified; final delivery availability is confirmed by the retailer."
+          ? "Showing nearby verified HI FASHION stock first, alongside global marketplace offers. Only retailer-confirmed destination delivery can establish final shipping eligibility."
           : hasNearbyLocation
-            ? "No verified nearby dispatch points are connected for this search yet. Showing general catalogue matches for your selected destination; nearest-stock ranking will activate when authorised partners provide stock locations."
-            : "Showing destination catalogue matches. Allow location access to rank products from verified nearby dispatch points when partner stock-location data is available.";
+            ? "Showing destination-country catalogue matches from connected sources. No verified nearby dispatch points matched this search; global partner offers remain available."
+            : "Showing catalogue matches from connected retailer and marketplace sources. Delivery eligibility is confirmed by each retailer at checkout.";
         setStatus(statusMessage,sum);
       }else{
         const detail=[];
