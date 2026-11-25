@@ -269,9 +269,9 @@ document.querySelectorAll('.tab').forEach(function(t){t.addEventListener('click'
         if(link.classList.contains("logo")||link.getAttribute("data-i")==="home"||/^home$/i.test(link.textContent.trim()))return;
         event.preventDefault();
         if(link.classList.contains("go")){
-          var card=link.closest(".hf-reference-product");
-          var brand=card?.querySelector("small")?.textContent||"";
-          var product=card?.querySelector("h3")?.textContent||"";
+          var card=link.closest(".hf-reference-product")||link.closest(".card");
+          var brand=card?.querySelector("small,.brand")?.textContent||"";
+          var product=card?.querySelector("h3,.item")?.textContent||"";
           goToCatalogue((brand+" "+product).trim());
           return;
         }
