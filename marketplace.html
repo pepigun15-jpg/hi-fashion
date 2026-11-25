@@ -7152,8 +7152,9 @@ applySeason(localStorage.getItem("hiFashionSeason") || "auto", false);
       ? '<div class="catalogue-product-meta">Dispatch: '+escapeHtml([dispatchCity,dispatchRegion].filter(Boolean).join(", "))+(Number.isFinite(distance)?' · '+escapeHtml(distance.toFixed(1))+' km away':'')+(Number.isFinite(deliveryDays)?' · approx. '+escapeHtml(String(deliveryDays))+' days':'')+'</div>'
       : '';
     const link=cta?'<a class="catalogue-product-cta" href="'+escapeHtml(cta)+'" target="_blank" rel="noopener noreferrer sponsored">SHOP AT '+escapeHtml(retailer.toUpperCase())+' ↗</a>':'';
+    const disclosure=kind==="nearby"?"":'<small class="catalogue-affiliate-disclosure">Affiliate link — HI FASHION may earn a commission.</small>';
     if(!cta||price===null||price===undefined||!Number.isFinite(Number(price))||!currency)return "";
-    return '<article class="catalogue-product-card">'+imgMarkup+'<div class="catalogue-product-copy">'+brandMarkup+'<h3 class="catalogue-product-title">'+escapeHtml(name)+'</h3><div class="catalogue-product-meta">'+escapeHtml(meta)+'<br>'+escapeHtml(availabilityText)+'</div>'+dispatchMeta+sizeMarkup+'<div class="catalogue-product-price">'+escapeHtml(formatPrice(price,currency))+'</div><span class="catalogue-product-source">'+(kind==="nearby"?"Verified nearby stock":"Approved affiliate offer")+'</span>'+link+'</div></article>';
+    return '<article class="catalogue-product-card">'+imgMarkup+'<div class="catalogue-product-copy">'+brandMarkup+'<h3 class="catalogue-product-title">'+escapeHtml(name)+'</h3><div class="catalogue-product-meta">'+escapeHtml(meta)+'<br>'+escapeHtml(availabilityText)+'</div>'+dispatchMeta+sizeMarkup+'<div class="catalogue-product-price">'+escapeHtml(formatPrice(price,currency))+'</div><span class="catalogue-product-source">'+(kind==="nearby"?"Verified nearby stock":"Approved affiliate offer")+'</span>'+disclosure+link+'</div></article>';
   }
   function destinationIso(){
     const name=byId("deliveryCountry")?.value||"";
