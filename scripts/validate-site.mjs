@@ -52,9 +52,9 @@ for (const route of ['"#sell-with-us":"marketplace.html#seller"', '"#delivery-lo
 }
 if (!home.includes("SEARCH LIVE PRODUCTS & PRICES")) fail("homepage category route does not expose live product search");
 
-const registry = JSON.parse(fs.readFileSync(path.join(root, "data/partner-network-registry.json"), "utf8"));
+const registry = JSON.parse(fs.readFileSync(path.join(root, "data/affiliate-network-registry.json"), "utf8"));
 if (!Array.isArray(registry.networks) || registry.networks.length < 10) fail("partner network prospect registry is incomplete");
-if (registry.networks.some(x => !["prospect", "applied", "approved", "connected", "paused"].includes(x.status))) fail("unknown partner status found");
+if (registry.networks.some(x => typeof x.integration_status !== "string" || typeof x.adapter_status !== "string")) fail("partner adapter/status metadata missing");
 const retailers = JSON.parse(fs.readFileSync(path.join(root, "data/retailer-registry.seed.json"), "utf8"));
 if (!Array.isArray(retailers.merchants) || retailers.merchants.length < 100) fail("retailer directory seed unexpectedly small");
 console.log("Partner networks:", registry.networks.length, "| Directory merchants:", retailers.merchants.length);
