@@ -40,7 +40,7 @@ const market = fs.readFileSync(path.join(root, "marketplace.html"), "utf8");
 for (const id of ["productCatalogue", "global-catalogue", "seller", "store-network", "brands", "new-arrivals", "seasonal-shop", "gift-cards"]) {
   if (!market.includes('id="' + id + '"') && !market.includes("id='" + id + "'")) fail("required marketplace destination missing: #" + id);
 }
-if (!market.includes('if(!cta||price===null||price===undefined||!Number.isFinite(Number(price))||!currency)return "";')) fail("product cards do not enforce a real price, currency and affiliate URL");
+if (!market.includes('if(!cta||price===null||price===undefined||!Number.isFinite(Number(price))||Number(price)<0||typeof currency!=="string"||!/^[A-Z]{3}$/.test(currency))return "";')) fail("product cards do not enforce a real price, ISO currency and HTTPS affiliate URL");
 if (!market.includes("Affiliate link — HI FASHION may earn a commission.")) fail("affiliate commission disclosure missing from partner product cards");
 if (!market.includes("search-cj-catalogue") || !market.includes("search-ebay-catalogue")) fail("CJ/eBay live search endpoints missing");
 if (!market.includes('requestedSearch=new URLSearchParams(window.location.search).get("search")')) fail("category deep-link search is not initialised");
