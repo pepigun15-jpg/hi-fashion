@@ -213,3 +213,52 @@ Do not label a retailer "verified", "secure", "worldwide shipping" or "connected
 ## Launch truthfulness
 
 "All possible stores" is an ongoing acquisition target, not a finite technical setting. No platform can guarantee every online store worldwide or that every merchant ships to every country. HI FASHION should continuously add merchants that meet the integration, permission, product-data and customer-safety requirements above.
+
+
+## 2026-11-25 partner discovery expansion and deep-link acceptance
+
+### Candidate partner programme registry (prospects, not active connections)
+
+The following networks are candidates for publisher applications and approved product-feed/API onboarding. Inclusion means only that the network is a prospect; it does not mean HI FASHION has an account, approval, advertiser access, feed credentials or live products.
+
+| Network | Public partner entry point | Candidate coverage | Current HI FASHION status |
+|---|---|---|---|
+| Awin | https://www.awin.com/ | Europe and global retail, fashion, beauty, home | Feed importer supports Awin CSV/TSV; publisher/advertiser approvals and feed secrets required |
+| CJ Affiliate | https://www.cj.com/ | Global fashion, luxury, lifestyle, beauty | Search and feed importer code present; credentials and advertiser approvals required |
+| eBay Partner Network | https://partnernetwork.ebay.com/ | Global marketplace, new and pre-owned | Search adapter code present; production Browse API and EPN campaign approval required |
+| Rakuten Advertising | https://rakutenadvertising.com/ | Global retail and fashion | Prospect; adapter not confirmed in code |
+| Impact.com | https://impact.com/ | Global brands, fashion, sports, baby, pets | Prospect; adapter not confirmed in code |
+| Partnerize | https://partnerize.com/ | Global and regional retail/fashion | Prospect; adapter not confirmed in code |
+| Admitad | https://www.admitad.com/ | Europe, India and cross-border retail | Prospect; adapter not confirmed in code |
+| TradeDoubler | https://www.tradedoubler.com/ | Europe and international advertisers | Prospect; adapter not confirmed in code |
+| TradeTracker | https://tradetracker.com/ | Europe and selected international markets | Prospect; adapter not confirmed in code |
+| AvantLink | https://www.avantlink.com/ | Outdoor, adventure, apparel and equipment | Prospect; adapter not confirmed in code |
+| Sovrn Commerce / Skimlinks | https://www.sovrn.com/commerce/ and https://www.skimlinks.com/ | Merchant link monetisation and supported commerce data | Prospect; confirm product-data/feed rights before catalogue integration |
+| Direct merchant partnerships | Merchant-specific partner/API portals | Any department or region | Requires written permission, documentation, credentials and feed/API testing |
+
+### Merchant acquisition queue
+
+Start applications and programme discovery with fashion/luxury merchants, then add region-specific partners. Candidate merchants to verify individually include:
+- Global/luxury: FARFETCH, NET-A-PORTER, MR PORTER, MYTHERESA, SSENSE, LUISAVIAROMA, REVOLVE, Shopbop, GILT.
+- India/South Asia: Myntra, AJIO, Tata CLiQ, Nykaa Fashion, Tanishq, CaratLane, BlueStone, Kalyan Jewellers, Malabar Gold & Diamonds, Fabindia.
+- Gulf/Middle East: Ounass, Namshi, 6thStreet, Sivvi, Level Shoes, Tryano and regional abaya/jewellery merchants.
+- Sports/outdoor/tactical apparel: Decathlon, 5.11 Tactical, Helikon-Tex, UF PRO, REI, Backcountry, Sports Direct, Cabela's and Bass Pro Shops. Only lawful apparel and ordinary outdoor goods are in scope.
+- Baby/kids: Carter's, Mothercare, JoJo Maman Bébé, Next, H&M Kids, Zara Kids, The Children's Place and Vertbaudet.
+- Pets: Zooplus, Fressnapf, Petco, Pets at Home, Chewy and PetSmart.
+
+Do not assume a public affiliate programme exists, is open to this publisher, supplies product feeds, or ships to every destination. Record each merchant's current evidence, approval state, country programme, feed permission, image-use terms and delivery restrictions before showing product offers.
+
+### Category deep-link behaviour
+
+- The luxury landing page category route now links to the marketplace live-search page with a URL-encoded search term.
+- The marketplace page reads the `search` query parameter and invokes its existing catalogue search handler.
+- Search results can come from HI FASHION's Supabase catalogue, CJ Affiliate and eBay only when those sources are configured and return records.
+- Category navigation must never render invented price/product cards as live offers. Existing sample/demo cards are not sale listings and must remain labelled as samples or be hidden from live catalogue results.
+
+### Current limitations and required activation inputs
+
+- No verified evidence currently establishes active Awin, CJ or eBay production credentials, approved advertiser feed URLs, completed feed imports or a live inventory count.
+- No implementation is confirmed for Rakuten, Impact, Partnerize, Admitad, TradeDoubler, TradeTracker, AvantLink, Sovrn or Skimlinks. They remain prospect entries until a supported adapter and approved data source are implemented.
+- Real product prices and availability cannot be manufactured from the retailer directory. They require partner approval and data returned by a permitted feed/API.
+- Before claiming that every button works, run a browser-based interaction test across desktop and mobile for every link, button, filter, category, language selector, location control, account, cart, seller form and external product link. Record pass/fail evidence; GitHub source inspection alone is not a browser test.
+- Before enabling first-party checkout, verify seller approval, Stripe Connect account readiness, inventory reservation, server-side price checks, shipping address, webhook signature handling, tax/shipping rules and test-mode end-to-end purchase. Affiliate offers continue to use the merchant's own checkout.
