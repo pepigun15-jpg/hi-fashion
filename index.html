@@ -1427,6 +1427,13 @@ body[data-season="autumn"] .seller,body[data-season="winter"] .seller{
   text-shadow:none!important;
 }
 
+
+/* Header location shortcut */
+.hf-location-link{display:inline-flex;align-items:center;gap:6px;color:#e2c984;text-decoration:none;font-size:10px;letter-spacing:1.2px;font-weight:700;padding:8px 10px;border:1px solid rgba(198,164,90,.55);white-space:nowrap}
+.hf-location-link:hover{background:rgba(198,164,90,.14);border-color:#d7bd7e}
+.season-chip-list{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px}
+.season-chip{cursor:pointer}
+@media(max-width:650px){.hf-location-link{font-size:9px;padding:7px 8px}.hf-location-link span{display:none}}
 </style>
 <style id="hi-fashion-diamond-final">
 /* Final visual layer: anchored to this page, independent from seasonal themes and relative paths. */
@@ -3257,6 +3264,7 @@ main{display:block!important;width:100%!important}
     <a class="hf-icon-link" href="#search" aria-label="Search catalogue" title="Search catalogue">
       <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></svg>
     </a>
+    <a class="hf-location-link" href="#store-network" aria-label="Set delivery location" title="Find nearest stores and fastest delivery">📍 <span>LOCATION</span></a>
     <button class="account-toggle hf-icon-button" id="accountToggle" type="button" aria-haspopup="dialog" aria-controls="accountDrawer" aria-label="My account" title="My account">
       <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="7.5" r="4"/><path d="M4.5 21v-2.2a7.5 7.5 0 0 1 15 0V21"/></svg>
       <span class="hf-action-label">ACCOUNT</span>
@@ -4078,6 +4086,9 @@ main{display:block!important;width:100%!important}
     </button>
     <button class="hf-category-card" type="button" data-hf-quick-query="Hiking Jackets" data-hf-quick-category="Outdoor &amp; Adventure">
       <img src="https://images.pexels.com/photos/37171542/pexels-photo-37171542.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=700" alt="" loading="lazy"><span>OUTDOOR</span>
+    </button>
+    <button class="hf-category-card" type="button" data-hf-quick-query="Baby Clothes" data-hf-quick-category="Kids &amp; Baby">
+      <img src="https://images.pexels.com/photos/3662667/pexels-photo-3662667.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=700" alt="" loading="lazy"><span>BABY &amp; KIDS</span>
     </button>
     <button class="hf-category-card" type="button" data-hf-quick-query="Dog Coats" data-hf-quick-category="Pet Fashion">
       <img src="https://images.pexels.com/photos/16614997/pexels-photo-16614997.jpeg?cs=srgb&amp;dl=pexels-miyatavictor-16614997.jpg&amp;fm=jpg" alt="" loading="lazy"><span>PET FASHION</span>
@@ -5472,7 +5483,7 @@ main{display:block!important;width:100%!important}
           <small>FRESH · LIGHT · LAYERED</small><h3>Spring</h3>
           <p>Light jackets, floral dresses, knitwear, shirts and transitional accessories.</p>
           <button type="button" data-season-choice="spring">EXPLORE SPRING</button>
-          <div class="season-chip-list"><button class="season-chip" data-search="Dresses">Dresses</button><button class="season-chip" data-search="Jackets">Light Jackets</button><button class="season-chip" data-search="Knitwear">Knitwear</button><button class="season-chip" data-search="Scarves">Scarves</button></div>
+          <div class="season-chip-list"><button class="season-chip" data-search="Dresses">Dresses</button><button class="season-chip" data-search="Jackets">Light Jackets</button><button class="season-chip" data-search="Knitwear">Knitwear</button><button class="season-chip" data-search="Scarves">Scarves</button><button class="season-chip" data-search="Baby Clothes">Baby</button><button class="season-chip" data-search="Girls' Clothing">Kids</button><button class="season-chip" data-search="Pet Coats">Pets</button></div>
         </div>
       </article>
       <article class="season-card" style="--season-card-image:url('https://images.pexels.com/photos/18031037/pexels-photo-18031037.jpeg?cs=srgb&dl=pexels-elif-525070928-18031037.jpg&fm=jpg')">
@@ -5480,7 +5491,7 @@ main{display:block!important;width:100%!important}
           <small>BRIGHT · BREEZY · EASY</small><h3>Summer</h3>
           <p>Linen, swimwear, sandals, sunglasses, shorts and holiday bags.</p>
           <button type="button" data-season-choice="summer">EXPLORE SUMMER</button>
-          <div class="season-chip-list"><button class="season-chip" data-search="Dresses">Summer Dresses</button><button class="season-chip" data-search="Sandals">Sandals</button><button class="season-chip" data-search="Sunglasses">Sunglasses</button><button class="season-chip" data-search="Travel Bags">Travel Bags</button></div>
+          <div class="season-chip-list"><button class="season-chip" data-search="Dresses">Summer Dresses</button><button class="season-chip" data-search="Sandals">Sandals</button><button class="season-chip" data-search="Sunglasses">Sunglasses</button><button class="season-chip" data-search="Travel Bags">Travel Bags</button><button class="season-chip" data-search="Baby Clothes">Baby</button><button class="season-chip" data-search="Girls' Clothing">Kids</button><button class="season-chip" data-search="Pet Summer Clothing">Pets</button></div>
         </div>
       </article>
       <article class="season-card" style="--season-card-image:url('https://images.pexels.com/photos/8497715/pexels-photo-8497715.jpeg?cs=srgb&dl=pexels-liliana-drew-8497715.jpg&fm=jpg')">
@@ -5488,7 +5499,7 @@ main{display:block!important;width:100%!important}
           <small>RICH · TEXTURED · RELAXED</small><h3>Autumn</h3>
           <p>Coats, leather accessories, boots, layered knitwear and warm tones.</p>
           <button type="button" data-season-choice="autumn">EXPLORE AUTUMN</button>
-          <div class="season-chip-list"><button class="season-chip" data-search="Coats">Coats</button><button class="season-chip" data-search="Boots">Boots</button><button class="season-chip" data-search="Belts">Belts</button><button class="season-chip" data-search="Scarves">Scarves</button></div>
+          <div class="season-chip-list"><button class="season-chip" data-search="Coats">Coats</button><button class="season-chip" data-search="Boots">Boots</button><button class="season-chip" data-search="Belts">Belts</button><button class="season-chip" data-search="Scarves">Scarves</button><button class="season-chip" data-search="Baby Outerwear">Baby</button><button class="season-chip" data-search="Kids' Outerwear">Kids</button><button class="season-chip" data-search="Pet Jackets">Pets</button></div>
         </div>
       </article>
       <article class="season-card" style="--season-card-image:url('https://images.pexels.com/photos/30076368/pexels-photo-30076368.jpeg?auto=compress&cs=tinysrgb&w=1200')">
@@ -5496,7 +5507,7 @@ main{display:block!important;width:100%!important}
           <small>WARM · COSY · PROTECTED</small><h3>Winter</h3>
           <p>Warm coats, sweaters, boots, gloves, hats and thermal layers.</p>
           <button type="button" data-season-choice="winter">EXPLORE WINTER</button>
-          <div class="season-chip-list"><button class="season-chip" data-search="Coats">Winter Coats</button><button class="season-chip" data-search="Knitwear">Sweaters</button><button class="season-chip" data-search="Gloves">Gloves</button><button class="season-chip" data-search="Boots">Boots</button></div>
+          <div class="season-chip-list"><button class="season-chip" data-search="Coats">Winter Coats</button><button class="season-chip" data-search="Knitwear">Sweaters</button><button class="season-chip" data-search="Gloves">Gloves</button><button class="season-chip" data-search="Boots">Boots</button><button class="season-chip" data-search="Baby Winter Clothes">Baby</button><button class="season-chip" data-search="Kids Winterwear">Kids</button><button class="season-chip" data-search="Dog Winter Coats">Pets</button></div>
         </div>
       </article>
     </div>
