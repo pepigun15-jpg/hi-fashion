@@ -184,7 +184,7 @@ var T={home:['Home','Начало','Startseite','Accueil','Home','Inicio'],women
 function setLang(i){document.querySelectorAll('[data-i]').forEach(function(e){var v=T[e.dataset.i];if(v)e.textContent=v[i]});document.documentElement.lang=['en','bg','de','fr','it','es'][i];document.getElementById('lang').value=i}
 document.getElementById('lang').addEventListener('change',function(){setLang(this.value);try{localStorage.setItem('hf_lang',this.value)}catch(e){}});
 try{var sl=localStorage.getItem('hf_lang');if(sl)setLang(sl)}catch(e){}
-document.querySelectorAll('.brands a').forEach(function(a){a.href='#global-brands'});
+// Brand marks retain their direct live-catalogue search destinations.
 var SE={spring:['Spring','sp','Light layers, florals and fresh colour.'],summer:['Summer','su','Sun, beachwear and warm-weather essentials.'],autumn:['Autumn','au','Knitwear, tailoring and earthy tones.'],winter:['Winter','wi','Coats, boots and cold-weather essentials.']};
 var SC=['Women','Men','Baby','Kids','Pets','Shoes','Bags and Accessories','Jewellery','Outdoor Clothing'];
 var X={'new-arrivals':['New Arrivals','The latest verified products from connected retailers, suppliers and approved sellers.',['This week','Women','Men','Kids','Accessories']],'global-catalogue':['Global Catalogue','Every connected source in one place, filtered by market, category, delivery country and delivery speed.',['All categories','Ships to my country','Available near me','Fastest delivery']],'baby-kids':['Baby & Kids','Clothing, shoes and accessories for babies and children.',['Baby','Kids','Shoes','Accessories']]};
