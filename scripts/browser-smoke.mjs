@@ -55,16 +55,16 @@ const checks = [
 for (const [selector, expected] of checks) await clickAndCheck(selector, expected);
 
 await openHome();
-await page.locator('.icons svg[aria-label="Search"]').click();
+await page.locator('.icons a[aria-label="Search"]').click();
 await page.waitForURL(url => url.pathname.endsWith("/marketplace.html") && url.hash === "#search", { timeout: 8000 });
 
 await openHome();
-await page.locator('.icons svg[aria-label="Account"]').click();
+await page.locator('.icons a[aria-label="Account"]').click();
 await page.waitForURL(url => url.pathname.endsWith("/marketplace.html") && url.searchParams.get("open") === "account", { timeout: 8000 });
 if (!(await page.locator("#accountDrawer").isVisible())) throw new Error("Account icon did not open the account panel.");
 
 await openHome();
-await page.locator('.icons svg[aria-label="Bag"]').click();
+await page.locator('.icons a[aria-label="Bag"]').click();
 await page.waitForURL(url => url.pathname.endsWith("/marketplace.html") && url.searchParams.get("open") === "cart", { timeout: 8000 });
 if (!(await page.locator("#commerceCart").isVisible())) throw new Error("Bag icon did not open the cart panel.");
 
