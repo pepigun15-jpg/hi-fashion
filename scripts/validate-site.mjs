@@ -57,6 +57,8 @@ if (!home.includes("CHECK LIVE PRICE") || !home.includes('link.closest(".hf-refe
 const registry = JSON.parse(fs.readFileSync(path.join(root, "data/affiliate-network-registry.json"), "utf8"));
 if (!Array.isArray(registry.networks) || registry.networks.length < 10) fail("partner network prospect registry is incomplete");
 if (registry.networks.some(x => typeof x.integration_status !== "string" || typeof x.adapter_status !== "string")) fail("partner adapter/status metadata missing");
+if (!fs.existsSync(path.join(root, "supabase/migrations/202611250013_additional_affiliate_feed_sources.sql"))) fail("additional affiliate network source migration missing");
+if (!fs.existsSync(path.join(root, "supabase/migrations/202611250014_retailer_registry_seed.sql"))) fail("central retailer registry migration missing");
 const retailers = JSON.parse(fs.readFileSync(path.join(root, "data/retailer-registry.seed.json"), "utf8"));
 if (!Array.isArray(retailers.merchants) || retailers.merchants.length < 100) fail("retailer directory seed unexpectedly small");
 console.log("Partner networks:", registry.networks.length, "| Directory merchants:", retailers.merchants.length);
