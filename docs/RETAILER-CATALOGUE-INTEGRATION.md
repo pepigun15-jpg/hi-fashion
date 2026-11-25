@@ -4,6 +4,8 @@
 
 The website contains **176 retailer cards** in its global brand/store directory. These are outbound store links, not proof of a commercial integration or live product feed.
 
+The maintained partner registry lists **22 affiliate/commerce networks** and the retailer seed contains **174 unique merchant records**. These are prospective relationships unless their individual integration status explicitly says otherwise.
+
 The current catalogue code has four data paths:
 1. HI FASHION's own Supabase catalogue (catalogue_products).
 2. CJ Affiliate product search (search-cj-catalogue).
