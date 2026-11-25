@@ -25,7 +25,7 @@
         "individual advertiser programme approval",
         "feed access"
       ],
-      "adapter_status": "CSV/TSV feed importer supported"
+      "adapter_status": "Existing HI FASHION feed importer / API search code; credentials and approvals not connected"
     },
     {
       "id": "cj",
@@ -47,7 +47,7 @@
         "advertiser relationship",
         "API credentials/feed access"
       ],
-      "adapter_status": "Search endpoint and CSV/TSV feed importer present"
+      "adapter_status": "Network-specific API/feed adapter or approved tracking-link implementation required; not connected"
     },
     {
       "id": "ebay",
@@ -70,7 +70,7 @@
         "production Browse API access",
         "campaign ID"
       ],
-      "adapter_status": "Search adapter present; credentials and production approval not verified"
+      "adapter_status": "Network-specific API/feed adapter or approved tracking-link implementation required; not connected"
     },
     {
       "id": "rakuten",
@@ -92,7 +92,7 @@
         "advertiser partnership",
         "product catalog access"
       ],
-      "adapter_status": "No HI FASHION adapter confirmed"
+      "adapter_status": "Network-specific API/feed adapter or approved tracking-link implementation required; not connected"
     },
     {
       "id": "impact",
@@ -115,7 +115,7 @@
         "join individual brand",
         "catalogue permission"
       ],
-      "adapter_status": "No HI FASHION adapter confirmed"
+      "adapter_status": "Generic HTTPS CSV/TSV importer added; use only if the approved network/advertiser supplies a compatible feed; not connected"
     },
     {
       "id": "partnerize",
@@ -136,7 +136,7 @@
         "individual brand approval",
         "feed/API permissions"
       ],
-      "adapter_status": "No HI FASHION adapter confirmed"
+      "adapter_status": "Generic HTTPS CSV/TSV importer added; use only if the approved network/advertiser supplies a compatible feed; not connected"
     },
     {
       "id": "admitad",
@@ -156,7 +156,7 @@
         "advertiser programme approval",
         "feed access"
       ],
-      "adapter_status": "No HI FASHION adapter confirmed"
+      "adapter_status": "Generic HTTPS CSV/TSV importer added; use only if the approved network/advertiser supplies a compatible feed; not connected"
     },
     {
       "id": "tradedoubler",
@@ -175,7 +175,7 @@
         "advertiser approval",
         "feed access"
       ],
-      "adapter_status": "No HI FASHION adapter confirmed"
+      "adapter_status": "Generic HTTPS CSV/TSV importer added; use only if the approved network/advertiser supplies a compatible feed; not connected"
     },
     {
       "id": "tradetracker",
@@ -195,7 +195,7 @@
         "campaign approval",
         "API/feed access"
       ],
-      "adapter_status": "No HI FASHION adapter confirmed"
+      "adapter_status": "Generic HTTPS CSV/TSV importer added; use only if the approved network/advertiser supplies a compatible feed; not connected"
     },
     {
       "id": "avantlink",
@@ -214,7 +214,7 @@
         "publisher approval",
         "advertiser approval"
       ],
-      "adapter_status": "No HI FASHION adapter confirmed"
+      "adapter_status": "Generic HTTPS CSV/TSV importer added; use only if the approved network/advertiser supplies a compatible feed; not connected"
     },
     {
       "id": "sovrn-commerce",
@@ -233,7 +233,7 @@
         "merchant coverage",
         "data-use confirmation"
       ],
-      "adapter_status": "No HI FASHION adapter confirmed"
+      "adapter_status": "Network-specific API/feed adapter or approved tracking-link implementation required; not connected"
     },
     {
       "id": "skimlinks",
@@ -252,7 +252,7 @@
         "merchant coverage",
         "data-use confirmation"
       ],
-      "adapter_status": "No HI FASHION adapter confirmed"
+      "adapter_status": "Network-specific API/feed adapter or approved tracking-link implementation required; not connected"
     },
     {
       "id": "amazon-associates",
@@ -274,7 +274,7 @@
         "API eligibility",
         "country-specific compliance"
       ],
-      "adapter_status": "No HI FASHION adapter confirmed"
+      "adapter_status": "Network-specific API/feed adapter or approved tracking-link implementation required; not connected"
     },
     {
       "id": "direct-merchant",
@@ -292,7 +292,7 @@
         "destination/shipping rules",
         "credentials"
       ],
-      "adapter_status": "Generic Awin/CJ CSV importer cannot be assumed compatible with every provider"
+      "adapter_status": "Network-specific API/feed adapter or approved tracking-link implementation required; not connected"
     },
     {
       "id": "commission-factory",
@@ -312,7 +312,7 @@
         "advertiser approval",
         "feed/API access"
       ],
-      "adapter_status": "No HI FASHION adapter confirmed"
+      "adapter_status": "Generic HTTPS CSV/TSV importer added; use only if the approved network/advertiser supplies a compatible feed; not connected"
     },
     {
       "id": "flexoffers",
@@ -331,7 +331,7 @@
         "advertiser approval",
         "product data access"
       ],
-      "adapter_status": "No HI FASHION adapter confirmed"
+      "adapter_status": "Generic HTTPS CSV/TSV importer added; use only if the approved network/advertiser supplies a compatible feed; not connected"
     },
     {
       "id": "webgains",
@@ -351,7 +351,7 @@
         "advertiser approval",
         "feed access"
       ],
-      "adapter_status": "No HI FASHION adapter confirmed"
+      "adapter_status": "Generic HTTPS CSV/TSV importer added; use only if the approved network/advertiser supplies a compatible feed; not connected"
     },
     {
       "id": "adtraction",
@@ -371,7 +371,7 @@
         "advertiser approval",
         "feed access"
       ],
-      "adapter_status": "No HI FASHION adapter confirmed"
+      "adapter_status": "Generic HTTPS CSV/TSV importer added; use only if the approved network/advertiser supplies a compatible feed; not connected"
     },
     {
       "id": "linkconnector",
@@ -390,7 +390,7 @@
         "advertiser approval",
         "feed access"
       ],
-      "adapter_status": "No HI FASHION adapter confirmed"
+      "adapter_status": "Generic HTTPS CSV/TSV importer added; use only if the approved network/advertiser supplies a compatible feed; not connected"
     },
     {
       "id": "shareasale",
@@ -410,7 +410,7 @@
         "advertiser approval",
         "feed access"
       ],
-      "adapter_status": "No HI FASHION adapter confirmed"
+      "adapter_status": "Generic HTTPS CSV/TSV importer added; use only if the approved network/advertiser supplies a compatible feed; not connected"
     },
     {
       "id": "cpx-affiliate",
@@ -430,7 +430,7 @@
         "individual programme approval",
         "product data access"
       ],
-      "adapter_status": "No HI FASHION adapter confirmed"
+      "adapter_status": "Network-specific API/feed adapter or approved tracking-link implementation required; not connected"
     },
     {
       "id": "affiliate-com",
@@ -449,8 +449,8 @@
         "underlying merchant approval",
         "product data rights"
       ],
-      "adapter_status": "No HI FASHION adapter confirmed"
+      "adapter_status": "Network-specific API/feed adapter or approved tracking-link implementation required; not connected"
     }
   ],
-  "expansion_note": "Expanded prospect coverage includes regional GCC discovery and additional US/EU/APAC affiliate networks. These are prospects only until approved and feed/API access is verified."
+  "expansion_note": "Network registry separates existing HI FASHION code paths from generic HTTPS CSV/TSV importer candidates and network-specific adapter work. Every entry remains prospect_not_connected until publisher/advertiser approval, private credentials, a successful feed/API sync and valid tracked product URLs are verified."
 }
