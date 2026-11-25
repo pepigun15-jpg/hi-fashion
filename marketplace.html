@@ -7177,7 +7177,7 @@ applySeason(localStorage.getItem("hiFashionSeason") || "auto", false);
     status.textContent=message;
     if(total!==undefined){count.textContent=total?Number(total).toLocaleString()+" PRODUCTS":"NO MATCHING PRODUCTS";}
   }
-  async function getLocalProducts(query,category,offset,filters){
+  async async function getLocalProducts(query,category,offset,filters){
     if(!client)return {data:[],error:new Error("Supabase is not connected.")};
     const min=filters.minPrice===""?null:Math.round(Number(filters.minPrice)*100);
     const max=filters.maxPrice===""?null:Math.round(Number(filters.maxPrice)*100);
@@ -7199,7 +7199,7 @@ applySeason(localStorage.getItem("hiFashionSeason") || "auto", false);
       p_offset:offset
     });
   }
-  async function getNearbyProducts(query,category,offset,filters){
+  async async function getNearbyProducts(query,category,offset,filters){
     if(!client||!hiFashionBuyerLocation||!destinationIso())return {data:[],error:new Error("Choose a delivery country and allow location access first.")};
     const min=filters.minPrice===""?null:Math.round(Number(filters.minPrice)*100);
     const max=filters.maxPrice===""?null:Math.round(Number(filters.maxPrice)*100);
@@ -7220,7 +7220,7 @@ applySeason(localStorage.getItem("hiFashionSeason") || "auto", false);
       p_offset:offset
     });
   }
-  async function getEbayProducts(query,offset){
+  async async function getEbayProducts(query,offset){
     if(!supabaseUrl||!cfg.anonKey||!query)return {items:[],total:0,configured:false};
     const country=destinationIso()||"BG";
     const url=supabaseUrl+"/functions/v1/search-ebay-catalogue?q="+encodeURIComponent(query)+"&country="+encodeURIComponent(country)+"&limit="+active.limit+"&offset="+offset;
@@ -7233,7 +7233,7 @@ applySeason(localStorage.getItem("hiFashionSeason") || "auto", false);
     if(!response.ok)return {items:[],total:0,configured:false,error:result.error||"eBay search unavailable."};
     return {items:result.items||[],total:Number(result.total||0),configured:true};
   }
-  async function getCjProducts(query,offset){
+  async async function getCjProducts(query,offset){
     if(!supabaseUrl||!cfg.anonKey||!query)return {items:[],total:0,configured:false};
     const country=destinationIso()||"";
     const params=new URLSearchParams({q:query,limit:String(Math.min(active.limit,100)),offset:String(offset)});
