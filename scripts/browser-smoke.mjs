@@ -14,7 +14,7 @@ async function clickAndCheck(selector, expected) {
   await openHome();
   const item = page.locator(selector).first();
   if (await item.count() === 0) throw new Error("Missing homepage control: " + selector);
-  console.log("Testing homepage control:", selector);
+  console.log("Testing homepage control:", selector, "from", page.url(), "href", await item.getAttribute("href"), "text", await item.textContent());
   await item.click();
   try {
     await page.waitForURL(url => {
