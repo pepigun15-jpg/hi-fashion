@@ -99,8 +99,8 @@ for (const selector of [".hf-category-card", ".trend-trigger", ".season-chip", "
   const term = await page.locator("#departmentSearch").inputValue();
   if (!term.trim()) throw new Error(selector + " did not launch a catalogue search.");
 }
-await page.locator('button[data-season-choice="spring"]').click();
-if (!(await page.locator('button[data-season-choice="spring"]').evaluate(el => el.classList.contains("active")))) throw new Error("Season selector did not activate Spring.");
+await page.locator('button.season-control[data-season-choice="spring"]').click();
+if (!(await page.locator('button.season-control[data-season-choice="spring"]').evaluate(el => el.classList.contains("active")))) throw new Error("Season selector did not activate Spring.");
 await page.locator("#departmentSearch").fill("test query");
 await page.locator("#clearMarketSearch").click();
 if (await page.locator("#departmentSearch").inputValue()) throw new Error("Clear search button did not clear the search.");
