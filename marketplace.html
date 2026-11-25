@@ -7153,7 +7153,7 @@ applySeason(localStorage.getItem("hiFashionSeason") || "auto", false);
       : '';
     const link=cta?'<a class="catalogue-product-cta" href="'+escapeHtml(cta)+'" target="_blank" rel="noopener noreferrer sponsored">SHOP AT '+escapeHtml(retailer.toUpperCase())+' ↗</a>':'';
     const disclosure=kind==="nearby"?"":'<small class="catalogue-affiliate-disclosure">Affiliate link — HI FASHION may earn a commission.</small>';
-    if(!cta||price===null||price===undefined||!Number.isFinite(Number(price))||!currency)return "";
+    if(!cta||price===null||price===undefined||!Number.isFinite(Number(price))||Number(price)<0||typeof currency!=="string"||!/^[A-Z]{3}$/.test(currency))return "";
     return '<article class="catalogue-product-card">'+imgMarkup+'<div class="catalogue-product-copy">'+brandMarkup+'<h3 class="catalogue-product-title">'+escapeHtml(name)+'</h3><div class="catalogue-product-meta">'+escapeHtml(meta)+'<br>'+escapeHtml(availabilityText)+'</div>'+dispatchMeta+sizeMarkup+'<div class="catalogue-product-price">'+escapeHtml(formatPrice(price,currency))+'</div><span class="catalogue-product-source">'+(kind==="nearby"?"Verified nearby stock":"Approved affiliate offer")+'</span>'+disclosure+link+'</div></article>';
   }
   function destinationIso(){
