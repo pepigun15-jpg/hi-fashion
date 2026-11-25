@@ -91,6 +91,24 @@ await page.locator("#searchAllMarkets").click();
 await page.waitForTimeout(1200);
 const status = (await page.locator("#catalogueStatus").textContent()) || "";
 if (!status.trim()) throw new Error("Global catalogue search produced no status.");
+
+for (const selector of [".hf-category-card", ".trend-trigger", ".season-chip", ".tag"]) {
+  const control = page.locator(selector).first();
+  if (await control.count() === 0) throw new Error("Missing catalogue control group: " + selector);
+  await control.click();
+  const term = await page.locator("#departmentSearch").inputValue();
+  if (!term.trim()) throw new Error(selector + " did not launch a catalogue search.");
+}
+await page.locator('button[data-season-choice="spring"]').click();
+if (!(await page.locator('button[data-season-choice="spring"]').evaluate(el => el.classList.contains("active")))) throw new Error("Season selector did not activate Spring.");
+await page.locator("#departmentSearch").fill("test query");
+await page.locator("#clearMarketSearch").click();
+if (await page.locator("#departmentSearch").inputValue()) throw new Error("Clear search button did not clear the search.");
+await page.locator("#applyCatalogueFilters").click();
+await page.locator("#languageToggle").click();
+if (!(await page.locator("#languageModal").isVisible())) throw new Error("Language selector did not open.");
+await page.locator('button[data-language-choice="bg"]').click();
+if (await page.locator("html").getAttribute("lang") !== "bg") throw new Error("Language selection did not apply Bulgarian.");
 const cards = await page.locator(".catalogue-product-card").count();
 for (let i = 0; i < cards; i++) {
   const card = page.locator(".catalogue-product-card").nth(i);
@@ -98,8 +116,10 @@ for (let i = 0; i < cards; i++) {
   if (!(await card.locator('a.catalogue-product-cta[href^="https://"]').count())) throw new Error("A product card is missing its tracked merchant destination.");
 }
 
+await page.goto(base + "/index.html", { waitUntil: "domcontentloaded" });
 await page.setViewportSize({ width: 390, height: 844 });
-await page.reload({ waitUntil: "domcontentloaded" });
+await page.locator(".burger").click();
+if (!(await page.locator("#menu").evaluate(el => el.classList.contains("open")))) throw new Error("Mobile menu button did not open the navigation.");
 if (pageErrors.length) throw new Error("Browser JavaScript errors: " + pageErrors.join(" | "));
 console.log("Browser smoke tests passed:", checks.length + 7, "navigation and commerce interactions; live cards returned:", cards);
 await browser.close();
