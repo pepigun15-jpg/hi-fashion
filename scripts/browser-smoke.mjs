@@ -14,11 +14,16 @@ async function clickAndCheck(selector, expected) {
   await openHome();
   const item = page.locator(selector).first();
   if (await item.count() === 0) throw new Error("Missing homepage control: " + selector);
+  console.log("Testing homepage control:", selector);
   await item.click();
-  await page.waitForURL(url => {
+  try {
+    await page.waitForURL(url => {
     if (!url.pathname.endsWith("/marketplace.html")) return false;
     return expected(url);
-  }, { timeout: 8000 });
+    }, { timeout: 8000 });
+  } catch (error) {
+    throw new Error("Navigation failed for " + selector + "; current URL: " + page.url() + "; " + error.message);
+  }
 }
 const checks = [
   ['a[href="#women"]', u => u.searchParams.get("search") === "Women"],
