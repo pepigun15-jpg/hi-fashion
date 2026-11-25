@@ -278,3 +278,21 @@ Do not assume a public affiliate programme exists, is open to this publisher, su
 - Real product prices and availability cannot be manufactured from the retailer directory. They require partner approval and data returned by a permitted feed/API.
 - Before claiming that every button works, run a browser-based interaction test across desktop and mobile for every link, button, filter, category, language selector, location control, account, cart, seller form and external product link. Record pass/fail evidence; GitHub source inspection alone is not a browser test.
 - Before enabling first-party checkout, verify seller approval, Stripe Connect account readiness, inventory reservation, server-side price checks, shipping address, webhook signature handling, tax/shipping rules and test-mode end-to-end purchase. Affiliate offers continue to use the merchant's own checkout.
+
+
+## Official network capability references reviewed 25 November 2026
+
+- Awin publisher tools describe Create-a-Feed access to around 200 million products across more than 20 languages; the feed URL is specific to the selected advertisers/categories. Publisher approval and advertiser programme approval still apply: https://www.awin.com/us/publishers/tools and https://www.awin.com/gb/faqs.
+- CJ's developer portal documents a Product Feed GraphQL API for product search by criteria including price, currency, country, serviceable area and UPC, plus advertiser and link lookup APIs: https://developers.cj.com/.
+- Rakuten's publisher documentation lists Product Search API and Product Catalog feeds. Product Catalog access requires approval, and publishers must also be partnered with the advertiser offering that catalogue: https://pubhelp.rakutenadvertising.com/hc/en-us/articles/5949692220813-Developer-Portal-Overview, https://pubhelp.rakutenadvertising.com/hc/en-us/articles/4412243602189-Product-Catalog-Overview, https://pubhelp.rakutenadvertising.com/hc/en-us/articles/4412243880333-Download-Product-Catalog-Data-Feed-Files.
+- impact.com documents a Product Marketplace with a claimed 600M+ products, and says product catalogues can be downloaded via platform, FTP or API only after joining a brand that has uploaded a catalogue: https://impact.com/Partners/ and https://help.impact.com/partner/what-would-you-like-to-learn-about/platform-features/marketing-content/product-marketplace-and-catalogs/download-product-catalogs-as-a-partner.
+- Admitad's publisher page describes XML feeds containing current offers, prices and inventory: https://www.admitad.com/affiliates/.
+- TradeTracker publisher documentation describes web services that can expose product feeds, account/campaign and transaction information subject to permissions: https://tradetracker.com/in/knowledge-centre/for-publishers/.
+- AvantLink's network documentation describes US as its primary network, with Canada and Australia networks and selected European activity; do not present it as worldwide coverage: https://avantlink.com/networks/.
+- eBay documents Browse API keyword/category search and states that EPN publishers should forward buyers using the returned `itemAffiliateWebUrl`: https://developer.ebay.com/develop/api/buy/browse_api/item/search and https://partnernetwork.ebay.com/solutions/grow-traffic-and-relevancy-with-ebay-s-buy-apis.
+
+All published scale figures are network claims and do not equal the number of products available to HI FASHION. Access is dependent on publisher status, advertiser approvals, regional programme terms, product-catalogue availability and data-use permissions.
+
+## Code-level corrections recorded 25 November 2026
+
+The four product-source functions `getLocalProducts`, `getNearbyProducts`, `getEbayProducts` and `getCjProducts` were declared async because they await Supabase/API operations. The homepage's category and season links now delegate to a live-catalogue search URL; the marketplace reads the `search` query parameter and starts a catalogue search. This is a source-code verification only; browser interaction tests remain outstanding.
