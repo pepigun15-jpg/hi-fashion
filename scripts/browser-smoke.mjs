@@ -12,6 +12,10 @@ async function openHome() {
   const chooser = page.locator("#languageModal");
   if (await chooser.isVisible()) await page.locator('button[data-language-choice="en"]').click();
 }
+async function chooseMarketplaceLanguage() {
+  const chooser = page.locator("#languageModal");
+  if (await chooser.count() && await chooser.isVisible()) await page.locator('button[data-language-choice="en"]').click();
+}
 async function clickAndCheck(selector, expected) {
   await openHome();
   const item = page.locator(selector).first();
@@ -59,18 +63,22 @@ for (const [selector, expected] of checks) await clickAndCheck(selector, expecte
 await openHome();
 await page.locator('.icons a[aria-label="Search"]').click();
 await page.waitForURL(url => url.pathname.endsWith("/marketplace.html") && url.hash === "#search", { timeout: 8000 });
+await chooseMarketplaceLanguage();
 
 await openHome();
 await page.locator('.icons a[aria-label="Account"]').click();
 await page.waitForURL(url => url.pathname.endsWith("/marketplace.html") && url.searchParams.get("open") === "account", { timeout: 8000 });
+await chooseMarketplaceLanguage();
 if (!(await page.locator("#accountDrawer").isVisible())) throw new Error("Account icon did not open the account panel.");
 
 await openHome();
 await page.locator('.icons a[aria-label="Bag"]').click();
 await page.waitForURL(url => url.pathname.endsWith("/marketplace.html") && url.searchParams.get("open") === "cart", { timeout: 8000 });
+await chooseMarketplaceLanguage();
 if (!(await page.locator("#commerceCart").isVisible())) throw new Error("Bag icon did not open the cart panel.");
 
 await page.goto(base + "/marketplace.html", { waitUntil: "domcontentloaded" });
+await chooseMarketplaceLanguage();
 await page.locator("#accountToggle").click();
 if (!(await page.locator("#accountDrawer").isVisible())) throw new Error("Marketplace account button failed.");
 await page.locator("#closeAccount").click();
