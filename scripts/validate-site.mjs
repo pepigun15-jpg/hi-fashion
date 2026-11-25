@@ -44,7 +44,7 @@ if (!market.includes('if(!cta||price===null||price===undefined||!Number.isFinite
 if (!market.includes("search-cj-catalogue") || !market.includes("search-ebay-catalogue")) fail("CJ/eBay live search endpoints missing");
 if (!market.includes('requestedSearch=new URLSearchParams(window.location.search).get("search")')) fail("category deep-link search is not initialised");
 for (const fakePrice of ["€119.00", "€149.00", "€189.00", "€229.00"]) if (market.includes(fakePrice)) fail("illustrative featured price remains: " + fakePrice);
-if (market.includes("Everyday Structured Tote") || market.includes("Minimal Court Sneakers")) fail("sample commerce products remain visible");
+if (market.includes('<article class="commerce-product">')) fail("static sample commerce product cards remain visible");
 
 const home = fs.readFileSync(path.join(root, "index.html"), "utf8");
 for (const route of ['"#sell-with-us":"marketplace.html#seller"', '"#delivery-location":"marketplace.html#store-network"', '"#global-catalogue":"marketplace.html#global-catalogue"']) {
