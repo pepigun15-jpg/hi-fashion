@@ -41,6 +41,7 @@ for (const id of ["productCatalogue", "global-catalogue", "seller", "store-netwo
   if (!market.includes('id="' + id + '"') && !market.includes("id='" + id + "'")) fail("required marketplace destination missing: #" + id);
 }
 if (!market.includes('if(!cta||price===null||price===undefined||!Number.isFinite(Number(price))||!currency)return "";')) fail("product cards do not enforce a real price, currency and affiliate URL");
+if (!market.includes("Affiliate link — HI FASHION may earn a commission.")) fail("affiliate commission disclosure missing from partner product cards");
 if (!market.includes("search-cj-catalogue") || !market.includes("search-ebay-catalogue")) fail("CJ/eBay live search endpoints missing");
 if (!market.includes('requestedSearch=new URLSearchParams(window.location.search).get("search")')) fail("category deep-link search is not initialised");
 for (const fakePrice of ["€119.00", "€149.00", "€189.00", "€229.00"]) if (market.includes(fakePrice)) fail("illustrative featured price remains: " + fakePrice);
