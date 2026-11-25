@@ -7420,5 +7420,42 @@ applySeason(localStorage.getItem("hiFashionSeason") || "auto", false);
   });
 })();
 </script>
+
+<script id="hf-brand-affiliate-routing">
+/*
+ * Brand masthead routing:
+ * Keep shoppers inside the HI FASHION catalogue first.
+ * Product checkout links are rendered only from authorised affiliate_url values
+ * returned by connected partner feeds, so untracked retailer clicks are not treated
+ * as commission-generating referrals.
+ */
+(function(){
+  const strip = document.getElementById("top-brand-strip");
+  if (!strip || strip.dataset.hfAffiliateRouting === "active") return;
+  strip.dataset.hfAffiliateRouting = "active";
+  strip.addEventListener("click", function(event){
+    const link = event.target.closest("a.top-brand-mark");
+    if (!link || !strip.contains(link)) return;
+    const raw = link.getAttribute("title") || link.getAttribute("aria-label") || link.textContent || "";
+    const brand = raw.replace(/\s+(logo|official online store)$/i, "").trim();
+    if (!brand) return;
+    event.preventDefault();
+    if (typeof window.hiFashionRunCatalogueForCategory === "function") {
+      window.hiFashionRunCatalogueForCategory(brand);
+      const panel = document.getElementById("productCatalogue");
+      if (panel) panel.scrollIntoView({behavior:"smooth", block:"start"});
+      return;
+    }
+    const search = document.getElementById("departmentSearch");
+    if (search) {
+      search.value = brand;
+      search.dispatchEvent(new Event("input", {bubbles:true}));
+      const panel = document.getElementById("productCatalogue");
+      if (panel) panel.scrollIntoView({behavior:"smooth", block:"start"});
+    }
+  });
+})();
+</script>
+
 </body>
 </html>
