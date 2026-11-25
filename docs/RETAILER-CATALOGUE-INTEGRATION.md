@@ -10,7 +10,7 @@ The current catalogue code has four data paths:
 3. eBay Browse API (search-ebay-catalogue).
 4. Awin/CJ CSV feed import (import-retailer-feed), using resumable HTTPS CSV/TSV downloads.
 
-The import function accepts only Awin and CJ feed sources, requires an authenticated user listed in ADMIN_USER_IDS, validates HTTPS feed URLs, imports in batches, and marks stale products inactive only after a complete feed run.
+The import function accepts Awin, CJ, Rakuten Advertising, Impact.com, Admitad, Partnerize, TradeDoubler, TradeTracker, AvantLink, Commission Factory, FlexOffers, Webgains, Adtraction, LinkConnector and ShareASale when the approved partner supplies a compatible HTTPS CSV/TSV feed. It requires an authenticated user listed in ADMIN_USER_IDS, supports an optional private bearer token, validates HTTPS feed URLs, imports in resumable batches, and marks stale products inactive only after a complete feed run. XML-only feeds and provider APIs without a downloadable compatible feed still require a dedicated adapter.
 
 ## Important distinction
 
@@ -61,6 +61,15 @@ Set secrets only in the Supabase project Edge Function secrets manager. Never pu
 - Optional: CJ_FEED_BEARER_TOKEN
 - Optional: CJ_DEFAULT_COUNTRY
 - Optional: CJ_DEFAULT_CURRENCY
+
+### Additional network CSV/TSV feeds
+For each supported network, use the uppercase source prefix (for example RAKUTEN, IMPACT, ADMITAD, PARTNERIZE, TRADEDOUBLER, TRADETRACKER, AVANTLINK, COMMISSION_FACTORY, FLEXOFFERS, WEBGAINS, ADTRACTION, LINKCONNECTOR or SHAREASALE):
+- `<PREFIX>_FEED_URL` or `<PREFIX>_FEED_<FEED_ID>_URL`
+- Optional: `<PREFIX>_FEED_BEARER_TOKEN`
+- Optional: `<PREFIX>_DEFAULT_COUNTRY`
+- Optional: `<PREFIX>_DEFAULT_CURRENCY`
+
+Only use a feed URL issued to HI FASHION under the relevant programme terms. The generic importer expects a downloadable CSV/TSV file with recognised product field names; network-specific XML or API formats need a dedicated adapter.
 
 The feed importer also requires the existing Supabase service configuration and ADMIN_USER_IDS. Feed URLs must use HTTPS. Large feeds should support byte-range requests so the importer can resume safely.
 
