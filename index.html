@@ -235,4 +235,33 @@ document.querySelectorAll('.tab').forEach(function(t){t.addEventListener('click'
  document.querySelectorAll('.tab').forEach(function(x){x.classList.remove('on')});t.classList.add('on');
  var g=document.getElementById('grid');g.classList.add('fade');setTimeout(function(){g.classList.remove('fade')},300);});});
 </script>
+
+<script id="hf-live-catalogue-navigation">
+(function(){
+  function goToCatalogue(term){
+    var q=String(term||"").trim();
+    if(!q)return;
+    window.location.href="marketplace.html?search="+encodeURIComponent(q)+"#global-catalogue";
+  }
+  document.addEventListener("click",function(event){
+    var link=event.target.closest("a[href^='#']");
+    if(link){
+      var hash=link.getAttribute("href")||"";
+      if(hash.length>1){
+        event.preventDefault();
+        var label=(link.getAttribute("data-search")||link.textContent||hash.slice(1)).replace(/\s+/g," ").trim();
+        if(/^home$/i.test(label))return;
+        goToCatalogue(label);
+      }
+      return;
+    }
+    var tab=event.target.closest("button.tab,button.season-control,button.season-chip,button[data-hf-quick-query]");
+    if(tab){
+      event.preventDefault();
+      goToCatalogue(tab.getAttribute("data-hf-quick-query")||tab.getAttribute("data-search")||tab.textContent);
+    }
+  });
+})();
+</script>
+
 </body></html>
