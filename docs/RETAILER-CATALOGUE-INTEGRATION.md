@@ -111,3 +111,105 @@ The existing CJ search currently returns a limited field set and leaves some cat
 - Product images are loaded only from permitted feed/API image URLs.
 - No secret appears in public source or browser network requests.
 - Mobile, pagination, filters, search, keyboard access and error states pass tests.
+
+## Expanded worldwide partner-network coverage
+
+HI FASHION should apply to and integrate with multiple networks rather than depend on one programme. These networks provide access to many advertisers, but they do not automatically grant access to every merchant or every product feed.
+
+Priority network onboarding queue:
+
+| Network | Primary use | Integration status |
+|---|---|---|
+| Awin | Global fashion, sportswear, footwear, lifestyle, home and retail advertisers | Existing feed importer supports Awin CSV/TSV; account, advertiser approvals and feed URLs still required |
+| CJ Affiliate | Global brands and retailers, including fashion and marketplace advertisers | Existing CJ search and feed import paths; production credentials and approved advertiser feeds required |
+| eBay Partner Network / Browse API | Broad marketplace assortment, new and pre-owned goods | Existing search path; production API and affiliate approval required |
+| Rakuten Advertising | Fashion, department stores, luxury, beauty and lifestyle retailers | Candidate network; account, programme approvals and product-feed/API access required |
+| Impact.com | Fashion, outdoor, sports, baby, pet and general retail programmes | Candidate network; merchant-by-merchant approval and catalogue access required |
+| Partnerize | International and regional fashion/luxury merchants, including Gulf retailers | Candidate network; merchant approval and product feed/API required |
+| Admitad | Strong regional reach including India and cross-border ecommerce | Candidate network; programme approval and feed/API access required |
+| TradeDoubler | European and international advertisers | Candidate network; account, programme approval and feeds required |
+| TradeTracker | Regional European and international advertisers | Candidate network; account, advertiser approval and feeds required |
+| AvantLink | Outdoor, adventure, apparel and equipment retailers | Candidate network; advertiser approval and feeds required |
+| Sovrn Commerce / Skimlinks | Monetisation and merchant-link discovery where supported | Candidate route; confirm product-level data, terms, tracking and country coverage before treating as a catalogue feed |
+| Direct retailer APIs / partner portals | Merchants not available through networks | Individual written permission, API/feed documentation and access credentials required |
+
+Research references for network onboarding:
+- Awin describes a network of 30,000+ brands and 1M+ approved partners: https://www.awin.com/us/
+- CJ Affiliate: https://www.cj.com/
+- Rakuten Advertising: https://rakutenadvertising.com/
+- Impact: https://impact.com/
+- Partnerize: https://partnerize.com/
+- Admitad: https://www.admitad.com/
+- TradeDoubler: https://www.tradedoubler.com/
+- TradeTracker: https://tradetracker.com/
+- AvantLink: https://www.avantlink.com/
+- eBay Partner Network: https://partnernetwork.ebay.com/
+
+These network scale figures and public directories describe potential advertiser reach, not confirmed HI FASHION access.
+
+## Product verticals to include in the global catalogue
+
+Create independent navigable catalogue departments and independent product taxonomy for:
+
+1. Women: clothing, modest fashion, occasionwear, shoes, handbags, jewellery, accessories.
+2. Men: clothing, tailoring, streetwear, shoes, watches, jewellery, accessories.
+3. Indian fashion and jewellery: sarees, lehengas, salwar suits, kurtas, sherwanis, ethnic footwear, bangles, bridal jewellery, gold/silver/fashion jewellery, gemstones and accessories.
+4. Arab and Middle Eastern fashion: abayas, kaftans, jalabiyas, thobes, hijabs, modest occasionwear, oud-related fashion accessories where lawful, and regional jewellery.
+5. Jewellery and watches: fine jewellery, gold, silver, diamonds, gemstones, pearls, costume jewellery, watches and handmade artisan pieces. Product material and authenticity claims must come from the merchant.
+6. Military-inspired and tactical apparel: outdoor clothing, boots, backpacks, utility garments, workwear, camping and survival equipment. Restrict the catalogue to lawful apparel and ordinary outdoor equipment; do not list prohibited weapons, weapon parts, ammunition or restricted self-defence products.
+7. Sports and outdoor: activewear, hiking, camping, travel, fitness, cycling and performance equipment.
+8. Baby: newborn, infant and toddler clothing, footwear, sleepwear, accessories and nursery essentials.
+9. Kids and teens: clothing, shoes, schoolwear, accessories and occasionwear.
+10. Pet fashion and supplies: dog/cat clothing, collars, harnesses, beds, travel accessories, grooming and ordinary pet supplies.
+11. Vintage and pre-owned: authenticated or clearly described second-hand clothing, shoes, bags, watches and jewellery; condition grading and seller identity required.
+12. Bags, luggage, eyewear, beauty and lifestyle accessories where supported by the retailer feed and site policies.
+
+Every department needs its own category buttons, filters, season mapping, landing page and search aliases. Products may appear in more than one relevant collection but must retain one canonical product/offer identity.
+
+## Priority merchant discovery queue (not yet connected)
+
+Use the existing 176-store directory as the base, deduplicate by canonical merchant domain, and add candidate merchants by department. Examples for partner-programme research and application:
+
+- India / South Asia: Myntra, AJIO, Tata CLiQ, Nykaa Fashion, Tanishq, CaratLane, BlueStone, Kalyan Jewellers, Malabar Gold & Diamonds, Sabyasachi, Fabindia.
+- Gulf / Arab fashion: Ounass, Namshi, 6thStreet, Sivvi, Level Shoes, Tryano, regional abaya and jewellery merchants.
+- Tactical / outdoor: 5.11 Tactical, Helikon-Tex, UF PRO, Decathlon, Sportsman's Warehouse, Cabela's, Bass Pro Shops, REI, Backcountry, Sports Direct.
+- Baby / kids: Carter's, Mothercare, JoJo Maman Bébé, Next, H&M Kids, Zara Kids, The Children's Place, Vertbaudet.
+- Pets: Zooplus, Fressnapf, Petco, Pets at Home, Chewy, PetSmart.
+- Luxury / global fashion: retain and expand the current directory with verified regional variants and country-specific storefronts.
+
+The merchant list is a prospecting queue, not a statement that these brands offer a public affiliate programme, ship worldwide, or have approved HI FASHION. Verify each merchant's current partner terms and country delivery policies before activation.
+
+## Merchant registry requirements
+
+Create or maintain a central retailer registry with one row per merchant and country programme:
+
+- canonical merchant ID and canonical domain;
+- display name and brand asset source/permission;
+- department/category tags and supported product types;
+- merchant headquarters/dispatch regions only when confirmed;
+- supported destination countries and excluded regions;
+- affiliate network and advertiser/programme ID;
+- integration type: directory-only, approved deep link, API search, product feed, marketplace seller;
+- approval status: prospect, applied, approved, credentials pending, connected, paused, rejected;
+- feed/API URL reference stored privately, never exposed to browser;
+- refresh cadence, last successful sync, last error, feed health;
+- allowed image/price/content usage and attribution rules;
+- return-policy URL, delivery policy URL, customer-support route;
+- date of last verification and evidence/source URL.
+
+Do not label a retailer "verified", "secure", "worldwide shipping" or "connected" until the relevant evidence is stored and reviewed. A retailer's own checkout remains responsible for external affiliate orders.
+
+## Implementation sequence
+
+1. Audit and deduplicate all existing 176 retailer cards; preserve their URLs and regional storefront variants.
+2. Populate the merchant registry with the existing stores and assign departments.
+3. Add the missing department navigation and category taxonomy above.
+4. Apply to the partner networks, beginning with Awin, CJ, eBay, Admitad, Impact and Partnerize; apply to individual merchants in parallel.
+5. Connect only approved product feeds/APIs and test each source independently.
+6. Add a source health dashboard and sync monitoring; isolate failed feeds without taking other merchants offline.
+7. Expand by region and department as approvals arrive.
+8. Run destination-country and shipping tests before presenting a product as deliverable to a customer.
+
+## Launch truthfulness
+
+"All possible stores" is an ongoing acquisition target, not a finite technical setting. No platform can guarantee every online store worldwide or that every merchant ships to every country. HI FASHION should continuously add merchants that meet the integration, permission, product-data and customer-safety requirements above.
