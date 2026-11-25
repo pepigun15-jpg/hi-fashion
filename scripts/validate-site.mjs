@@ -10,10 +10,10 @@ let failures = 0;
 function fail(message) { console.error("FAIL:", message); failures++; }
 for (const file of files) {
   const html = fs.readFileSync(path.join(root, file), "utf8");
-  const scripts = [...html.matchAll(/<script\\b(?![^>]*\\bsrc=)[^>]*>([\\s\\S]*?)<\\/script>/gi)];
+  const scripts = [...html.matchAll(/<script\b(?![^>]*\bsrc=)[^>]*>([\s\S]*?)<\/script>/gi)];
   if (!scripts.length) fail(file + ": no inline scripts found");
   scripts.forEach((match, index) => {
-    const target = path.join(temp, file.replace(/\\W/g, "_") + "-" + index + ".js");
+    const target = path.join(temp, file.replace(/\W/g, "_") + "-" + index + ".js");
     fs.writeFileSync(target, match[1]);
     const check = spawnSync(process.execPath, ["--check", target], { encoding: "utf8" });
     if (check.status !== 0) fail(file + " inline script " + index + ": " + (check.stderr || check.stdout));
@@ -22,10 +22,10 @@ for (const file of files) {
 }
 
 const market = fs.readFileSync(path.join(root, "marketplace.html"), "utf8");
-const ids = new Set([...market.matchAll(/\\bid=["']([^"']+)["']/g)].map(x => x[1]));
-const duplicateIds = [...market.matchAll(/\\bid=["']([^"']+)["']/g)].map(x => x[1]).filter((id, i, all) => all.indexOf(id) !== i);
+const ids = new Set([...market.matchAll(/\bid=["']([^"']+)["']/g)].map(x => x[1]));
+const duplicateIds = [...market.matchAll(/\bid=["']([^"']+)["']/g)].map(x => x[1]).filter((id, i, all) => all.indexOf(id) !== i);
 if (duplicateIds.length) fail("marketplace.html duplicate IDs: " + [...new Set(duplicateIds)].join(", "));
-const staticHtml = market.split(/<script\\b/i)[0];
+const staticHtml = market.split(/<script\b/i)[0];
 const missing = [...staticHtml.matchAll(/href=["']#([^"']+)["']/g)].map(x => x[1]).filter(id => !ids.has(id));
 if (missing.length) fail("marketplace.html broken in-page links: " + [...new Set(missing)].join(", "));
 for (const id of ["productCatalogue", "global-catalogue", "seller", "store-network", "brands", "new-arrivals", "seasonal-shop", "gift-cards"]) {
