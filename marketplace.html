@@ -7403,7 +7403,13 @@ applySeason(localStorage.getItem("hiFashionSeason") || "auto", false);
       window.clearTimeout(timer);
       if(search.value.trim())runSearch({query:search.value,offset:0});
     }
-  });
+  });  const requestedSearch=new URLSearchParams(window.location.search).get("search");
+  if(requestedSearch&&requestedSearch.trim()){
+    search.value=requestedSearch.trim();
+    runSearch({query:requestedSearch.trim(),category:requestedSearch.trim(),offset:0});
+    panel.scrollIntoView({behavior:"smooth",block:"start"});
+  }
+
 })();
 
 </script>
