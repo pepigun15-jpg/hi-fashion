@@ -207,7 +207,8 @@ Deno.serve(async(req:Request)=>{
 
     const body=await req.json().catch(()=>({}));
     const source=String(body.source_code||"").toLowerCase();
-    if(!["awin","cj"].includes(source))return json({error:"Supported feed sources are awin and cj."},400);
+    const supportedSources=["awin","cj","rakuten","impact","admitad","partnerize","tradedoubler","tradetracker","avantlink","commission_factory","flexoffers","webgains","adtraction","linkconnector","shareasale"];
+    if(!supportedSources.includes(source))return json({error:"Unsupported source. Supported generic HTTPS CSV/TSV feed sources: "+supportedSources.join(", ")+"."},400);
     const feedId=String(body.feed_id||"default").toLowerCase();
     if(!/^[a-z0-9][a-z0-9_-]{0,59}$/.test(feedId))return json({error:"feed_id must use 1–60 lowercase letters, digits, underscores or hyphens."},400);
     const prefix=source.toUpperCase();

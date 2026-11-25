@@ -1,0 +1,456 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-11-25",
+  "purpose": "Prospective affiliate and product-data integrations for HI FASHION",
+  "warning": "Every entry is a prospect unless status explicitly says otherwise. A network account does not grant access to every advertiser. Product catalog access usually requires publisher approval plus individual advertiser approval.",
+  "networks": [
+    {
+      "id": "awin",
+      "name": "Awin",
+      "url": "https://www.awin.com/",
+      "publisher_url": "https://www.awin.com/us/publishers",
+      "coverage": "Global",
+      "verticals": [
+        "fashion",
+        "sportswear",
+        "beauty",
+        "home",
+        "lifestyle",
+        "general retail"
+      ],
+      "product_data": "Create-a-Feed product catalogue with advertiser/category selection and feed URLs",
+      "integration_status": "existing_csv_tsv_importer_only",
+      "approval_required": [
+        "publisher approval",
+        "individual advertiser programme approval",
+        "feed access"
+      ],
+      "adapter_status": "Existing HI FASHION authorised CSV/TSV feed importer; credentials and advertiser approvals not connected"
+    },
+    {
+      "id": "cj",
+      "name": "CJ Affiliate",
+      "url": "https://www.cj.com/",
+      "developer_url": "https://developers.cj.com/",
+      "coverage": "Global",
+      "verticals": [
+        "fashion",
+        "luxury",
+        "beauty",
+        "travel",
+        "retail"
+      ],
+      "product_data": "Product Feed API GraphQL, advertiser lookup, link search",
+      "integration_status": "existing_search_and_csv_tsv_importer",
+      "approval_required": [
+        "publisher account",
+        "advertiser relationship",
+        "API credentials/feed access"
+      ],
+      "adapter_status": "Existing HI FASHION CJ Product Feed API search and CSV/TSV importer; credentials and advertiser approvals not connected"
+    },
+    {
+      "id": "ebay",
+      "name": "eBay Partner Network",
+      "url": "https://partnernetwork.ebay.com/",
+      "developer_url": "https://developer.ebay.com/api-docs/buy/browse/overview.html",
+      "coverage": "Supported eBay marketplaces",
+      "verticals": [
+        "fashion",
+        "shoes",
+        "accessories",
+        "watches",
+        "jewellery",
+        "pre-owned"
+      ],
+      "product_data": "Browse API item search and affiliate destination URLs; Feed API also available subject to programme requirements",
+      "integration_status": "existing_search_adapter_requires_production_credentials",
+      "approval_required": [
+        "EPN approval",
+        "production Browse API access",
+        "campaign ID"
+      ],
+      "adapter_status": "Existing HI FASHION Browse API adapter; production credentials and approved EPN campaign not connected"
+    },
+    {
+      "id": "rakuten",
+      "name": "Rakuten Advertising",
+      "url": "https://rakutenadvertising.com/",
+      "developer_url": "https://developers.rakutenadvertising.com/documentation/en/affiliate_apis",
+      "coverage": "Global / advertiser-dependent",
+      "verticals": [
+        "fashion",
+        "luxury",
+        "beauty",
+        "department stores",
+        "lifestyle"
+      ],
+      "product_data": "Product Search API, Product Catalog feeds via SFTP, deep links",
+      "integration_status": "prospect_not_connected",
+      "approval_required": [
+        "publisher approval",
+        "advertiser partnership",
+        "product catalog access"
+      ],
+      "adapter_status": "Generic HTTPS CSV/TSV importer added; use only if the approved network/advertiser supplies a compatible feed; not connected"
+    },
+    {
+      "id": "impact",
+      "name": "impact.com",
+      "url": "https://impact.com/Partners/",
+      "help_url": "https://help.impact.com/partner/what-would-you-like-to-learn-about/platform-features/marketing-content/product-marketplace-and-catalogs/download-product-catalogs-as-a-partner",
+      "coverage": "Global / brand-dependent",
+      "verticals": [
+        "fashion",
+        "sports",
+        "baby",
+        "pets",
+        "beauty",
+        "lifestyle"
+      ],
+      "product_data": "Product Marketplace and product catalog downloads via platform, FTP or API for joined brands",
+      "integration_status": "prospect_not_connected",
+      "approval_required": [
+        "publisher approval",
+        "join individual brand",
+        "catalogue permission"
+      ],
+      "adapter_status": "Generic HTTPS CSV/TSV importer added; use only if the approved network/advertiser supplies a compatible feed; not connected"
+    },
+    {
+      "id": "partnerize",
+      "name": "Partnerize",
+      "url": "https://partnerize.com/",
+      "coverage": "Global / brand-dependent",
+      "verticals": [
+        "fashion",
+        "luxury",
+        "retail",
+        "travel",
+        "lifestyle"
+      ],
+      "product_data": "Confirm feed/API availability per advertiser account",
+      "integration_status": "prospect_not_connected",
+      "approval_required": [
+        "publisher approval",
+        "individual brand approval",
+        "feed/API permissions"
+      ],
+      "adapter_status": "Generic HTTPS CSV/TSV importer added; use only if the approved network/advertiser supplies a compatible feed; not connected"
+    },
+    {
+      "id": "admitad",
+      "name": "Admitad",
+      "url": "https://www.admitad.com/affiliates/",
+      "coverage": "International; regional strength including India and Europe",
+      "verticals": [
+        "fashion",
+        "beauty",
+        "retail",
+        "marketplaces"
+      ],
+      "product_data": "XML product feeds for current offers, prices and inventory",
+      "integration_status": "prospect_not_connected",
+      "approval_required": [
+        "publisher approval",
+        "advertiser programme approval",
+        "feed access"
+      ],
+      "adapter_status": "Generic HTTPS CSV/TSV importer added; use only if the approved network/advertiser supplies a compatible feed; not connected"
+    },
+    {
+      "id": "tradedoubler",
+      "name": "TradeDoubler",
+      "url": "https://www.tradedoubler.com/",
+      "coverage": "Europe and selected international markets",
+      "verticals": [
+        "fashion",
+        "retail",
+        "lifestyle"
+      ],
+      "product_data": "Advertiser-dependent product feed and campaign tools",
+      "integration_status": "prospect_not_connected",
+      "approval_required": [
+        "publisher approval",
+        "advertiser approval",
+        "feed access"
+      ],
+      "adapter_status": "Generic HTTPS CSV/TSV importer added; use only if the approved network/advertiser supplies a compatible feed; not connected"
+    },
+    {
+      "id": "tradetracker",
+      "name": "TradeTracker",
+      "url": "https://tradetracker.com/",
+      "coverage": "Europe and selected international markets",
+      "verticals": [
+        "fashion",
+        "retail",
+        "travel",
+        "lifestyle"
+      ],
+      "product_data": "Product feed and web services/API subject to publisher permissions",
+      "integration_status": "prospect_not_connected",
+      "approval_required": [
+        "publisher approval",
+        "campaign approval",
+        "API/feed access"
+      ],
+      "adapter_status": "Generic HTTPS CSV/TSV importer added; use only if the approved network/advertiser supplies a compatible feed; not connected"
+    },
+    {
+      "id": "avantlink",
+      "name": "AvantLink",
+      "url": "https://avantlink.com/publishers/",
+      "coverage": "US primary; Canada and Australia networks; selected European activity",
+      "verticals": [
+        "outdoor",
+        "adventure",
+        "sportswear",
+        "equipment"
+      ],
+      "product_data": "Advertiser-dependent feeds and tools",
+      "integration_status": "prospect_not_connected",
+      "approval_required": [
+        "publisher approval",
+        "advertiser approval"
+      ],
+      "adapter_status": "Generic HTTPS CSV/TSV importer added; use only if the approved network/advertiser supplies a compatible feed; not connected"
+    },
+    {
+      "id": "sovrn-commerce",
+      "name": "Sovrn Commerce",
+      "url": "https://www.sovrn.com/commerce/",
+      "coverage": "Merchant-dependent",
+      "verticals": [
+        "retail",
+        "fashion",
+        "lifestyle"
+      ],
+      "product_data": "Confirm whether available product data and usage rights meet live catalogue requirements",
+      "integration_status": "prospect_needs_product_data_rights_review",
+      "approval_required": [
+        "publisher approval",
+        "merchant coverage",
+        "data-use confirmation"
+      ],
+      "adapter_status": "Network-specific API/feed adapter or approved tracking-link implementation required; not connected"
+    },
+    {
+      "id": "skimlinks",
+      "name": "Skimlinks",
+      "url": "https://www.skimlinks.com/",
+      "coverage": "Merchant-dependent",
+      "verticals": [
+        "retail",
+        "fashion",
+        "lifestyle"
+      ],
+      "product_data": "Primarily commerce-link monetisation; verify product catalogue, price and image permissions separately",
+      "integration_status": "prospect_needs_product_data_rights_review",
+      "approval_required": [
+        "publisher approval",
+        "merchant coverage",
+        "data-use confirmation"
+      ],
+      "adapter_status": "Network-specific API/feed adapter or approved tracking-link implementation required; not connected"
+    },
+    {
+      "id": "amazon-associates",
+      "name": "Amazon Associates / Creators API",
+      "url": "https://affiliate-program.amazon.com/creatorsapi/docs/",
+      "coverage": "Separate marketplace programmes by country",
+      "verticals": [
+        "fashion",
+        "shoes",
+        "accessories",
+        "beauty",
+        "home",
+        "general retail"
+      ],
+      "product_data": "Creators API / product data access subject to Associates eligibility and country-specific requirements",
+      "integration_status": "prospect_not_connected",
+      "approval_required": [
+        "Associates approval in relevant marketplace",
+        "API eligibility",
+        "country-specific compliance"
+      ],
+      "adapter_status": "Dedicated Creators API adapter required; not connected"
+    },
+    {
+      "id": "direct-merchant",
+      "name": "Direct retailer API / feed partnership",
+      "url": null,
+      "coverage": "Merchant-specific",
+      "verticals": [
+        "all approved departments"
+      ],
+      "product_data": "Merchant API, CSV/XML/TSV feed, SFTP or other documented feed",
+      "integration_status": "prospect_per_merchant",
+      "approval_required": [
+        "written merchant permission",
+        "data/image usage terms",
+        "destination/shipping rules",
+        "credentials"
+      ],
+      "adapter_status": "Network-specific API/feed adapter or approved tracking-link implementation required; not connected"
+    },
+    {
+      "id": "commission-factory",
+      "name": "Commission Factory",
+      "url": "https://www.commissionfactory.com/",
+      "coverage": "Australia / APAC",
+      "verticals": [
+        "fashion",
+        "beauty",
+        "lifestyle",
+        "retail"
+      ],
+      "product_data": "Advertiser-dependent product feed/API; confirm access per programme",
+      "integration_status": "prospect_not_connected",
+      "approval_required": [
+        "publisher approval",
+        "advertiser approval",
+        "feed/API access"
+      ],
+      "adapter_status": "Generic HTTPS CSV/TSV importer added; use only if the approved network/advertiser supplies a compatible feed; not connected"
+    },
+    {
+      "id": "flexoffers",
+      "name": "FlexOffers",
+      "url": "https://www.flexoffers.com/",
+      "coverage": "US / international advertiser-dependent",
+      "verticals": [
+        "fashion",
+        "retail",
+        "lifestyle"
+      ],
+      "product_data": "Advertiser-dependent product data and links; confirm feed access",
+      "integration_status": "prospect_not_connected",
+      "approval_required": [
+        "publisher approval",
+        "advertiser approval",
+        "product data access"
+      ],
+      "adapter_status": "Generic HTTPS CSV/TSV importer added; use only if the approved network/advertiser supplies a compatible feed; not connected"
+    },
+    {
+      "id": "webgains",
+      "name": "Webgains",
+      "url": "https://www.webgains.com/",
+      "coverage": "Europe / international",
+      "verticals": [
+        "fashion",
+        "beauty",
+        "retail",
+        "lifestyle"
+      ],
+      "product_data": "Advertiser-dependent feeds and tracking links",
+      "integration_status": "prospect_not_connected",
+      "approval_required": [
+        "publisher approval",
+        "advertiser approval",
+        "feed access"
+      ],
+      "adapter_status": "Generic HTTPS CSV/TSV importer added; use only if the approved network/advertiser supplies a compatible feed; not connected"
+    },
+    {
+      "id": "adtraction",
+      "name": "Adtraction",
+      "url": "https://adtraction.com/",
+      "coverage": "Europe / Nordic markets",
+      "verticals": [
+        "fashion",
+        "beauty",
+        "retail",
+        "lifestyle"
+      ],
+      "product_data": "Advertiser-dependent product data and tracking links",
+      "integration_status": "prospect_not_connected",
+      "approval_required": [
+        "publisher approval",
+        "advertiser approval",
+        "feed access"
+      ],
+      "adapter_status": "Generic HTTPS CSV/TSV importer added; use only if the approved network/advertiser supplies a compatible feed; not connected"
+    },
+    {
+      "id": "linkconnector",
+      "name": "LinkConnector",
+      "url": "https://www.linkconnector.com/",
+      "coverage": "US / advertiser-dependent",
+      "verticals": [
+        "fashion",
+        "retail",
+        "lifestyle"
+      ],
+      "product_data": "Advertiser-dependent product feeds and deep links",
+      "integration_status": "prospect_not_connected",
+      "approval_required": [
+        "publisher approval",
+        "advertiser approval",
+        "feed access"
+      ],
+      "adapter_status": "Generic HTTPS CSV/TSV importer added; use only if the approved network/advertiser supplies a compatible feed; not connected"
+    },
+    {
+      "id": "shareasale",
+      "name": "ShareASale",
+      "url": "https://www.shareasale.com/",
+      "coverage": "US / international advertiser-dependent",
+      "verticals": [
+        "fashion",
+        "retail",
+        "home",
+        "lifestyle"
+      ],
+      "product_data": "Advertiser-dependent product data feeds and links",
+      "integration_status": "prospect_not_connected",
+      "approval_required": [
+        "publisher approval",
+        "advertiser approval",
+        "feed access"
+      ],
+      "adapter_status": "Generic HTTPS CSV/TSV importer added; use only if the approved network/advertiser supplies a compatible feed; not connected"
+    },
+    {
+      "id": "cpx-affiliate",
+      "name": "CPX Affiliate",
+      "url": "https://www.cpxaffiliate.com/en/affiliates",
+      "coverage": "GCC / Middle East advertiser-dependent",
+      "verticals": [
+        "fashion",
+        "beauty",
+        "retail",
+        "baby"
+      ],
+      "product_data": "Public advertiser discovery; verify product feed/API rights per programme",
+      "integration_status": "prospect_not_connected",
+      "approval_required": [
+        "publisher approval",
+        "individual programme approval",
+        "product data access"
+      ],
+      "adapter_status": "Network-specific API/feed adapter or approved tracking-link implementation required; not connected"
+    },
+    {
+      "id": "affiliate-com",
+      "name": "Affiliate.com",
+      "url": "https://affiliate.com/networks",
+      "coverage": "Multi-network aggregation, advertiser-dependent",
+      "verticals": [
+        "fashion",
+        "retail",
+        "lifestyle"
+      ],
+      "product_data": "Unified product-data aggregation for merchants that have approved the publisher",
+      "integration_status": "prospect_not_connected",
+      "approval_required": [
+        "publisher approval",
+        "underlying merchant approval",
+        "product data rights"
+      ],
+      "adapter_status": "Network-specific API/feed adapter or approved tracking-link implementation required; not connected"
+    }
+  ],
+  "expansion_note": "Network registry separates existing HI FASHION code paths from generic HTTPS CSV/TSV importer candidates and network-specific adapter work. Every entry remains prospect_not_connected until publisher/advertiser approval, private credentials, a successful feed/API sync and valid tracked product URLs are verified."
+}
